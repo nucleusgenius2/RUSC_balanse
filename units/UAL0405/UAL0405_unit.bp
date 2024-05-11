@@ -112,7 +112,7 @@ UnitBlueprint {
         SubThreatLevel = 0,
         SurfaceThreatLevel = 0,
         MaxRange = 170,
-        NoTeleDistance = 36,
+        NoTeleDistance = 72,
         SlowDownRadius = 69,
         AuraRadius = 52,
     },
