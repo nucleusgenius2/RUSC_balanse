@@ -12,7 +12,7 @@ UnitBlueprint {
             helpText = "toggle_cloak",
         },
     },
-    VeteranMassMult = 0.5,
+    VeteranMassMult = 1,
     Audio = {
         CaptureLoop                   = Sound { Bank = 'XSL',            Cue = 'XSL0001_Capture_Loop',      LodCutoff = 'UnitMove_LodCutoff' },
         CommanderArrival              = Sound { Bank = 'UAL',            Cue = 'UAL0001_Gate_In',           LodCutoff = 'UnitMove_LodCutoff' },
