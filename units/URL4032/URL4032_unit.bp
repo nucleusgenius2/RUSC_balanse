@@ -25,6 +25,7 @@ UnitBlueprint {
             'URLEW0005',
         },
     },
+    VeteranMassMult = 1.5,
     Audio = {
         AmbientMove = Sound {
             Bank = 'URL',
