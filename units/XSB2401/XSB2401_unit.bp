@@ -12,7 +12,7 @@ UnitBlueprint{
         NukeCharge            = Sound { Bank = 'XSB',            Cue = 'XSB2401_Nuke_Charge',                   LodCutoff = 'UnitMove_LodCutoff' },
         UISelection           = Sound { Bank = 'SeraphimSelect', Cue = 'Seraphim_Select_gun',                   LodCutoff = 'UnitMove_LodCutoff' },
     },
-    BuildIconSortPriority = 150,
+    BuildIconSortPriority = 20,
     Categories = {
         "BUILTBYTIER3COMMANDER",
         "BUILTBYTIER3ENGINEER",
@@ -99,7 +99,7 @@ UnitBlueprint{
     Economy = {
         BuildCostEnergy = 10008000,
         BuildCostMass = 300000,
-        BuildRate = 2160,пше
+        BuildRate = 2160,
         BuildTime = 250000,
         RebuildBonusIds = { "xsb2401" },
     },
