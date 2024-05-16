@@ -293,7 +293,7 @@ uel03011 = Class(TWalkingLandUnit) {
             self:SetWeaponEnabledByLabel('PlasmaCannon01', true)
             local wep = self:GetWeaponByLabel('RightHeavyPlasmaCannon')
             wep:AddDamageRadiusMod(bp.NewDamageRadius)
-            wep:ChangeMaxRadius(bp.NewMaxRadius or 35)
+            wep:ChangeMaxRadius(bp.NewMaxRadius or 40)
         elseif enh =='HighExplosiveOrdnanceRemove' then
             local wep = self:GetWeaponByLabel('RightHeavyPlasmaCannon')
             wep:AddDamageRadiusMod(bp.NewDamageRadius)
