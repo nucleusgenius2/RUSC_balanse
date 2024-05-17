@@ -347,7 +347,7 @@ UnitBlueprint {
         RadarRadius = 70,
     },
     Interface = {
-        HelpText = '<LOC ual0405_help>Experimental Siege Weapon',
+        HelpText = '<LOC ual0405_help>Experimental support unit',
     },
     LifeBarHeight = 0.075,
     LifeBarOffset = 1.35,
