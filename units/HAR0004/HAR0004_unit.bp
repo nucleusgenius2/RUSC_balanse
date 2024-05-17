@@ -50,7 +50,7 @@ UnitBlueprint {
         MaxHealth = 8000,
         SubThreatLevel = 0,
         SurfaceThreatLevel = 0,
-        NoTeleDistance = 72,
+        NoTeleDistance = 80,
     },
     Description = '<LOC har0004_desc>Anti-Teleport Field Tower',
     Display = {
@@ -90,8 +90,8 @@ UnitBlueprint {
     },
     Economy = {
         BuildCostEnergy = 105000,
-        BuildCostMass = 5000,
-        BuildTime = 3841,
+        BuildCostMass = 5400,
+        BuildTime = 3041,
         MaintenanceConsumptionPerSecondEnergy = 2000,
         RebuildBonusIds = {
             'HAR0004',
@@ -138,7 +138,7 @@ UnitBlueprint {
     },
     Intel = {
         ShowIntelOnSelect = true,
-        OmniRadius = 72,
+        OmniRadius = 80,
         VisionRadius = 25,
     },
     Interface = {
