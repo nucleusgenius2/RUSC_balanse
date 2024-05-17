@@ -116,7 +116,7 @@ UnitBlueprint {
         SlowDownRadius = 69,
         AuraRadius = 52,
     },
-    Description = '<LOC ual0405_desc>Experimental Siege Weapon',
+    Description = '<LOC ual0405_desc>Experimental support unit',
     Display = {
         Abilities = {
             '<LOC ability_amphibious>Amphibious',
