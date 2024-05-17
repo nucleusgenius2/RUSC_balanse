@@ -93,7 +93,7 @@ UnitBlueprint {
             ShieldVerticalOffset = -7,
         },
     },
-    Description = '<LOC uel0302_desc>ltimate Armored Prototype Mobile Fortress',
+    Description = '<LOC uel0302_desc>Ultimate Armored Prototype Mobile Fortress',
     Display = {
         Abilities = {
             '<LOC ability_stratmissiledef>Strategic Missile Defense',
@@ -403,9 +403,9 @@ UnitBlueprint {
         DragCoefficient = 0.2,
         Elevation = 1,
         LayerChangeOffsetHeight = -0.75,
-        MaxAcceleration = 1.5,
-        MaxBrake = 1.5,
-        MaxSpeed = 1.5,
+        MaxAcceleration = 1.8,
+        MaxBrake = 1.8,
+        MaxSpeed = 1.8,
         MaxSpeedReverse = 1.3,
         MaxSteerForce = 1000,
         MeshExtentsX = 0.75,
