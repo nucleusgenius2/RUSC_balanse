@@ -200,7 +200,7 @@ UnitBlueprint{
     },
     Economy = {
         BuildCostEnergy = 480000,
-        BuildCostMass = 34000,
+        BuildCostMass = 30000,
         BuildTime = 20000,
     },
     Footprint = {
@@ -439,7 +439,7 @@ UnitBlueprint{
             CannotAttackGround = true,
             CollideFriendly = false,
             Damage = 150,
-            DamageToShields = 195,
+            DamageToShields = 200,
             DamageType = 'Normal',
             DisplayName = 'Nanite Missile System',
             EffectiveRadius = 0,
@@ -513,7 +513,7 @@ UnitBlueprint{
             CannotAttackGround = true,
             CollideFriendly = false,
             Damage = 150,
-            DamageToShields = 195,
+            DamageToShields = 200,
             DamageType = 'Normal',
             DisplayName = 'Nanite Missile System',
             EffectiveRadius = 0,
