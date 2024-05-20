@@ -15,17 +15,18 @@ local DefaultDamage = import("/lua/sim/defaultdamage.lua")
 local ScenarioFramework = import("/lua/scenarioframework.lua")
 
 ---@class CollisionBeam : moho.CollisionBeamEntity
+---@field Weapon Weapon
 CollisionBeam = Class(moho.CollisionBeamEntity) {
 
-    FxBeam = { },
-    FxBeamStartPoint = { },
+    FxBeam = {},
+    FxBeamStartPoint = {},
     FxBeamStartPointScale = 1,
-    FxBeamEndPoint = { },
+    FxBeamEndPoint = {},
     FxBeamEndPointScale = 1,
 
-    FxImpactProp = { },
-    FxImpactShield = { },
-    FxImpactNone = { },
+    FxImpactProp = {},
+    FxImpactShield = {},
+    FxImpactNone = {},
 
     FxUnitHitScale = 1,
     FxLandHitScale = 1,
@@ -114,23 +115,29 @@ CollisionBeam = Class(moho.CollisionBeamEntity) {
             local radius = damageData.DamageRadius
             if radius and radius > 0 then
                 if not damageData.DoTTime or damageData.DoTTime <= 0 then
-                    DamageArea(instigator, self:GetPosition(1), radius, damage, damageData.DamageType or 'Normal', damageData.DamageFriendly or false)
+                    DamageArea(instigator, self:GetPosition(1), radius, damage, damageData.DamageType or 'Normal',
+                        damageData.DamageFriendly or false)
                     -- If a missile is impacted, damage it directly because projectile entities are not
                     -- affected by DamageArea
                     if targetEntity and EntityCategoryContains(categories.MISSILE, targetEntity) then
                         Damage(instigator, self:GetPosition(), targetEntity, damage, damageData.DamageType)
                     end
                 else
-                    ForkThread(DefaultDamage.AreaDoTThread, instigator, self:GetPosition(1), damageData.DoTPulses or 1, (damageData.DoTTime / (damageData.DoTPulses or 1)), radius, damage, damageData.DamageType, damageData.DamageFriendly)
+                    ForkThread(DefaultDamage.AreaDoTThread, instigator, self:GetPosition(1), damageData.DoTPulses or 1,
+                        (damageData.DoTTime / (damageData.DoTPulses or 1)), radius, damage, damageData.DamageType,
+                        damageData.DamageFriendly)
                 end
             elseif targetEntity then
                 if not damageData.DoTTime or damageData.DoTTime <= 0 then
                     Damage(instigator, self:GetPosition(), targetEntity, damage, damageData.DamageType)
                 else
-                    ForkThread(DefaultDamage.UnitDoTThread, instigator, targetEntity, damageData.DoTPulses or 1, (damageData.DoTTime / (damageData.DoTPulses or 1)), damage, damageData.DamageType, damageData.DamageFriendly)
+                    ForkThread(DefaultDamage.UnitDoTThread, instigator, targetEntity, damageData.DoTPulses or 1,
+                        (damageData.DoTTime / (damageData.DoTPulses or 1)), damage, damageData.DamageType,
+                        damageData.DamageFriendly)
                 end
             else
-                DamageArea(instigator, self:GetPosition(1), 0.25, damage, damageData.DamageType, damageData.DamageFriendly)
+                DamageArea(instigator, self:GetPosition(1), 0.25, damage, damageData.DamageType,
+                    damageData.DamageFriendly)
             end
         else
             LOG('*ERROR: THERE IS NO INSTIGATOR FOR DAMAGE ON THIS COLLISIONBEAM = ', repr(damageData))
@@ -182,7 +189,7 @@ CollisionBeam = Class(moho.CollisionBeamEntity) {
         EffectTable = EffectTable or {}
         EffectScale = EffectScale or 1
         for k, v in EffectTable do
-            emit = CreateEmitterAtBone(self,1,army,v)
+            emit = CreateEmitterAtBone(self, 1, army, v)
             if emit and EffectScale ~= 1 then
                 emit:ScaleEmitter(EffectScale)
             end
@@ -196,7 +203,7 @@ CollisionBeam = Class(moho.CollisionBeamEntity) {
     CreateTerrainEffects = function(self, army, EffectTable, EffectScale)
         local emit = nil
         for k, v in EffectTable do
-            emit = CreateAttachedEmitter(self,1,army,v)
+            emit = CreateAttachedEmitter(self, 1, army, v)
             table.insert(self.TerrainEffectsBag, emit)
             if emit and EffectScale ~= 1 then
                 emit:ScaleEmitter(EffectScale)
@@ -219,7 +226,7 @@ CollisionBeam = Class(moho.CollisionBeamEntity) {
         local TerrainType = nil
 
         if self.TerrainImpactType ~= 'Default' then
-            TerrainType = GetTerrainType(pos.x,pos.z)
+            TerrainType = GetTerrainType(pos.x, pos.z)
         else
             TerrainType = GetTerrainType(-1, -1)
         end
@@ -295,11 +302,7 @@ CollisionBeam = Class(moho.CollisionBeamEntity) {
             self:HideBeamSource()
         end
 
-        if not self.DamageTable then
-            self:SetDamageTable()
-        end
-
-        local damageData = self.DamageTable
+        local damageData = self.Weapon:GetDamageTable()
 
         -- Buffs (Stun, etc)
         if targetEntity and IsUnit(targetEntity) then
@@ -350,21 +353,6 @@ CollisionBeam = Class(moho.CollisionBeamEntity) {
         return self.CollideFriendly
     end,
 
-    ---@param self CollisionBeam
-    SetDamageTable = function(self)
-        local weaponBlueprint = self.Weapon:GetBlueprint()
-        self.DamageTable = {}
-        self.DamageTable.DamageRadius = weaponBlueprint.DamageRadius
-        self.DamageTable.DamageAmount = weaponBlueprint.Damage
-        self.DamageTable.DamageType = weaponBlueprint.DamageType
-        self.DamageTable.DamageFriendly = weaponBlueprint.DamageFriendly
-        self.DamageTable.CollideFriendly = weaponBlueprint.CollideFriendly
-        self.DamageTable.DoTTime = weaponBlueprint.DoTTime
-        self.DamageTable.DoTPulses = weaponBlueprint.DoTPulses
-        self.DamageTable.Buffs = weaponBlueprint.Buffs
-        self.CollideFriendly = self.DamageData.CollideFriendly == true
-    end,
-
     -- When this beam impacts with the target, do any buffs that have been passed to it.
     ---@param self CollisionBeam
     ---@param target Unit
@@ -372,7 +360,8 @@ CollisionBeam = Class(moho.CollisionBeamEntity) {
         local data = self.DamageTable
         if data.Buffs then
             for k, v in data.Buffs do
-                if v.Add.OnImpact == true and not EntityCategoryContains((ParseEntityCategory(v.TargetDisallow) or ''), target)
+                if v.Add.OnImpact == true and
+                    not EntityCategoryContains((ParseEntityCategory(v.TargetDisallow) or ''), target)
                     and EntityCategoryContains((ParseEntityCategory(v.TargetAllow) or categories.ALLUNITS), target) then
 
                     target:AddBuff(v)

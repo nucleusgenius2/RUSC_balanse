@@ -193,7 +193,8 @@ Weapon = ClassWeapon(WeaponMethods) {
                 end
             end
         else
-            error('*ERROR: Trying to setup a turreted weapon but there are yaw bones, pitch bones or muzzle bones missing from the blueprint.', 2)
+            error('*ERROR: Trying to setup a turreted weapon but there are yaw bones, pitch bones or muzzle bones missing from the blueprint.'
+                , 2)
         end
         self.AimControl = aimControl
 
@@ -223,15 +224,19 @@ Weapon = ClassWeapon(WeaponMethods) {
             numbersExist = false
         end
         if numbersExist then
-            aimControl:SetFiringArc(turretyawmin, turretyawmax, turretyawspeed, turretpitchmin, turretpitchmax, turretpitchspeed)
+            aimControl:SetFiringArc(turretyawmin, turretyawmax, turretyawspeed, turretpitchmin, turretpitchmax,
+                turretpitchspeed)
             if aimRight and aimLeft then -- although, they should both exist if either one does
                 turretyawmin = turretyawmin / 12
                 turretyawmax = turretyawmax / 12
-                aimRight:SetFiringArc(turretyawmin, turretyawmax, turretyawspeed, turretpitchmin, turretpitchmax, turretpitchspeed)
-                aimLeft:SetFiringArc(turretyawmin, turretyawmax, turretyawspeed, turretpitchmin, turretpitchmax, turretpitchspeed)
+                aimRight:SetFiringArc(turretyawmin, turretyawmax, turretyawspeed, turretpitchmin, turretpitchmax,
+                    turretpitchspeed)
+                aimLeft:SetFiringArc(turretyawmin, turretyawmax, turretyawspeed, turretpitchmin, turretpitchmax,
+                    turretpitchspeed)
             end
         else
-            local strg = '*ERROR: TRYING TO SETUP A TURRET WITHOUT ALL TURRET NUMBERS IN BLUEPRINT, ABORTING TURRET SETUP. WEAPON: ' .. bp.Label .. ' UNIT: '.. unit.UnitId
+            local strg = '*ERROR: TRYING TO SETUP A TURRET WITHOUT ALL TURRET NUMBERS IN BLUEPRINT, ABORTING TURRET SETUP. WEAPON: '
+                .. bp.Label .. ' UNIT: ' .. unit.UnitId
             error(strg, 2)
         end
     end,
@@ -466,12 +471,15 @@ Weapon = ClassWeapon(WeaponMethods) {
             proj:PassMetaDamage(damageTable)
             local bp = self.Blueprint
 
-            if bp.NukeOuterRingDamage and bp.NukeOuterRingRadius and bp.NukeOuterRingTicks and bp.NukeOuterRingTotalTime and
+            if bp.NukeOuterRingDamage and bp.NukeOuterRingRadius and bp.NukeOuterRingTicks and bp.NukeOuterRingTotalTime
+                and
                 bp.NukeInnerRingDamage and bp.NukeInnerRingRadius and bp.NukeInnerRingTicks and bp.NukeInnerRingTotalTime then
                 proj.InnerRing = NukeDamage()
-                proj.InnerRing:OnCreate(bp.NukeInnerRingDamage, bp.NukeInnerRingRadius, bp.NukeInnerRingTicks, bp.NukeInnerRingTotalTime)
+                proj.InnerRing:OnCreate(bp.NukeInnerRingDamage, bp.NukeInnerRingRadius, bp.NukeInnerRingTicks,
+                    bp.NukeInnerRingTotalTime)
                 proj.OuterRing = NukeDamage()
-                proj.OuterRing:OnCreate(bp.NukeOuterRingDamage, bp.NukeOuterRingRadius, bp.NukeOuterRingTicks, bp.NukeOuterRingTotalTime)
+                proj.OuterRing:OnCreate(bp.NukeOuterRingDamage, bp.NukeOuterRingRadius, bp.NukeOuterRingTicks,
+                    bp.NukeOuterRingTotalTime)
 
                 -- Need to store these three for later, in case the missile lands after the launcher dies
                 proj.Launcher = self.unit
@@ -593,9 +601,16 @@ Weapon = ClassWeapon(WeaponMethods) {
     end,
 
     ---@param self Weapon
-    ---@param dmgMod number 
+    ---@param dmgMod number
     AddDamageMod = function(self, dmgMod)
         self.DamageMod = self.DamageMod + dmgMod
+        self.damageTableCache = false
+    end,
+
+    ---@param self Weapon
+    ---@param dmgMod number
+    SetDamageMod = function(self, dmgMod)
+        self.DamageMod = dmgMod
         self.damageTableCache = false
     end,
 

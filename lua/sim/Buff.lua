@@ -272,6 +272,7 @@ BuffEffects = {
 
     Damage = function(buffDefinition, buffValues, unit, buffName)
         for i = 1, unit:GetWeaponCount() do
+            ---@type Weapon
             local wep = unit:GetWeapon(i)
             if wep.Label ~= 'DeathWeapon' and wep.Label ~= 'DeathImpact' then
                 local wepbp = wep:GetBlueprint()
@@ -283,8 +284,7 @@ BuffEffects = {
                 else
                     val = math.floor(val)
                 end
-
-                wep:ChangeDamage(val)
+                wep:SetDamageMod(val - wepdam)
             end
         end
     end,
