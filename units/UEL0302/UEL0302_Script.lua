@@ -23,17 +23,20 @@ local TAMInterceptorWeapon = import('/lua/terranweapons.lua').TAMInterceptorWeap
 local CAMEMPMissileWeapon = import('/lua/cybranweapons.lua').CAMEMPMissileWeapon
 local TAMPhalanxWeapon = import('/lua/terranweapons.lua').TAMPhalanxWeapon
 local CAABurstCloudFlakArtilleryWeapon = import("/lua/cybranweapons.lua").CAABurstCloudFlakArtilleryWeapon
+local Buff = import("/lua/sim/buff.lua")
 
 UEL0302 = Class(CommandUnit) {
-	Weapons = {
-		MissileRack = Class(CAMEMPMissileWeapon) {
+    Weapons = {
+        MissileRack = Class(CAMEMPMissileWeapon) {
             IdleState = State(CAMEMPMissileWeapon.IdleState) {
                 OnGotTarget = function(self)
                     local bp = self:GetBlueprint()
                     --only say we've fired if the parent fire conditions are met
-                    if (bp.WeaponUnpackLockMotion != true or (bp.WeaponUnpackLocksMotion == true and not self.unit:IsUnitState('Moving'))) then
+                    if (
+                        bp.WeaponUnpackLockMotion ~= true or
+                            (bp.WeaponUnpackLocksMotion == true and not self.unit:IsUnitState('Moving'))) then
                         if (bp.CountedProjectile == false) or self:CanFire() then
-                             nukeFiredOnGotTarget = true
+                            nukeFiredOnGotTarget = true
                         end
                     end
                     CAMEMPMissileWeapon.IdleState.OnGotTarget(self)
@@ -44,24 +47,24 @@ UEL0302 = Class(CommandUnit) {
                         CAMEMPMissileWeapon.IdleState.OnFire(self)
                     end
                     nukeFiredOnGotTarget = false
-                    
+
                     self:ForkThread(function()
                         self.unit:SetBusy(true)
-                        WaitSeconds(1/self.unit:GetBlueprint().Weapon[1].RateOfFire + .2)
+                        WaitSeconds(1 / self.unit:GetBlueprint().Weapon[1].RateOfFire + .2)
                         self.unit:SetBusy(false)
                     end)
                 end,
             },
-		},
+        },
         AntiNuke2 = Class(CAMEMPMissileWeapon) {},
-		rocket = Class(TIFCruiseMissileLauncher) {
+        rocket = Class(TIFCruiseMissileLauncher) {
             FxMuzzleFlash = EffectTemplate.TIFCruiseMissileLaunchBuilding,
-		},
-			
-	    DeathWeapon = Class(SCUDeathWeapon) {
-		},
-			
-		trigun01 = Class(TDFGaussCannonWeapon) {
+        },
+
+        DeathWeapon = Class(SCUDeathWeapon) {
+        },
+
+        trigun01 = Class(TDFGaussCannonWeapon) {
         },
         trigun02 = Class(TDFGaussCannonWeapon) {
         },
@@ -90,40 +93,91 @@ UEL0302 = Class(CommandUnit) {
         AAGun = ClassWeapon(CAABurstCloudFlakArtilleryWeapon) {},
         AAGun1 = ClassWeapon(CAABurstCloudFlakArtilleryWeapon) {},
         Turret01 = Class(TAMPhalanxWeapon) {
-                PlayFxWeaponUnpackSequence = function(self)
-                    TAMPhalanxWeapon.PlayFxWeaponUnpackSequence(self)
-                end,
+            PlayFxWeaponUnpackSequence = function(self)
+                TAMPhalanxWeapon.PlayFxWeaponUnpackSequence(self)
+            end,
 
-                PlayFxWeaponPackSequence = function(self)
-                    TAMPhalanxWeapon.PlayFxWeaponPackSequence(self)
-                end,
-            
-            },
+            PlayFxWeaponPackSequence = function(self)
+                TAMPhalanxWeapon.PlayFxWeaponPackSequence(self)
+            end,
+
+        },
         Turret02 = Class(TAMPhalanxWeapon) {
-                PlayFxWeaponUnpackSequence = function(self)
-                    TAMPhalanxWeapon.PlayFxWeaponUnpackSequence(self)
-                end,
+            PlayFxWeaponUnpackSequence = function(self)
+                TAMPhalanxWeapon.PlayFxWeaponUnpackSequence(self)
+            end,
 
-                PlayFxWeaponPackSequence = function(self)
-                    TAMPhalanxWeapon.PlayFxWeaponPackSequence(self)
-                end,
-            
-            },
+            PlayFxWeaponPackSequence = function(self)
+                TAMPhalanxWeapon.PlayFxWeaponPackSequence(self)
+            end,
+
+        },
     },
 
-    OnStopBeingBuilt = function(self,builder,layer)
-        CommandUnit.OnStopBeingBuilt(self,builder,layer)
+    OnStopBeingBuilt = function(self, builder, layer)
+        CommandUnit.OnStopBeingBuilt(self, builder, layer)
         self:DisableUnitIntel('Enhancement', 'Jammer')
         self.SetAIAutoattackWeapon(self)
-		self:ForkThread(self.ChangeLayer)
-		self:HideBone('Object01', true)
-		self:HideBone('Object23', true)
-		self:HideBone('Object20', true)
-		self:HideBone('Front_Turret99', true)
-		self:HideBone('AntiSatellite', true)
-		self:SetWeaponEnabledByLabel('AAGun', false)
-		self:SetWeaponEnabledByLabel('AAGun', false)
-		self:SetWeaponEnabledByLabel('MissileRack01', false)
+        self:ForkThread(self.ChangeLayer)
+        self:HideBone('Object01', true)
+        self:HideBone('Object23', true)
+        self:HideBone('Object20', true)
+        self:HideBone('Front_Turret99', true)
+        self:HideBone('AntiSatellite', true)
+        self:SetWeaponEnabledByLabel('AAGun', false)
+        self:SetWeaponEnabledByLabel('AAGun', false)
+        self:SetWeaponEnabledByLabel('MissileRack01', false)
+        self:ForkThread(self.AuraThread)
+    end,
+
+    AuraThread = function(self)
+        local bpAura = self.Blueprint.Aura
+
+        local auraRadius = bpAura.AuraRadius or 52
+        -- SACU Range
+        local buffSACUrange = 'SACURange'
+        if not Buffs[buffSACUrange] then
+            BuffBlueprint {
+                Name = buffSACUrange,
+                DisplayName = buffSACUrange,
+                BuffType = 'AURAFORALLUEFSACU',
+                Stacks = 'REPLACE',
+                Duration = 5,
+                Effects = { '/effects/emitters/seraphim_regenerative_aura_02_emit.bp' },
+                Affects = {
+                    MaxRadius = {
+                        Add = bpAura.RangeBuff,
+                    }
+                }
+            }
+        end
+
+        local expSACU = categories.SUBCOMMANDER * categories.UEFGantry
+        while not self.Dead do
+
+            self:ApplyBuffToUnits(expSACU, buffSACUrange, auraRadius)
+            WaitTicks(51)
+        end
+    end,
+
+    ---@param self UEL0302
+    ---@param category EntityCategory
+    ApplyBuffToUnits = function(self, category, buffName, buffRadius, allyType)
+        allyType = allyType or "Ally"
+        local brain = self.Brain
+        local all = brain:GetUnitsAroundPoint(category, self:GetPosition(), buffRadius, allyType)
+        local units = {}
+
+        for _, u in all do
+            if not u.Dead and not u:IsBeingBuilt() then
+                table.insert(units, u)
+            end
+        end
+        for _, unit in units do
+            Buff.ApplyBuff(unit, buffName)
+            unit:RequestRefreshUI()
+        end
+        return not table.empty(units)
     end,
 
     OnDetachedFromTransport = function(self, transport, bone)
@@ -139,10 +193,10 @@ UEL0302 = Class(CommandUnit) {
         end
     end,
 
-	OnKilled = function(self, instigator, damagetype, overkillRatio)
-		CommandUnit.OnKilled(self, instigator, damagetype, overkillRatio)
-	end,
-		
+    OnKilled = function(self, instigator, damagetype, overkillRatio)
+        CommandUnit.OnKilled(self, instigator, damagetype, overkillRatio)
+    end,
+
     IntelEffects = {
         {
             Bones = {
@@ -152,7 +206,7 @@ UEL0302 = Class(CommandUnit) {
             Type = 'Jammer01',
         },
     },
-		
+
     CreateEnhancement = function(self, enh)
         CommandUnit.CreateEnhancement(self, enh)
         local bp = self:GetBlueprint().Enhancements[enh]
@@ -169,19 +223,19 @@ UEL0302 = Class(CommandUnit) {
             self.RadarJammerEnh = false
             self:RemoveToggleCap('RULEUTC_JammingToggle')
         elseif enh == 'NaniteMissileSystem' then
-			self:ShowBone('Object01', true)
-			self:ShowBone('Object23', true)
-			self:ShowBone('Object20', true)
-			self:ShowBone('Front_Turret99', true)
-			self:ShowBone('AntiSatellite', true)
+            self:ShowBone('Object01', true)
+            self:ShowBone('Object23', true)
+            self:ShowBone('Object20', true)
+            self:ShowBone('Front_Turret99', true)
+            self:ShowBone('AntiSatellite', true)
             self:SetWeaponEnabledByLabel('AAGun', true)
             self:SetWeaponEnabledByLabel('AAGun1', true)
         elseif enh == 'NaniteMissileSystemRemove' then
-			self:HideBone('Object01', true)
-			self:HideBone('Object23', true)
-			self:HideBone('Object20', true)
-			self:HideBone('Front_Turret99', true)
-			self:HideBone('AntiSatellite', true)
+            self:HideBone('Object01', true)
+            self:HideBone('Object23', true)
+            self:HideBone('Object20', true)
+            self:HideBone('Front_Turret99', true)
+            self:HideBone('AntiSatellite', true)
             self:SetWeaponEnabledByLabel('AAGun', false)
             self:SetWeaponEnabledByLabel('AAGun1', false)
         elseif enh == 'AdvancedOmniSensors' then
@@ -191,15 +245,16 @@ UEL0302 = Class(CommandUnit) {
             self:SetIntelRadius('Omni', bpIntel.OmniRadius or 47)
         end
     end,
-	
+
     OnIntelEnabled = function(self, intel)
         CommandUnit.OnIntelEnabled(self, intel)
         if self.RadarJammerEnh and self:IsIntelEnabled('Jammer') then
             if self.IntelEffects then
                 self.IntelEffectsBag = {}
-                self:CreateTerrainTypeEffects(self.IntelEffects, 'FXIdle',  self.Layer, nil, self.IntelEffectsBag)
+                self:CreateTerrainTypeEffects(self.IntelEffects, 'FXIdle', self.Layer, nil, self.IntelEffectsBag)
             end
-            self:SetEnergyMaintenanceConsumptionOverride(self:GetBlueprint().Enhancements['RadarJammer'].MaintenanceConsumptionPerSecondEnergy or 0)
+            self:SetEnergyMaintenanceConsumptionOverride(self:GetBlueprint().Enhancements['RadarJammer'].MaintenanceConsumptionPerSecondEnergy
+                or 0)
             self:SetMaintenanceConsumptionActive()
         end
     end,
@@ -213,17 +268,17 @@ UEL0302 = Class(CommandUnit) {
             end
         end
     end,
-	
+
     ChangeLayer = function(self)
-		while not self.Dead do
-			local layer = self:GetCurrentLayer()
-			if layer == 'Land' then
-				self:SetWeaponEnabledByLabel('AntiNuke2', true)
-			else
-				self:SetWeaponEnabledByLabel('AntiNuke2', false)
-			end
-			WaitTicks(31)
-		end
+        while not self.Dead do
+            local layer = self:GetCurrentLayer()
+            if layer == 'Land' then
+                self:SetWeaponEnabledByLabel('AntiNuke2', true)
+            else
+                self:SetWeaponEnabledByLabel('AntiNuke2', false)
+            end
+            WaitTicks(31)
+        end
     end,
 }
 
