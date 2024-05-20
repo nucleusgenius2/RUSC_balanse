@@ -93,6 +93,11 @@ UnitBlueprint {
             ShieldVerticalOffset = -7,
         },
     },
+    Aura = {
+        -- Радиус ауры, и на сколько увеличить радиус экспериментальных ОФЗ сакушек
+        AuraRadius = 52,
+        RangeBuff = 15,
+    },
     Description = '<LOC uel0302_desc>Ultimate Armored Prototype Mobile Fortress',
     Display = {
         Abilities = {
