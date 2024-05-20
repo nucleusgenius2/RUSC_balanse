@@ -113,10 +113,32 @@ UnitBlueprint {
         SurfaceThreatLevel = 0,
         MaxRange = 170,
         NoTeleDistance = 72,
-        SlowDownRadius = 69,
-        AuraRadius = 52,
     },
-    Description = '<LOC ual0405_desc>Experimental support unit',
+    Aura = {
+        -- Радиус ауры
+        AuraRadius = 52,
+        -- радиус действия замедления
+        SlowDownRadius = 69,
+        -- добавляемый реген для разных тиров юнитов
+        RegenSCU = 180,
+        RegenT1 = 180,
+        RegenT2 = 180,
+        RegenT3 = 180,
+        RegenT4 = 480,
+
+        -- множитель ХП для ленд юнитов
+        HPLand = 1.7,
+        -- множитель ХП для ленд эксп
+        HPExp = 1.1,
+        -- множитель ХП для ленд эксп Эон
+        HPExpAeon = 1.3,
+        
+        -- множитель дальности атаки Колосса
+        GCRange = 1.07,
+        -- множитель урона для Эон эксп (когда 2 горшка рядом)
+        DamageBuff = 1.2,
+    },
+    Description = '<LOC ual0405_desc>Experimental Siege Weapon',
     Display = {
         Abilities = {
             '<LOC ability_amphibious>Amphibious',
@@ -347,7 +369,7 @@ UnitBlueprint {
         RadarRadius = 70,
     },
     Interface = {
-        HelpText = '<LOC ual0405_help>Experimental support unit',
+        HelpText = '<LOC ual0405_help>Experimental Siege Weapon',
     },
     LifeBarHeight = 0.075,
     LifeBarOffset = 1.35,

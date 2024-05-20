@@ -136,7 +136,7 @@ UAL0405 = Class(AStructureUnit) {
     end,
 
 
-    ---@param self Unit
+    ---@param self UAL0405
     ---@param category EntityCategory
     ApplyBuffToUnits = function(self, category, buffName, buffRadius, allyType)
         allyType = allyType or "Ally"
@@ -218,20 +218,18 @@ UAL0405 = Class(AStructureUnit) {
         end
     end,
 
-    ---@param self Unit
+    ---@param self UAL0405
     Enhancement = function(self)
-        local bpDef = self.Blueprint.Defense
+        local bpAura = self.Blueprint.Aura
 
+        local auraRadius = bpAura.AuraRadius or 52
+        local slowdownRadius = bpAura.SlowDownRadius or 62.4
 
-        local auraRadius = bpDef.AuraRadius or 52
-        local slowdownRadius = bpDef.SlowDownRadius or 62.4
-
-        local NewRegenRate = 180
-        local RegenCeilingSCU = 180
-        local RegenCeilingT1 = 180
-        local RegenCeilingT2 = 180
-        local RegenCeilingT3 = 180
-        local RegenCeilingT4 = 480
+        local RegenCeilingSCU = bpAura.RegenSCU
+        local RegenCeilingT1 = bpAura.RegenT1
+        local RegenCeilingT2 = bpAura.RegenT2
+        local RegenCeilingT3 = bpAura.RegenT3
+        local RegenCeilingT4 = bpAura.RegenT4
         local RegenFloor = 3
         local RegenPerSecond = 0.2
 
@@ -274,7 +272,7 @@ UAL0405 = Class(AStructureUnit) {
                 Affects = {
                     MaxHealth = {
                         Add = 0,
-                        Mult = 1.7,
+                        Mult = bpAura.HPLand,
                     }
                 }
             }
@@ -293,7 +291,7 @@ UAL0405 = Class(AStructureUnit) {
                 Affects = {
                     MaxHealth = {
                         Add = 0,
-                        Mult = 1.3,
+                        Mult = bpAura.HPExpAeon,
                     }
                 }
             }
@@ -312,13 +310,13 @@ UAL0405 = Class(AStructureUnit) {
                 Affects = {
                     MaxHealth = {
                         Add = 0,
-                        Mult = 1.1,
+                        Mult = bpAura.HPExp,
                     }
                 }
             }
         end
 
-        -- HP Aura
+        -- GC Range
         local buffGCrange = 'GCRangeBuff'
         if not Buffs[buffGCrange] then
             BuffBlueprint {
@@ -331,7 +329,25 @@ UAL0405 = Class(AStructureUnit) {
                 Affects = {
                     MaxRadius = {
                         Add = 0,
-                        Mult = 1.07,
+                        Mult = bpAura.GCRange,
+                    }
+                }
+            }
+        end
+
+        local buffDamage = 'AeonExpDamage'
+        if not Buffs[buffDamage] then
+            BuffBlueprint {
+                Name = buffDamage,
+                DisplayName = buffDamage,
+                BuffType = 'AURAFORALL5',
+                Stacks = 'REPLACE',
+                Duration = 5,
+                Effects = { '/effects/emitters/seraphim_regenerative_aura_02_emit.bp' },
+                Affects = {
+                    Damage = {
+                        Add = 0,
+                        Mult = bpAura.DamageBuff,
                     }
                 }
             }
@@ -355,7 +371,9 @@ UAL0405 = Class(AStructureUnit) {
 
         ---@type AIBrain
         local brain = self.Brain
+
         local CreateAttachedEmitter = CreateAttachedEmitter
+        local WaitTicks             = WaitTicks
 
         while not self.Dead do
             local layer = self:GetCurrentLayer()
@@ -374,16 +392,20 @@ UAL0405 = Class(AStructureUnit) {
                         table.insert(units, u)
                     end
                 end
+
+                local inq = brain:GetUnitsAroundPoint(inqusitorCat, self:GetPosition(), auraRadius, "Ally")
+                local inquisNearBy = table.getn(inq) > 1
+                if inquisNearBy then
+                    self:ApplyBuffToUnits(aeonExp, buffDamage, auraRadius)
+                end
+
                 if not table.empty(units) then
                     self:SlowDownUnits(units)
-
-                    local inq = brain:GetUnitsAroundPoint(inqusitorCat, self:GetPosition(), slowdownRadius, "Ally")
-                    if table.getn(inq) > 1 then
+                    if inquisNearBy then
                         for _, effect in self.FxMuzzleFlash do
                             CreateAttachedEmitter(self, "Body", self:GetArmy(), effect):ScaleEmitter(0.9)
                         end
                     end
-
                 end
             end
 
