@@ -9,7 +9,6 @@
 -- #****************************************************************************
 local Shield = import('/lua/shield.lua').Shield
 local EffectUtil = import('/lua/EffectUtilities.lua')
-local TWalkingLandUnit = import('/lua/terranunits.lua').TWalkingLandUnit
 local SWeapons = import("/lua/seraphimweapons.lua")
 local TerranWeaponFile = import("/lua/terranweapons.lua")
 local TWeapons = import('/lua/terranweapons.lua')
@@ -22,7 +21,9 @@ local CANTorpedoLauncherWeapon = CWeapons.CANTorpedoLauncherWeapon
 local Buff = import('/lua/sim/Buff.lua')
 local TSAMLauncher = import('/lua/terranweapons.lua').TSAMLauncher
 
-uel03011 = Class(TWalkingLandUnit) {
+local CommandUnit = import("/lua/defaultunits.lua").CommandUnit
+
+uel03011 = Class(CommandUnit) {
     
     IntelEffects = {
 		{
@@ -62,7 +63,7 @@ uel03011 = Class(TWalkingLandUnit) {
     ---@param bone Bone
     ---@param attachee Unit
     OnTransportAttach = function(self, bone, attachee)
-        TWalkingLandUnit.OnTransportAttach(self, bone, attachee)
+        CommandUnit.OnTransportAttach(self, bone, attachee)
         attachee:SetDoNotTarget(true)
     end,
 
@@ -70,12 +71,12 @@ uel03011 = Class(TWalkingLandUnit) {
     ---@param bone Bone
     ---@param attachee Unit
     OnTransportDetach = function(self, bone, attachee)
-        TWalkingLandUnit.OnTransportDetach(self, bone, attachee)
+        CommandUnit.OnTransportDetach(self, bone, attachee)
         attachee:SetDoNotTarget(false)
     end,
 
     OnCreate = function(self)
-        TWalkingLandUnit.OnCreate(self)
+        CommandUnit.OnCreate(self)
         self:SetCapturable(false)
         self:HideBone('Jetpack', true)
         self:HideBone('UEB2304', true)
@@ -94,7 +95,7 @@ uel03011 = Class(TWalkingLandUnit) {
     end,
     
     RebuildPod = function(self)
-        if self.HasPod == true then
+        if self.HasPod then
             self.RebuildingPod = CreateEconomyEvent(self, 1600, 160, 10, self.SetWorkProgress)
             self:RequestRefreshUI()
             WaitFor(self.RebuildingPod)
@@ -110,25 +111,15 @@ uel03011 = Class(TWalkingLandUnit) {
         end
     end,
 	
-    NotifyOfPodDeath = function(self, pod, rebuildDrone)
-        if rebuildDrone == true then
-            if self.HasPod == true then
-                self.RebuildThread = self:ForkThread(self.RebuildPod)
-            end
-        else
-            self:CreateEnhancement('PodRemove')
-        end
-    end,
-	
     OnStopBeingBuilt = function(self, builder, layer)
-        TWalkingLandUnit.OnStopBeingBuilt(self, builder, layer)
+        CommandUnit.OnStopBeingBuilt(self, builder, layer)
         self:SetWeaponEnabledByLabel('Torpedo', false)
         -- Block Jammer until Enhancement is built
         self:DisableUnitIntel('Enhancement', 'Jammer')
     end,
 
     OnPrepareArmToBuild = function(self)
-        TWalkingLandUnit.OnPrepareArmToBuild(self)
+        CommandUnit.OnPrepareArmToBuild(self)
         self:BuildManipulatorSetEnabled(true)
         self.BuildArmManipulator:SetPrecedence(20)
         self:SetWeaponEnabledByLabel('RightHeavyPlasmaCannon', false)
@@ -136,7 +127,7 @@ uel03011 = Class(TWalkingLandUnit) {
     end,
     
     OnStopCapture = function(self, target)
-        TWalkingLandUnit.OnStopCapture(self, target)
+        CommandUnit.OnStopCapture(self, target)
         self:BuildManipulatorSetEnabled(false)
         self.BuildArmManipulator:SetPrecedence(0)
         self:SetWeaponEnabledByLabel('RightHeavyPlasmaCannon', true)
@@ -144,7 +135,7 @@ uel03011 = Class(TWalkingLandUnit) {
     end,
 
     OnFailedCapture = function(self, target)
-        TWalkingLandUnit.OnFailedCapture(self, target)
+        CommandUnit.OnFailedCapture(self, target)
         self:BuildManipulatorSetEnabled(false)
         self.BuildArmManipulator:SetPrecedence(0)
         self:SetWeaponEnabledByLabel('RightHeavyPlasmaCannon', true)
@@ -152,7 +143,7 @@ uel03011 = Class(TWalkingLandUnit) {
     end,
     
     OnStopReclaim = function(self, target)
-        TWalkingLandUnit.OnStopReclaim(self, target)
+        CommandUnit.OnStopReclaim(self, target)
         self:BuildManipulatorSetEnabled(false)
         self.BuildArmManipulator:SetPrecedence(0)
         self:SetWeaponEnabledByLabel('RightHeavyPlasmaCannon', true)
@@ -160,14 +151,14 @@ uel03011 = Class(TWalkingLandUnit) {
     end,
     
     OnStartBuild = function(self, unitBeingBuilt, order)    
-        TWalkingLandUnit.OnStartBuild(self, unitBeingBuilt, order)
+        CommandUnit.OnStartBuild(self, unitBeingBuilt, order)
         self.UnitBeingBuilt = unitBeingBuilt
         self.UnitBuildOrder = order
         self.BuildingUnit = true        
     end,    
 
     OnStopBuild = function(self, unitBeingBuilt)
-        TWalkingLandUnit.OnStopBuild(self, unitBeingBuilt)
+        CommandUnit.OnStopBuild(self, unitBeingBuilt)
         self.UnitBeingBuilt = nil
         self.UnitBuildOrder = nil
         self.BuildingUnit = false      
@@ -176,7 +167,7 @@ uel03011 = Class(TWalkingLandUnit) {
     end,     
     
     OnFailedToBuild = function(self)
-        TWalkingLandUnit.OnFailedToBuild(self)
+        CommandUnit.OnFailedToBuild(self)
         self:BuildManipulatorSetEnabled(false)
         self.BuildArmManipulator:SetPrecedence(0)
         self:SetWeaponEnabledByLabel('RightHeavyPlasmaCannon', true)
@@ -198,45 +189,23 @@ uel03011 = Class(TWalkingLandUnit) {
         self.Pod = nil
         self:RequestRefreshUI()
     end,
-
-    OnIntelEnabled = function(self)
-        TWalkingLandUnit.OnIntelEnabled(self)
-        if self.RadarJammerEnh and self:IsIntelEnabled('Jammer') then 
-            if self.IntelEffects then
-		        self.IntelEffectsBag = {}
-		        self.CreateTerrainTypeEffects( self, self.IntelEffects, 'FXIdle',  self:GetCurrentLayer(), nil, self.IntelEffectsBag )
-	        end
-	        self:SetEnergyMaintenanceConsumptionOverride(self:GetBlueprint().Enhancements['RadarJammer'].MaintenanceConsumptionPerSecondEnergy or 0)        
-            self:SetMaintenanceConsumptionActive()
-        end    
-    end,
-
-    OnIntelDisabled = function(self)
-        TWalkingLandUnit.OnIntelDisabled(self)
-        if self.RadarJammerEnh and not self:IsIntelEnabled('Jammer') then
-            self:SetMaintenanceConsumptionInactive()
-            if self.IntelEffectsBag then
-                EffectUtil.CleanupEffectBag(self,'IntelEffectsBag')
-            end
-        end       
-    end,     
-    
+  
     OnPaused = function(self)
-        TWalkingLandUnit.OnPaused(self)
+        CommandUnit.OnPaused(self)
         if self.BuildingUnit then
-            TWalkingLandUnit.StopBuildingEffects(self, self:GetUnitBeingBuilt())
+            CommandUnit.StopBuildingEffects(self, self:GetUnitBeingBuilt())
         end    
     end,
     
     OnUnpaused = function(self)
         if self.BuildingUnit then
-            TWalkingLandUnit.StartBuildingEffects(self, self:GetUnitBeingBuilt(), self.UnitBuildOrder)
+            CommandUnit.StartBuildingEffects(self, self:GetUnitBeingBuilt(), self.UnitBuildOrder)
         end
-        TWalkingLandUnit.OnUnpaused(self)
+        CommandUnit.OnUnpaused(self)
     end,    
 	
     CreateEnhancement = function(self, enh)
-        TWalkingLandUnit.CreateEnhancement(self, enh)
+        CommandUnit.CreateEnhancement(self, enh)
         local bp = self:GetBlueprint().Enhancements[enh]
         if not bp then return end
         --RadarJammer
@@ -293,7 +262,7 @@ uel03011 = Class(TWalkingLandUnit) {
             self:SetWeaponEnabledByLabel('PlasmaCannon01', true)
             local wep = self:GetWeaponByLabel('RightHeavyPlasmaCannon')
             wep:AddDamageRadiusMod(bp.NewDamageRadius)
-            wep:ChangeMaxRadius(bp.NewMaxRadius or 40)
+            wep:ChangeMaxRadius(bp.NewMaxRadius or 35)
         elseif enh =='HighExplosiveOrdnanceRemove' then
             local wep = self:GetWeaponByLabel('RightHeavyPlasmaCannon')
             wep:AddDamageRadiusMod(bp.NewDamageRadius)
@@ -359,7 +328,7 @@ uel03011 = Class(TWalkingLandUnit) {
     end,
 	
     OnIntelEnabled = function(self, intel)
-        TWalkingLandUnit.OnIntelEnabled(self, intel)
+        CommandUnit.OnIntelEnabled(self, intel)
         if self.RadarJammerEnh and self:IsIntelEnabled('Jammer') then
             if self.IntelEffects then
                 self.IntelEffectsBag = {}
@@ -371,7 +340,7 @@ uel03011 = Class(TWalkingLandUnit) {
     end,
 
     OnIntelDisabled = function(self, intel)
-        TWalkingLandUnit.OnIntelDisabled(self, intel)
+        CommandUnit.OnIntelDisabled(self, intel)
         if self.RadarJammerEnh and not self:IsIntelEnabled('Jammer') then
             self:SetMaintenanceConsumptionInactive()
             if self.IntelEffectsBag then
