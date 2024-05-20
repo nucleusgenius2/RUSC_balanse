@@ -28,7 +28,6 @@ ProjectileBlueprint {
         'STRATEGIC',
         'MISSILE',
         'NOSPLASHDAMAGE',
-        'KILLAIRONCOLLISION',
     },
     Defense = {
         Health = 60000,
@@ -54,10 +53,18 @@ ProjectileBlueprint {
     Economy = {
         BuildCostEnergy = 6000,
         BuildCostMass = 600,
-        BuildTime = 54000000,
+        BuildTime = 129600,
     },
     General = {
         Category = 'Missile',
+        EntityCategory = {
+            'CYBRAN',
+            'PROJECTILE',
+            'INDIRECTFIRE',
+            'STRATEGIC',
+            'MISSILE',
+            'NOSPLASHDAMAGE',
+        },
         Faction = 'Cybran',
     },
     Interface = {
