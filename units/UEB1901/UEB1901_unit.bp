@@ -38,8 +38,8 @@ UnitBlueprint {
     CollisionOffsetZ = 0,
     Defense = {
         ArmorType = 'Normal',
-        Health = 5000,
-        MaxHealth = 5000,
+        Health = 28000,
+        MaxHealth = 28000,
         RegenRate = 0,
     },
     Description = '<LOC uec1901_desc>UEF Black Sun',
@@ -132,7 +132,7 @@ UnitBlueprint {
         UniformScale = 0.25,
     },
     Economy = {
-        BuildCostEnergy = 50000000,
+        BuildCostEnergy = 40000000,
         BuildCostMass = 500000,
         BuildRate = 10000,
         BuildTime = 250000,
