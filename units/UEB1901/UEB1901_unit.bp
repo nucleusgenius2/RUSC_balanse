@@ -38,8 +38,8 @@ UnitBlueprint {
     CollisionOffsetZ = 0,
     Defense = {
         ArmorType = 'Normal',
-        Health = 28000,
-        MaxHealth = 28000,
+        Health = 5000,
+        MaxHealth = 5000,
         RegenRate = 0,
     },
     Description = '<LOC uec1901_desc>UEF Black Sun',
@@ -113,10 +113,10 @@ UnitBlueprint {
             },
         },
         Mesh = {
-            IconFadeInZoom = 200,
+            IconFadeInZoom = 130,
             LODs = {
                 {
-                    LODCutoff = 300,
+                    LODCutoff = 200,
                     ShaderName = 'Unit',
                 },
                 {
@@ -132,7 +132,7 @@ UnitBlueprint {
         UniformScale = 0.25,
     },
     Economy = {
-        BuildCostEnergy = 40000000,
+        BuildCostEnergy = 50000000,
         BuildCostMass = 500000,
         BuildRate = 10000,
         BuildTime = 250000,
@@ -196,8 +196,8 @@ UnitBlueprint {
         MotionType = 'RULEUMT_None',
         SkirtOffsetX = 0,
         SkirtOffsetZ = 0,
-        SkirtSizeX = 1,
-        SkirtSizeZ = 1,
+        SkirtSizeX = 21,
+        SkirtSizeZ = 21,
         TurnRate = 0,
     },
     SelectionSizeX = 11,
@@ -273,6 +273,7 @@ UnitBlueprint {
             DamageType = "Nuke",
             DisplayName = "Death Weapon",
             FireOnDeath = true,
+            FractionCompleteDeath = 0.8,
             FiringTolerance = 2,
             Label = "DeathWeapon",
             MaxRadius = 1,
