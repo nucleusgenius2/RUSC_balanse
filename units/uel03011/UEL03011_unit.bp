@@ -272,7 +272,7 @@ UnitBlueprint {
     Economy = {
         BuildCostEnergy = 50000,
         BuildCostMass = 8500,
-        BuildRate = 40,
+        BuildRate = 35,
         BuildTime = 14400,
         BuildableCategory = {
             'BUILTBYTIER3ENGINEER UEF',
@@ -905,7 +905,7 @@ UnitBlueprint {
             },
             FiringTolerance = 2,
             Label = "PlasmaCannon01",
-            MaxRadius = 40,
+            MaxRadius = 35,
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleVelocity = 36,
