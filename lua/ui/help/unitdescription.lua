@@ -687,6 +687,7 @@ Description = {
     ['dslk004'] = "<LOC Unit_Description_0464> Mobile Anti-Air unit. Armed with a long-range lasers, excellent against enemy gunships or air-fighters. Capable of switching weapon to anti-land attack but with smaller damage.",
 
   ['url4032'] = "<LOC url4032_help>Designed to break through fortified defence lines and destroy other experimental units.",
+  ['url4032-srs'] = "<LOC url4032_srs_help>Creates magnetic field around unit preventing OC to go through.\nDecreases damage dealt by OC weapons.",
   ['url0320'] = "<LOC url0320_help>Designed for stealthy infiltration into enemy territory.",
   ['brs0402'] = "<LOC BRS0402_help>Designed for assaulting fortified coastal positions. Has +60% shield damage, good protection against tactical missiles, anti-missile defense to cover the fleet, and air defense to protect against torpedoes. There are torpedo guns for engaging underwater targets. There is also a Perimeter monitoring system on board.",
   ['uel0302'] = "<LOC uel0302_help>Designed for destroying fortified defensive lines, achieved through increased shield damage of +50%, as well as for firing at enemy troops remotely. Due to its large firing range, it can deal large amounts of damage without receiving a response. Has ABM on board to cover ground troops, as well as an omni sensor for firing range.",
@@ -705,7 +706,8 @@ Description = {
   ['ability_teleport'] = "<LOC ability_teleport_help>Enabling and disabling unit teleportation.",
   ['uese0001'] = "<LOC unit_description_uese0001>Designed for sabotage in the rear and reconnaissance. It can only be destroyed by a missile defense missile. Carries tactical missiles of different calibers on board.",
   ['seb3404'] = "<LOC unit_description_seb3404>Invulnerable builds and controls stormtroopers. One center can have only 1 stormtrooper at a time.",
-  ['broat2exgs'] = "LOC unit_description_broat2exgs>Designed to fight air and ground targets. It has high armor and damage.",
+  ['broat2exgs'] = "<LOC unit_description_broat2exgs>Designed to fight air and ground targets. It has high armor and damage.",
+  ['brpt1extank2'] = "<LOC unit_description_brpt1extank2>Designed to fight air targets.",
   ['sab0401'] = "<LOC unit_description_sab0401>Produces 5 experimental t3 stormtroopers. After destroying any Stormtrooper, the factory rebuilds, it.",
   ['bss0401'] = "<LOC unit_description_bss0401>It has a teleportation module, strategic missiles and many other weapons on board. Able to dive.",
   ['xsl0333'] = "<LOC unit_description_xsl0333>Designed for lightning strikes and retreat. It has a teleportation module.",

@@ -1293,6 +1293,10 @@ Unit = ClassUnit(moho.unit_methods, IntelComponent, VeterancyComponent) {
         local preAdjHealth = self:GetHealth()
         local bpID = self:GetBlueprint().BlueprintId
         local instigatorHasLOWDAMAGE = EntityCategoryContains(categories.LOWDAMAGE, instigator)
+        if damageType == "Overcharge" then
+            amount = (1 - (self.OCDamageMitigation or 0)) * amount
+        end
+
 		if instigatorHasLOWDAMAGE and bpID == 'uel0202' then
 			self:AdjustHealth(instigator, -amount*0.7)
 		elseif instigatorHasLOWDAMAGE and bpID == 'ual0202' then
@@ -1533,9 +1537,18 @@ Unit = ClassUnit(moho.unit_methods, IntelComponent, VeterancyComponent) {
 
     ---@param self Unit
     DoDeathWeapon = function(self)
-        if self:IsBeingBuilt() then return end
-
         local bp = self.Blueprint
+
+        local wp = self:GetWeaponByLabel("DeathWeapon")
+        local canExplodeOnBuild = false
+        if wp then
+            local fraction = wp.Blueprint.FractionCompleteDeath
+            if self:GetFractionComplete() >= fraction then
+                canExplodeOnBuild = true
+            end
+        end    
+        if self:IsBeingBuilt() and not canExplodeOnBuild then return end
+
         for _, v in bp.Weapon do
             if v.Label == 'DeathWeapon' then
                 if v.FireOnDeath == true then

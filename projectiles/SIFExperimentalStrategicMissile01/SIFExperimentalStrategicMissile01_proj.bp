@@ -28,6 +28,7 @@ ProjectileBlueprint {
         'STRATEGIC',
         'MISSILE',
         'NOSPLASHDAMAGE',
+        'KILLAIRONCOLLISION',
     },
     Defense = {
         Health = 60000,
@@ -42,7 +43,6 @@ ProjectileBlueprint {
             IconFadeInZoom = 200,
             LODs = {
                 {
-
                     LookupName = '/textures/environment/Falloff_seraphim_lookup.dds',
                     ShaderName = 'Seraphim',
                 },
@@ -57,14 +57,6 @@ ProjectileBlueprint {
     },
     General = {
         Category = 'Missile',
-        EntityCategory = {
-            'CYBRAN',
-            'PROJECTILE',
-            'INDIRECTFIRE',
-            'STRATEGIC',
-            'MISSILE',
-            'NOSPLASHDAMAGE',
-        },
         Faction = 'Cybran',
     },
     Interface = {
