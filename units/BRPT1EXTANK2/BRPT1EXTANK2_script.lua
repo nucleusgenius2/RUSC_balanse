@@ -23,6 +23,11 @@ BRPT1EXTANK2 = Class(SWalkingLandUnit) {
         },
     },
 
+    OnCreate = function(self)
+        SWalkingLandUnit.OnCreate(self)
+        self:AddCommandCap('RULEUCC_Teleport')
+    end,
+
     OnStopBeingBuilt = function(self, builder, layer)
         SWalkingLandUnit.OnStopBeingBuilt(self, builder, layer)
         self:CreatTheEffects()
