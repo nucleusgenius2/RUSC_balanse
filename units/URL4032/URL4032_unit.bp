@@ -265,7 +265,7 @@ UnitBlueprint {
         MicrowaveLaserGenerator = {
             BuildCostEnergy = 250000,
             BuildCostMass = 20000,
-            BuildTime = 800,
+            BuildTime = 150000,
             Icon = "mlg",
             Name = "<LOC enhancements_00999>Anti Satellite",
             Slot = "Back",
@@ -286,7 +286,7 @@ UnitBlueprint {
         NaniteMissileSystem = {
             BuildCostEnergy = 150000,
             BuildCostMass = 15000,
-            BuildTime = 3000,
+            BuildTime = 170000,
             Icon = "nms",
             Name = "<LOC enhancements_00951>Nanite Missile System",
             Slot = "Back",
@@ -302,6 +302,29 @@ UnitBlueprint {
             RemoveEnhancements = {
                 "NaniteMissileSystem",
                 "NaniteMissileSystemRemove",
+            },
+            Slot = "Back",
+        },
+        EnergyReflector = {
+            BuildCostEnergy = 150000,
+            BuildCostMass = 20000,
+            BuildTime = 170000,
+            NewHealth = 20000,
+            OCDamageMitigation = 0.4,
+            Icon = "srs",
+            Name = "<LOC enhancements_00952>Reflecting magnetic field",
+            Slot = "Back",
+        },
+        EnergyReflectorRemove = {
+            BuildCostEnergy = 1,
+            BuildCostMass = 1,
+            BuildTime = 0.1,
+            Icon = "srs",
+            Name = "<LOC enhancements_0100>Remove Nano-Repair System",
+            Prerequisite = "EnergyReflector",
+            RemoveEnhancements = {
+                "EnergyReflector",
+                "EnergyReflectorRemove",
             },
             Slot = "Back",
         },

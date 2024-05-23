@@ -1,3 +1,5 @@
+local Buff = import("/lua/sim/buff.lua")
+
 local CWalkingLandUnit = import('/lua/cybranunits.lua').CWalkingLandUnit
 local CStructureUnit = import('/lua/cybranunits.lua').CStructureUnit
 
@@ -205,11 +207,36 @@ URL4032 = Class(CWalkingLandUnit) {
 
     CreateEnhancement = function(self, enh)
         CWalkingLandUnit.CreateEnhancement(self, enh)
+        local bp = self.Blueprint.Enhancements[enh]
 
         if enh == 'MicrowaveLaserGenerator' then
             self:SetWeaponEnabledByLabel('AntiSatt', true)
         elseif enh == 'MicrowaveLaserGeneratorRemove' then
             self:SetWeaponEnabledByLabel('AntiSatt', false)
+        elseif enh == 'EnergyReflector' then
+            if not Buffs['EnergyReflectorBonus'] then
+                BuffBlueprint {
+                    Name = 'EnergyReflectorBonus',
+                    DisplayName = 'EnergyReflectorBonus',
+                    BuffType = 'ENERGYREFLECTORBONUS',
+                    Stacks = 'ALWAYS',
+                    Duration = -1,
+                    Affects = {
+                        MaxHealth = {
+                            Add = bp.NewHealth,
+                        },
+                    },
+                }
+            end
+            if not Buff.HasBuff(self, 'EnergyReflectorBonus') then
+                Buff.ApplyBuff(self, 'EnergyReflectorBonus')
+            end
+            self.OCDamageMitigation = bp.OCDamageMitigation
+        elseif enh == 'EnergyReflectorRemove' then
+            if Buff.HasBuff(self, 'EnergyReflectorBonus') then
+                Buff.RemoveBuff(self, 'EnergyReflectorBonus')
+            end
+            self.OCDamageMitigation = nil
         elseif enh == 'NaniteMissileSystem' then
             self:ShowBone('Turret', true)
             self:ShowBone('Turret11', true)
