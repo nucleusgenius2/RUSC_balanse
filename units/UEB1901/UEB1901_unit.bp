@@ -216,7 +216,7 @@ UnitBlueprint {
             RackRecoilDistance = 0,
             RackReloadTimeout = 10,
             RackSalvoChargeTime = 10,
-            RackSalvoReloadTime = 35,
+            RackSalvoReloadTime = 55,
             ManualFire = true,
             NukeWeapon = true,
             Damage = 0,

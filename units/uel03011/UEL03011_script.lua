@@ -23,17 +23,18 @@ local TSAMLauncher = import('/lua/terranweapons.lua').TSAMLauncher
 
 local CommandUnit = import("/lua/defaultunits.lua").CommandUnit
 
-uel03011 = Class(CommandUnit) {
-    
+---@class UEL03011 : CommandUnit
+UEL03011 = Class(CommandUnit) {
+
     IntelEffects = {
-		{
-			Bones = {
-				'Jetpack',
-			},
-			Scale = 0.5,
-			Type = 'Jammer01',
-		},
-    },     
+        {
+            Bones = {
+                'Jetpack',
+            },
+            Scale = 0.5,
+            Type = 'Jammer01',
+        },
+    },
 
     Weapons = {
         RightHeavyPlasmaCannon = Class(TDFHeavyPlasmaCannonWeapon) {},
@@ -47,19 +48,19 @@ uel03011 = Class(CommandUnit) {
         PlasmaCannon01 = ClassWeapon(TDFIonizedPlasmaCannon) {
             OnCreate = function(self)
                 TDFIonizedPlasmaCannon.OnCreate(self)
-				self:SetWeaponEnabled(false)
+                self:SetWeaponEnabled(false)
             end,
-		},
+        },
         Torpedo = ClassWeapon(CANTorpedoLauncherWeapon) {},
         MissileRack01 = Class(TSAMLauncher) {
             OnCreate = function(self)
                 TSAMLauncher.OnCreate(self)
                 self:SetWeaponEnabled(false)
             end,
-		},
+        },
     },
 
-    ---@param self UEL0301
+    ---@param self UEL03011
     ---@param bone Bone
     ---@param attachee Unit
     OnTransportAttach = function(self, bone, attachee)
@@ -67,7 +68,11 @@ uel03011 = Class(CommandUnit) {
         attachee:SetDoNotTarget(true)
     end,
 
-    ---@param self UEL0301
+    __init = function (self)
+        CommandUnit.__init(self, "RightHeavyPlasmaCannon")
+    end,
+
+    ---@param self UEL03011
     ---@param bone Bone
     ---@param attachee Unit
     OnTransportDetach = function(self, bone, attachee)
@@ -84,7 +89,7 @@ uel03011 = Class(CommandUnit) {
         self:HideBone('Turret_Barrel', true)
         self:HideBone('SAM', true)
         self:SetupBuildBones()
-        
+
         local wepBp = self.Blueprint.Weapon
         self.torpRange = 60
         for k, v in wepBp do
@@ -93,7 +98,7 @@ uel03011 = Class(CommandUnit) {
             end
         end
     end,
-    
+
     RebuildPod = function(self)
         if self.HasPod then
             self.RebuildingPod = CreateEconomyEvent(self, 1600, 160, 10, self.SetWorkProgress)
@@ -110,7 +115,7 @@ uel03011 = Class(CommandUnit) {
             self.Pod = pod
         end
     end,
-	
+
     OnStopBeingBuilt = function(self, builder, layer)
         CommandUnit.OnStopBeingBuilt(self, builder, layer)
         self:SetWeaponEnabledByLabel('Torpedo', false)
@@ -118,92 +123,46 @@ uel03011 = Class(CommandUnit) {
         self:DisableUnitIntel('Enhancement', 'Jammer')
     end,
 
-    OnPrepareArmToBuild = function(self)
-        CommandUnit.OnPrepareArmToBuild(self)
-        self:BuildManipulatorSetEnabled(true)
-        self.BuildArmManipulator:SetPrecedence(20)
-        self:SetWeaponEnabledByLabel('RightHeavyPlasmaCannon', false)
-        self.BuildArmManipulator:SetHeadingPitch( self:GetWeaponManipulatorByLabel('RightHeavyPlasmaCannon'):GetHeadingPitch() )
-    end,
-    
-    OnStopCapture = function(self, target)
-        CommandUnit.OnStopCapture(self, target)
-        self:BuildManipulatorSetEnabled(false)
-        self.BuildArmManipulator:SetPrecedence(0)
-        self:SetWeaponEnabledByLabel('RightHeavyPlasmaCannon', true)
-        self:GetWeaponManipulatorByLabel('RightHeavyPlasmaCannon'):SetHeadingPitch( self.BuildArmManipulator:GetHeadingPitch() )
-    end,
-
-    OnFailedCapture = function(self, target)
-        CommandUnit.OnFailedCapture(self, target)
-        self:BuildManipulatorSetEnabled(false)
-        self.BuildArmManipulator:SetPrecedence(0)
-        self:SetWeaponEnabledByLabel('RightHeavyPlasmaCannon', true)
-        self:GetWeaponManipulatorByLabel('RightHeavyPlasmaCannon'):SetHeadingPitch( self.BuildArmManipulator:GetHeadingPitch() )
-    end,
-    
-    OnStopReclaim = function(self, target)
-        CommandUnit.OnStopReclaim(self, target)
-        self:BuildManipulatorSetEnabled(false)
-        self.BuildArmManipulator:SetPrecedence(0)
-        self:SetWeaponEnabledByLabel('RightHeavyPlasmaCannon', true)
-        self:GetWeaponManipulatorByLabel('RightHeavyPlasmaCannon'):SetHeadingPitch( self.BuildArmManipulator:GetHeadingPitch() )
-    end,
-    
-    OnStartBuild = function(self, unitBeingBuilt, order)    
+    OnStartBuild = function(self, unitBeingBuilt, order)
         CommandUnit.OnStartBuild(self, unitBeingBuilt, order)
         self.UnitBeingBuilt = unitBeingBuilt
         self.UnitBuildOrder = order
-        self.BuildingUnit = true        
-    end,    
-
-    OnStopBuild = function(self, unitBeingBuilt)
-        CommandUnit.OnStopBuild(self, unitBeingBuilt)
-        self.UnitBeingBuilt = nil
-        self.UnitBuildOrder = nil
-        self.BuildingUnit = false      
-        self:SetWeaponEnabledByLabel('RightHeavyPlasmaCannon', true)    
-        self:GetWeaponManipulatorByLabel('RightHeavyPlasmaCannon'):SetHeadingPitch( self.BuildArmManipulator:GetHeadingPitch() )
-    end,     
-    
-    OnFailedToBuild = function(self)
-        CommandUnit.OnFailedToBuild(self)
-        self:BuildManipulatorSetEnabled(false)
-        self.BuildArmManipulator:SetPrecedence(0)
-        self:SetWeaponEnabledByLabel('RightHeavyPlasmaCannon', true)
-        self:GetWeaponManipulatorByLabel('RightHeavyPlasmaCannon'):SetHeadingPitch( self.BuildArmManipulator:GetHeadingPitch() )
+        self.BuildingUnit = true
     end,
-    
-    CreateBuildEffects = function( self, unitBeingBuilt, order )
+
+    CreateBuildEffects = function(self, unitBeingBuilt, order)
         local UpgradesFrom = unitBeingBuilt:GetBlueprint().General.UpgradesFrom
         --# If we are assisting an upgrading unit, or repairing a unit, play seperate effects
-        if (order == 'Repair' and not unitBeingBuilt:IsBeingBuilt()) or (UpgradesFrom and UpgradesFrom != 'none' and self:IsUnitState('Guarding'))then
-            EffectUtil.CreateDefaultBuildBeams( self, unitBeingBuilt, self:GetBlueprint().General.BuildBones.BuildEffectBones, self.BuildEffectsBag )
+        if (order == 'Repair' and not unitBeingBuilt:IsBeingBuilt()) or
+            (UpgradesFrom and UpgradesFrom ~= 'none' and self:IsUnitState('Guarding')) then
+            EffectUtil.CreateDefaultBuildBeams(self, unitBeingBuilt,
+                self:GetBlueprint().General.BuildBones.BuildEffectBones, self.BuildEffectsBag)
         else
-            EffectUtil.CreateUEFCommanderBuildSliceBeams( self, unitBeingBuilt, self:GetBlueprint().General.BuildBones.BuildEffectBones, self.BuildEffectsBag )   
-        end           
-    end,     
+            EffectUtil.CreateUEFCommanderBuildSliceBeams(self, unitBeingBuilt,
+                self:GetBlueprint().General.BuildBones.BuildEffectBones, self.BuildEffectsBag)
+        end
+    end,
 
     NotifyOfPodDeath = function(self, pod)
         RemoveUnitEnhancement(self, 'Pod')
         self.Pod = nil
         self:RequestRefreshUI()
     end,
-  
+
     OnPaused = function(self)
         CommandUnit.OnPaused(self)
         if self.BuildingUnit then
             CommandUnit.StopBuildingEffects(self, self:GetUnitBeingBuilt())
-        end    
+        end
     end,
-    
+
     OnUnpaused = function(self)
         if self.BuildingUnit then
             CommandUnit.StartBuildingEffects(self, self:GetUnitBeingBuilt(), self.UnitBuildOrder)
         end
         CommandUnit.OnUnpaused(self)
-    end,    
-	
+    end,
+
     CreateEnhancement = function(self, enh)
         CommandUnit.CreateEnhancement(self, enh)
         local bp = self:GetBlueprint().Enhancements[enh]
@@ -211,8 +170,8 @@ uel03011 = Class(CommandUnit) {
         --RadarJammer
         if enh == 'RadarJammer' then
             self:SetIntelRadius('Jammer', bp.NewJammerRadius or 26)
-            self.RadarJammerEnh = true 
-			self:EnableUnitIntel('Jammer')
+            self.RadarJammerEnh = true
+            self:EnableUnitIntel('Jammer')
             self:AddToggleCap('RULEUTC_JammingToggle')
         elseif enh == 'RadarJammerRemove' then
             local bpIntel = self:GetBlueprint().Intel
@@ -220,10 +179,10 @@ uel03011 = Class(CommandUnit) {
             self:DisableUnitIntel('Jammer')
             self.RadarJammerEnh = false
             self:RemoveToggleCap('RULEUTC_JammingToggle')
-        --DamageStablization
-        elseif enh =='DamageStablization' then
+            --DamageStablization
+        elseif enh == 'DamageStablization' then
             self:SetRegenRate(bp.NewRegenRate)
-            self.DamageStablization = true 
+            self.DamageStablization = true
             if not Buffs['UEFACUT2BuildRate'] then
                 BuffBlueprint {
                     Name = 'UEFACUT2BuildRate',
@@ -239,12 +198,12 @@ uel03011 = Class(CommandUnit) {
                     },
                 }
             end
-            Buff.ApplyBuff(self, 'UEFACUT2BuildRate')	
-        elseif enh =='DamageStablizationRemove' then
+            Buff.ApplyBuff(self, 'UEFACUT2BuildRate')
+        elseif enh == 'DamageStablizationRemove' then
             self:RevertRegenRate()
-            self.DamageStablization = false 
-            if Buff.HasBuff( self, 'UEFACUT2BuildRate' ) then
-                Buff.RemoveBuff( self, 'UEFACUT2BuildRate' )
+            self.DamageStablization = false
+            if Buff.HasBuff(self, 'UEFACUT2BuildRate') then
+                Buff.RemoveBuff(self, 'UEFACUT2BuildRate')
             end
         elseif enh == 'Missile' then
             self:AddCommandCap('RULEUCC_Tactical')
@@ -258,12 +217,12 @@ uel03011 = Class(CommandUnit) {
             self:SetWeaponEnabledByLabel('MissileRack01', true)
         elseif enh == 'AAGunRemove' then
             self:SetWeaponEnabledByLabel('MissileRack01', false)
-        elseif enh =='HighExplosiveOrdnance' then
+        elseif enh == 'HighExplosiveOrdnance' then
             self:SetWeaponEnabledByLabel('PlasmaCannon01', true)
             local wep = self:GetWeaponByLabel('RightHeavyPlasmaCannon')
             wep:AddDamageRadiusMod(bp.NewDamageRadius)
             wep:ChangeMaxRadius(bp.NewMaxRadius or 35)
-        elseif enh =='HighExplosiveOrdnanceRemove' then
+        elseif enh == 'HighExplosiveOrdnanceRemove' then
             local wep = self:GetWeaponByLabel('RightHeavyPlasmaCannon')
             wep:AddDamageRadiusMod(bp.NewDamageRadius)
             wep:ChangeMaxRadius(bp.NewMaxRadius or 25)
@@ -326,15 +285,16 @@ uel03011 = Class(CommandUnit) {
             self:RemoveToggleCap('RULEUTC_ShieldToggle')
         end
     end,
-	
+
     OnIntelEnabled = function(self, intel)
         CommandUnit.OnIntelEnabled(self, intel)
         if self.RadarJammerEnh and self:IsIntelEnabled('Jammer') then
             if self.IntelEffects then
                 self.IntelEffectsBag = {}
-                self:CreateTerrainTypeEffects(self.IntelEffects, 'FXIdle',  self.Layer, nil, self.IntelEffectsBag)
+                self:CreateTerrainTypeEffects(self.IntelEffects, 'FXIdle', self.Layer, nil, self.IntelEffectsBag)
             end
-            self:SetEnergyMaintenanceConsumptionOverride(self:GetBlueprint().Enhancements['RadarJammer'].MaintenanceConsumptionPerSecondEnergy or 0)
+            self:SetEnergyMaintenanceConsumptionOverride(self:GetBlueprint().Enhancements['RadarJammer'].MaintenanceConsumptionPerSecondEnergy
+                or 0)
             self:SetMaintenanceConsumptionActive()
         end
     end,
@@ -351,4 +311,4 @@ uel03011 = Class(CommandUnit) {
 
 }
 
-TypeClass = uel03011
+TypeClass = UEL03011

@@ -235,6 +235,46 @@ UEB1901 = ClassUnit(StructureUnit) {
                     ChangeState(self, self.RackSalvoFiringState)
                 end,
             },
+            RackSalvoReloadState = State(SIFExperimentalStrategicMissile.RackSalvoReloadState)
+            {
+                Clock = function(self, unit, time)
+                    for i = 1, time do
+                        unit:SetWorkProgress(i / time)
+                        WaitTicks(1)
+                    end
+                end,
+
+                Main = function(self)
+                    local unit = self.unit
+                    unit:SetBusy(true)
+                    self:PlayFxRackSalvoReloadSequence()
+
+                    local bp = self.Blueprint
+                    local notExclusive = bp.NotExclusive
+
+                    if notExclusive then
+                        unit:SetBusy(false)
+                    end
+
+                    self:ForkThread(self.Clock, self.unit, bp.RackSalvoReloadTime * 10)
+                    WaitSeconds(bp.RackSalvoReloadTime)
+
+                    self:WaitForAndDestroyManips()
+
+                    local hasTarget = self:WeaponHasTarget()
+                    local canFire = self:CanFire()
+
+                    if hasTarget and bp.RackSalvoChargeTime > 0 and canFire then
+                        ChangeState(self, self.RackSalvoChargeState)
+                    elseif hasTarget and canFire then
+                        ChangeState(self, self.RackSalvoFireReadyState)
+                    elseif not hasTarget and bp.WeaponUnpacks and not bp.WeaponUnpackLocksMotion then
+                        ChangeState(self, self.WeaponPackingState)
+                    else
+                        ChangeState(self, self.IdleState)
+                    end
+                end,
+            },
             RackSalvoFiringState = State(SIFExperimentalStrategicMissile.RackSalvoFiringState)
             {
                 ---@param self AntimatterExplosion
