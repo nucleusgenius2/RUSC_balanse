@@ -20,14 +20,6 @@ XSL0302 = ClassUnit(CommandUnit) {
             end,
 		},
         DeathWeapon = ClassWeapon(SCUDeathWeapon) {},
-        OverCharge = ClassWeapon(SDFOverChargeWeapon) {},
-        AutoOverCharge = ClassWeapon(SDFOverChargeWeapon) {},
-        Missile = ClassWeapon(SIFLaanseTacticalMissileLauncher) {
-            OnCreate = function(self)
-                SIFLaanseTacticalMissileLauncher.OnCreate(self)
-                self:SetWeaponEnabled(false)
-            end,
-        },
     },
 
     __init = function(self)
@@ -38,8 +30,6 @@ XSL0302 = ClassUnit(CommandUnit) {
         CommandUnit.OnCreate(self)
         self:SetCapturable(false)
         self:SetupBuildBones()
-        self:GetWeaponByLabel('OverCharge').NeedsUpgrade = true
-        self:GetWeaponByLabel('AutoOverCharge').NeedsUpgrade = true
     end,
 
     StartBeingBuiltEffects = function(self, builder, layer)
@@ -64,15 +54,6 @@ XSL0302 = ClassUnit(CommandUnit) {
         -- Advanced Teleporter
         elseif enh == 'AdvancedTeleporterRemove' then
             self:RemoveCommandCap('RULEUCC_Teleport')
-            -- Missile
-        elseif enh == 'Missile' then
-            self:AddCommandCap('RULEUCC_Tactical')
-            self:AddCommandCap('RULEUCC_SiloBuildTactical')
-            self:SetWeaponEnabledByLabel('Missile', true)
-        elseif enh == 'MissileRemove' then
-            self:RemoveCommandCap('RULEUCC_Tactical')
-            self:RemoveCommandCap('RULEUCC_SiloBuildTactical')
-            self:SetWeaponEnabledByLabel('Missile', false)
             -- Shields
         elseif enh == 'Shield' then
             self:AddToggleCap('RULEUTC_ShieldToggle')
@@ -83,17 +64,6 @@ XSL0302 = ClassUnit(CommandUnit) {
             self:DestroyShield()
             self:SetMaintenanceConsumptionInactive()
             self:RemoveToggleCap('RULEUTC_ShieldToggle')
-            -- Overcharge
-        elseif enh == 'Overcharge' then
-            self:AddCommandCap('RULEUCC_Overcharge')
-            self:GetWeaponByLabel('OverCharge').NeedsUpgrade = false
-            self:GetWeaponByLabel('AutoOverCharge').NeedsUpgrade = false
-        elseif enh == 'OverchargeRemove' then
-            self:RemoveCommandCap('RULEUCC_Overcharge')
-            self:SetWeaponEnabledByLabel('OverCharge', false)
-            self:SetWeaponEnabledByLabel('AutoOverCharge', false)
-            self:GetWeaponByLabel('OverCharge').NeedsUpgrade = true
-            self:GetWeaponByLabel('AutoOverCharge').NeedsUpgrade = true
             -- Engineering Throughput Upgrade
         elseif enh == 'EngineeringThroughput' then
             if not Buffs['SeraphimSCUBuildRate'] then
