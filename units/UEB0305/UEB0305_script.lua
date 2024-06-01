@@ -2,8 +2,13 @@ local TQuantumGateUnit = import("/lua/terranunits.lua").TQuantumGateUnit
 local VDist3 = VDist3
 local Random = Random
 
+
+local function RandomRange(value)
+    return (Random() * 2 - 1) * value
+end
+
 local function OffSetVector(vec, value)
-    return Vector(vec[1] + Random(-value, value), vec[2], vec[3] + Random(-value, value))
+    return Vector(vec[1] + RandomRange(value), vec[2], vec[3] + RandomRange(value))
 end
 
 local teleportableCats = (categories.AIR + categories.LAND) * categories.MOBILE

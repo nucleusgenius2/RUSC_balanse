@@ -5,9 +5,14 @@
 local VDist3 = VDist3
 local Random = Random
 
-local function OffSetVector(vec, value)
-    return Vector(vec[1] + Random(-value, value), vec[2], vec[3] + Random(-value, value))
+local function RandomRange(value)
+    return (Random() * 2 - 1) * value
 end
+
+local function OffSetVector(vec, value)
+    return Vector(vec[1] + RandomRange(value), vec[2], vec[3] + RandomRange(value))
+end
+
 
 function StargateDialing(SuperClass)
     return Class(SuperClass) {
