@@ -228,7 +228,7 @@ UnitBlueprint {
     SizeX = 3,
     SizeY = 2.5,
     SizeZ = 3,
-    StrategicIconName = 'icon_gunship3_antiair',
+    StrategicIconName = 'icon_gunship_directfire',
     StrategicIconSortPriority = 65,
     Transport = {
         AirClass = false,

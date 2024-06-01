@@ -180,6 +180,8 @@ local function parseCommandlineArguments()
         return default
     end
 
+    local icons =  GetCommandLineArg("/icons", 2)
+
     return {
         PrefLanguage = tostring(string.lower(GetCommandLineArgOrDefault("/country", "world"))),
         isRehost = HasCommandLineArg("/rehost"),
@@ -188,6 +190,7 @@ local function parseCommandlineArguments()
         playerMean = tonumber(GetCommandLineArgOrDefault("/mean", 1500)),
         playerClan = tostring(GetCommandLineArgOrDefault("/clan", "")),
         playerDeviation = tonumber(GetCommandLineArgOrDefault("/deviation", 500)),
+        icons = icons,
     }
 end
 local argv = parseCommandlineArguments()
@@ -452,6 +455,7 @@ function GetLocalPlayerData()
             MEAN = argv.playerMean,
             DEV = argv.playerDeviation,
             Country = argv.PrefLanguage,
+            Icons = argv.icons,
         }
 )
 end
@@ -1180,6 +1184,21 @@ function SetSlotInfo(slotNum, playerInfo)
         slot.KinderCountry:SetTexture(UIUtil.UIFile('/countries/'..playerInfo.Country..'.dds'))
 
         Tooltip.AddControlTooltip(slot.KinderCountry, {text=LOC("<LOC lobui_0413>Country"), body=LOC(CountryTooltips[playerInfo.Country])})
+    end
+
+    if playerInfo.Icons then
+        slot.icon1:Hide()
+        slot.icon2:Hide()
+        for i, icon in {slot.icon1, slot.icon2} do
+            local icon_name = playerInfo.Icons[i]
+            if icon_name then
+                icon:SetTexture(UIUtil.UIFile("/lobby/icons/"..tostring(icon_name)..".dds"), 0)
+                icon:Show()
+            else
+                icon:Hide()
+            end
+
+        end
     end
 
     UpdateSlotBackground(slotNum)
@@ -2456,7 +2475,7 @@ local function UpdateGame()
     RefreshLargeMap()
 
     SetRuleTitleText(gameInfo.GameOptions.GameRules or "")
-    SetGameTitleText(gameInfo.GameOptions.Title or LOC("<LOC lobui_0427>FAF Game Lobby"))
+    SetGameTitleText(gameInfo.GameOptions.Title or LOC("<LOC lobui_0427>RUSC Game Lobby"))
 
     if isHost and GUI.autoTeams then
         GUI.autoTeams:SetState(gameInfo.GameOptions.AutoTeams,true)
@@ -2656,10 +2675,12 @@ function CreateSlotsUI(makeLabel)
     local BitmapCombo = import("/lua/ui/controls/combo.lua").BitmapCombo
     local StatusBar = import("/lua/maui/statusbar.lua").StatusBar
     local ColumnLayout = import("/lua/ui/controls/columnlayout.lua").ColumnLayout
+    local Layouter = LayoutHelpers.ReusedLayoutFor
 
     -- The dimensions of the columns used for slot UI controls.
-    local COLUMN_POSITIONS = {1, 21, 47, 91, 133, 395, 465, 535, 605, 677, 749}
-    local COLUMN_WIDTHS = {20, 20, 45, 45, 257, 59, 59, 59, 62, 62, 51}
+    local offset = 90-57
+    local COLUMN_POSITIONS = {1, 21, 47, 91, 133, 338,338+45, 395+offset, 465+offset, 535+offset, 605+offset, 677+offset, 749+offset}
+    local COLUMN_WIDTHS = {20, 20, 45, 45, 200, 40,40, 59, 59, 59, 62, 62, 51}
 
     local labelGroup = ColumnLayout(GUI.playerPanel, COLUMN_POSITIONS, COLUMN_WIDTHS)
 
@@ -2681,6 +2702,9 @@ function CreateSlotsUI(makeLabel)
 
     local nameLabel = makeLabel(LOC("<LOC NICKNAME>Nickname"), 14)
     labelGroup:AddChild(nameLabel)
+
+    labelGroup:AddChild(makeLabel(LOC(""), 14))
+    labelGroup:AddChild(makeLabel(LOC(""), 14))
 
     local colorLabel = makeLabel(LOC("<LOC lobui_0214>Color"), 14)
     labelGroup:AddChild(colorLabel)
@@ -2737,7 +2761,6 @@ function CreateSlotsUI(makeLabel)
         -- Slot number
         local slotNumber = UIUtil.CreateText(newSlot, i, 14, 'Arial')
         newSlot.slotNumber = slotNumber
-        LayoutHelpers.SetWidth(slotNumber, COLUMN_WIDTHS[1])
         slotNumber.Height:Set(newSlot.Height)
         newSlot:AddChild(slotNumber)
         newSlot.tooltipnumber = Tooltip.AddControlTooltip(slotNumber, 'slot_number')
@@ -2770,7 +2793,6 @@ function CreateSlotsUI(makeLabel)
         -- Added a bitmap on the left of Rating, the bitmap is a Flag of Country
         local flag = Bitmap(newSlot, UIUtil.SkinnableFile("/countries/world.dds"))
         newSlot.KinderCountry = flag
-        LayoutHelpers.SetWidth(flag, COLUMN_WIDTHS[2])
         newSlot:AddChild(flag)
 
         -- TODO: Factorise this boilerplate.
@@ -2794,7 +2816,6 @@ function CreateSlotsUI(makeLabel)
         newSlot.name = nameLabel
         nameLabel._text:SetFont('Arial Gras', 15)
         newSlot:AddChild(nameLabel)
-        LayoutHelpers.SetWidth(nameLabel, COLUMN_WIDTHS[5])
         -- left deal with name clicks
         nameLabel.OnEvent = defaultHandler
         nameLabel.OnClick = function(self, index, text)
@@ -2809,12 +2830,29 @@ function CreateSlotsUI(makeLabel)
             end
         end
 
+        newSlot.icon1 = Bitmap(newSlot)
+        Layouter(newSlot.icon1)
+            :Width(40)
+            :Height(20)
+            :Hide()
+            :DisableHitTest()
+            :End()
+        newSlot:AddChild(newSlot.icon1)
+        newSlot.icon2 = Bitmap(newSlot)
+        Layouter(newSlot.icon2)
+            :Width(40)
+            :Height(20)
+            :Hide()
+            :DisableHitTest()
+            :End()
+        newSlot:AddChild(newSlot.icon2)
+
+
         -- Color
         local colorSelector = BitmapCombo(newSlot, gameColors.PlayerColors, 1, true, nil, "UI_Tab_Rollover_01", "UI_Tab_Click_01")
         newSlot.color = colorSelector
 
         newSlot:AddChild(colorSelector)
-        LayoutHelpers.SetWidth(colorSelector, COLUMN_WIDTHS[6])
         colorSelector.OnClick = function(self, index)
             if not lobbyComm:IsHost() then
                 lobbyComm:SendData(hostID, { Type = 'RequestColor', Color = index })
@@ -2852,7 +2890,6 @@ function CreateSlotsUI(makeLabel)
         newSlot.faction = factionSelector
         newSlot.AvailableFactions = factionList
         newSlot:AddChild(factionSelector)
-        LayoutHelpers.SetWidth(factionSelector, COLUMN_WIDTHS[7])
         factionSelector.OnClick = function(self, index)
             SetPlayerOption(curRow, 'Faction', index)
             if curRow == FindSlotForID(FindIDForName(localPlayerName)) then
@@ -2878,7 +2915,6 @@ function CreateSlotsUI(makeLabel)
         teamSelector._titleColor = 'White'
         newSlot.team = teamSelector
         newSlot:AddChild(teamSelector)
-        LayoutHelpers.SetWidth(teamSelector, COLUMN_WIDTHS[8])
         teamSelector.OnClick = function(self, index, text)
             Tooltip.DestroyMouseoverDisplay()
             SetPlayerOption(curRow, 'Team', index)
@@ -2891,7 +2927,6 @@ function CreateSlotsUI(makeLabel)
         local barMin = 0
         local CPUGroup = Group(newSlot)
         newSlot.CPUGroup = CPUGroup
-        LayoutHelpers.SetWidth(CPUGroup, COLUMN_WIDTHS[9])
         CPUGroup.Height:Set(newSlot.Height)
         newSlot:AddChild(CPUGroup)
         local CPUSpeedBar = StatusBar(CPUGroup, barMin, barMax, false, false,
@@ -2911,7 +2946,6 @@ function CreateSlotsUI(makeLabel)
         barMin = 0
         local pingGroup = Group(newSlot)
         newSlot.pingGroup = pingGroup
-        LayoutHelpers.SetWidth(pingGroup, COLUMN_WIDTHS[10])
         pingGroup.Height:Set(newSlot.Height)
         newSlot:AddChild(pingGroup)
         local pingStatus = StatusBar(pingGroup, barMin, barMax, false, false,
@@ -2949,6 +2983,8 @@ function CreateSlotsUI(makeLabel)
             CPUSpeedBar:Hide()
             pingStatus:Hide()
             readyBox:Hide()
+            newSlot.icon1:Hide()
+            newSlot.icon2:Hide()
         end
         newSlot.HideControls()
 
@@ -3011,7 +3047,7 @@ function CreateUI(maxPlayers)
     LayoutHelpers.AtRightTopIn(GUI.GameQualityLabel, GUI.panel, 5, 64)
 
     -- Title Label
-    GUI.titleText = makeLabel(LOC("<LOC lobui_0427>FAF Game Lobby"), 17)
+    GUI.titleText = makeLabel(LOC("<LOC lobui_0427>RUSC Game Lobby"), 17)
     LayoutHelpers.AtLeftTopIn(GUI.titleText, GUI.panel, 5, 20)
 
     if isHost then
@@ -6187,7 +6223,7 @@ end
 function SetGameTitleText(title)
     GUI.titleText:SetColor("B9BFB9")
     if title == '' then
-        title = LOC("<LOC lobui_0427>FAF Game Lobby")
+        title = LOC("<LOC lobui_0427>RUSC Game Lobby")
     end
     GUI.titleText:SetText(title)
 end

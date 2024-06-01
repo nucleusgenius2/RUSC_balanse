@@ -2,8 +2,6 @@
 -- Summary  :  Stargate Dialing Script
 -- Author   :  Balthazar
 --------------------------------------------------------------------------------
-local explosion = import('/lua/defaultexplosions.lua')
-
 local VDist3 = VDist3
 local Random = Random
 
@@ -157,7 +155,7 @@ function StargateDialing(SuperClass)
                 targetgate.DialingData.IncomingWormhole = true
                 self.DialingData.TargetGate = targetgate
                 self.DialingData.OutgoingWormhole = true
-                aiBrain:TakeResource('ENERGY', bp.Economy.DialingCostBase)
+                aiBrain:TakeResource('ENERGY', bp.Economy.DialingCostBase or 0)
                 --LOG("CHEVRON 7 LOCKED")
             else
                 --LOG("CHEVRON 7 ... WONT ENGAGE")
@@ -252,61 +250,8 @@ function StargateDialing(SuperClass)
             WaitTicks(7)
         end,
 
-        GateEffectsBag = {},
-
         EventHorizonToggle = function(self, value)
-            if value then
-                if self.GateEffectsBag then
-                    for k, v in self.GateEffectsBag do
-                        v:Destroy()
-                    end
-                    self.GateEffectsBag = {}
-                end
-                local army = self:GetArmy()
 
-                table.insert(self.GateEffectsBag,
-                    CreateAttachedEmitter(self, 'FX_08', army, '/effects/emitters/seraphim_rift_arch_edge_01_emit.bp'):
-                    ScaleEmitter(0.7))
-                table.insert(self.GateEffectsBag,
-                    CreateAttachedEmitter(self, 'FX_09', army, '/effects/emitters/seraphim_rift_arch_edge_01_emit.bp'):
-                    ScaleEmitter(0.7))
-                table.insert(self.GateEffectsBag,
-                    CreateAttachedEmitter(self, 'FX_10', army, '/effects/emitters/seraphim_rift_arch_edge_01_emit.bp'):
-                    ScaleEmitter(0.7))
-                table.insert(self.GateEffectsBag,
-                    CreateAttachedEmitter(self, 'FX_11', army, '/effects/emitters/seraphim_rift_arch_edge_01_emit.bp'):
-                    ScaleEmitter(0.7))
-                table.insert(self.GateEffectsBag,
-                    CreateAttachedEmitter(self, 'FX_12', army, '/effects/emitters/seraphim_rift_arch_edge_01_emit.bp'):
-                    ScaleEmitter(0.7))
-                table.insert(self.GateEffectsBag,
-                    CreateAttachedEmitter(self, 'FX_13', army, '/effects/emitters/seraphim_rift_arch_edge_01_emit.bp'):
-                    ScaleEmitter(0.7))
-                table.insert(self.GateEffectsBag,
-                    CreateAttachedEmitter(self, 'FX_01', army, '/effects/emitters/seraphim_rift_arch_edge_01_emit.bp'):
-                    ScaleEmitter(0.7))
-                table.insert(self.GateEffectsBag,
-                    CreateAttachedEmitter(self, 'FX_02', army, '/effects/emitters/seraphim_rift_arch_edge_01_emit.bp'):
-                    ScaleEmitter(0.7))
-                table.insert(self.GateEffectsBag,
-                    CreateAttachedEmitter(self, 'FX_03', army, '/effects/emitters/seraphim_rift_arch_edge_01_emit.bp'):
-                    ScaleEmitter(0.7))
-                table.insert(self.GateEffectsBag,
-                    CreateAttachedEmitter(self, 'FX_04', army, '/effects/emitters/seraphim_rift_arch_edge_01_emit.bp'):
-                    ScaleEmitter(0.7))
-                table.insert(self.GateEffectsBag,
-                    CreateAttachedEmitter(self, 'FX_05', army, '/effects/emitters/seraphim_rift_arch_edge_01_emit.bp'):
-                    ScaleEmitter(0.7))
-                table.insert(self.GateEffectsBag,
-                    CreateAttachedEmitter(self, 'FX_06', army, '/effects/emitters/seraphim_rift_arch_edge_01_emit.bp'):
-                    ScaleEmitter(0.7))
-
-            else
-                explosion.CreateDefaultHitExplosionAtBone(self, 'Center', 5.0)
-                for k, v in self.GateEffectsBag do
-                    v:Destroy()
-                end
-            end
         end,
     }
 end

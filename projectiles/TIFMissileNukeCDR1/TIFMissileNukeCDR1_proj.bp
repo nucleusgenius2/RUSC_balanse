@@ -36,8 +36,8 @@ ProjectileBlueprint {
         Mesh = {
             LODs = {
                 {
-                    AlbedoName = '/projectiles/tifmissilecruise07/tifmissilecruise07_albedo.dds',
-                    MeshName = '/projectiles/tifmissilecruise07/tifmissilecruise07_lod0.scm',
+                    AlbedoName = '/projectiles/tifmissilecruise01/tifmissilecruise01_albedo.dds',
+                    MeshName = '/projectiles/tifmissilecruise01/tifmissilecruise01_lod0.scm',
                     ShaderName = 'TMeshAlpha',
                 },
             },
@@ -61,13 +61,15 @@ ProjectileBlueprint {
         Acceleration = 3,
         DestroyOnWater = false,
         InitialSpeed = 3,
-        MaxSpeed = 12,
+        MaxSpeed = 16,
         RotationalVelocity = 0,
         RotationalVelocityRange = 0,
         TrackTarget = true,
         TrackTargetGround = true,
-        TurnRate = 0,
         UseGravity = false,
         VelocityAlign = true,
+        TurnRate = 360,
+        ZigZagFrequency = 1,
+        MaxZigZag = 1
     },
 }

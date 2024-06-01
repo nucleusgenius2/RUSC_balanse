@@ -1,12 +1,12 @@
-#****************************************************************************
-#**
-#**  File     :  /units/XSLconcept/XSLconcept_script.lua
-#**  Author(s):  Drew Staltman, Jessica St. Croix, Gordon Duclos
-#**
-#**  Summary  :  Seraphim Concept Script
-#**
-#**  Copyright © 2007 Gas Powered Games, Inc.  All rights reserved.
-#****************************************************************************
+-- #****************************************************************************
+-- #**
+-- #**  File     :  /units/XSLconcept/XSLconcept_script.lua
+-- #**  Author(s):  Drew Staltman, Jessica St. Croix, Gordon Duclos
+-- #**
+-- #**  Summary  :  Seraphim Concept Script
+-- #**
+-- #**  Copyright ï¿½ 2007 Gas Powered Games, Inc.  All rights reserved.
+-- #****************************************************************************
 
 local SWalkingLandUnit = import('/lua/seraphimunits.lua').SWalkingLandUnit
 local SeraphimWeapons = import('/lua/seraphimweapons.lua')

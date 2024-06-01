@@ -250,29 +250,42 @@ do
 end
 
 do
-    local maxPinsAllowed = 5
-
+    local maxPingsAllowed = 5
+    local maxMarkersAllowed = 5
+    local type = type
     local _SimCallback = SimCallback
+
     local HasCommandLineArg = HasCommandLineArg
     ---@param callback SimCallback
     ---@param addUnitSelection? boolean
     _G.SimCallback = function(callback, addUnitSelection)
-        if HasCommandLineArg('/mutegame') and callback and callback.Func == "SpawnPing" then
-            if maxPinsAllowed == 0 then
-                WARN("You are muted from spawning a ping")
-                return
+        if callback and callback.Func == "SpawnPing" then
+            if HasCommandLineArg('/mutegame') and not callback.Args.Marker then
+                if maxPingsAllowed == 0 then
+                    WARN("You are muted from spawning a ping")
+                    return
+                end
+                maxPingsAllowed = maxPingsAllowed - 1
+                print(("Pings left %i"):format(maxPingsAllowed))
+            elseif HasCommandLineArg('/mutechat') and callback.Args.Marker then
+                if maxMarkersAllowed == 0 then
+                    WARN("You are muted from spawning a marker")
+                    return
+                end
+                maxMarkersAllowed = maxMarkersAllowed - 1
+                print(("Pings left %i"):format(maxMarkersAllowed))
             end
-            maxPinsAllowed = maxPinsAllowed - 1
-            print(("Pings left %i"):format(maxPinsAllowed))
         end
+
         return _SimCallback(callback, addUnitSelection)
     end
 
     local function CanSendChat(message)
-        return not (HasCommandLineArg('/mutegame') and message and type(message) == "table" and (message.Chat or message.Taunt))
+        return not
+            (HasCommandLineArg('/mutechat') and message and type(message) == "table" and (message.Chat or message.Taunt)
+            )
     end
 
-    local type = type
     local _SessionSendChatMessage = SessionSendChatMessage
     ---@param client? number | number[] client or clients
     ---@param message table | number | string

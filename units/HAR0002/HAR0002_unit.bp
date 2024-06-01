@@ -235,7 +235,7 @@ UnitBlueprint {
     SizeX = 2,
     SizeY = 1.375,
     SizeZ = 2,
-    StrategicIconName = 'icon_structure3_intel',
+    StrategicIconName = 'icon_structure3_antitele',
     StrategicIconSortPriority = 240,
     Weapon = {
         {

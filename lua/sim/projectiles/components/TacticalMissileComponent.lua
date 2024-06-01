@@ -48,6 +48,7 @@ TacticalMissileComponent = ClassSimple(SemiBallisticComponent) {
 
         -- boost
         local boostTurnRate, boostTime = self:TurnRateFromAngleAndHeight()
+        boostTime = math.max(boostTime, 0)
         self:SetTurnRate(boostTurnRate)
         WaitTicks(boostTime * 10 + 1)
 		

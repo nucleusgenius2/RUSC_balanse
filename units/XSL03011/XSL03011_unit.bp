@@ -332,7 +332,7 @@ UnitBlueprint {
 			RULEUTC_ShieldToggle = false,
         },
 		SelectionPriority = 7,
-        UnitName = '<LOC led0026_name>Stalker',
+        UnitName = '<LOC led0026_name>Gate maker',
         UnitWeight = 1,
     },
     Intel = {

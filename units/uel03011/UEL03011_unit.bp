@@ -1077,7 +1077,7 @@ UnitBlueprint {
                 'SPECIALLOWPRI',
                 'ALLUNITS',
             },
-            TargetRestrictDisallow = 'UNTARGETABLE',
+            TargetRestrictDisallow = 'UNTARGETABLE, ORBITAL',
             TrackingRadius = 1.4,
             TurretBoneMuzzle = 'Turret_Barrel',
             TurretBonePitch = 'Turret_Barrel',

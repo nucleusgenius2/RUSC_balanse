@@ -180,11 +180,11 @@ UnitBlueprint {
                 Albedo = '/env/Common/decals/Tarmacs/Tar14x_seraphim_01_albedo.dds',
                 DeathLifetime = 300,
                 FadeOut = 150,
-                Length = 7*2,
+                Length = 7 * 2,
                 Normal = '/env/Common/decals/Tarmacs/Tar14x_seraphim_01_normals.dds',
-                Orientations = {0, 90, 180, 270},
+                Orientations = { 0, 90, 180, 270 },
                 RemoveWhenDead = false,
-                Width = 7*2,
+                Width = 7 * 2,
             },
         },
         UniformScale = 0.03,
@@ -193,7 +193,7 @@ UnitBlueprint {
         DialingCostBase = 0,
         BuildCostEnergy = 200000,
         BuildCostMass = 5000,
-        BuildTime = (61789*0.7/2)*0.7,
+        BuildTime = (61789 * 0.7 / 2) * 0.7,
         --MaintenanceConsumptionPerSecondEnergy = 500,
         StorageEnergy = 5000,
         RebuildBonusIds = {
@@ -279,86 +279,86 @@ UnitBlueprint {
         },
         RaisedPlatforms = {
 
-            # The main ramp
-            # TopLeft Offset From Center
-            -1*3,
+            -- # The main ramp
+            -- # TopLeft Offset From Center
+            -1 * 3,
 
-            # x
-            -1*3,
+            -- # x
+            -1 * 3,
 
-            # z
-            0.4*3,
+            -- # z
+            0.4 * 3,
 
-            # height
-            # TopRight Offset From Center
-            1*3,
+            -- # height
+            -- # TopRight Offset From Center
+            1 * 3,
 
-            # x
-            -1*3,
+            -- # x
+            -1 * 3,
 
-            # z
-            0.4*3,
+            -- # z
+            0.4 * 3,
 
-            # height
-            # BottomLeft Offset From Center
-            -1*3,
+            -- # height
+            -- # BottomLeft Offset From Center
+            -1 * 3,
 
-            # x
-            1*3,
+            -- # x
+            1 * 3,
 
-            # z
-            0.4*3,
+            -- # z
+            0.4 * 3,
 
-            # height
-            # BottomRight Offset From Center
-            1*3,
+            -- # height
+            -- # BottomRight Offset From Center
+            1 * 3,
 
-            # x
-            1*3,
+            -- # x
+            1 * 3,
 
-            # z
-            0.4*3,
+            -- # z
+            0.4 * 3,
 
-            # height
-            # South side
-            # TopLeft Offset From Center
-            -1*3,
+            -- # height
+            -- # South side
+            -- # TopLeft Offset From Center
+            -1 * 3,
 
-            # x
-            1*3,
+            -- # x
+            1 * 3,
 
-            # z
-            0.4*3,
+            -- # z
+            0.4 * 3,
 
-            # height
-            # TopRight Offset From Center
-            1*3,
+            -- # height
+            -- # TopRight Offset From Center
+            1 * 3,
 
-            # x
-            1*3,
+            -- # x
+            1 * 3,
 
-            # z
-            0.4*3,
+            -- # z
+            0.4 * 3,
 
-            # height
-            # BottomLeft Offset From Center
-            -0.4*3,
+            -- # height
+            -- # BottomLeft Offset From Center
+            -0.4 * 3,
 
-            # x
-            2.4*3,
+            -- # x
+            2.4 * 3,
 
-            # z
-            0*3,
+            -- # z
+            0 * 3,
 
-            # height
-            # BottomRight Offset From Center
-            0.4*3,
+            -- # height
+            -- # BottomRight Offset From Center
+            0.4 * 3,
 
-            # x
-            2.4*3,
+            -- # x
+            2.4 * 3,
 
-            # z
-            0*3,
+            -- # z
+            0 * 3,
         },
         RollOffPoints = {
             {

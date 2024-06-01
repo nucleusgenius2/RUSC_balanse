@@ -120,6 +120,7 @@ Description = {
     ['ueb2302'] = "<LOC Unit_Description_0072> Stationary heavy artillery with excellent range, accuracy and damage potential. ",
     ['ueb2305'] = "<LOC Unit_Description_0073> Strategic missile launcher. Constructing missiles costs resources. Must be ordered to construct missiles.",
     ['ueb0304'] = "<LOC Unit_Description_0074> Summons Support Commander(s).",
+    ['ueb0305'] = "<LOC Unit_Description_00741> Teleportation gateway. Multiple gates can be connected to one.",
     ['ueb2401'] = "<LOC Unit_Description_0075> Extremely advanced strategic artillery. Unlimited range, pin-point accuracy and devastating ordinance.",
     ['xeb2306'] = "<LOC Unit_Description_0313> Heavy defensive tower. Attacks land-based and sea-based units. Does not engage aircraft or submerged units.",
     ['xeb2402'] = "<LOC Unit_Description_0314> Satellite launch platform for orbital laser satellite. If this control center is destroyed, the satellite weapon is immediately disabled and it crashes to the ground causing minor damage upon impact.",

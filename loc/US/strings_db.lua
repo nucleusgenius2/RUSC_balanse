@@ -7630,7 +7630,7 @@ tooltipui1008="Energy Required"
 tooltipui1009="Amount of required energy for mass fabricators to work"
 
 LOADING = "Loading..."
-lobui_0427 = "FAF Game Lobby"
+lobui_0427 = "RUSC Game Lobby"
 lobui_0428 = "Kick Player"
 lobui_0429 = "Move Player to Observer"
 lobui_0430="Country not found. Please contact the development team on the forums, or ask a moderator for help"

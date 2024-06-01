@@ -43,6 +43,7 @@ ProjectileBlueprint {
         InitialSpeedRange = 3,
         InitialSpeedReduceDistance = 30,
         LeadTarget = false,
+        TrackTarget = true,
         TurnRate = 360,
         VelocityAlign = true,
     },
