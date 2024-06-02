@@ -199,9 +199,9 @@ allowedAssetsScd = LowerHashTable(allowedAssetsScd)
 
 -- typical backwards compatible packages
 local allowedAssetsNxt = { }
-allowedAssetsNxt["kyros.nxt"] = true
-allowedAssetsNxt["advanced strategic icons.nxt"] = true
-allowedAssetsNxt["advanced_strategic_icons.nxt"] = true
+allowedAssetsNxt["kyros.nxt"] = false
+allowedAssetsNxt["advanced strategic icons.nxt"] = false
+allowedAssetsNxt["advanced_strategic_icons.nxt"] = false
 allowedAssetsNxt = LowerHashTable(allowedAssetsNxt)
 
 -- default wave banks to prevent collisions
