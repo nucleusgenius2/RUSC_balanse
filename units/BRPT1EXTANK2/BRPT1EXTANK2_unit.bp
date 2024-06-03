@@ -39,7 +39,7 @@ UnitBlueprint {
             Level5 = 15,
         },
     },
-    BuildIconSortPriority = 50,
+    BuildIconSortPriority = 135,
     Categories = {
         'PRODUCTFA',
         "DIRECTFIRE",
