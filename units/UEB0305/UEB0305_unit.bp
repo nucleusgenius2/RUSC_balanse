@@ -27,6 +27,7 @@ UnitBlueprint {
     },
     BuildIconSortPriority = 220,
     Categories = {
+        "OVERLAYRADAR",
         "BUILTBYTIER3COMMANDER",
         "BUILTBYTIER3ENGINEER",
         "DRAGBUILD",
@@ -50,6 +51,7 @@ UnitBlueprint {
         RegenRate = 0,
         SubThreatLevel = 0,
         SurfaceThreatLevel = 0,
+        TeleCheckRadius = 20,
     },
     Display = {
         BuildAttachBone = "Attachpoint01",
@@ -125,7 +127,10 @@ UnitBlueprint {
         SelectionPriority = 5,
         UnitName = "<LOC ueb0305_name>Instant",
     },
-    Intel = { VisionRadius = 20 },
+    Intel = {
+        VisionRadius = 20,
+        RadarRadius = 20,
+    },
     LifeBarHeight = 0.075,
     LifeBarOffset = 2.75,
     LifeBarSize = 5.75,
