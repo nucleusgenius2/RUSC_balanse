@@ -72,6 +72,7 @@ UnitBlueprint {
         'COUNTERINTELLIGENCE',
         'DRAGBUILD',
         'SILO',
+        'SNIPEMODE'
     },
     CollisionOffsetY = -0.8,
     Defense = {

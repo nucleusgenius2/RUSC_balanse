@@ -126,6 +126,7 @@ UnitBlueprint {
         "UEFGantry",
         "USEBUILDPRESETS",
         "VISIBLETORECON",
+        "SNIPEMODE",
     },
     CollisionOffsetZ = -0.25,
     Defense = {

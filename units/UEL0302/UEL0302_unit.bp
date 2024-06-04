@@ -68,6 +68,7 @@ UnitBlueprint {
         'DRAGBUILD',
         'SILO',
         'LOWDAMAGE1',
+        'SNIPEMODE'
     },
     Defense = {
         AirThreatLevel = 0,

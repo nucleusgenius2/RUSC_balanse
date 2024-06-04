@@ -99,6 +99,7 @@ UnitBlueprint {
         'OVERLAYINDIRECTFIRE',
         "BUILTBYTEXPFACTORY",
         'OVERLAYRADAR',
+        'SNIPEMODE',
     },
     CollisionOffsetY = -0.075,
     Defense = {

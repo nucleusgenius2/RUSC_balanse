@@ -93,6 +93,7 @@ UnitBlueprint {
         'OVERLAYDEFENSE',
         'SILO',
         'ANTIMISSILE',
+        'SNIPEMODE'
     },
     CollisionOffsetY = 0.5,
     CollisionOffsetZ = -0.5,

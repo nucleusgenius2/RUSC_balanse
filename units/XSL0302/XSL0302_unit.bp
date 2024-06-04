@@ -72,6 +72,7 @@ UnitBlueprint {
         "EXPERIMENTAL",
         "VERIFYMISSILEUI",
         "VISIBLETORECON",
+        "SNIPEMODE"
     },
     Defense = {
         AirThreatLevel = 0,

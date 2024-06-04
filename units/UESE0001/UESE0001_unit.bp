@@ -90,6 +90,7 @@ UnitBlueprint {
         "STRATEGIC",
         "SILO",
         "SHIELD",
+        "SNIPEMODE",
     },
     CollisionOffsetY = -0.25,
     Defense = {

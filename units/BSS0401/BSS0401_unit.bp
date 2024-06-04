@@ -57,6 +57,7 @@ UnitBlueprint {
         'OVERLAYRADAR',
         'OVERLAYDEFENSE',
         'BIGTELEPORT',
+        'SNIPEMODE',
     },
     CollisionOffsetY = -1,
     CollisionOffsetZ = -1.2,
