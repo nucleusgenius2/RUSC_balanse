@@ -180,7 +180,9 @@ local function parseCommandlineArguments()
         return default
     end
 
-    local icons =  GetCommandLineArg("/icons", 2)
+    local icons =  GetCommandLineArg("/icons", 2) or GetCommandLineArg("/icons", 1)
+    LOG("ICONS:")
+    reprsl(icons)
 
     return {
         PrefLanguage = tostring(string.lower(GetCommandLineArgOrDefault("/country", "world"))),
@@ -1187,8 +1189,6 @@ function SetSlotInfo(slotNum, playerInfo)
     end
 
     if playerInfo.Icons then
-        slot.icon1:Hide()
-        slot.icon2:Hide()
         for i, icon in {slot.icon1, slot.icon2} do
             local icon_name = playerInfo.Icons[i]
             if icon_name then
@@ -1197,7 +1197,6 @@ function SetSlotInfo(slotNum, playerInfo)
             else
                 icon:Hide()
             end
-
         end
     end
 
@@ -2678,9 +2677,8 @@ function CreateSlotsUI(makeLabel)
     local Layouter = LayoutHelpers.ReusedLayoutFor
 
     -- The dimensions of the columns used for slot UI controls.
-    local offset = 90-57
-    local COLUMN_POSITIONS = {1, 21, 47, 91, 133, 338,338+45, 395+offset, 465+offset, 535+offset, 605+offset, 677+offset, 749+offset}
-    local COLUMN_WIDTHS = {20, 20, 45, 45, 200, 40,40, 59, 59, 59, 62, 62, 51}
+    local COLUMN_POSITIONS = {1, 21, 47, 91, 133, 338, 383, 428, 498, 568, 633, 693, 750}
+    local COLUMN_WIDTHS = {20, 20, 45, 45, 200, 40,40, 59, 59, 59, 50, 50, 51}
 
     local labelGroup = ColumnLayout(GUI.playerPanel, COLUMN_POSITIONS, COLUMN_WIDTHS)
 
@@ -3109,12 +3107,6 @@ function CreateUI(maxPlayers)
     end
     Tooltip.AddButtonTooltip(GUI.LobbyOptions, 'lobby_click_Settings')
 
-    -- Logo
-    GUI.logo = Bitmap(GUI, '/textures/ui/common/scx_menu/lan-game-lobby/logo.dds')
-    LayoutHelpers.AtLeftTopIn(GUI.logo, GUI, 1, 1)
-
-    -- Version texts
-    local bool ShowPatch = false
     GUI.gameVersionText = UIUtil.CreateText(GUI.panel, "Game Patch " .. GameVersion(), 9, UIUtil.bodyFont)
     GUI.gameVersionText:SetColor('677983')
     GUI.gameVersionText:SetDropShadow(true)

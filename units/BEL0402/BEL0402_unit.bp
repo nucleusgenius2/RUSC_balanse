@@ -1,10 +1,10 @@
 UnitBlueprint {
-	AI = {
+    AI = {
         TargetBones = {
-            #'Waist',
+            --#'Waist',
             'Torso',
-            #'L_Missile_Muzzle01',
-            #'R_Missile_Muzzle03',
+            --#'L_Missile_Muzzle01',
+            --#'R_Missile_Muzzle03',
         },
         AssistHeartbeatInterval = 0.5,-- # def. 1, time in seconds between drone and carrier management heartbeats
         DroneControlRange = 70, --# def. 70,  maximum distance the drone can stray from the carrier before being recalled (70 is the goliath's radar range)
@@ -52,18 +52,18 @@ UnitBlueprint {
             Cue = 'UEF_Select_Commander',
             LodCutoff = 'UnitMove_LodCutoff',
         },
-		NukeExplosion = Sound {
+        NukeExplosion = Sound {
             Bank = 'Explosions',
             Cue = 'UEF_Nuke_Impact',
             LodCutoff = 'Weapon_LodCutoff',
         },
-		MissileFire = Sound {
+        MissileFire = Sound {
             Bank = 'UELWeapon',
             Cue = 'UEL0111_Missile_Cruise',
             LodCutoff = 'Weapon_LodCutoff',
         },
     },
-	Buffs = {
+    Buffs = {
         Regen = {
             Level1 = 50,
             Level2 = 100,
@@ -74,7 +74,7 @@ UnitBlueprint {
     },
     BuildIconSortPriority = 35,
     Categories = {
-    	'PRODUCTSC1',
+        'PRODUCTSC1',
         'SELECTABLE',
         'BUILTBYTIER3COMMANDER',
         'BUILTBYTIER3ENGINEER',
@@ -93,18 +93,18 @@ UnitBlueprint {
     },
     CollisionOffsetZ = -0.25,
     Defense = {
-    	AirThreatLevel = 0,
-    	EconomyThreatLevel = 0,
+        AirThreatLevel = 0,
+        EconomyThreatLevel = 0,
         ArmorType = 'Normal',
         Health = 260000,
         MaxHealth = 260000,
-        RegenRate = 30,
+        RegenRate = 20,
         SubThreatLevel = 0,
         SurfaceThreatLevel = 27,
     },
     Description = '<LOC bel0402_desc>Heavy Armored Experimental Assault Bot',
     Display = {
-   		 Abilities = {
+            Abilities = {
             '<LOC ability_amphibious>Amphibious',
             '<LOC ability_massive>Massive',
             '<LOC ability_tacmissiledef>Tactical Missile Defense',
@@ -212,16 +212,16 @@ UnitBlueprint {
             Attachpoint = 'AttachSpecial01',
             UnitID = 'BEA0006',
         },
-		Drone2 = {
+        Drone2 = {
             Attachpoint = 'AttachSpecial02',
             UnitID = 'BEA0006',
         },
-		Drone3 = {
+        Drone3 = {
             Attachpoint = 'AttachSpecial03',
             UnitID = 'BEA0006',
         },
     }, 
-	Economy = {
+    Economy = {
         BuildCostEnergy = 400000,
         BuildCostMass = 60000,
         BuildTime = 67200,		
@@ -253,7 +253,7 @@ UnitBlueprint {
         FactionName = 'UEF',
         Icon = 'amph',
         TechLevel = 'RULEUTL_Secret',
-		UnitName = '<LOC bel0402_name>Experemental Percival',
+        UnitName = '<LOC bel0402_name>Experemental Percival',
         UnitWeight = 6,
     },
     Intel = {
@@ -342,14 +342,12 @@ UnitBlueprint {
                 Seabed = 'Land|Water|Seabed',
                 Water = 'Land|Water|Seabed',
             },
-            FiringTolerance = 2,
-            FiringRandomness = 0.1,
+            FiringTolerance = 1,
             Label = 'PlasmaCannon01',
             MaxRadius = 40,
-		 	MinRadius = 0,
+             MinRadius = 0,
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
-            MuzzleVelocity = 35,
             ProjectileId = '/projectiles/UHandCannon01/UHandCannon01_proj.bp',
             RackBones = {
                 {
@@ -377,9 +375,9 @@ UnitBlueprint {
             TargetCheckInterval = 0.5,
             TargetPriorities = {
                 'SPECIALHIGHPRI',
-				'EXPERIMENTAL MOBILE',
-				'TECH3 STRUCTURE DEFENSE',
-				'MOBILE LAND',
+                'EXPERIMENTAL MOBILE',
+                'TECH3 STRUCTURE DEFENSE',
+                'MOBILE LAND',
                 'STRUCTURE',
                 'SPECIALLOWPRI',
                 'ALLUNITS',
@@ -387,23 +385,24 @@ UnitBlueprint {
             TargetRestrictDisallow = 'UNTARGETABLE',
             TrackingRadius = 0.5,
             TurretBoneDualMuzzle = 'Left_Arm_Muzzle',
-            TurretBoneDualPitch = 'Left_Arm_Yaw',
+            TurretBoneDualPitch = 'Left_Arm_Pitch',
             TurretBoneMuzzle = 'Right_Arm_Muzzle',
-            TurretBonePitch = 'Right_Arm_Yaw',
+            TurretBonePitch = 'Right_Arm_Pitch',
             TurretBoneYaw = 'Torso',
             TurretDualManipulators = true,
+            MuzzleVelocity = 35,
             TurretPitch = 0,
             TurretPitchRange = 90,
             TurretPitchSpeed = 30,
             TurretYaw = 0,
             TurretYawRange = 180,
-            TurretYawSpeed = 60,
+            TurretYawSpeed = 180,
             Turreted = true,
             WeaponCategory = 'Direct Fire',
             WeaponRepackTimeout = 0,
             WeaponUnpacks = false,
         },
-		{
+        {
             AboveWaterTargetsOnly = true,
             Audio = {
                 BeamLoop = Sound {
@@ -445,7 +444,7 @@ UnitBlueprint {
             FiringTolerance = 2,
             Label = 'Laser',
             MaxRadius = 40,
-		--	MinRadius = 5,
+        --	MinRadius = 5,
             --EnergyDrainPerSecond = 3000,
             --EnergyRequired = 15000,	
             MuzzleSalvoDelay = 0,
@@ -482,21 +481,21 @@ UnitBlueprint {
             TargetRestrictDisallow = 'HIGHALTAIR, UNTARGETABLE',
             TrackingRadius = 1.25,
             TurretBoneMuzzle = 'Beam_Muzzle',
-            TurretBonePitch = 'Beam_Turret',
-            TurretBoneYaw = 'Torso',
+            TurretBonePitch = 'Beam_Pitch',
+            TurretBoneYaw = 'Beam_Turret',
             TurretDualManipulators = false,
             TurretPitch = 0,
-            TurretPitchRange = 90,
-            TurretPitchSpeed = 180,
+            TurretPitchRange = 60,
+            TurretPitchSpeed = 90,
             TurretYaw = 0,
             TurretYawRange = 90,
-            TurretYawSpeed = 50,
+            TurretYawSpeed = 180,
             Turreted = true,
             WeaponCategory = 'Direct Fire',
             WeaponRepackTimeout = 1,
             WeaponUnpacks = false,
         },
-		{
+        {
             AimsStraightOnDisable = true,
             Audio = {
                 Fire = Sound {
@@ -513,7 +512,7 @@ UnitBlueprint {
             FireTargetLayerCapsTable = {
                 Land = 'Air',
                 Water = 'Air',
-				Seabed = 'Air',
+                Seabed = 'Air',
             },
             FiringTolerance = 0,
             Label = 'TMDTurret',
@@ -522,7 +521,7 @@ UnitBlueprint {
             MuzzleSalvoSize = 1,
             MuzzleVelocity = 100,
             --#ProjectileId = '/projectiles/GoliathTMD01/GoliathTMD01_proj.bp',
-			ProjectileId = '/projectiles/TDPhalanx01/TDPhalanx01_proj.bp',
+            ProjectileId = '/projectiles/TDPhalanx01/TDPhalanx01_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.1,
             ProjectilesPerOnFire = 1,
             RackBones = {
@@ -590,7 +589,7 @@ UnitBlueprint {
             TargetRestrictDisallow = 'UNTARGETABLE',
             Turreted = false,
             WeaponCategory = 'Death',
-			CannotAttackGround = true,
+            CannotAttackGround = true,
         },
     },
     Wreckage = {

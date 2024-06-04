@@ -9286,6 +9286,7 @@ ChangelogDescriptionIdentifier="descriptionRU"
 	
 	brpt1extank2_name="Буря"
 	brpt1extank2_help="Предназначен для борьбы с воздушными целями."
+	unit_description_brpt1extank2="Предназначен для борьбы с воздушными целями."
 	brpt1extank2_desc="Экспериментальный танк ПВО"
 
 	sab0401_name="Наутилус"
