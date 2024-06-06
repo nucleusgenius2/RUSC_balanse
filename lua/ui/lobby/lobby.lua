@@ -34,7 +34,6 @@ local TextArea = import("/lua/ui/controls/textarea.lua").TextArea
 local utils = import("/lua/system/utils.lua")
 
 local Trueskill = import("/lua/ui/lobby/trueskill.lua")
-local round = Trueskill.round
 local Player = Trueskill.Player
 local Rating = Trueskill.Rating
 local ModBlacklist = import("/etc/faf/blacklist.lua").Blacklist
@@ -43,7 +42,6 @@ local EscapeHandler = import("/lua/ui/dialogs/eschandler.lua")
 local CountryTooltips = import("/lua/ui/help/tooltips-country.lua").tooltip
 local SetUtils = import("/lua/system/setutils.lua")
 local JSON = import("/lua/system/dkson.lua").json
-local UnitsAnalyzer = import("/lua/ui/lobby/unitsanalyzer.lua")
 local Changelog = import("/lua/ui/lobby/changelog.lua")
 local UTF =  import("/lua/utf.lua")
 -- Uveso - aitypes inside aitypes.lua are now also available as a function.
@@ -119,7 +117,6 @@ local rehostPlayerOptions = {} -- Player options loaded from preset, used for re
 
 local formattedOptions = {}
 local nonDefaultFormattedOptions = {}
-local Warning_MAP = false
 local LrgMap = false
 
 local HostUtils
@@ -242,7 +239,6 @@ local GUI = false
 local localPlayerID = false
 ---@type GameData | WatchedGameData
 local gameInfo = false
-local pmDialog = false
 local lastKickMessage = UTF.UnescapeString(Prefs.GetFromCurrentProfile('lastKickMessage') or "")
 
 local defaultMode =(HasCommandLineArg("/windowed") and "windowed") or Prefs.GetFromCurrentProfile('options').primary_adapter
@@ -480,7 +476,7 @@ function GetAIPlayerData(name, AIPersonality, slot)
     -- retrieve properties from AI table
     local baseAI = false
     local requiresNavMesh = false
-    for k, entry in aitypes do 
+    for k, entry in aitypes do
         if entry.key == AIPersonality then
             requiresNavMesh = requiresNavMesh or entry.requiresNavMesh
             baseAI = baseAI or entry.baseAI
@@ -1192,7 +1188,11 @@ function SetSlotInfo(slotNum, playerInfo)
         for i, icon in {slot.icon1, slot.icon2} do
             local icon_name = playerInfo.Icons[i]
             if icon_name then
-                icon:SetTexture(UIUtil.UIFile("/lobby/icons/"..tostring(icon_name)..".dds"), 0)
+                if exists(UIUtil.UIFile("/lobby/icons/"..tostring(icon_name)..".png")) then
+                    icon:SetTexture(UIUtil.UIFile("/lobby/icons/"..tostring(icon_name)..".png"), 0)
+                else
+                    icon:SetTexture(UIUtil.UIFile("/lobby/icons/"..tostring(icon_name)..".dds"), 0)
+                end
                 icon:Show()
             else
                 icon:Hide()
