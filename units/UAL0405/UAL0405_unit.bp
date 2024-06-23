@@ -109,10 +109,11 @@ UnitBlueprint {
         Health = 17000,
         MaxHealth = 17000,
         RegenRate = 40,
+        RegenRate = 40,
         SubThreatLevel = 0,
         SurfaceThreatLevel = 0,
         MaxRange = 170,
-        NoTeleDistance = 72,
+        NoTeleDistance = 64,
     },
     Aura = {
         -- Радиус ауры
@@ -287,8 +288,8 @@ UnitBlueprint {
             Slot = "Back",
         },
         AntiTele = {
-            BuildCostEnergy = 15000,
-            BuildCostMass = 2000,
+            BuildCostEnergy = 50000,
+            BuildCostMass = 5000,
             BuildTime = 4200,
             Icon = "ess",
             Name = "<LOC ability_antiteleport_upgrade>AntiTele",
@@ -366,7 +367,7 @@ UnitBlueprint {
         ReactivateTime = 10,
         RemoteViewingRadius = 121.5,
         VisionRadius = 35,
-        RadarRadius = 70,
+        RadarRadius = 64,
     },
     Interface = {
         HelpText = '<LOC ual0405_help>Experimental support unit',
