@@ -329,7 +329,7 @@ UnitBlueprint {
         ToggleCaps = {
             RULEUTC_ShieldToggle = false,
         },
-        SelectionPriority = 7,
+        SelectionPriority = 3,
         UnitName = '<LOC led0026_name>Gate maker',
         UnitWeight = 1,
     },
