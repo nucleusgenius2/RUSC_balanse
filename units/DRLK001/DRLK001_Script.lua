@@ -13,11 +13,11 @@ local Effects = import("/lua/effecttemplates.lua")
 DRLK001 = ClassUnit(CWalkingLandUnit) {
     Weapons = {
         TargetPainter = ClassWeapon(TargetingLaser) {
-            FxMuzzleFlash = {'/effects/emitters/particle_cannon_muzzle_02_emit.bp'}, 
+            FxMuzzleFlash = { '/effects/emitters/particle_cannon_muzzle_02_emit.bp' },
         },
-        
-	AAGun = ClassWeapon(CAANanoDartWeapon) {
-            IdleState = State (CAANanoDartWeapon.IdleState) {
+
+        AAGun = ClassWeapon(CAANanoDartWeapon) {
+            IdleState = State(CAANanoDartWeapon.IdleState) {
                 OnGotTarget = function(self)
                     CAANanoDartWeapon.IdleState.OnGotTarget(self)
 
@@ -46,7 +46,6 @@ DRLK001 = ClassUnit(CWalkingLandUnit) {
                 unit:SetWeaponEnabledByLabel('GroundGun', true)
             end,
         },
-        GroundGun = ClassWeapon(CAANanoDartWeapon) {},
     },
 }
 TypeClass = DRLK001
