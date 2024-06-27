@@ -9283,6 +9283,7 @@ ChangelogDescriptionIdentifier="descriptionRU"
 	broat2exgs_name="Метеор"
 	broat2exgs_help="Предназначен для борьбы с воздушными и наземными целями. Имеет высокое бронирование и урон."
 	broat2exgs_desc="Экспериментальный штурмовик"
+	unit_description_broat2exgs="Предназначен для борьбы с воздушными и наземными целями. Имеет высокое бронирование и урон."
 	
 	brpt1extank2_name="Буря"
 	brpt1extank2_help="Предназначен для борьбы с воздушными целями."

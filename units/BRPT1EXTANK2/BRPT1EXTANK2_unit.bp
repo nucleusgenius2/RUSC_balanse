@@ -197,7 +197,7 @@ UnitBlueprint {
     },
     Intel = {
         VisionRadius = 30,
-        RadarRadius = 45,
+        RadarRadius = 110,
     },
     Interface = {
         HelpText = '<LOC brpt1extank2_help>Advanced AA Tank',

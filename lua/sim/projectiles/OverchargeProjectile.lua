@@ -81,6 +81,7 @@ OverchargeProjectile = ClassSimple {
         local damage = data.minDamage
 
         local killShieldUnit = false
+        local hitShield = false
         if targetEntity then
             -- Handle hitting shields. We want the unit underneath, not the shield itself
             if not IsUnit(targetEntity) then
@@ -89,7 +90,7 @@ OverchargeProjectile = ClassSimple {
                     LOG(targetType)
                     return
                 end
-
+                hitShield = true
                 targetEntity = targetEntity.Owner
             end
 
@@ -158,6 +159,9 @@ OverchargeProjectile = ClassSimple {
                 damage = energyLimitDamage
             end
         end
+        if hitShield and EntityCategoryContains(categories.COMMAND, launcher) then
+            damage = damage * 0.5
+        end
         -- Turn the final damage into energy
         local drain = self:DamageAsEnergy(damage)
 
@@ -171,7 +175,7 @@ OverchargeProjectile = ClassSimple {
         self.DamageData.DamageAmount = damage
 
         if drain > 0 then
-            local noDrain = data.noDrain 
+            local noDrain = data.noDrain
             if not noDrain then
                 launcher.EconDrain = CreateEconomyEvent(launcher, drain, 0, 0)
             end
@@ -183,8 +187,11 @@ OverchargeProjectile = ClassSimple {
                 OCProjectiles[self.Army] = OCProjectiles[self.Army] - 1
                 launcher.EconDrain = nil
                 -- if oc depletes a mobile shield it kills the generator, vet counted, no wreck left
-                if killShieldUnit and targetEntity and not IsDestroyed(targetEntity) and
-                    (IsDestroyed(targetEntity.MyShield) or (not targetEntity.MyShield:IsUp())) then
+                if killShieldUnit
+                    and targetEntity
+                    and not IsDestroyed(targetEntity)
+                    and (IsDestroyed(targetEntity.MyShield) or not targetEntity.MyShield:IsUp())
+                then
                     targetEntity:Kill(launcher, 'Overcharge', 2)
                     launcher:OnKilledUnit(targetEntity, targetEntity:GetVeterancyValue())
                 end

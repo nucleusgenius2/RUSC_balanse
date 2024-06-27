@@ -878,6 +878,12 @@ function PreModBlueprints(all_bps)
             end
         end
 
+        local defense = bp.Defense
+        if defense then
+            defense.RepairMassDrainRatio = defense.RepairMassDrainRatio or 0.75
+            defense.RepairEnergyDrainRatio = defense.RepairEnergyDrainRatio or 0.75
+        end
+
 
         BlueprintLoaderUpdateProgress()
     end

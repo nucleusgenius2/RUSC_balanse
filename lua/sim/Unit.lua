@@ -1094,7 +1094,6 @@ Unit = ClassUnit(moho.unit_methods, IntelComponent, VeterancyComponent) {
             local energy = 0
             local targetData
             local baseData
-            local repairRatio = 0.75
 
             if focus then -- Always inherit work status of focus
                 self:InheritWork(focus)
@@ -1125,8 +1124,10 @@ Unit = ClassUnit(moho.unit_methods, IntelComponent, VeterancyComponent) {
                 else
                     time, energy, mass = self:GetBuildCosts(focus:GetBlueprint())
                     if self:IsUnitState('Repairing') and focus.isFinishedUnit then
-                        energy = energy * repairRatio
-                        mass = mass * repairRatio
+                        local energyRatio = focus.Blueprint.Defense.RepairEnergyDrainRatio or 0.75
+                        local massRatio = focus.Blueprint.Defense.RepairMassDrainRatio or 0.75
+                        energy = energy * energyRatio
+                        mass = mass * massRatio
                     end
                 end
             end

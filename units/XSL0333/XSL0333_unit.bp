@@ -287,7 +287,6 @@ UnitBlueprint {
             },
         },
         TechLevel = 'RULEUTL_Secret',
-        SelectionPriority = 3,
         UnitWeight = 1,
     },
     Intel = {
