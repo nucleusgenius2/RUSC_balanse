@@ -51,7 +51,7 @@ UnitBlueprint {
         RegenRate = 0,
         SubThreatLevel = 0,
         SurfaceThreatLevel = 0,
-        TeleCheckRadius = 20,
+        TeleCheckRadius = 28,
     },
     Display = {
         BuildAttachBone = "Attachpoint01",
@@ -129,7 +129,7 @@ UnitBlueprint {
     },
     Intel = {
         VisionRadius = 20,
-        RadarRadius = 20,
+        RadarRadius = 28,
     },
     LifeBarHeight = 0.075,
     LifeBarOffset = 2.75,
