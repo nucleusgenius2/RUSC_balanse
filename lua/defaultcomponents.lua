@@ -965,7 +965,6 @@ DiscountComponent = ClassSimple
         end
 
         local builtBP = unitBeingBuilt.Blueprint.BlueprintId:lower()
-        LOG(builtBP)
 
         local discountValues = units[builtBP]
         if not discountValues then
