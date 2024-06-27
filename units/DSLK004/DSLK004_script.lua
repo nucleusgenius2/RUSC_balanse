@@ -99,10 +99,6 @@ local PhasonBeam = ClassWeapon(DefaultBeamWeapon) {
 DSLK004 = ClassUnit(SLandUnit) {
     Weapons = {
         PhasonBeamAir = ClassWeapon(PhasonBeam) {},
-        PhasonBeamGround = ClassWeapon(PhasonBeam) {
-            BeamType = PhasonCollisionBeam2,
-            FxBeamEndPointScale = 0.01,
-        },
     },
 
     OnStopBeingBuilt = function(self,builder,layer)
