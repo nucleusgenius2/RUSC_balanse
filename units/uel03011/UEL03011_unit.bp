@@ -671,7 +671,6 @@ UnitBlueprint {
         ConstructionBar = true,
         FactionName = 'UEF',
         Icon = 'amph',
-        SelectionPriority = 3,
         TechLevel = 'RULEUTL_Secret',
         UnitWeight = 0,
         OrderOverrides = {
