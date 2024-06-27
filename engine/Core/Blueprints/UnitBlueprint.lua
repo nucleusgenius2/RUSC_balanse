@@ -690,6 +690,7 @@
 ---@field ConsumptionPerSecondMass? number
 --- the cost of upgrading will subtracting the base unit's cost
 ---@field DifferentialUpgradeCostCalculation? boolean
+---@field Discount? BPEconomyDiscount
 ---@field EngineeringPods? {CreateWithUnit: boolean, PodAttachpoint: Bone, PodName: string, PodUnitID: UnitId}
 --- default rally point X for the factory
 ---@field InitialRallyX number

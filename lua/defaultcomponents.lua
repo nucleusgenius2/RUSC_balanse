@@ -683,7 +683,7 @@ VeterancyComponent = ClassSimple {
                 upperThreshold = vetThresholds[currLevel + 1]
             end
 
-        -- case where we do have a limit (usual gameplay approach)
+            -- case where we do have a limit (usual gameplay approach)
         else
             if experience > diffThreshold then
                 experience = diffThreshold
@@ -770,7 +770,7 @@ VeterancyComponent = ClassSimple {
     ---@param self Unit | VeterancyComponent
     ---@param unitThatIsDying Unit
     ---@param experience? number
-    OnKilledUnit = function (self, unitThatIsDying, experience)
+    OnKilledUnit = function(self, unitThatIsDying, experience)
         if not experience then
             return
         end
@@ -828,24 +828,29 @@ ExternalFactoryComponent = ClassSimple {
     OnStopBeingBuilt = function(self, builder, layer)
         local blueprint = self.Blueprint
         if not self.FactoryAttachBone then
-            error(string.format("%s is not setup for an external factory: the unit does not have a field 'FactoryAttachBone'", blueprint.BlueprintId))
+            error(string.format("%s is not setup for an external factory: the unit does not have a field 'FactoryAttachBone'"
+                , blueprint.BlueprintId))
         end
 
         if not self.BuildAttachBone then
-            error(string.format("%s is not setup for an external factory: the unit does not have a field 'BuildAttachBone'", blueprint.BlueprintId))
+            error(string.format("%s is not setup for an external factory: the unit does not have a field 'BuildAttachBone'"
+                , blueprint.BlueprintId))
         end
 
         if self.BuildAttachBone == self.FactoryAttachBone then
-            error(string.format("%s is not setup for an external factory: the 'FactoryAttachBone' can not be the same as the 'BuildAttachBone'", blueprint.BlueprintId))
+            error(string.format("%s is not setup for an external factory: the 'FactoryAttachBone' can not be the same as the 'BuildAttachBone'"
+                , blueprint.BlueprintId))
         end
 
         if not blueprint.CategoriesHash['EXTERNALFACTORY'] then
-            error(string.format("%s is not setup for an external factory: the unit does not have a 'EXTERNALFACTORY' category", blueprint.BlueprintId))
+            error(string.format("%s is not setup for an external factory: the unit does not have a 'EXTERNALFACTORY' category"
+                , blueprint.BlueprintId))
         end
 
         local blueprintIdExternalFactory = blueprint.BlueprintId .. 'ef'
         if not __blueprints[blueprintIdExternalFactory] then
-            error(string.format("%s is not setup for an external factory: the external factory blueprint is not setup", blueprint.BlueprintId))
+            error(string.format("%s is not setup for an external factory: the external factory blueprint is not setup",
+                blueprint.BlueprintId))
         end
 
         -- create the factory somewhere completely unrelated
@@ -918,6 +923,75 @@ ExternalFactoryComponent = ClassSimple {
 
         self:RequestRefreshUI()
         ChangeState(self, self.IdleState)
+    end,
+
+}
+
+local DiscountBuff = import("/lua/sim/ProductionDiscountBuff.lua")
+
+---@class DiscountComponent
+---@field ActiveDiscount? string
+DiscountComponent = ClassSimple
+{
+    ---@param self Unit | DiscountComponent
+    ---@param builder Unit
+    ---@param layer Layer
+    OnStopBeingBuilt = function(self, builder, layer)
+        local discount = self:GetDicountData()
+        local bpName = self.Blueprint.BlueprintId
+        if not discount then
+            WARN(("Missing discount data for unit with DiscountComponent. BP: %s"):format(bpName))
+            return
+        end
+
+        DiscountBuff.ApplyDiscountBuff(bpName, "Mass", self, discount.Mass)
+        DiscountBuff.ApplyDiscountBuff(bpName, "Energy", self, discount.Mass)
+    end,
+
+    ---@param self Unit | DiscountComponent
+    ---@param unitBeingBuilt Unit
+    ---@param order string
+    OnStartBuild = function(self, unitBeingBuilt, order)
+        local discount = self:GetDicountData()
+        local bpName = self.Blueprint.BlueprintId
+        if not discount then
+            WARN(("Missing discount data for unit with DiscountComponent. BP: %s"):format(bpName))
+            return
+        end
+
+        local units = discount.Units
+        if not units then
+            return
+        end
+
+        local builtBP = unitBeingBuilt.Blueprint.BlueprintId:lower()
+        LOG(builtBP)
+
+        local discountValues = units[builtBP]
+        if not discountValues then
+            return
+        end
+
+        self.ActiveDiscount = bpName .. builtBP
+        DiscountBuff.ApplyDiscountBuff(self.ActiveDiscount, "Mass", self, discountValues.Mass)
+        DiscountBuff.ApplyDiscountBuff(self.ActiveDiscount, "Energy", self, discountValues.Energy)
+    end,
+
+    ---@param self Unit | DiscountComponent
+    ---@param unitBeingBuilt Unit
+    OnStopBuild = function(self, unitBeingBuilt)
+        if not self.ActiveDiscount then
+            return
+        end
+
+        DiscountBuff.RemoveDiscountBuff(self.ActiveDiscount, self)
+        self.ActiveDiscount = nil
+    end,
+
+    ---@param self Unit | DiscountComponent
+    ---@return BPEconomyDiscount
+    GetDicountData = function(self)
+        return self.Blueprint.Economy.Discount
     end,
 
 }
