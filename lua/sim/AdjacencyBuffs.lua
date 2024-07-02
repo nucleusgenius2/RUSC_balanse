@@ -201,45 +201,159 @@
 
 local AdjBuffFuncs = import("/lua/sim/adjacencybufffunctions.lua")
 
-local adj = {           -- SIZE4     SIZE8   SIZE12    SIZE16   SIZE20
-    T1PowerGenerator={
-        EnergyActive=       {-0.0625, -0.03125, -0.0208, -0.01563, -0.0025},
-        EnergyMaintenance=  {-0.0625, -0.03125, -0.0208, -0.01563, -0.0125},
-        EnergyWeapon=       {-0.0250, -0.01250, -0.0083, -0.00625, -0.0050},
-        RateOfFire=         {-0.0400, -0.01250, -0.0083, -0.00625, -0.0050},
+local adj = {
+    T1PowerGenerator = {
+        EnergyActive = {
+            [1] = -0.0625,
+            [2] = -0.03125,
+            [3] = -0.0208,
+            [4] = -0.01563,
+            [5] = -0.0025,
+            [9] = 0, },
+        EnergyMaintenance = {
+            [1] = -0.0625,
+            [2] = -0.03125,
+            [3] = -0.0208,
+            [4] = -0.01563,
+            [5] = -0.0125,
+            [9] = 0, },
+        EnergyWeapon = {
+            [1] = -0.0250,
+            [2] = -0.01250,
+            [3] = -0.0083,
+            [4] = -0.00625,
+            [5] = -0.0050,
+            [9] = 0, },
+        RateOfFire = {
+            [1] = -0.0400,
+            [2] = -0.01250,
+            [3] = -0.0083,
+            [4] = -0.00625,
+            [5] = -0.0050,
+            [9] = 0, },
     },
-    T2PowerGenerator={
-        EnergyActive=       {-0.125,  -0.125,   -0.125,  -0.125,   -0.125},
-        EnergyMaintenance=  {-0.125,  -0.125,   -0.125,  -0.125,   -0.125},
-        EnergyWeapon=       {-0.05,   -0.05,    -0.05,   -0.05,    -0.05},
-        RateOfFire=         {-0.0625, -0.0625,  -0.0625, -0.0625,  -0.0625},
+    T2PowerGenerator = {
+        EnergyActive = {
+            [1] = -0.125,
+            [2] = -0.125,
+            [3] = -0.125,
+            [4] = -0.125,
+            [5] = -0.125,
+            [9] = 0, },
+        EnergyMaintenance = {
+            [1] = -0.125,
+            [2] = -0.125,
+            [3] = -0.125,
+            [4] = -0.125,
+            [5] = -0.125,
+            [9] = 0, },
+        EnergyWeapon = {
+            [1] = -0.05,
+            [2] = -0.05,
+            [3] = -0.05,
+            [4] = -0.05,
+            [5] = -0.05,
+            [9] = 0, },
+        RateOfFire = {
+            [1] = -0.0625,
+            [2] = -0.0625,
+            [3] = -0.0625,
+            [4] = -0.0625,
+            [5] = -0.0625,
+            [9] = 0, },
     },
-    T3PowerGenerator={
-        EnergyActive=       {-0.1875, -0.1875,  -0.1875, -0.1875,  -0.05},
-        EnergyMaintenance=  {-0.1875, -0.1875,  -0.1875, -0.1875,  -0.1875},
-        EnergyWeapon=       {-0.075,  -0.075,   -0.075,  -0.075,   -0.075},
-        RateOfFire=         {-0.1,    -0.1,     -0.1,    -0.1,     -0.1},
+    T3PowerGenerator = {
+        EnergyActive = {
+            [1] = -0.1875,
+            [2] = -0.1875,
+            [3] = -0.1875,
+            [4] = -0.1875,
+            [5] = -0.05,
+            [9] = 0, },
+        EnergyMaintenance = {
+            [1] = -0.1875,
+            [2] = -0.1875,
+            [3] = -0.1875,
+            [4] = -0.1875,
+            [5] = -0.1875,
+            [9] = 0, },
+        EnergyWeapon = {
+            [1] = -0.075,
+            [2] = -0.075,
+            [3] = -0.075,
+            [4] = -0.075,
+            [5] = -0.075,
+            [9] = 0, },
+        RateOfFire = {
+            [1] = -0.1,
+            [2] = -0.1,
+            [3] = -0.1,
+            [4] = -0.1,
+            [5] = -0.1,
+            [9] = 0, },
     },
-    T1MassExtractor={
-        MassActive=         {-0.1, -0.05, -0.0333, -0.075, -0.075},
+    T1MassExtractor = {
+        MassActive = {
+            [1] = -0.1,
+            [2] = -0.05,
+            [3] = -0.0333,
+            [4] = -0.075,
+            [5] = -0.075,
+            [9] = 0, },
     },
-    T2MassExtractor={
-        MassActive=         {-0.15, -0.075, -0.05, -0.1, -0.1},
+    T2MassExtractor = {
+        MassActive = {
+            [1] = -0.15,
+            [2] = -0.075,
+            [3] = -0.05,
+            [4] = -0.1,
+            [5] = -0.1,
+            [9] = 0, },
     },
-    T3MassExtractor={
-        MassActive=         {-0.2, -0.1, -0.0667, -0.15, -0.15},
+    T3MassExtractor = {
+        MassActive = {
+            [1] = -0.2,
+            [2] = -0.1,
+            [3] = -0.0667,
+            [4] = -0.15,
+            [5] = -0.15,
+            [9] = 0, },
     },
-    T1MassFabricator={
-        MassActive=         {-0.025, -0.0125, -0.008333, -0.0125, -0.0075},
+    T1MassFabricator = {
+        MassActive = {
+            [1] = -0.025,
+            [2] = -0.0125,
+            [3] = -0.008333,
+            [4] = -0.0125,
+            [5] = -0.0075,
+            [9] = 0, },
     },
-    T3MassFabricator={
-        MassActive=         {-0.2, -0.2, -0.125, -0.2, -0.05},
+    T3MassFabricator = {
+        MassActive = {
+            [1] = -0.2,
+            [2] = -0.2,
+            [3] = -0.125,
+            [4] = -0.2,
+            [5] = -0.05,
+            [9] = -0.01, },
     },
-    T1EnergyStorage={
-        EnergyProduction=   {0.25, 0.125, 0.083334, 0.0625, 0.01},
+    T1EnergyStorage = {
+        EnergyProduction = {
+            [1] = 0.25,
+            [2] = 0.125,
+            [3] = 0.083334,
+            [4] = 0.0625,
+            [5] = 0.01,
+            [9] = 0, },
     },
-    T1MassStorage={
-        MassProduction=     {0.125, 0.0625, 0.03, 0.03125, 0.025},
+    T1MassStorage = {
+        MassProduction = {
+            [1] = 0.125,
+            [2] = 0.0625,
+            [3] = 0.03,
+            [4] = 0.03125,
+            [5] = 0.025,
+            [9] = 0, },
     },
 }
 
@@ -268,7 +382,7 @@ for a, buffs in adj do
                 BuffCheckFunction = AdjBuffFuncs[t .. 'BuffCheck'],
                 OnBuffAffect = AdjBuffFuncs.DefaultBuffAffect,
                 OnBuffRemove = AdjBuffFuncs.DefaultBuffRemove,
-                Affects = {[t]={Add=add}},
+                Affects = { [t] = { Add = add } },
             }
 
             table.insert(_G[a .. 'AdjacencyBuffs'], name)
