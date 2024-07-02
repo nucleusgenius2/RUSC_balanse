@@ -927,6 +927,8 @@ ExternalFactoryComponent = ClassSimple {
 
 }
 
+
+local ParseEntityCategory = ParseEntityCategory
 local DiscountBuff = import("/lua/sim/ProductionDiscountBuff.lua")
 
 ---@class DiscountComponent
@@ -961,6 +963,7 @@ DiscountComponent = ClassSimple
 
         local units = discount.Units
         if not units then
+            self:ApplyCategoryDiscount(unitBeingBuilt, discount.Categories)
             return
         end
 
@@ -974,6 +977,25 @@ DiscountComponent = ClassSimple
         self.ActiveDiscount = bpName .. builtBP
         DiscountBuff.ApplyDiscountBuff(self.ActiveDiscount, "Mass", self, discountValues.Mass)
         DiscountBuff.ApplyDiscountBuff(self.ActiveDiscount, "Energy", self, discountValues.Energy)
+    end,
+
+    ---@param self DiscountComponent | Unit
+    ---@param unit Unit
+    ---@param discounts? CategoryDiscountValues[]
+    ApplyCategoryDiscount = function(self, unit, discounts)
+        if not discounts then
+            return
+        end
+        local bpName = self.Blueprint.BlueprintId
+
+        for _, discount in ipairs(discounts) do
+            if EntityCategoryContains(ParseEntityCategory(discount.Category), unit) then
+                self.ActiveDiscount = bpName .. discount.Category
+                DiscountBuff.ApplyDiscountBuff(self.ActiveDiscount, "Mass", self, discount.Mass)
+                DiscountBuff.ApplyDiscountBuff(self.ActiveDiscount, "Energy", self, discount.Energy)
+                return
+            end
+        end
     end,
 
     ---@param self Unit | DiscountComponent
