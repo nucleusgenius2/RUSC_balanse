@@ -107,7 +107,7 @@ UnitBlueprint {
         SubThreatLevel = 0,
         SurfaceThreatLevel = 0,
     },
-    Description = '<LOC srb0401>Experimental Land Factory',
+    Description = '<LOC srb0401_desc>Experimental Land Factory',
     Display = {
         BlinkingLights = {
             {
@@ -248,7 +248,7 @@ UnitBlueprint {
         VisionRadius = 37,
     },
     Interface = {
-        HelpText = '<LOC srb0401>Experimental Land Factory',
+        HelpText = '<LOC srb0401_help>Experimental Land Factory',
     },
     LifeBarHeight = 0.075,
     LifeBarOffset = 9,
