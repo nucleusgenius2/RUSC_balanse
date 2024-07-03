@@ -724,7 +724,6 @@ Description = {
   ['bsa0310'] = "<LOC unit_description_bsa0310>Missle Gunship.",
   ['urb03011'] = "<LOC unit_description_urb03011>Bomb Factory.",
   ['xrl03021'] = "<LOC unit_description_xrl03021>Mobile Bomb.",
-  ['xsl0302'] = "<LOC unit_description_xsl0302>Archer",
 
   ["srb0401"] = "<LOC unit_description_srb0401>Produces t3 and t4 units with discount. T3 is 80% and T4 is 15% discount. Discount can be increased with adjacent mass fabricators and mass extractors.",
   ["bea0402"] = "<LOC unit_description_bea0402>Flying fortress. Has 2 firing modes. Conducts barrage fire in the area. There is also air defense on the board.",
