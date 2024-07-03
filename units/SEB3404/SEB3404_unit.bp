@@ -98,7 +98,10 @@ UnitBlueprint {
         BuildCostMass = 40000,
         BuildTime = 27000,
         BuildRate = 3400,
-        BuildableCategory = { "ORBITAL" },
+        BuildableCategory = {
+            "ORBITAL",
+            "BUILTBYEXPERIMENTALFACTORY UEF AIR"
+        },
         RebuildBonusIds = {
             'seb3404',
         },
