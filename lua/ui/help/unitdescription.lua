@@ -727,4 +727,5 @@ Description = {
   ['xsl0302'] = "<LOC unit_description_xsl0302>Archer",
 
   ["srb0401"] = "<LOC unit_description_srb0401>Produces t3 and t4 units with discount. T3 is 80% and T4 is 15% discount. Discount can be increased with adjacent mass fabricators and mass extractors.",
+  ["bea0402"] = "<LOC unit_description_bea0402>Flying fortress. Has 2 firing modes. Conducts barrage fire in the area. There is also air defense on the board.",
 }
