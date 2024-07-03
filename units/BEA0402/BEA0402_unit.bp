@@ -156,8 +156,8 @@ UnitBlueprint {
         AirThreatLevel = 16,
         ArmorType = 'Experimental',
         EconomyThreatLevel = 0,
-        Health = 71000,
-        MaxHealth = 71000,
+        Health = 230000,
+        MaxHealth = 230000,
         RegenRate = 20,
         SubThreatLevel = 40,
         SurfaceThreatLevel = 380,
@@ -185,9 +185,9 @@ UnitBlueprint {
         UniformScale = 0.40,
     },
     Economy = {
-        BuildCostEnergy = 573750,
-        BuildCostMass = 48960,
-        BuildTime = 36000,
+        BuildCostEnergy = 1573750,
+        BuildCostMass = 100000,
+        BuildTime = 100000,
     },
     General = {
         Category = 'Experimental',
@@ -1304,7 +1304,7 @@ UnitBlueprint {
         },
         {
             AboveWaterTargetsOnly = true,
-            Damage = 10880,
+            Damage = 7000,
             DamageFriendly = true,
             DamageRadius = 13,
             DamageType = 'Normal',
