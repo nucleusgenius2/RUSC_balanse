@@ -14,6 +14,9 @@
 ---@field [1] number
 ---@field [2] number
 ---@field [3] number
+---@field x number
+---@field y number
+---@field z number
 
 ---@class Vector2
 ---@field [1] number
