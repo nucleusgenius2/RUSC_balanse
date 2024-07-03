@@ -171,6 +171,7 @@ UnitBlueprint {
         BuildableCategory = {
             'EXPERIMENTAL CYBRAN MOBILE LAND',
             'BUILTBYTIER3FACTORY CYBRAN MOBILE LAND TECH3',
+            "ura0401",
             'BUILTBYARTHROLAB',
         },
         RebuildBonusIds = {
