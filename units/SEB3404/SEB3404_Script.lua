@@ -10,12 +10,12 @@ SEB3404 = Class(ConstructionUnit) {
 
     OnStartBeingBuilt = function(self, unitBeingBuilt, order)
         ConstructionUnit.OnStartBeingBuilt(self, unitBeingBuilt, order)
-		AddBuildRestriction(self:GetArmy(), categories.ORBITAL1)
+        AddBuildRestriction(self:GetArmy(), categories.ORBITAL1)
     end,
 
     OnStopBeingBuilt = function(self, ...)
-        ConstructionUnit.OnStopBeingBuilt(self, unpack(arg) )
-		AddBuildRestriction(self:GetArmy(), categories.ORBITAL1)
+        ConstructionUnit.OnStopBeingBuilt(self, unpack(arg))
+        AddBuildRestriction(self:GetArmy(), categories.ORBITAL1)
         local bp = self:GetBlueprint()
         self.PanopticonUpkeep = bp.Economy.MaintenanceConsumptionPerSecondEnergy
         self:SetScriptBit('RULEUTC_WeaponToggle', true)
@@ -33,11 +33,11 @@ SEB3404 = Class(ConstructionUnit) {
                 end
             end
         )
-        self:ForkThread(AnimationThread,{
+        self:ForkThread(AnimationThread, {
             {
                 'Xband_Base',
                 'Xband_Dish',
-                bounds = {-180,180,-90,0,},
+                bounds = { -180, 180, -90, 0, },
                 speed = 3,
             },
             {
@@ -49,33 +49,33 @@ SEB3404 = Class(ConstructionUnit) {
                 'Small_XBand_Stand_00',
                 'Small_XBand_Dish_00',
                 c = 4,
-                bounds = {-180,180,-90,0,},
+                bounds = { -180, 180, -90, 0, },
             },
             {
                 'Small_Dish_00',
                 'Small_Dish_00',
                 c = 4,
-                bounds = {-180,180,-90,90,},
+                bounds = { -180, 180, -90, 90, },
                 speed = 20,
             },
             {
                 'Med_Dish_Stand_00',
                 'Med_Dish_00',
                 c = 4,
-                bounds = {-180,180,-90,90,},
+                bounds = { -180, 180, -90, 90, },
                 speed = 6,
             },
             {
                 'Large_Dish_Base',
                 'Large_Dish',
-                bounds = {-180,180,-90,0,},
+                bounds = { -180, 180, -90, 0, },
                 speed = 2,
             },
         })
         local drawscale = bp.Display.UniformScale or 1
-        for i, v in {Panopticon = 'Domes', Large_Dish = 'Dish_Scaffolds'} do
-            local entity = import('/lua/sim/Entity.lua').Entity({Owner = self,})
-            entity:AttachBoneTo( -1, self, i )
+        for i, v in { Panopticon = 'Domes', Large_Dish = 'Dish_Scaffolds' } do
+            local entity = import('/lua/sim/Entity.lua').Entity({ Owner = self, })
+            entity:AttachBoneTo(-1, self, i)
             entity:SetMesh('/units/SEB3404/SEB3404_' .. v .. '_mesh')
             entity:SetDrawScale(drawscale)
             entity:SetVizToAllies('Intel')
@@ -83,25 +83,25 @@ SEB3404 = Class(ConstructionUnit) {
             entity:SetVizToEnemies('Intel')
             self.Trash:Add(entity)
         end
-		self:RemoveToggleCap('RULEUTC_ProductionToggle')
-		self.Satellite = nil
+        self:RemoveToggleCap('RULEUTC_ProductionToggle')
+        self.Satellite = nil
     end,
 
     OpenState = State() {
-		
+
         Main = function(self)
             -- If the unit has arrived with a new player via capture, it will already have a Satellite in the wild
             if not self.Satellite then
 
-				if self.newSatellite then
-					self.Satellite = self.newSatellite
-					self.newSatellite = nil
-				end
+                if self.newSatellite then
+                    self.Satellite = self.newSatellite
+                    self.newSatellite = nil
+                end
 
                 -- Release unit
                 self.Satellite:DetachFrom()
-			
-                IssueClearCommands({self})
+
+                IssueClearCommands({ self })
             end
 
             local army = self.Army
@@ -112,52 +112,51 @@ SEB3404 = Class(ConstructionUnit) {
 
     -- Override OnStartBuild to cancel any and all commands if we already have a Satellite
     OnStartBuild = function(self, unitBeingBuilt, order)
-		if self.Satellite.Dead then
-			self.Satellite = nil
-		end	
+        if self.Satellite.Dead then
+            self.Satellite = nil
+        end
         if self.Satellite then
 
-            IssueStop({self})
-            IssueClearCommands({self}) -- This clears the State launch procedure for some reason, leading to the following hack
+            IssueStop({ self })
+            IssueClearCommands({ self }) -- This clears the State launch procedure for some reason, leading to the following hack
 
         else
-			pos = self:GetPosition('Panopticon1')
-			unitBeingBuilt:SetPosition(pos, true)
-			ConstructionUnit.OnStartBuild(self, unitBeingBuilt, order)
+            pos = self:GetPosition('Panopticon1')
+            unitBeingBuilt:SetPosition(pos, true)
+            ConstructionUnit.OnStartBuild(self, unitBeingBuilt, order)
         end
     end,
 
     OnStopBuild = function(self, unitBeingBuilt)
 
         if self.Satellite then
-            IssueStop({self})
-            IssueClearCommands({self})
-			unitBeingBuilt:Destroy()
-		else	
+            IssueStop({ self })
+            IssueClearCommands({ self })
+            unitBeingBuilt:Destroy()
+        else
             self.newSatellite = unitBeingBuilt
-			Owner=self.Army,
-			ConstructionUnit.OnStopBuild(self, unitBeingBuilt)	
-			ChangeState(self, self.OpenState)
-			
+            ConstructionUnit.OnStopBuild(self, unitBeingBuilt)
+            ChangeState(self, self.OpenState)
+
             --local captorArmyIndex = unitBeingBuilt.Army
-			--ChangeUnitArmy(captorArmyIndex, self.Satellite)
-			
+            --ChangeUnitArmy(captorArmyIndex, self.Satellite)
+
             -- Shift the two units to the new army and assign relationship
             --if self.Satellite and not self.Satellite.Dead then
             --    local sat = ChangeUnitArmy(captorArmyIndex, self.Satellite)
             --    base.Satellite = sat
             --    sat.Parent = base
             --end
-			
 
-			
+
+
             -- Shift the two units to the new army and assign relationship
             --if self.Satellite and not self.Satellite.Dead then
             --    local sat = ChangeUnitArmy(captorArmyIndex, self.Satellite)
-                --sat.Parent = base
-                --base.Satellite = sat
+            --sat.Parent = base
+            --base.Satellite = sat
             --end
-		end	
+        end
     end,
 
     OnKilled = function(self, instigator, type, overkillRatio)
@@ -168,15 +167,15 @@ SEB3404 = Class(ConstructionUnit) {
         self:SetActiveConsumptionInactive()
         ChangeState(self, self.IdleState)
         ConstructionUnit.OnKilled(self, instigator, type, overkillRatio)
-		
+
         self:DestroyUnitBeingBuilt()
     end,
-	
+
     OnDestroy = function(self)
         if self.Satellite and not self.Satellite.Dead and not self.Satellite.IsDying then
             self.Satellite:Destroy()
         end
-	
+
         ConstructionUnit.OnDestroy(self)
 
         if self.Blueprint.CategoriesHash["RESEARCH"] and self:GetFractionComplete() == 1.0 then
@@ -219,7 +218,7 @@ SEB3404 = Class(ConstructionUnit) {
             end
         end
     end,
-	
+
     ---@param self FactoryUnit
     DestroyUnitBeingBuilt = function(self)
         if self.UnitBeingBuilt and not self.UnitBeingBuilt.Dead and self.UnitBeingBuilt:GetFractionComplete() < 1 then
@@ -230,8 +229,8 @@ SEB3404 = Class(ConstructionUnit) {
             end
         end
     end,
-	
-	
+
+
 
 }
 
