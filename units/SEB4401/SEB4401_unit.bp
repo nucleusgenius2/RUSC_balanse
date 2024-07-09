@@ -71,10 +71,12 @@ UnitBlueprint {
         SubThreatLevel = 0,
         SurfaceThreatLevel = 0,
 
+        -- коэф снижения урона по щиту от т3-т4 арты
         HeavyArtilleryDamageReduction = 0.3,
 
-        RepairMassDrainRatio = 0.6375,
-        RepairEnergyDrainRatio = 0.6375,
+        -- коэф стоимости ассиста щита (изначально 0.75 от стоимости строительства)
+        RepairMassDrainRatio = 0.25,
+        RepairEnergyDrainRatio = 0.25,
     },
     Description = '<LOC seb4401_desc>Experimental Shield Generator',
     Display = {
