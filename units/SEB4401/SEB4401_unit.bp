@@ -70,6 +70,9 @@ UnitBlueprint {
         },
         SubThreatLevel = 0,
         SurfaceThreatLevel = 0,
+
+        RepairMassDrainRatio = 0.6375,
+        RepairEnergyDrainRatio = 0.6375,
     },
     Description = '<LOC seb4401_desc>Experimental Shield Generator',
     Display = {
@@ -141,10 +144,10 @@ UnitBlueprint {
         UniformScale = 0.08,
     },
     Economy = {
-        BuildCostEnergy = 250000,
+        BuildCostEnergy = 50000,
         BuildCostMass = 15000,
         BuildTime = 9375,
-        MaintenanceConsumptionPerSecondEnergy = 2000,
+        MaintenanceConsumptionPerSecondEnergy = 1000,
         RebuildBonusIds = {
             'seb4401',
         },
