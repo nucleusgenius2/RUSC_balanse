@@ -1023,7 +1023,7 @@ UnitBlueprint {
             BallisticArc = 'RULEUBA_None',
             CannotAttackGround = true,
             CollideFriendly = false,
-            Damage = 350,
+            Damage = 346,
             DamageRadius = 0,
             DamageType = 'Normal',
             DisplayName = 'Flayer SAM Launcher',
