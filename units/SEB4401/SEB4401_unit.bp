@@ -61,7 +61,7 @@ UnitBlueprint {
             MeshZ = '/effects/entities/Shield01/Shield01z_mesh',
             RegenAssistMult = 60,
             ShieldEnergyDrainRechargeTime = 5,
-            ShieldMaxHealth = 150000,
+            ShieldMaxHealth = 25000,
             ShieldRechargeTime = 95,
             ShieldRegenRate = 262,
             ShieldRegenStartTime = 1,
@@ -70,6 +70,8 @@ UnitBlueprint {
         },
         SubThreatLevel = 0,
         SurfaceThreatLevel = 0,
+
+        HeavyArtilleryDamageReduction = 0.3,
 
         RepairMassDrainRatio = 0.6375,
         RepairEnergyDrainRatio = 0.6375,

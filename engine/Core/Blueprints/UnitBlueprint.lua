@@ -341,6 +341,7 @@
 
 
 ---@class UnitBlueprintDefense
+---@field HeavyArtilleryDamageReduction number?
 --- used by the Loyalist script
 ---@field AntiMissile? {AttachBone: Bone, Radius: number, RedirectRateOfFire: number}
 --- the armor type name
