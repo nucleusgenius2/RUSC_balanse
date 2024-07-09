@@ -119,7 +119,7 @@ UnitBlueprint {
         SubThreatLevel = 20,
         SurfaceThreatLevel = 160,
     },
-    Description = '<LOC uelew0003_desc>Tech 2 Experimental Deployable Tank',
+    Description = '<LOC uelew0003_help>Supporting platform',
     Display = {
         Abilities = {
             '<LOC ability_aa>Anti-Air',
@@ -235,7 +235,7 @@ UnitBlueprint {
         ToggleCaps = {
             RULEUTC_WeaponToggle = true,
         },
-        UnitName = 'Alexander Prototype E415M',
+        UnitName = '<LOC uelew0003_name>Watcher',
         UnitWeight = 1,
     },
     Intel = {
@@ -243,7 +243,7 @@ UnitBlueprint {
         WaterVisionRadius = 32,
     },
     Interface = {
-        HelpText = '<LOC uelew0003_help>Tech 2 Experimental Deployable Tank',
+        HelpText = '<LOC uelew0003_help>Supporting platform',
     },
     LifeBarHeight = 0.075,
     LifeBarOffset = 4.35,
