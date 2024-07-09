@@ -12,7 +12,7 @@ local CAirUnit = import('/lua/cybranunits.lua').CAirUnit
 
 local CDFParticleCannonWeapon = import('/lua/cybranweapons.lua').CDFParticleCannonWeapon
 local CAAMissileNaniteWeapon = import('/lua/cybranweapons.lua').CAAMissileNaniteWeapon
-local CDFHeavyElectronBolter01Weapon = import('/Mods/OrbitalWarsMod/hook/lua/modweapons.lua').CDFHeavyElectronBolter01Weapon
+local CDFHeavyElectronBolter01Weapon = import('/lua/modweapons.lua').CDFHeavyElectronBolter01Weapon
 
 local fxutil = import('/lua/effectutilities.lua')
 local Effects = import('/lua/effecttemplates.lua')
@@ -86,8 +86,7 @@ UROW1102 = Class(CAirUnit) {
                 '/effects/emitters/missile_cruise_munition_trail_01_emit.bp',
                 --'/effects/emitters/nuke_munition_launch_trail_02_emit.bp',
             }
-            local ExhaustBeam = '/Mods/OrbitalWarsMod/hook/effects/emitters/cybran_missile_exhaust_fire_beam_13_emit.bp'
-            --'/Mods/OrbitalWarsMod/hook/effects/emitters/cybran_missile_exhaust_fire_beam_11_emit.bp'
+            local ExhaustBeam = '/effects/emitters/cybran_missile_exhaust_fire_beam_13_emit.bp'
             local army = self:GetArmy()
 
             for kE, vE in ExhaustEffects do

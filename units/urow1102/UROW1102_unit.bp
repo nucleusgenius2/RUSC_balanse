@@ -226,7 +226,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 2,
             MuzzleVelocity = 30,
-            ProjectileId = '/Mods/OrbitalWarsMod/hook/projectiles/OrbitalBolterHeavy/OrbitalBolterHeavy_proj.bp',
+            ProjectileId = '/projectiles/OrbitalBolterHeavy/OrbitalBolterHeavy_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.25,
             RackBones = {
                 {
@@ -298,7 +298,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 2,
             MuzzleVelocity = 30,
-            ProjectileId = '/Mods/OrbitalWarsMod/hook/projectiles/OrbitalBolterHeavy/OrbitalBolterHeavy_proj.bp',
+            ProjectileId = '/projectiles/OrbitalBolterHeavy/OrbitalBolterHeavy_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.25,
             RackBones = {
                 {
