@@ -94,14 +94,7 @@ UnitBlueprint {
     Categories = {
         'PRODUCTEW2',
         'SELECTABLE',
-        'BUILTBYTIER2COMMANDER',
-        'BUILTBYTIER3COMMANDER',
-        'BUILTBYT2LANDENGINEER',
-        'BUILTBYT3LANDENGINEER',
-        'BUILTBYT2AIRENGINEER',
-        'BUILTBYT3AIRENGINEER',
-        'BUILTBYT2SEAENGINEER',
-        'BUILTBYT3SEAENGINEER',
+        "BUILTBYTIER3ENGINEER",
         'UEF',
         'MOBILE',
         'EXPERIMENTAL',
@@ -134,7 +127,7 @@ UnitBlueprint {
             '<LOC ability_deploys>Deploys',
             '<LOC ability_amphibious>Amphibious',
         },
-        AnimationTransform = '/Mods/ExpWars_v2_8/units/uelew0003/uelew0003_aactivate.sca',
+        AnimationTransform = '/units/uelew0003/uelew0003_aactivate.sca',
         IdleEffects = {
             Land = {
                 Effects = {
