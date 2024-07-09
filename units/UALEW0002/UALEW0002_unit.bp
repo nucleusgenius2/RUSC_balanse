@@ -81,6 +81,9 @@ UnitBlueprint {
             ShieldSpillOverDamageMod = 0.35,
             ShieldVerticalOffset = -8,
         },
+
+        -- коэф снижения урона по щиту от т3-т4 арты
+        HeavyArtilleryDamageReduction = 0.2,
     },
     Description = '<LOC ualew0002_desc>Amphibious Shield',
     Display = {

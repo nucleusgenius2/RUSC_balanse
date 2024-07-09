@@ -526,20 +526,12 @@ Shield = ClassShield(moho.shield_methods, Entity) {
             local ownerBP = self.Owner:GetBlueprint()
             local absorbed = self:OnGetDamageAbsorption(instigator, amount, dmgType)
 			
-			if ownerBP.BlueprintId == 'ualew0002' then
-				if EntityCategoryContains(categories.ARTILLERY + categories.STRATEGIC, instigator) then
-					absorbed = absorbed * 0.8
-				elseif EntityCategoryContains(categories.ARTILLERY + categories.CYBRAN + categories.EXPERIMENTAL, instigator) then
-					absorbed = absorbed * 0.8
-				end
-            else
-                local damageReduction = ownerBP.Defense.HeavyArtilleryDamageReduction
-                if damageReduction
-                and
-                EntityCategoryContains(categories.ARTILLERY * (categories.TECH3 + categories.EXPERIMENTAL) * categories.STRUCTURE, instigator) then
-                    absorbed = absorbed * (1-damageReduction)
-                end
-			end
+            local damageReduction = ownerBP.Defense.HeavyArtilleryDamageReduction
+            if damageReduction
+            and
+            EntityCategoryContains(categories.ARTILLERY * (categories.TECH3 + categories.EXPERIMENTAL) * categories.STRUCTURE, instigator) then
+                absorbed = absorbed * (1-damageReduction)
+            end
 
 
             -- take some damage
