@@ -10,14 +10,14 @@
 
 local CAirUnit = import('/lua/cybranunits.lua').CAirUnit
 
-local CDFParticleCannonWeapon = import('/lua/cybranweapons.lua').CDFParticleCannonWeapon
 local CAAMissileNaniteWeapon = import('/lua/cybranweapons.lua').CAAMissileNaniteWeapon
 local CDFHeavyElectronBolter01Weapon = import('/lua/modweapons.lua').CDFHeavyElectronBolter01Weapon
+local CDFRocketIridiumWeapon = import("/lua/cybranweapons.lua").CDFRocketIridiumWeapon
 
 local fxutil = import('/lua/effectutilities.lua')
 local Effects = import('/lua/effecttemplates.lua')
 
-local LateralGaucheGun = Class(CDFParticleCannonWeapon) {
+local LateralGaucheGun = Class(CDFRocketIridiumWeapon) {
     FxMuzzleFlash = { '/effects/emitters/particle_cannon_muzzle_02_emit.bp' },
 }
 
