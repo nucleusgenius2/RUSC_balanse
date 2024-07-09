@@ -17,33 +17,20 @@ local CDFHeavyElectronBolter01Weapon = import('/lua/modweapons.lua').CDFHeavyEle
 local fxutil = import('/lua/effectutilities.lua')
 local Effects = import('/lua/effecttemplates.lua')
 
+local LateralGaucheGun = Class(CDFParticleCannonWeapon) {
+    FxMuzzleFlash = { '/effects/emitters/particle_cannon_muzzle_02_emit.bp' },
+}
+
 UROW1102 = Class(CAirUnit) {
     DestroyNoFallRandomChance = 1.1,
     Weapons = {
-        LateralGaucheGun01 = Class(CDFParticleCannonWeapon) {
-            FxMuzzleFlash = { '/effects/emitters/particle_cannon_muzzle_02_emit.bp' },
-        },
-        LateralGaucheGun02 = Class(CDFParticleCannonWeapon) {
-            FxMuzzleFlash = { '/effects/emitters/particle_cannon_muzzle_02_emit.bp' },
-        },
-        LateralGaucheGun03 = Class(CDFParticleCannonWeapon) {
-            FxMuzzleFlash = { '/effects/emitters/particle_cannon_muzzle_02_emit.bp' },
-        },
-        LateralGaucheGun04 = Class(CDFParticleCannonWeapon) {
-            FxMuzzleFlash = { '/effects/emitters/particle_cannon_muzzle_02_emit.bp' },
-        },
-        LateralDroitGun05 = Class(CDFParticleCannonWeapon) {
-            FxMuzzleFlash = { '/effects/emitters/particle_cannon_muzzle_02_emit.bp' },
-        },
-        LateralDroitGun06 = Class(CDFParticleCannonWeapon) {
-            FxMuzzleFlash = { '/effects/emitters/particle_cannon_muzzle_02_emit.bp' },
-        },
-        LateralDroitGun07 = Class(CDFParticleCannonWeapon) {
-            FxMuzzleFlash = { '/effects/emitters/particle_cannon_muzzle_02_emit.bp' },
-        },
-        LateralDroitGun08 = Class(CDFParticleCannonWeapon) {
-            FxMuzzleFlash = { '/effects/emitters/particle_cannon_muzzle_02_emit.bp' },
-        },
+        LateralGaucheGun01 = LateralGaucheGun,
+        LateralGaucheGun02 = LateralGaucheGun,
+        LateralGaucheGun03 = LateralGaucheGun,
+        LateralGaucheGun04 = LateralGaucheGun,
+        LateralDroitGun06 = LateralGaucheGun,
+        LateralDroitGun07 = LateralGaucheGun,
+        LateralDroitGun08 = LateralGaucheGun,
 
         Missile01 = Class(CAAMissileNaniteWeapon) {},
         Missile02 = Class(CAAMissileNaniteWeapon) {},
@@ -92,7 +79,8 @@ UROW1102 = Class(CAirUnit) {
             for kE, vE in ExhaustEffects do
                 for kB, vB in self.MovementAmbientExhaustBones do
                     table.insert(self.MovementAmbientExhaustEffectsBag, CreateAttachedEmitter(self, vB, army, vE))
-                    table.insert(self.MovementAmbientExhaustEffectsBag, CreateBeamEmitterOnEntity(self, vB, army, ExhaustBeam))
+                    table.insert(self.MovementAmbientExhaustEffectsBag,
+                        CreateBeamEmitterOnEntity(self, vB, army, ExhaustBeam))
                 end
             end
 

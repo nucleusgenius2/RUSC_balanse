@@ -948,7 +948,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0.05,
             MuzzleSalvoSize = 3,
             MuzzleVelocity = 20,
-            ProjectileId = '/projectiles/CAAMissileNanite02/CAAMissileNanite02_proj.bp',
+            ProjectileId = '/projectiles/CDFBolter04/CDFBolter04_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.35,
             RackBones = {
                 {
@@ -1084,7 +1084,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0.05,
             MuzzleSalvoSize = 3,
             MuzzleVelocity = 30,
-            ProjectileId = '/projectiles/CAAMissileNanite02/CAAMissileNanite02_proj.bp',
+            ProjectileId = '/projectiles/CDFBolter04/CDFBolter04_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.35,
             RackBones = {
                 {
@@ -1220,7 +1220,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0.05,
             MuzzleSalvoSize = 3,
             MuzzleVelocity = 30,
-            ProjectileId = '/projectiles/CAAMissileNanite02/CAAMissileNanite02_proj.bp',
+            ProjectileId = '/projectiles/CDFBolter04/CDFBolter04_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.35,
             RackBones = {
                 {
