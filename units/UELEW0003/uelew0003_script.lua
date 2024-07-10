@@ -1,14 +1,3 @@
---****************************************************************************
---**
---**  File     :  /Mods/units/UELEW0003/UELEW0003_script.lua
---**  Author(s):  John Comes, David Tomandl, Gordon Duclos
---**
---**  Summary  :  UEF Mobile Factory Script
---**
---**  Copyright � 2005 Gas Powered Games, Inc.  All rights reserved.
---****************************************************************************
-
-
 local TLandUnit = import('/lua/terranunits.lua').TLandUnit
 local WeaponsFile = import('/lua/terranweapons.lua')
 
@@ -29,29 +18,21 @@ UELEW0003 = Class(TLandUnit) {
     IsWaiting = false,
 
     Weapons = {
-        --------Armes Non Deploy�es------
         PlasmaCannon01 = Class(TDFIonizedPlasmaCannon) {},
         DroiteAAGun = Class(TAALinkedRailgun) {},
         GaucheAAGun = Class(TAALinkedRailgun) {},
         ArriereGaucheAAGun = Class(TAALinkedRailgun) {},
         ArriereDroitAAGun = Class(TAALinkedRailgun) {},
-        --------/fin Armes Non Deploy�es------
-        --------Armes A Deployer------
+
         TourelleAvantDroite = Class(TDFGaussCannonWeapon) {},
         TourelleAvantGauche = Class(TDFGaussCannonWeapon) {},
         TourelleArriereDroite = Class(TDFGaussCannonWeapon) {},
         TourelleArriereGauche = Class(TDFGaussCannonWeapon) {},
-        --------/fin Armes A Deployer------
-
     },
 
     OnStopBeingBuilt = function(self, builder, layer)
         TLandUnit.OnStopBeingBuilt(self, builder, layer)
         self:SetGunsEnabled(false)
-        self.IsWaiting = false
-        -- if(self:GetCurrentLayer() == 'Land') then
-        ---      self.AT1 = self:ForkThread(self.TransformThread, true)
-        --- end
     end,
 
     SetGunsEnabled = function(self, state)
