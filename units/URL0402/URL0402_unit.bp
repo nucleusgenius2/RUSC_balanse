@@ -80,7 +80,8 @@ UnitBlueprint{
         'OVERLAYSONAR',
         'OVERLAYANTIAIR',
         'OVERLAYANTINAVY',
-		'OVERLAYINDIRECTFIRE',   # Added for range ring issue [155]
+		'OVERLAYINDIRECTFIRE',   --# Added for range ring issue [155]
+        "CQUEMOV",
     },
     CollisionOffsetY = 0,
     Defense = {

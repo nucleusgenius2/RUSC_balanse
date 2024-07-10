@@ -58,6 +58,7 @@ UnitBlueprint {
         'OVERLAYDEFENSE',
         'BIGTELEPORT',
         'SNIPEMODE',
+        "CQUEMOV",
     },
     CollisionOffsetY = -1,
     CollisionOffsetZ = -1.2,

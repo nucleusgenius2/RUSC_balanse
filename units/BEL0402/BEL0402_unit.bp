@@ -91,6 +91,7 @@ UnitBlueprint {
         'OVERLAYDIRECTFIRE',
         'OVERLAYINDIRECTFIRE',
         'SNIPEMODE',
+        "CQUEMOV",
     },
     CollisionOffsetZ = -0.25,
     Defense = {

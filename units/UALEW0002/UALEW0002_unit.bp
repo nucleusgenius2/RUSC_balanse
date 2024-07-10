@@ -55,6 +55,7 @@ UnitBlueprint {
         'DRAGBUILD',
         'BUBBLESHIELDSPILLOVERCHECK',
         'OVERLAYDEFENSE',
+        "CQUEMOV",
     },
     Defense = {
         AirThreatLevel = 0,

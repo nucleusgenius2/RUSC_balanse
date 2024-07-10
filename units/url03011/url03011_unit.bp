@@ -105,6 +105,7 @@ UnitBlueprint {
         'CANNOTUSEAIRSTAGING',
         "SHIELD",
         "BUBBLESHIELDSPILLOVERCHECK",
+        "CQUEMOV",
     },
     CollisionOffsetY = -0.29,
     Defense = {

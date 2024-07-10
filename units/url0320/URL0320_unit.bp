@@ -58,7 +58,8 @@ UnitBlueprint {
         'OVERLAYDEFENSE',
         'NEEDMOBILEBUILD',
         'DRAGBUILD',
-        'SNIPEMODE'
+        'SNIPEMODE',
+        "CQUEMOV",
     },
     Defense = {
         AirThreatLevel = 16,
