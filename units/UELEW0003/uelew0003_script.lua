@@ -47,15 +47,19 @@ UELEW0003 = Class(TLandUnit) {
 
     OnStopBeingBuilt = function(self, builder, layer)
         TLandUnit.OnStopBeingBuilt(self, builder, layer)
-        self:SetWeaponEnabledByLabel('TourelleAvantDroite', false)
-        self:SetWeaponEnabledByLabel('TourelleAvantGauche', false)
-        self:SetWeaponEnabledByLabel('TourelleArriereDroite', false)
-        self:SetWeaponEnabledByLabel('TourelleArriereGauche', false)
+        self:SetGunsEnabled(false)
+        self.IsWaiting = false
         -- if(self:GetCurrentLayer() == 'Land') then
         ---      self.AT1 = self:ForkThread(self.TransformThread, true)
         --- end
     end,
 
+    SetGunsEnabled = function(self, state)
+        self:SetWeaponEnabledByLabel('TourelleAvantDroite', state)
+        self:SetWeaponEnabledByLabel('TourelleAvantGauche', state)
+        self:SetWeaponEnabledByLabel('TourelleArriereDroite', state)
+        self:SetWeaponEnabledByLabel('TourelleArriereGauche', state)
+    end,
 
     TransformThread = function(self, land)
         if (not self.AnimManip) then
@@ -68,24 +72,18 @@ UELEW0003 = Class(TLandUnit) {
             self:SetImmobile(true)
             self:SetSpeedMult(0)
 
-            self.AnimManip:PlayAnim(self:GetBlueprint().Display.AnimationTransform)
+            self.AnimManip:PlayAnim(bp.Display.AnimationTransform)
             self.AnimManip:SetRate(1)
             self.IsWaiting = true
             WaitFor(self.AnimManip)
             self.IsWaiting = false
             self.Trash:Add(self.AnimManip)
-            self:SetWeaponEnabledByLabel('TourelleAvantDroite', true)
-            self:SetWeaponEnabledByLabel('TourelleAvantGauche', true)
-            self:SetWeaponEnabledByLabel('TourelleArriereDroite', true)
-            self:SetWeaponEnabledByLabel('TourelleArriereGauche', true)
+            self:SetGunsEnabled(true)
             self.SwitchAnims = true
         else
             self:SetImmobile(true)
-            self:SetWeaponEnabledByLabel('TourelleAvantDroite', false)
-            self:SetWeaponEnabledByLabel('TourelleAvantGauche', false)
-            self:SetWeaponEnabledByLabel('TourelleArriereDroite', false)
-            self:SetWeaponEnabledByLabel('TourelleArriereGauche', false)
-            self.AnimManip:PlayAnim(self:GetBlueprint().Display.AnimationTransform)
+            self:SetGunsEnabled(false)
+            self.AnimManip:PlayAnim(bp.Display.AnimationTransform)
             self.AnimManip:SetAnimationFraction(1)
             self.AnimManip:SetRate(-1)
             self.IsWaiting = true
@@ -102,14 +100,14 @@ UELEW0003 = Class(TLandUnit) {
     OnScriptBitSet = function(self, bit)
         TLandUnit.OnScriptBitSet(self, bit)
         local bp = self:GetBlueprint()
-        if bit == 1 then
+        if bit == 1 and not self.IsWaiting then
             self.AT1 = self:ForkThread(self.TransformThread, true)
         end
     end,
 
     OnScriptBitClear = function(self, bit)
         TLandUnit.OnScriptBitClear(self, bit)
-        if bit == 1 then
+        if bit == 1 and not self.IsWaiting then
             self.AT1 = self:ForkThread(self.TransformThread, false)
         end
     end,
