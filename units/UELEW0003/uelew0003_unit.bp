@@ -118,6 +118,7 @@ UnitBlueprint {
         RegenRate = 10,
         SubThreatLevel = 20,
         SurfaceThreatLevel = 160,
+        NoTeleDistance = 53,
     },
     Description = '<LOC uelew0003_help>Supporting platform',
     Display = {
@@ -206,8 +207,8 @@ UnitBlueprint {
         UniformScale = 0.20,
     },
     Economy = {
-        BuildCostEnergy = 187500,
-        BuildCostMass = 10600,
+        BuildCostEnergy = 75000,
+        BuildCostMass = 18000,
         BuildTime = 4450,
     },
     General = {
@@ -239,7 +240,7 @@ UnitBlueprint {
         UnitWeight = 1,
     },
     Intel = {
-        VisionRadius = 32,
+        VisionRadius = 100,
         WaterVisionRadius = 32,
     },
     Interface = {

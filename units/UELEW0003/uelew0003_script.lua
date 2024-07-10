@@ -35,6 +35,8 @@ UELEW0003 = Class(TLandUnit) {
         self:SetGunsEnabled(false)
     end,
 
+    GetAntiTeleActive = function(self) return true end,
+
     SetGunsEnabled = function(self, state)
         self:SetWeaponEnabledByLabel('TourelleAvantDroite', state)
         self:SetWeaponEnabledByLabel('TourelleAvantGauche', state)
