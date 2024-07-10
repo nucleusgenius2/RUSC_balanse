@@ -35,11 +35,6 @@ UROW1102 = Class(CAirUnit) {
         Missile01 = Class(CAAMissileNaniteWeapon) {},
         Missile02 = Class(CAAMissileNaniteWeapon) {},
         Missile03 = Class(CAAMissileNaniteWeapon) {},
-
-        AntiSpaceShipsGun = Class(CDFHeavyElectronBolter01Weapon) {
-            FxMuzzleFlashScale = 1.5,
-        },
-
     },
 
 
