@@ -107,6 +107,7 @@ UnitBlueprint {
         'TANK',
         'OVERLAYINDIRECTFIRE',
         'SORTDEFENSE',
+        "CQUEMOV",
     },
     CollisionOffsetZ = 0,
     Defense = {
