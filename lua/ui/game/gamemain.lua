@@ -90,7 +90,6 @@ function SetLayout(layout)
     import("/lua/ui/game/chat.lua").SetLayout()
     import("/lua/ui/game/minimap.lua").SetLayout()
     import("/lua/ui/game/massfabs.lua").SetLayout()
-    import("/lua/ui/game/recall.lua").SetLayout()
 end
 
 function OnFirstUpdate()
@@ -287,7 +286,6 @@ function CreateUI(isReplay)
     controls.mfd = mfdControl
 
     controls.mfp = import("/lua/ui/game/massfabs.lua").Create(statusClusterGroup)
-    controls.recall = import("/lua/ui/game/recall.lua").Create(statusClusterGroup)
 
     if not isReplay then
         ordersControl = import("/lua/ui/game/orders.lua").SetupOrdersControl(controlClusterGroup, mfdControl)

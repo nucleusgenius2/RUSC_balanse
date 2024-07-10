@@ -309,7 +309,6 @@ function BeginSession()
     import("/lua/sim/scenarioutilities.lua").CreateResources()
 
     import("/lua/sim/score.lua").init()
-    import("/lua/sim/recall.lua").init()
 
     -- other logic at the start of the game --
 
