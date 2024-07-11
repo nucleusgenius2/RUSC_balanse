@@ -156,19 +156,33 @@ BEA0402 = Class(TAirUnit) {
     OnStopBeingBuilt = function(self, builder, layer)
         self.AirPadTable = {}
         TAirUnit.OnStopBeingBuilt(self, builder, layer)
+        self:SetModePrecisionMode(false)
     end,
+
+    ---@param self Unit
+    SetModePrecisionMode = function(self, precision)
+        self:SetWeaponEnabledByLabel("MainTurret01", precision)
+        self:SetWeaponEnabledByLabel("MainTurret02", precision)
+
+        if precision then
+            self.TargetScatterRange = 7
+        else
+            self.TargetScatterRange = 10
+        end
+    end,
+
 
     OnScriptBitSet = function(self, bit)
         TAirUnit.OnScriptBitSet(self, bit)
         if bit == 1 then -- on
-            LOG("ON")
+            self:SetModePrecisionMode(true)
         end
     end,
 
     OnScriptBitClear = function(self, bit)
         TAirUnit.OnScriptBitClear(self, bit)
         if bit == 1 then -- off
-            LOG("OFF")
+            self:SetModePrecisionMode(false)
         end
     end,
 }

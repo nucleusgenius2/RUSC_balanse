@@ -2,6 +2,13 @@
 -- Terran Land-Based Cruise Missile : XEL0306 (UEF T3 MML)
 --
 
+local function RandomRange(value)
+    return (Random() * 2 - 1) * value
+end
+
+local MathCos = math.cos
+local MathSin = math.sin
+
 local TMissileCruiseProjectile = import('/lua/terranprojectiles.lua').TArtilleryAntiMatterProjectile
 --local TArtilleryAntiMatterProjectile = import('/lua/terranprojectiles.lua').TArtilleryAntiMatterProjectile
 local EffectTemplate = import("/lua/effecttemplates.lua")
@@ -30,17 +37,50 @@ TIFMissileCruise08 = Class(TMissileCruiseProjectile) {
         TMissileCruiseProjectile.OnCreate(self)
         self:SetCollisionShape('Sphere', 0, 0, 0, 2)
         self.MoveThread = self.Trash:Add(ForkThread(self.MovementThread, self))
-        local targetLocation = self:GetCurrentTargetPosition()
-        if targetLocation then
-            local scatter = self.Blueprint.Physics.TargetScatterRange or 10
-            local targetOffsetX = Random(-scatter, scatter)
-            local targetOffsetZ = Random(-scatter, scatter)
-            self:SetNewTargetGround(
-                Vector(
-                    targetLocation.x + targetOffsetX,
-                    targetLocation.y,
-                    targetLocation.z + targetOffsetZ
-                ))
+
+    end,
+
+    ---@param self Projectile
+    OnTrackTargetGround = function(self)
+        local scatter = self.Launcher.TargetScatterRange or self.Blueprint.Physics.TargetScatterRange or 10
+        local targetOffsetX = RandomRange(scatter)
+        local targetOffsetZ = RandomRange(scatter)
+        local target = self.OriginalTarget or self:GetTrackingTarget() or self.Launcher:GetTargetEntity()
+        if target and target.IsUnit then
+            local unitBlueprint = target.Blueprint
+            local cy = unitBlueprint.CollisionOffsetY or 0
+            local sx, sy, sz = unitBlueprint.SizeX or 1, unitBlueprint.SizeY or 1, unitBlueprint.SizeZ or 1
+            local px, py, pz = target:GetPositionXYZ()
+
+            -- take into account heading
+            local heading = -1 * target:GetHeading() -- inverse heading because Supreme Commander :)
+            local mch = MathCos(heading)
+            local msh = MathSin(heading)
+
+            local physics = self.Blueprint.Physics
+            local fuzziness = physics.TrackTargetGroundFuzziness or 0.8
+            local offset = physics.TrackTargetGroundOffset or 0
+            sx = sx + offset
+            sy = sy + offset
+            sz = sz + offset
+
+            local dx = (Random() - 0.5) * fuzziness * sx
+            local dy = (Random() - 0.5) * fuzziness * sy
+            local dz = (Random() - 0.5) * fuzziness * sz
+
+            local target = {
+                px + dx * mch - dz * msh + targetOffsetX,
+                py + cy + 0.5 * sy + dy,
+                pz + dx * msh + dz * mch + targetOffsetZ,
+            }
+
+            self:SetNewTargetGround(target)
+        else
+            local pos = self:GetCurrentTargetPosition()
+            pos[1] = pos[1] + targetOffsetX
+            pos[3] = pos[3] + targetOffsetZ
+            pos[2] = GetSurfaceHeight(pos[1], pos[3])
+            self:SetNewTargetGround(pos)
         end
     end,
 
