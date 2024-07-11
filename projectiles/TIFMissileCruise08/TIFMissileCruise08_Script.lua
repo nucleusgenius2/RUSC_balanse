@@ -6,7 +6,8 @@ local TMissileCruiseProjectile = import('/lua/terranprojectiles.lua').TArtillery
 --local TArtilleryAntiMatterProjectile = import('/lua/terranprojectiles.lua').TArtilleryAntiMatterProjectile
 local EffectTemplate = import("/lua/effecttemplates.lua")
 
-TIFMissileCruise06 = Class(TMissileCruiseProjectile) {
+---@class TIFMissileCruise08 : TArtilleryAntiMatterProjectile
+TIFMissileCruise08 = Class(TMissileCruiseProjectile) {
 
     FxTrails = EffectTemplate.TMissileExhaust01,
     FxTrailOffset = -0.85,
@@ -23,10 +24,24 @@ TIFMissileCruise06 = Class(TMissileCruiseProjectile) {
     FxWaterHitScale = 0.65,
     FxOnKilledScale = 0.65,
 
+    ---@param self TIFMissileCruise08
     OnCreate = function(self)
+
         TMissileCruiseProjectile.OnCreate(self)
         self:SetCollisionShape('Sphere', 0, 0, 0, 2)
         self.MoveThread = self.Trash:Add(ForkThread(self.MovementThread, self))
+        local targetLocation = self:GetCurrentTargetPosition()
+        if targetLocation then
+            local scatter = self.Blueprint.Physics.TargetScatterRange or 10
+            local targetOffsetX = Random(-scatter, scatter)
+            local targetOffsetZ = Random(-scatter, scatter)
+            self:SetNewTargetGround(
+                Vector(
+                    targetLocation.x + targetOffsetX,
+                    targetLocation.y,
+                    targetLocation.z + targetOffsetZ
+                ))
+        end
     end,
 
     MovementThread = function(self)
@@ -70,4 +85,4 @@ TIFMissileCruise06 = Class(TMissileCruiseProjectile) {
         return dist
     end,
 }
-TypeClass = TIFMissileCruise06
+TypeClass = TIFMissileCruise08

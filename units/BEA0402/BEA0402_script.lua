@@ -12,9 +12,44 @@ local TAAFlakArtilleryCannon = WeaponsFile.TAAFlakArtilleryCannon
 local RailGunWeapon02 = import('/lua/BlackOpsWeapons.lua').RailGunWeapon02
 local CitadelHVMWeapon = import('/lua/BlackOpsWeapons.lua').CitadelHVMWeapon
 local CitadelPlasmaGatlingCannonWeapon = import('/lua/BlackOpsWeapons.lua').CitadelPlasmaGatlingCannonWeapon
-local TIFCruiseMissileLauncher = import("/lua/terranweapons.lua").TIFCruiseMissileLauncher
+local TIFCruiseMissileUnpackingLauncher = WeaponsFile.TIFCruiseMissileUnpackingLauncher
+local TIFCruiseMissileLauncher = WeaponsFile.TIFCruiseMissileLauncher
 local EffectUtils = import('/lua/effectutilities.lua')
 local Effects = import('/lua/effecttemplates.lua')
+
+
+local MissileLauncher = Class(TIFCruiseMissileUnpackingLauncher)
+{
+    FxMuzzleFlash = { '/effects/emitters/terran_mobile_missile_launch_01_emit.bp' },
+
+    OnLostTarget = function(self)
+        self:ForkThread(self.LostTargetThread)
+    end,
+
+    RackSalvoFiringState = State(TIFCruiseMissileUnpackingLauncher.RackSalvoFiringState) {
+        OnLostTarget = function(self)
+            self:ForkThread(self.LostTargetThread)
+        end,
+    },
+
+    LostTargetThread = function(self)
+        while not self.unit:IsDead() and self.unit:IsUnitState('Busy') do
+            WaitSeconds(2)
+        end
+
+        if self.unit:IsDead() then
+            return
+        end
+
+        local bp = self:GetBlueprint()
+
+        if bp.WeaponUnpacks then
+            ChangeState(self, self.WeaponPackingState)
+        else
+            ChangeState(self, self.IdleState)
+        end
+    end,
+}
 
 BEA0402 = Class(TAirUnit) {
     Weapons = {
@@ -104,6 +139,15 @@ BEA0402 = Class(TAirUnit) {
             end,
         },
         TacNukeMissile = ClassWeapon(TIFCruiseMissileLauncher) {},
+
+        MissileWeapon1 = ClassWeapon(MissileLauncher) {},
+        MissileWeapon2 = ClassWeapon(MissileLauncher) {},
+        MissileWeapon3 = ClassWeapon(MissileLauncher) {},
+        MissileWeapon4 = ClassWeapon(MissileLauncher) {},
+        MissileWeapon5 = ClassWeapon(MissileLauncher) {},
+        MissileWeapon6 = ClassWeapon(MissileLauncher) {},
+        MissileWeapon7 = ClassWeapon(MissileLauncher) {},
+        MissileWeapon8 = ClassWeapon(MissileLauncher) {},
     },
 
     DestroyNoFallRandomChance = 1.1,
