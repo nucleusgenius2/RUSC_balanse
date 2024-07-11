@@ -70,7 +70,6 @@ UnitBlueprint {
         'MOBILE',
         'AIR',
         'HIGHALTAIR',
-        'TECH3',
         'VISIBLETORECON',
         'RECLAIMABLE',
         'SHOWATTACKRETICLE',

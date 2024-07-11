@@ -169,8 +169,12 @@ UnitBlueprint {
         BuildRate = 375,
         BuildTime = 50000,
         BuildableCategory = {
-            'EXPERIMENTAL CYBRAN MOBILE LAND',
             'BUILTBYTIER3FACTORY CYBRAN MOBILE LAND TECH3',
+            "url0402", -- ML
+            "xrl0403", -- mega
+            "url0320", -- scorpion
+            "url4032", -- Planetary destroyer
+            "urow1102", -- the legate
             "ura0401",
             'BUILTBYARTHROLAB',
         },

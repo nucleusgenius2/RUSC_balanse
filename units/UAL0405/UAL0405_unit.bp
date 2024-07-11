@@ -101,6 +101,7 @@ UnitBlueprint {
         'NOHP',
         'ANTITELEPORT',
         'OVERLAYANTINAVY',
+        "CQUEMOV"
     },
     CollisionOffsetY = 3.5,
     Defense = {
