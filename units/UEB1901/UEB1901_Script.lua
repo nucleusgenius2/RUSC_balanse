@@ -133,10 +133,11 @@ UEB1901 = ClassUnit(StructureUnit) {
             end,
 
             CreateChargeEffects = function(self)
-                local launcher = self.unit
-                local pos      = launcher:GetPosition()
-                local location = self:GetCurrentTargetPos()
-                local army     = launcher.Army
+                local launcher      = self.unit
+                local pos           = launcher:GetPosition()
+                local location      = self:GetCurrentTargetPos()
+                self.TargetLocation = location
+                local army          = launcher.Army
 
                 ---@type LaserEnd
                 local skyEntity = LaserEnd()
@@ -283,7 +284,7 @@ UEB1901 = ClassUnit(StructureUnit) {
                     local launcher = self.unit
                     ---@type Projectile
                     local proj = self:CreateProjectileAtMuzzle(0)
-                    local pos = self:GetCurrentTargetPos()
+                    local pos = self.TargetLocation or self:GetCurrentTargetPos()
                     proj:SetPosition(pos, true)
                     proj:OnImpact('Terrain', nil)
 
