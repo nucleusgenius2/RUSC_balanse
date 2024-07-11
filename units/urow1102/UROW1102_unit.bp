@@ -58,12 +58,10 @@ UnitBlueprint {
             Level5 = 10,
         },
     },
-    BuildIconSortPriority = 22,
+    BuildIconSortPriority = 50,
     Categories = {
         'PRODUCTSC1',
         'SELECTABLE',
-        'BUILTBYTIER3COMMANDER',
-        'BUILTBYTIER3ENGINEER',
         "EXPERIMENTAL",
         "NEEDMOBILEBUILD",
         'CYBRAN',

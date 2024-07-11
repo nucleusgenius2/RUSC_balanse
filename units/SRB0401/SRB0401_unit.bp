@@ -74,7 +74,7 @@ UnitBlueprint {
             LodCutoff = 'UnitMove_LodCutoff',
         },
     },
-    BuildIconSortPriority = 70,
+    BuildIconSortPriority = 49,
     Categories = {
         'PRODUCTBREWLAN',
         'SELECTABLE',
@@ -93,7 +93,6 @@ UnitBlueprint {
         'VISIBLETORECON',
         'RECLAIMABLE',
         'SHOWQUEUE',
-        'SORTCONSTRUCTION',
         'GATE',
     },
     CollisionOffsetY = 0,
