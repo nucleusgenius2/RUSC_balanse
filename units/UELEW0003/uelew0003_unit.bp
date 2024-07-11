@@ -90,7 +90,7 @@ UnitBlueprint {
             Level5 = 75,
         },
     },
-    BuildIconSortPriority = 21,
+    BuildIconSortPriority = 46,
     Categories = {
         'PRODUCTEW2',
         'SELECTABLE',
@@ -106,7 +106,6 @@ UnitBlueprint {
         'DRAGBUILD',
         'TANK',
         'OVERLAYINDIRECTFIRE',
-        'SORTDEFENSE',
         "CQUEMOV",
     },
     CollisionOffsetZ = 0,
