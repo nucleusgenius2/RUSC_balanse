@@ -20,37 +20,49 @@ local Effects = import('/lua/effecttemplates.lua')
 
 local MissileLauncher = Class(TIFCruiseMissileUnpackingLauncher)
 {
-    FxMuzzleFlash = { '/effects/emitters/terran_mobile_missile_launch_01_emit.bp' },
+    -- FxMuzzleFlash = { '/effects/emitters/terran_mobile_missile_launch_01_emit.bp' },
 
-    OnLostTarget = function(self)
-        self:ForkThread(self.LostTargetThread)
-    end,
+    -- OnLostTarget = function(self)
+    --     self:ForkThread(self.LostTargetThread)
+    -- end,
 
-    RackSalvoFiringState = State(TIFCruiseMissileUnpackingLauncher.RackSalvoFiringState) {
-        OnLostTarget = function(self)
-            self:ForkThread(self.LostTargetThread)
-        end,
-    },
+    -- RackSalvoFiringState = State(TIFCruiseMissileUnpackingLauncher.RackSalvoFiringState) {
+    --     OnLostTarget = function(self)
+    --         self:ForkThread(self.LostTargetThread)
+    --     end,
+    -- },
 
-    LostTargetThread = function(self)
-        while not self.unit:IsDead() and self.unit:IsUnitState('Busy') do
-            WaitSeconds(2)
-        end
+    -- LostTargetThread = function(self)
+    --     while not self.unit:IsDead() and self.unit:IsUnitState('Busy') do
+    --         WaitSeconds(2)
+    --     end
 
-        if self.unit:IsDead() then
-            return
-        end
+    --     if self.unit:IsDead() then
+    --         return
+    --     end
 
-        local bp = self:GetBlueprint()
+    --     local bp = self:GetBlueprint()
 
-        if bp.WeaponUnpacks then
-            ChangeState(self, self.WeaponPackingState)
-        else
-            ChangeState(self, self.IdleState)
-        end
-    end,
+    --     if bp.WeaponUnpacks then
+    --         ChangeState(self, self.WeaponPackingState)
+    --     else
+    --         ChangeState(self, self.IdleState)
+    --     end
+    -- end,
 }
 
+local MissileWeaponsNames = {
+    "MissileWeapon1",
+    "MissileWeapon2",
+    "MissileWeapon3",
+    "MissileWeapon4",
+    "MissileWeapon5",
+    "MissileWeapon6",
+    "MissileWeapon7",
+    "MissileWeapon8",
+}
+
+---@class BEA0402:TAirUnit
 BEA0402 = Class(TAirUnit) {
     Weapons = {
         MainTurret01 = Class(TDFHiroPlasmaCannon) {},
@@ -159,15 +171,32 @@ BEA0402 = Class(TAirUnit) {
         self:SetModePrecisionMode(false)
     end,
 
-    ---@param self Unit
+
+    ---@param self BEA0402
+    ---@param fn fun(weapon:Weapon)
+    ApplyToMissleWeapons = function(self, fn)
+        for _, key in MissileWeaponsNames do
+            fn(self:GetWeaponByLabel(key))
+        end
+    end,
+
+    ---@param self BEA0402
     SetModePrecisionMode = function(self, precision)
         self:SetWeaponEnabledByLabel("MainTurret01", precision)
         self:SetWeaponEnabledByLabel("MainTurret02", precision)
 
         if precision then
             self.TargetScatterRange = 7
+            self:ApplyToMissleWeapons(function (weapon)
+                weapon:ChangeMaxRadius(90)
+                weapon:ChangeRateOfFire(0.5)
+            end)
         else
             self.TargetScatterRange = 10
+            self:ApplyToMissleWeapons(function (weapon)
+                weapon:ChangeMaxRadius(48)
+                weapon:ChangeRateOfFire(1)
+            end)
         end
     end,
 
