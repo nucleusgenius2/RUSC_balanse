@@ -26,7 +26,7 @@ UnitBlueprint {
             LodCutoff = 'UnitMove_LodCutoff',
         },
     },
-    BuildIconSortPriority = 16,
+    BuildIconSortPriority = 47,
     Categories = {
         'PRODUCTBREWLANSHIELDS',
         'SELECTABLE',
@@ -43,7 +43,6 @@ UnitBlueprint {
         'RECLAIMABLE',
         'SHOWQUEUE',
         'OVERLAYDEFENSE',
-        'SORTDEFENSE',
         'RESEARCHLOCKED',
     },
     CollisionOffsetY = -0.25,
@@ -62,8 +61,8 @@ UnitBlueprint {
             RegenAssistMult = 60,
             ShieldEnergyDrainRechargeTime = 5,
             ShieldMaxHealth = 25000,
-            ShieldRechargeTime = 95,
-            ShieldRegenRate = 262,
+            ShieldRechargeTime = 27.6,
+            ShieldRegenRate = 131,
             ShieldRegenStartTime = 1,
             ShieldSize = 88,
             ShieldVerticalOffset = -22,
@@ -75,8 +74,8 @@ UnitBlueprint {
         HeavyArtilleryDamageReduction = 0.3,
 
         -- коэф стоимости ассиста щита (изначально 0.75 от стоимости строительства)
-        RepairMassDrainRatio = 0.25,
-        RepairEnergyDrainRatio = 0.25,
+        RepairMassDrainRatio = 0.24933333,
+        RepairEnergyDrainRatio = 0.24933333,
     },
     Description = '<LOC seb4401_desc>Experimental Shield Generator',
     Display = {
