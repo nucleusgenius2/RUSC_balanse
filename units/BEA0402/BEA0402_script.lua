@@ -7,6 +7,7 @@
 
 local TAirUnit = import('/lua/terranunits.lua').TAirUnit
 local WeaponsFile = import('/lua/terranweapons.lua')
+local TDFHiroPlasmaCannon = WeaponsFile.TDFHiroPlasmaCannon
 local TAAFlakArtilleryCannon = WeaponsFile.TAAFlakArtilleryCannon
 local RailGunWeapon02 = import('/lua/BlackOpsWeapons.lua').RailGunWeapon02
 local CitadelHVMWeapon = import('/lua/BlackOpsWeapons.lua').CitadelHVMWeapon
@@ -17,8 +18,8 @@ local Effects = import('/lua/effecttemplates.lua')
 
 BEA0402 = Class(TAirUnit) {
     Weapons = {
-        MainTurret01 = Class(RailGunWeapon02) {},
-        MainTurret02 = Class(RailGunWeapon02) {},
+        MainTurret01 = Class(TDFHiroPlasmaCannon) {},
+        MainTurret02 = Class(TDFHiroPlasmaCannon) {},
         HVMTurret01 = Class(CitadelHVMWeapon) {},
         HVMTurret02 = Class(CitadelHVMWeapon) {},
         HVMTurret03 = Class(CitadelHVMWeapon) {},
