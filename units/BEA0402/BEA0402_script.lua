@@ -11,6 +11,7 @@ local TAAFlakArtilleryCannon = WeaponsFile.TAAFlakArtilleryCannon
 local RailGunWeapon02 = import('/lua/BlackOpsWeapons.lua').RailGunWeapon02
 local CitadelHVMWeapon = import('/lua/BlackOpsWeapons.lua').CitadelHVMWeapon
 local CitadelPlasmaGatlingCannonWeapon = import('/lua/BlackOpsWeapons.lua').CitadelPlasmaGatlingCannonWeapon
+local TIFCruiseMissileLauncher = import("/lua/terranweapons.lua").TIFCruiseMissileLauncher
 local EffectUtils = import('/lua/effectutilities.lua')
 local Effects = import('/lua/effecttemplates.lua')
 
@@ -34,7 +35,8 @@ BEA0402 = Class(TAirUnit) {
                 if self.SpinManip2 then
                     self.SpinManip2:SetTargetSpeed(0)
                 end
-                self.ExhaustEffects = EffectUtils.CreateBoneEffects(self.unit, 'Gat_Muzzle_2', self.unit:GetArmy(), Effects.WeaponSteam01)
+                self.ExhaustEffects = EffectUtils.CreateBoneEffects(self.unit, 'Gat_Muzzle_2', self.unit:GetArmy(),
+                    Effects.WeaponSteam01)
                 CitadelPlasmaGatlingCannonWeapon.PlayFxWeaponPackSequence(self)
             end,
 
@@ -57,7 +59,8 @@ BEA0402 = Class(TAirUnit) {
                 if self.SpinManip2 then
                     self.SpinManip2:SetTargetSpeed(-200)
                 end
-                self.ExhaustEffects = EffectUtils.CreateBoneEffects(self.unit, 'Gat_Muzzle_2', self.unit:GetArmy(), Effects.WeaponSteam01)
+                self.ExhaustEffects = EffectUtils.CreateBoneEffects(self.unit, 'Gat_Muzzle_2', self.unit:GetArmy(),
+                    Effects.WeaponSteam01)
                 CitadelPlasmaGatlingCannonWeapon.PlayFxRackSalvoReloadSequence(self)
             end,
         },
@@ -70,7 +73,8 @@ BEA0402 = Class(TAirUnit) {
                 if self.SpinManip2 then
                     self.SpinManip2:SetTargetSpeed(0)
                 end
-                self.ExhaustEffects = EffectUtils.CreateBoneEffects(self.unit, 'Gat_Muzzle_1', self.unit:GetArmy(), Effects.WeaponSteam01)
+                self.ExhaustEffects = EffectUtils.CreateBoneEffects(self.unit, 'Gat_Muzzle_1', self.unit:GetArmy(),
+                    Effects.WeaponSteam01)
                 CitadelPlasmaGatlingCannonWeapon.PlayFxWeaponPackSequence(self)
             end,
 
@@ -93,10 +97,12 @@ BEA0402 = Class(TAirUnit) {
                 if self.SpinManip2 then
                     self.SpinManip2:SetTargetSpeed(-200)
                 end
-                self.ExhaustEffects = EffectUtils.CreateBoneEffects(self.unit, 'Gat_Muzzle_1', self.unit:GetArmy(), Effects.WeaponSteam01)
+                self.ExhaustEffects = EffectUtils.CreateBoneEffects(self.unit, 'Gat_Muzzle_1', self.unit:GetArmy(),
+                    Effects.WeaponSteam01)
                 CitadelPlasmaGatlingCannonWeapon.PlayFxRackSalvoReloadSequence(self)
             end,
         },
+        TacNukeMissile = ClassWeapon(TIFCruiseMissileLauncher) {},
     },
 
     DestroyNoFallRandomChance = 1.1,
@@ -105,6 +111,20 @@ BEA0402 = Class(TAirUnit) {
     OnStopBeingBuilt = function(self, builder, layer)
         self.AirPadTable = {}
         TAirUnit.OnStopBeingBuilt(self, builder, layer)
+    end,
+
+    OnScriptBitSet = function(self, bit)
+        TAirUnit.OnScriptBitSet(self, bit)
+        if bit == 1 then -- on
+            LOG("ON")
+        end
+    end,
+
+    OnScriptBitClear = function(self, bit)
+        TAirUnit.OnScriptBitClear(self, bit)
+        if bit == 1 then -- off
+            LOG("OFF")
+        end
     end,
 }
 
