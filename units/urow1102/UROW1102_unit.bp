@@ -106,8 +106,8 @@ UnitBlueprint {
         UniformScale = 0.18,
     },
     Economy = {
-        BuildCostEnergy = 280500,
-        BuildCostMass = 21000,
+        BuildCostEnergy = 500000,
+        BuildCostMass = 30000,
         BuildTime = 40450,
         TeleportEnergyMod = 1,
         TeleportMassMod = 0,
