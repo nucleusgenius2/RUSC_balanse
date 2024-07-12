@@ -76,6 +76,18 @@ function LayoutAvatars()
             LayoutHelpers.AtRightTopIn(controls.idleFactories, controls.avatarGroup, rightOffset, topOffset)
             height = controls.idleFactories.Height()
         end
+        prevControl = controls.idleFactories
+    end
+    if controls.jumpUnits then
+        if prevControl then
+            controls.jumpUnits.prevControl = prevControl
+            LayoutHelpers.AnchorToBottom(controls.jumpUnits, controls.jumpUnits.prevControl, space)
+            LayoutHelpers.AtRightIn(controls.jumpUnits, controls.jumpUnits.prevControl)
+            height = height + (controls.jumpUnits.Bottom() - controls.jumpUnits.prevControl.Bottom())
+        else
+            LayoutHelpers.AtRightTopIn(controls.jumpUnits, controls.avatarGroup, rightOffset, topOffset)
+            height = controls.jumpUnits.Height()
+        end
     end
 
     controls.avatarGroup.Height:Set(function() return height - LayoutHelpers.ScaleNumber(5) end)

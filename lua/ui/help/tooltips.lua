@@ -1034,8 +1034,8 @@ Tooltips = {
         description = "<LOC OPTIONS_0294>When on, a unit can only be part of one control group. A unit will be transferred from any previously assigned control groups to the new control group.",
     },
     options_add_to_factory_control_group = {
-        title= "<LOC OPTIONS_0295>Transitive Control Groups of Factories",
-        description= "<LOC OPTIONS_0296>When on, a unit inherits the control group of the factory it is produced by."
+        title = "<LOC OPTIONS_0295>Transitive Control Groups of Factories",
+        description = "<LOC OPTIONS_0296>When on, a unit inherits the control group of the factory it is produced by."
     },
     options_selection_sets_double_tap_behavior = {
         title = "<LOC OPTIONS_0297>Successive Control Group Select Behavior",
@@ -1193,12 +1193,12 @@ Tooltips = {
         description = "<LOC lobui_0524>When clicked, all the main game options will be reset to ranked settings",
     },
     lob_rerun_benchmark = {
-        title='<LOC lobui_0752>Rerun CPU Benchmark',
-        description='<LOC lobui_0753>Recalculates your CPU rating.'
+        title = '<LOC lobui_0752>Rerun CPU Benchmark',
+        description = '<LOC lobui_0753>Recalculates your CPU rating.'
     },
     lob_close_empty_slots = {
-        title='<LOC lobui_0774>Close/Open Empty Slots',
-        description='<LOC lobui_0775>Closes all empty open slots. If all empty slots are already closed, then it opens them. Right-click for close - spawn mex. Hold Ctrl to reset.'
+        title = '<LOC lobui_0774>Close/Open Empty Slots',
+        description = '<LOC lobui_0775>Closes all empty open slots. If all empty slots are already closed, then it opens them. Right-click for close - spawn mex. Hold Ctrl to reset.'
     },
     map_type = {
         title = "<LOC MAPSEL_0032>Map Type",
@@ -1882,7 +1882,7 @@ Tooltips = {
         title = "<LOC tooltipui0153>GPGNet",
         description = "<LOC tooltipui0154>Log into GPGNet",
     },
-         mpselect_lan = {
+    mpselect_lan = {
         title = "<LOC OPTIONS_0123>LAN",
         description = "<LOC OPTIONS_0124>Host, Join or Observe a LAN Game",
     },
@@ -2247,5 +2247,9 @@ Tooltips = {
     },
     minimap_mesh = {
         description = "<LOC tooltipui0720>Disables the rendering of meshes of units and props on the minimap to reduce the burden on the rendering thread. Can potentially improve your framerate.",
+    },
+    jump_teleport = {
+        title = "<LOC tooltipui0719>Jump Teleport",
+        description = "<LOC tooltipui0720>Select all units that can do jump teleport",
     },
 }
