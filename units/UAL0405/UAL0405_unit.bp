@@ -366,7 +366,7 @@ UnitBlueprint {
     },
     Intel = {
         ReactivateTime = 10,
-        RemoteViewingRadius = 121.5,
+        RemoteViewingRadius = 102,
         VisionRadius = 35,
         RadarRadius = 64, -- shows radius of antitele
     },
