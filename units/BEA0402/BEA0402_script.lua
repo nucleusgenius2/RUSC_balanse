@@ -187,15 +187,15 @@ BEA0402 = Class(TAirUnit) {
 
         if precision then
             self.TargetScatterRange = 7
-            self:ApplyToMissleWeapons(function (weapon)
-                weapon:ChangeMaxRadius(90)
-                weapon:ChangeRateOfFire(0.5)
+            self:ApplyToMissleWeapons(function(weapon)
+                weapon:ChangeMaxRadius(weapon.Blueprint.PrecisionModeMaxRadius or 90)
+                weapon:ChangeRateOfFire(weapon.Blueprint.PrecisionModeRateOfFire or 0.5)
             end)
         else
             self.TargetScatterRange = 10
-            self:ApplyToMissleWeapons(function (weapon)
-                weapon:ChangeMaxRadius(48)
-                weapon:ChangeRateOfFire(1)
+            self:ApplyToMissleWeapons(function(weapon)
+                weapon:ChangeMaxRadius(weapon.Blueprint.MaxRadius or 48)
+                weapon:ChangeRateOfFire(weapon.Blueprint.RateOfFire or 1)
             end)
         end
     end,
