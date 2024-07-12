@@ -9394,3 +9394,8 @@ ChangelogDescriptionIdentifier="descriptionRU"
 	uelew0003_help="Платформа поддержки"
 	uelew0003_desc="Платформа поддержки"
 	unit_description_uelew0003="Имеет антителепорт, ПВО, повышенный радиус обзора."
+
+	urow1102_name="Отступник"
+	urow1102_help="Экспериментальный штурмовик"
+	urow1102_desc="Экспериментальный штурмовик"
+	unit_description_urow1102="Экспериментальный штурмовик с большим радиусом атаки и мощным ПВО."

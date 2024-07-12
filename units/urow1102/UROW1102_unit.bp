@@ -84,7 +84,7 @@ UnitBlueprint {
         MaxHealth = 78000,
         RegenRate = 0,
     },
-    Description = 'Spaceships',
+    Description = '<LOC urow1102_desc>Experimental Gunship',
     Display = {
         Abilities = {
             '<LOC ability_aa>Anti-Air',
@@ -135,7 +135,7 @@ UnitBlueprint {
         FactionName = 'Cybran',
         Icon = 'air',
         TechLevel = 'RULEUTL_Secret',
-        UnitName = 'The Legate',
+        UnitName = '<LOC urow1102_name>Apostate',
         UnitWeight = 1,
     },
     Intel = {
@@ -145,7 +145,7 @@ UnitBlueprint {
         WaterVisionRadius = 55,
     },
     Interface = {
-        HelpText = '<LOC Unit_Description_8002>Experimental Tech3 Spaceship',
+        HelpText = '<LOC urow1102_help>Experimental Gunship',
     },
     LifeBarHeight = 0.075,
     LifeBarOffset = 5.75,

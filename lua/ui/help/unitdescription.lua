@@ -729,4 +729,5 @@ Description = {
   ["bea0402"] = "<LOC unit_description_bea0402>Flying fortress. Has 2 firing modes. Conducts barrage fire in the area. There is also air defense on the board.",
   ["seb4401"] = "<LOC unit_description_seb4401>Enlarged shield dome. Reduces damage from heavy artillery by 30%. The cost of an assist is 15% lower.",
   ["uelew0003"] = "<LOC unit_description_uelew0003>Has anti-teleport, air defense, increased viewing radius.",
+  ["urow1102"] = "<LOC unit_description_urow1102>Experimental gunship with a large attack radius and powerful air defense.",
 }
