@@ -55,6 +55,7 @@ UnitBlueprint {
         'RECLAIMABLE',
         "OVERLAYANTIAIR",
         'OVERLAYRADAR',
+        "JUMPTELEPORT",
     },
     Defense = {
         AirThreatLevel = 0.33,

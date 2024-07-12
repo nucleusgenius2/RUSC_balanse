@@ -80,7 +80,8 @@ UnitBlueprint {
         "SUBORBITAL",
         "VERIFYMISSILEUI",
         "VISIBLETORECON",
-        "SNIPEMODE"
+        "JUMPTELEPORT",
+        "SNIPEMODE",
     },
     Defense = {
         ArmorType = "Normal",
