@@ -90,7 +90,7 @@ UnitBlueprint {
         MaxHealth = 30000,
         RegenRate = 30,
         SurfaceThreatLevel = 527,
-        MaxTeleRange = 110,
+        MaxTeleRange = 111,
         TelDelay = 33,
     },
     Description = '<LOC xsl0333_desc>Advanced AA Battle Bot',
