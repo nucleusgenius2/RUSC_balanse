@@ -61,8 +61,8 @@ local function GenerateMissleWeapon(id)
         MaxRadius = 48,
         RateOfFire = 1,
         -- Параметры точного режима
-        PrecisionModeMaxRadius = 90,
-        PrecisionModeRateOfFire = 0.5,
+        PrecisionModeMaxRadius = 135,
+        PrecisionModeRateOfFire = 0.25,
     }
 
 end
@@ -387,7 +387,7 @@ UnitBlueprint {
             },
             FiringTolerance = 0,
             Label = "MainTurret01",
-            MaxRadius = 80,
+            MaxRadius = 135,
             MuzzleChargeDelay = 0,
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
@@ -461,7 +461,7 @@ UnitBlueprint {
             },
             FiringTolerance = 0,
             Label = "MainTurret02",
-            MaxRadius = 80,
+            MaxRadius = 135,
             MuzzleChargeDelay = 0,
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
