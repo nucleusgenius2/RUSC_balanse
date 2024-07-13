@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --   Author:  Sean 'Balthazar' Wheeldon
 --------------------------------------------------------------------------------
-local ConstructionUnit = import('/lua/terranunits.lua').TConstructionUnit
+local ConstructionUnit = import('/lua/terranunits.lua').TAirFactoryUnit
 local VizMarker = import('/lua/sim/VizMarker.lua').VizMarker
 local AIUtils = import('/lua/ai/aiutilities.lua')
 local AnimationThread = import('/lua/effectutilities.lua').IntelDishAnimationThread
