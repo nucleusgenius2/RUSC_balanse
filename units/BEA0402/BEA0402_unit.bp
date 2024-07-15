@@ -255,7 +255,7 @@ UnitBlueprint {
         BuildCostEnergy = 1573750,
         BuildCostMass = 100000,
         BuildTime = 680000,
-        BuildRate = 160,
+        BuildRate = 208,
     },
     General = {
         Category = 'Experimental',
@@ -1204,7 +1204,8 @@ UnitBlueprint {
             Label = "TacNukeMissile",
             ManualFire = true,
             MaxProjectileStorage = 1,
-            MaxRadius = 42,
+            MaxRadius = 48,
+            PrecisionModeMaxRadius = 135,
             MuzzleChargeDelay = 0,
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
