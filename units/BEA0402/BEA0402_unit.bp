@@ -525,7 +525,7 @@ UnitBlueprint {
             BallisticArc = 'RULEUBA_None',
             CollideFriendly = false,
             CannotAttackGround = true,
-            Damage = 2200,
+            Damage = 200,
             DamageType = 'HVM',
             DisplayName = 'Hyper Velocity Missile Launcher',
             EffectiveRadius = 0,
@@ -537,11 +537,11 @@ UnitBlueprint {
             FiringTolerance = 10,
             Label = 'HVMTurret01',
             MaxRadius = 75,
-            MuzzleSalvoDelay = 0.6,
+            MuzzleSalvoDelay = 0.2,
             MuzzleSalvoSize = 4,
-            MuzzleVelocity = 75,
+            MuzzleVelocity = 45,
             NotExclusive = true,
-            ProjectileId = '/projectiles/CitadelHVM01/CitadelHVM01_proj.bp',
+            ProjectileId = "/projectiles/TAAMissileFlayer01/TAAMissileFlayer01_proj.bp",
             ProjectileLifetime = 6,
             ProjectilesPerOnFire = 1,
             RackBones = {
@@ -563,7 +563,7 @@ UnitBlueprint {
             RackSalvoSize = 1,
             RackSlavedToTurret = false,
             RangeCategory = 'UWRC_AntiAir',
-            RateOfFire = 0.1,
+            RateOfFire = 0.28,
             TargetCheckInterval = 0.16,
             TargetPriorities = {
                 'SPECIALHIGHPRI',
@@ -607,7 +607,7 @@ UnitBlueprint {
             BallisticArc = 'RULEUBA_None',
             CollideFriendly = false,
             CannotAttackGround = true,
-            Damage = 2200,
+            Damage = 200,
             DamageType = 'HVM',
             DisplayName = 'Hyper Velocity Missile Launcher',
             EffectiveRadius = 0,
@@ -619,13 +619,12 @@ UnitBlueprint {
             FiringTolerance = 10,
             Label = 'HVMTurret02',
             MaxRadius = 75,
-            MuzzleSalvoDelay = 0.6,
+            MuzzleSalvoDelay = 0.2,
             MuzzleSalvoSize = 4,
-            MuzzleVelocity = 75,
+            MuzzleVelocity = 45,
             NotExclusive = true,
-            ProjectileId = '/projectiles/CitadelHVM01/CitadelHVM01_proj.bp',
+            ProjectileId = "/projectiles/TAAMissileFlayer01/TAAMissileFlayer01_proj.bp",
             ProjectileLifetime = 6,
-            ProjectilesPerOnFire = 1,
             RackBones = {
                 {
                     MuzzleBones = {
@@ -645,7 +644,7 @@ UnitBlueprint {
             RackSalvoSize = 1,
             RackSlavedToTurret = false,
             RangeCategory = 'UWRC_AntiAir',
-            RateOfFire = 0.1,
+            RateOfFire = 0.28,
             TargetCheckInterval = 0.16,
             TargetPriorities = {
                 'SPECIALHIGHPRI',
@@ -689,7 +688,7 @@ UnitBlueprint {
             BallisticArc = 'RULEUBA_None',
             CollideFriendly = false,
             CannotAttackGround = true,
-            Damage = 2200,
+            Damage = 200,
             DamageType = 'HVM',
             DisplayName = 'Hyper Velocity Missile Launcher',
             EffectiveRadius = 0,
@@ -701,13 +700,12 @@ UnitBlueprint {
             FiringTolerance = 10,
             Label = 'HVMTurret03',
             MaxRadius = 75,
-            MuzzleSalvoDelay = 0.6,
+            MuzzleSalvoDelay = 0.2,
             MuzzleSalvoSize = 4,
-            MuzzleVelocity = 75,
+            MuzzleVelocity = 45,
             NotExclusive = true,
-            ProjectileId = '/projectiles/CitadelHVM01/CitadelHVM01_proj.bp',
+            ProjectileId = "/projectiles/TAAMissileFlayer01/TAAMissileFlayer01_proj.bp",
             ProjectileLifetime = 6,
-            ProjectilesPerOnFire = 1,
             RackBones = {
                 {
                     MuzzleBones = {
@@ -727,7 +725,7 @@ UnitBlueprint {
             RackSalvoSize = 1,
             RackSlavedToTurret = false,
             RangeCategory = 'UWRC_AntiAir',
-            RateOfFire = 0.1,
+            RateOfFire = 0.28,
             TargetCheckInterval = 0.16,
             TargetPriorities = {
                 'SPECIALHIGHPRI',
@@ -771,7 +769,7 @@ UnitBlueprint {
             BallisticArc = 'RULEUBA_None',
             CollideFriendly = false,
             CannotAttackGround = true,
-            Damage = 2200,
+            Damage = 200,
             DamageType = 'HVM',
             DisplayName = 'Hyper Velocity Missile Launcher',
             EffectiveRadius = 0,
@@ -783,13 +781,12 @@ UnitBlueprint {
             FiringTolerance = 10,
             Label = 'HVMTurret04',
             MaxRadius = 75,
-            MuzzleSalvoDelay = 0.6,
+            MuzzleSalvoDelay = 0.2,
             MuzzleSalvoSize = 4,
-            MuzzleVelocity = 75,
+            MuzzleVelocity = 45,
             NotExclusive = true,
-            ProjectileId = '/projectiles/CitadelHVM01/CitadelHVM01_proj.bp',
+            ProjectileId = "/projectiles/TAAMissileFlayer01/TAAMissileFlayer01_proj.bp",
             ProjectileLifetime = 6,
-            ProjectilesPerOnFire = 1,
             RackBones = {
                 {
                     MuzzleBones = {
@@ -809,7 +806,7 @@ UnitBlueprint {
             RackSalvoSize = 1,
             RackSlavedToTurret = false,
             RangeCategory = 'UWRC_AntiAir',
-            RateOfFire = 0.1,
+            RateOfFire = 0.28,
             TargetCheckInterval = 0.16,
             TargetPriorities = {
                 'SPECIALHIGHPRI',
@@ -873,7 +870,6 @@ UnitBlueprint {
             MuzzleVelocity = 80,
             ProjectileId = '/projectiles/TAAHeavyFragmentationShell01/TAAHeavyFragmentationShell01_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.25,
-            ProjectilesPerOnFire = 1,
             RackBones = {
                 {
                     MuzzleBones = {
