@@ -28,7 +28,6 @@ UnitBlueprint {
     },
     BuildIconSortPriority = 45,
     Categories = {
-        --    "AIR",
         "BUILTBYTIER3COMMANDER",
         "BUILTBYTIER3ENGINEER",
         "CONSTRUCTION",
@@ -41,6 +40,7 @@ UnitBlueprint {
         "RECLAIMABLE",
         "SELECTABLE",
         "SHOWQUEUE",
+        "CUSTOMADJ",
         "STRUCTURE",
         "UEF",
         "VISIBLETORECON",

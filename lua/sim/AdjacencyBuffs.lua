@@ -357,6 +357,50 @@ local adj = {
     },
 }
 
+local customAdj = {
+    ["seb3404"] = {
+        T1PowerGenerator = {
+            EnergyActive = 0,
+            EnergyMaintenance = 0,
+            EnergyWeapon = 0,
+            RateOfFire = 0,
+        },
+        T2PowerGenerator = {
+            EnergyActive = 0,
+            EnergyMaintenance = 0,
+            EnergyWeapon = 0,
+            RateOfFire = 0,
+        },
+        T3PowerGenerator = {
+            EnergyActive = -0.1,
+            EnergyMaintenance = 0,
+            EnergyWeapon = 0,
+            RateOfFire = 0,
+        },
+        T1MassExtractor = {
+            MassActive = 0,
+        },
+        T2MassExtractor = {
+            MassActive = 0,
+        },
+        T3MassExtractor = {
+            MassActive = -0.02,
+        },
+        T1MassFabricator = {
+            MassActive = -0.002,
+        },
+        T3MassFabricator = {
+            MassActive = -0.02,
+        },
+        T1EnergyStorage = {
+            EnergyProduction = 0,
+        },
+        T1MassStorage = {
+            MassProduction = 0,
+        },
+    }
+}
+
 adj.Hydrocarbon = adj.T2PowerGenerator
 
 for a, buffs in adj do
@@ -383,6 +427,30 @@ for a, buffs in adj do
                 OnBuffAffect = AdjBuffFuncs.DefaultBuffAffect,
                 OnBuffRemove = AdjBuffFuncs.DefaultBuffRemove,
                 Affects = { [t] = { Add = add } },
+            }
+
+            table.insert(_G[a .. 'AdjacencyBuffs'], name)
+        end
+    end
+end
+
+for unitID, unitBuffs in customAdj do
+    for a, buffs in unitBuffs do
+        for t, value in buffs do
+            local display_name = a .. t
+            local name = display_name .. unitID
+            local category = unitID .. " CUSTOMADJ"
+            BuffBlueprint {
+                Name = name,
+                DisplayName = display_name,
+                BuffType = string.upper(t) .. 'BONUS',
+                Stacks = 'ALWAYS',
+                Duration = -1,
+                EntityCategory = category,
+                BuffCheckFunction = AdjBuffFuncs[t .. 'BuffCheck'],
+                OnBuffAffect = AdjBuffFuncs.DefaultBuffAffect,
+                OnBuffRemove = AdjBuffFuncs.DefaultBuffRemove,
+                Affects = { [t] = { Add = value } },
             }
 
             table.insert(_G[a .. 'AdjacencyBuffs'], name)
