@@ -361,21 +361,12 @@ local customAdj = {
     ["seb3404"] = {
         T1PowerGenerator = {
             EnergyActive = 0,
-            EnergyMaintenance = 0,
-            EnergyWeapon = 0,
-            RateOfFire = 0,
         },
         T2PowerGenerator = {
             EnergyActive = 0,
-            EnergyMaintenance = 0,
-            EnergyWeapon = 0,
-            RateOfFire = 0,
         },
         T3PowerGenerator = {
             EnergyActive = -0.1,
-            EnergyMaintenance = 0,
-            EnergyWeapon = 0,
-            RateOfFire = 0,
         },
         T1MassExtractor = {
             MassActive = 0,
@@ -391,12 +382,6 @@ local customAdj = {
         },
         T3MassFabricator = {
             MassActive = -0.02,
-        },
-        T1EnergyStorage = {
-            EnergyProduction = 0,
-        },
-        T1MassStorage = {
-            MassProduction = 0,
         },
     }
 }
