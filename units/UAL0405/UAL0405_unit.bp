@@ -121,6 +121,10 @@ UnitBlueprint {
         AuraRadius = 52,
         -- радиус действия замедления
         SlowDownRadius = 69,
+
+        SlowDownDuration = 10,
+        SlowDownBreak = 2,
+
         -- добавляемый реген для разных тиров юнитов
         RegenSCU = 180,
         RegenT1 = 180,

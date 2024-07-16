@@ -157,68 +157,6 @@ UAL0405 = Class(AStructureUnit) {
     end,
 
     ---@param self UAL0405
-    ---@param unit Unit
-    ---@param stunTime number
-    ---@param breakTime number
-    SlowDownThread = function(self, unit, stunTime, breakTime)
-        local time = GetGameTick()
-        if time - (unit.stunTime or 0) < stunTime * 10 then
-            return
-        end
-
-        unit.NumOfEffecters = unit.NumOfEffecters or 0
-        if unit.NumOfEffecters >= 2 then
-            return
-        end
-
-        unit.SlowDownEffecters = unit.SlowDownEffecters or setmetatable({}, WeakKeyMeta)
-        if unit.SlowDownEffecters[self] then
-            return
-        end
-        unit.SlowDownEffecters[self] = true
-
-        local turnOff = false
-        unit.NumOfEffecters = unit.NumOfEffecters + 1
-        if unit.NumOfEffecters >= 2 and time - (unit.LastStun or 0) > breakTime * 10 then
-            unit.stunTime = time
-            local val = 0.01
-            unit:SetSpeedMult(val)
-            unit:SetAccMult(val)
-            unit:SetTurnMult(val)
-            turnOff = true
-        end
-
-        WaitSeconds(stunTime)
-
-        if unit.Dead then
-            unit.SlowDownEffecters = nil
-            return
-        end
-
-        unit.NumOfEffecters = unit.NumOfEffecters - 1
-        if turnOff then
-            local val = 1
-            unit:SetSpeedMult(val)
-            unit:SetAccMult(val)
-            unit:SetTurnMult(val)
-            time = GetGameTick()
-            unit.LastStun = time
-        end
-        unit.SlowDownEffecters[self] = nil
-    end,
-
-    SlowDownUnits = function(self, units)
-        local slowdownTime = 10
-        local breakTime = 2
-
-        for _, unit in units do
-            --self.Trash:Add(
-            ForkThread(self.SlowDownThread, self, unit, slowdownTime, breakTime)
-            --)
-        end
-    end,
-
-    ---@param self UAL0405
     Enhancement = function(self)
         local bpAura = self.Blueprint.Aura
 
@@ -353,6 +291,52 @@ UAL0405 = Class(AStructureUnit) {
             }
         end
 
+        local buffPreStun = 'PreStunEffect'
+        if not Buffs[buffPreStun] then
+            BuffBlueprint {
+                Name = buffPreStun,
+                DisplayName = buffPreStun,
+                BuffType = 'PRESTUNEFFECT',
+                Stacks = 'IGNORE',
+                Duration = 5,
+                Affects = {}
+            }
+        end
+
+        local buffPostStun = 'PostStunEffect'
+        if not Buffs[buffPostStun] then
+            BuffBlueprint {
+                Name = buffPostStun,
+                DisplayName = buffPostStun,
+                BuffType = 'STUNEFFECT',
+                Stacks = 'IGNORE',
+                Duration = bpAura.SlowDownBreak,
+                Affects = {}
+            }
+        end
+
+        local buffStun = 'StunEffect'
+        if not Buffs[buffStun] then
+            BuffBlueprint {
+                Name = buffStun,
+                DisplayName = buffStun,
+                BuffType = 'STUNEFFECT',
+                Stacks = 'IGNORE',
+                Duration = bpAura.SlowDownDuration,
+                BuffCheckFunction = function(buff, unit)
+                    return not Buff.HasBuff(unit, buffPostStun)
+                end,
+                OnBuffRemove = function(buff, unit)
+                    Buff.ApplyBuff(unit, buffPostStun)
+                end,
+                Effects = EffectTemplate.Aeon_HeavyDisruptorCannonMuzzleCharge,
+                Affects = {
+                    MoveMult = { Mult = 0.01 }
+                }
+            }
+        end
+
+
         table.insert(self.ShieldEffectsBag,
             CreateAttachedEmitter(self, 'BAL0401', self.Army, '/effects/emitters/seraphim_regenerative_aura_01_emit.bp'))
 
@@ -393,18 +377,19 @@ UAL0405 = Class(AStructureUnit) {
                     end
                 end
 
-                local inq = brain:GetUnitsAroundPoint(inqusitorCat, self:GetPosition(), auraRadius, "Ally")
-                local inquisNearBy = table.getn(inq) > 1
-                if inquisNearBy then
-                    self:ApplyBuffToUnits(aeonExp, buffDamage, auraRadius)
+                for _, unit in units do
+                    if Buff.HasBuff(unit, buffPreStun) then
+                        LOG("has pre")
+                        Buff.ApplyBuff(unit, buffStun)
+                    else
+                        LOG("no pre")
+                        Buff.ApplyBuff(unit, buffPreStun)
+                    end
                 end
 
                 if not table.empty(units) then
-                    self:SlowDownUnits(units)
-                    if inquisNearBy then
-                        for _, effect in self.FxMuzzleFlash do
-                            CreateAttachedEmitter(self, "Body", self:GetArmy(), effect):ScaleEmitter(0.9)
-                        end
+                    for _, effect in self.FxMuzzleFlash do
+                        CreateAttachedEmitter(self, "Body", self:GetArmy(), effect):ScaleEmitter(0.9)
                     end
                 end
             end
