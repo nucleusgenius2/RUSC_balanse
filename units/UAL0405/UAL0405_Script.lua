@@ -273,13 +273,33 @@ UAL0405 = Class(AStructureUnit) {
             }
         end
 
+        local buffPreDamage = 'AeonExpPreDamage'
+        if not Buffs[buffPreDamage] then
+            BuffBlueprint {
+                Name = buffPreDamage,
+                DisplayName = buffPreDamage,
+                BuffType = 'PREDAMAGEEFFECT',
+                Stacks = 'IGNORE',
+                Duration = 4.9,
+                Effects = { '/effects/emitters/seraphim_regenerative_aura_02_emit.bp' },
+                Affects = {}
+            }
+        end
+
         local buffDamage = 'AeonExpDamage'
         if not Buffs[buffDamage] then
             BuffBlueprint {
                 Name = buffDamage,
                 DisplayName = buffDamage,
                 BuffType = 'AURAFORALL5',
-                Stacks = 'REPLACE',
+                Stacks = 'ALWAYS',
+                BuffCheckFunction = function(buff, unit)
+                    if Buff.HasBuff(unit, buffPreDamage) then
+                        return true
+                    end
+                    Buff.ApplyBuff(unit, buffPreDamage)
+                    return false
+                end,
                 Duration = 5,
                 Effects = { '/effects/emitters/seraphim_regenerative_aura_02_emit.bp' },
                 Affects = {
@@ -298,7 +318,7 @@ UAL0405 = Class(AStructureUnit) {
                 DisplayName = buffPreStun,
                 BuffType = 'PRESTUNEFFECT',
                 Stacks = 'IGNORE',
-                Duration = 5,
+                Duration = 4.9,
                 Affects = {}
             }
         end
@@ -359,6 +379,8 @@ UAL0405 = Class(AStructureUnit) {
         local CreateAttachedEmitter = CreateAttachedEmitter
         local WaitTicks             = WaitTicks
 
+        WaitTicks(51 - math.mod(GetGameTick(), 50))
+
         while not self.Dead do
             local layer = self:GetCurrentLayer()
 
@@ -368,6 +390,7 @@ UAL0405 = Class(AStructureUnit) {
                 self:ApplyBuffToUnits(aeonExp, buffHPAuraAeonExps, auraRadius)
                 self:ApplyBuffToUnits(nonAeonExp, buffHPAuraExps, auraRadius)
                 self:ApplyBuffToUnits(gcCat, buffGCrange, auraRadius)
+                self:ApplyBuffToUnits(aeonExp, buffDamage, auraRadius)
 
                 local all = brain:GetUnitsAroundPoint(mobileLandUnits, self:GetPosition(), slowdownRadius, "Enemy")
                 local units = {}
@@ -379,10 +402,8 @@ UAL0405 = Class(AStructureUnit) {
 
                 for _, unit in units do
                     if Buff.HasBuff(unit, buffPreStun) then
-                        LOG("has pre")
                         Buff.ApplyBuff(unit, buffStun)
                     else
-                        LOG("no pre")
                         Buff.ApplyBuff(unit, buffPreStun)
                     end
                 end
