@@ -18,7 +18,7 @@ local explosion = import("/lua/defaultexplosions.lua")
 ---@class XSA0402 : SAirUnit
 XSA0402 = ClassUnit(SAirUnit) {
     DestroyNoFallRandomChance = 1.1,
-    
+
     Weapons = {
         Bomb = ClassWeapon(SB0OhwalliExperimentalStrategicBombWeapon) {},
         RightFrontAutocannon = ClassWeapon(SAALosaareAutoCannonWeapon) {},
@@ -26,8 +26,13 @@ XSA0402 = ClassUnit(SAirUnit) {
         RightRearAutocannon = ClassWeapon(SAALosaareAutoCannonWeapon) {},
         LeftRearAutocannon = ClassWeapon(SAALosaareAutoCannonWeapon) {},
     },
-    
-    ContrailEffects = {'/effects/emitters/contrail_ser_ohw_polytrail_01_emit.bp',},
+    ---@param self Unit
+    OnCreate = function(self)
+        SAirUnit.OnCreate(self)
+        self:AddCommandCap('RULEUCC_Teleport')
+    end,
+
+    ContrailEffects = { '/effects/emitters/contrail_ser_ohw_polytrail_01_emit.bp', },
 
     OnKilled = function(self, instigator, type, overkillRatio)
         self.detector = CreateCollisionDetector(self)
@@ -38,21 +43,21 @@ XSA0402 = ClassUnit(SAirUnit) {
         self.detector:WatchBone('Tail_Extent')
         self.detector:EnableTerrainCheck(true)
         self.detector:Enable()
-        
+
         SAirUnit.OnKilled(self, instigator, type, overkillRatio)
     end,
 
-    OnAnimTerrainCollision = function(self, bone,x,y,z)
-        local position = {x, y, z}
+    OnAnimTerrainCollision = function(self, bone, x, y, z)
+        local position = { x, y, z }
         DamageArea(self, position, 5, 1000, 'Default', true, false)
         DamageArea(self, position, 5, 1, 'TreeForce', false)
-        explosion.CreateDefaultHitExplosionAtBone( self, bone, 5.0 )
-        explosion.CreateDebrisProjectiles(self, explosion.GetAverageBoundingXYZRadius(self), {self:GetUnitSizes()})
+        explosion.CreateDefaultHitExplosionAtBone(self, bone, 5.0)
+        explosion.CreateDebrisProjectiles(self, explosion.GetAverageBoundingXYZRadius(self), { self:GetUnitSizes() })
     end,
-    
+
     StartBeingBuiltEffects = function(self, builder, layer)
-		SAirUnit.StartBeingBuiltEffects(self, builder, layer)
-		self:ForkThread( CreateSeraphimExperimentalBuildBaseThread, builder, self.OnBeingBuiltEffectsBag, 0.5 )
-    end,    
+        SAirUnit.StartBeingBuiltEffects(self, builder, layer)
+        self:ForkThread(CreateSeraphimExperimentalBuildBaseThread, builder, self.OnBeingBuiltEffectsBag, 0.5)
+    end,
 }
 TypeClass = XSA0402
