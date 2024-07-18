@@ -101,6 +101,7 @@ UnitBlueprint {
         'NOHP',
         'ANTITELEPORT',
         'OVERLAYANTINAVY',
+        "CQUEMOV"
     },
     CollisionOffsetY = 3.5,
     Defense = {
@@ -120,6 +121,10 @@ UnitBlueprint {
         AuraRadius = 52,
         -- радиус действия замедления
         SlowDownRadius = 69,
+
+        SlowDownDuration = 10,
+        SlowDownBreak = 2,
+
         -- добавляемый реген для разных тиров юнитов
         RegenSCU = 180,
         RegenT1 = 180,
@@ -365,7 +370,7 @@ UnitBlueprint {
     },
     Intel = {
         ReactivateTime = 10,
-        RemoteViewingRadius = 121.5,
+        RemoteViewingRadius = 102,
         VisionRadius = 35,
         RadarRadius = 64, -- shows radius of antitele
     },

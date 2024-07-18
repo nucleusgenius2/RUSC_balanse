@@ -1,4 +1,3 @@
-
 --**********************************************************************************
 --** Copyright (c) 2022  Willem 'Jip' Wijnia
 --**
@@ -30,6 +29,7 @@ SplitComponent = ClassSimple {
 
     ChildCount = 3,
     ChildProjectileBlueprint = '/projectiles/CIFMissileTacticalSplit01/CIFMissileTacticalSplit01_proj.bp',
+    Splitted = false,
 
     SpreadCone = 2 * MathPi,
     SpreadMultiplier = 1.0,
@@ -37,6 +37,11 @@ SplitComponent = ClassSimple {
 
     ---@param self SplitComponent | Projectile
     OnSplit = function(self, inheritTargetGround)
+        if self.Splitted then
+            return
+        end
+        self.Splitted = true
+
         local vx, vy, vz = self:GetVelocity()
 
         local spreadCone = self.SpreadCone

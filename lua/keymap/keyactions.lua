@@ -1876,10 +1876,6 @@ local keyActionsUI = {
         action = 'UI_Lua import("/lua/ui/game/tabs.lua").ToggleMassFabricatorPanel()',
         category = 'ui',
     },
-    ['toggle_voting_panel'] = {
-        action = 'UI_Lua import("/lua/ui/game/tabs.lua").ToggleVotingPanel()',
-        category = 'ui',
-    },
     ['toggle_diplomacy_screen'] = {
         action = 'UI_Lua import("/lua/ui/game/tabs.lua").ToggleTab("diplomacy")',
         category = 'ui',

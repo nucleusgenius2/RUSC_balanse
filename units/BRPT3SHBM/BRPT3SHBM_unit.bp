@@ -86,7 +86,8 @@ UnitBlueprint {
         'ANTIMISSILE',
         'GALAXY3',
         'BIGTELEPORT',
-        'SNIPEMODE'
+        'SNIPEMODE',
+        "CQUEMOV",
     },
     Defense = {
         AirThreatLevel = 0,

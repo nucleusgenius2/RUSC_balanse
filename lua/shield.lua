@@ -132,6 +132,7 @@ end
 
 ---@class Shield : moho.shield_methods, Entity
 ---@field Brain AIBrain
+---@field Owner Unit
 Shield = ClassShield(moho.shield_methods, Entity) {
 
     RemainEnabledWhenAttached = false,
@@ -464,6 +465,12 @@ Shield = ClassShield(moho.shield_methods, Entity) {
         self:ApplyDamage(instigator, amount, vector, damageType, true)
     end,
 
+    ---@param self Shield
+    ---@param instigator Unit
+    ---@param amount any
+    ---@param vector any
+    ---@param dmgType any
+    ---@param doOverspill any
     ApplyDamage = function(self, instigator, amount, vector, dmgType, doOverspill)
 
         -- cache information used throughout the function
@@ -516,18 +523,16 @@ Shield = ClassShield(moho.shield_methods, Entity) {
         -- do damage logic for shield
 
         if self.Owner ~= instigator then
+            local ownerBP = self.Owner:GetBlueprint()
             local absorbed = self:OnGetDamageAbsorption(instigator, amount, dmgType)
 			
-		--	local id = instigator:GetEntityId()
-			if self.Owner:GetBlueprint().BlueprintId == 'ualew0002' then
-				if EntityCategoryContains(categories.ARTILLERY + categories.STRATEGIC, instigator) then
-					absorbed = absorbed * 0.8
-		--			FloatingEntityText(id,'Урон по щиту = ' .. absorbed)
-				elseif EntityCategoryContains(categories.ARTILLERY + categories.CYBRAN + categories.EXPERIMENTAL, instigator) then
-					absorbed = absorbed * 0.8
-		--			FloatingEntityText(id,'Урон по щиту = ' .. absorbed)
-				end
-			end
+            local damageReduction = ownerBP.Defense.HeavyArtilleryDamageReduction
+            if damageReduction
+            and
+            EntityCategoryContains(categories.ARTILLERY * (categories.TECH3 + categories.EXPERIMENTAL) * categories.STRUCTURE, instigator) then
+                absorbed = absorbed * (1-damageReduction)
+            end
+
 
             -- take some damage
             EntityAdjustHealth(self, instigator, -absorbed)

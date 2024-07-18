@@ -1073,11 +1073,6 @@ function ToggleScore()
     import("/lua/ui/game/score.lua").ToggleScoreControl()
 end
 
-function ToggleVotingPanel()
-    if not controls.tabs then return end
-    import("/lua/ui/game/recall.lua").ToggleControl()
-end
-
 function ToggleMassFabricatorPanel()
     if not controls.tabs then return end
     import("/lua/ui/game/massfabs.lua").ToggleControl()

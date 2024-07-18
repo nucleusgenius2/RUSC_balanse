@@ -72,7 +72,8 @@ UnitBlueprint {
         "SUBORBITAL",
         "VERIFYMISSILEUI",
         "VISIBLETORECON",
-        "SNIPEMODE"
+        "SNIPEMODE",
+        "JUMPTELEPORT",
     },
     Defense = {
         ArmorType = "Normal",
@@ -81,7 +82,7 @@ UnitBlueprint {
         MaxHealth = 49000,
         RegenRate = 215,
         SurfaceThreatLevel = 527,
-		MaxTeleRange = 110,
+		MaxTeleRange = 111,
 		TelDelay = 33,
         Shield = {
             ImpactEffects = "SeraphimShieldHit01",

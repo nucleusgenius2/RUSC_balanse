@@ -80,7 +80,8 @@ UnitBlueprint {
         "SUBORBITAL",
         "VERIFYMISSILEUI",
         "VISIBLETORECON",
-        "SNIPEMODE"
+        "JUMPTELEPORT",
+        "SNIPEMODE",
     },
     Defense = {
         ArmorType = "Normal",
@@ -89,7 +90,7 @@ UnitBlueprint {
         MaxHealth = 70000,
         RegenRate = 215,
         SurfaceThreatLevel = 527,
-        MaxTeleRange = 110,
+        MaxTeleRange = 111,
         TelDelay = 33,
     },
     Description = '<LOC xsl03331_desc>Advanced AA Battle Bot',

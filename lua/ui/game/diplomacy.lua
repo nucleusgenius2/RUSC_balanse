@@ -442,77 +442,6 @@ function BuildPlayerLines()
 
     local belowEntry = parent
 
-    local reason = GetCannotRequestRecallReason()
-    if not import("/lua/ui/campaign/campaignmanager.lua").campaignMode and reason ~= "observer" then
-        local personalGroup = CreateBitmapStd(parent, "/game/options-diplomacy-panel/panel-recall")
-        if belowEntry == parent then
-            LayoutHelpers.AtLeftTopIn(personalGroup, belowEntry, 0, 8)
-        else
-            LayoutHelpers.Below(personalGroup, belowEntry, 8)
-        end
-        parent.personalGroup = personalGroup
-
-        local recallButton = UIUtil.CreateButtonStd(personalGroup, "/widgets02/small")
-        Layouter(recallButton)
-            :AtCenterIn(personalGroup)
-            :Over(personalGroup, 5)
-        personalGroup.button = recallButton
-
-        if reason then
-            recallButton:Disable()
-            recallButton:EnableHitTest() -- let the tooltip show
-            Tooltip.AddButtonTooltip(recallButton, "dip_recall_request_dis_" .. reason)
-        else
-            local function OnAcceptRecall()
-                SimCallback({
-                    Func = "SetRecallVote",
-                    Args = {
-                        From = GetFocusArmy(),
-                        Vote = true,
-                    },
-                })
-                -- preemptively expect the sim to accept our recall and disable the button so we
-                -- can't possiblely confuse the sim with more than one request
-                -- note that if--for some reason (*ahem* due to a mod maybe)--the sim *doesn't*
-                -- end up accepting it, then we'll be stuck until the sim sends a new update
-                recallButton:Disable()
-                SetCannotRequestRecallReason("active")
-                Tooltip.AddButtonTooltip(recallButton, "dip_recall_request_dis_active")
-                import("/lua/ui/game/tabs.lua").CollapseWindow()
-            end
-            recallButton.OnClick = function(self, modifiers)
-                -- the sim will only start a vote if there are teammates
-                local txt = "<LOC diplomacy_0027>Are you sure you want to recall from battle?"
-                local focusArmy = GetFocusArmy()
-                for index, playerInfo in GetArmiesTable().armiesTable do
-                    if index ~= focusArmy and not playerInfo.outOfGame and not playerInfo.civilian and IsAlly(focusArmy, index) then
-                        txt = "<LOC diplomacy_0019>Are you sure you're ready to recall from battle? This will send a request to your team."
-                        break
-                    end
-                end
-                UIUtil.QuickDialog(GetFrame(0),
-                    txt,
-                    "<LOC _Yes>",
-                    OnAcceptRecall,
-                    "<LOC _No>", nil, nil, nil, nil,
-                    {worldCover = false, enterButton = 1, escapeButton = 2}
-                )
-            end
-            Tooltip.AddButtonTooltip(recallButton, "dip_recall_request")
-        end
-
-        local recallIcon = CreateBitmapStd(recallButton, "/game/recall-panel/icon-recall")
-        Layouter(recallIcon)
-            :DisableHitTest()
-            :AtCenterIn(recallButton, 1)
-            :Width(20)
-            :Height(25)
-            :Over(recallButton, 5)
-        recallButton.label = recallIcon
-
-        belowEntry = personalGroup
-    end
-
     if allyCount > 0 then
         local allyGroup = CreatePlayerGroup(parent,
             "/game/options-diplomacy-panel/panel-allies",
@@ -623,8 +552,11 @@ function BuildPlayerLines()
 
         belowEntry = enemyGroup._bottom
     end
-
-    LayoutHelpers.AtBottomIn(parent, belowEntry, 14)
+    if parent == belowEntry then
+        LayoutHelpers.SetHeight(parent, 14)
+    else 
+        LayoutHelpers.AtBottomIn(parent, belowEntry, 14)
+    end
 end
 
 function CreateShareResourcesDialog(control)

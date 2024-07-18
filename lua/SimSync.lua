@@ -124,7 +124,6 @@ end
 function NoteFocusArmyChanged(new, old)
     --LOG('NoteFocusArmyChanged(new=' .. repr(new) .. ', old=' .. repr(old) .. ')')
     import("/lua/simping.lua").OnArmyChange()
-    import("/lua/sim/recall.lua").OnArmyChange()
     for entityID, data in UnitData do
         if new == -1 or data.OwnerArmy == new then
             Sync.UnitData[entityID] = data.Data

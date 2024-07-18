@@ -28,7 +28,6 @@ UnitBlueprint {
     },
     BuildIconSortPriority = 45,
     Categories = {
-    --    "AIR",
         "BUILTBYTIER3COMMANDER",
         "BUILTBYTIER3ENGINEER",
         "CONSTRUCTION",
@@ -41,9 +40,10 @@ UnitBlueprint {
         "RECLAIMABLE",
         "SELECTABLE",
         "SHOWQUEUE",
+        "CUSTOMADJ",
         "STRUCTURE",
         "UEF",
-        "VISIBLETORECON",	
+        "VISIBLETORECON",
     },
     CollisionOffsetX = 0,
     CollisionOffsetY = 0,
@@ -79,7 +79,7 @@ UnitBlueprint {
             {
                 Albedo = '/env/common/decals/Tarmacs/Tar24x_01_albedo.dds',
                 FadeOut = 150,
-                Length = 12.8*2,
+                Length = 12.8 * 2,
                 Normal = '/env/common/decals/Tarmacs/Tar24x_01_normals.dds',
                 Orientations = {
                     0,
@@ -88,7 +88,7 @@ UnitBlueprint {
                     270,
                 },
                 RemoveWhenDead = false,
-                Width = 12.8*2,
+                Width = 12.8 * 2,
             },
         },
         UniformScale = 0.05,
@@ -98,7 +98,10 @@ UnitBlueprint {
         BuildCostMass = 40000,
         BuildTime = 27000,
         BuildRate = 3400,
-        BuildableCategory = { "ORBITAL" },
+        BuildableCategory = {
+            "ORBITAL",
+            "BUILTBYEXPERIMENTALFACTORY UEF AIR"
+        },
         RebuildBonusIds = {
             'seb3404',
         },
@@ -110,7 +113,7 @@ UnitBlueprint {
     },
     General = {
         BuildBones = {
-			BuildEffectBones = { "Large_Dish_Base" },
+            BuildEffectBones = { "Large_Dish_Base" },
         },
         Category = 'Factory',
         Classification = 'RULEUC_Factory',
@@ -129,7 +132,7 @@ UnitBlueprint {
             RULEUCC_Transport = false,
         },
         ConstructionBar = true,
-		SatelliteCapacity = 1,
+        SatelliteCapacity = 1,
         FactionName = 'UEF',
         Icon = 'land',
         SelectionPriority = 5,

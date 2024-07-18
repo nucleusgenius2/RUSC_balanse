@@ -5,8 +5,12 @@ local Buff = import("/lua/sim/buff.lua")
 ---@field Mass? number
 ---@field Energy? number
 
+---@class CategoryDiscountValues : DiscountValues
+---@field Category CategoryName
+
 ---@class BPEconomyDiscount  : DiscountValues
 ---@field Units? table<BlueprintId, DiscountValues>
+---@field Categories? CategoryDiscountValues[]
 
 
 ---@param name string

@@ -67,6 +67,7 @@ UnitBlueprint {
         'OVERLAYRADAR',
         'OVERLAYSONAR',
         'OVERLAYMISC',
+        "CQUEMOV",
     },
     CollisionOffsetZ = 0.2,
     Defense = {

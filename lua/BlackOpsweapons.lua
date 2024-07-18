@@ -1,12 +1,12 @@
-#****************************************************************************
-#**
-#**  File     :  /cdimage/lua/modules/BlackOpsweapons.lua
-#**  Author(s):  Lt_hawkeye
-#**
-#**  Summary  :  
-#**
-#**  Copyright © 2005 Gas Powered Games, Inc.  All rights reserved.
-#****************************************************************************
+-- --****************************************************************************
+-- --**
+-- --**  File     :  /cdimage/lua/modules/BlackOpsweapons.lua
+-- --**  Author(s):  Lt_hawkeye
+-- --**
+-- --**  Summary  :  
+-- --**
+-- --**  Copyright ï¿½ 2005 Gas Powered Games, Inc.  All rights reserved.
+-- --****************************************************************************
 
 local WeaponFile = import('/lua/sim/defaultweapons.lua')
 local CollisionBeams = import('/lua/defaultcollisionbeams.lua')
@@ -43,7 +43,7 @@ RebelArtilleryProtonWeapon = Class(DefaultProjectileWeapon) {
 MiniQuantumBeamGenerator = Class(DefaultBeamWeapon) {
     BeamType = BlackOpsCollisionBeamFile.MiniQuantumBeamGeneratorCollisionBeam,
 
-    FxUpackingChargeEffects = {},#'/effects/emitters/quantum_generator_charge_01_emit.bp'},
+    FxUpackingChargeEffects = {},----'/effects/emitters/quantum_generator_charge_01_emit.bp'},
     FxUpackingChargeEffectScale = 0.2,
 
     PlayFxWeaponUnpackSequence = function( self )
@@ -61,7 +61,7 @@ MiniQuantumBeamGenerator = Class(DefaultBeamWeapon) {
 SuperQuantumBeamGenerator = Class(DefaultBeamWeapon) {
     BeamType = BlackOpsCollisionBeamFile.SuperQuantumBeamGeneratorCollisionBeam,
 
-    FxUpackingChargeEffects = {},#'/effects/emitters/quantum_generator_charge_01_emit.bp'},
+    FxUpackingChargeEffects = {},--'/effects/emitters/quantum_generator_charge_01_emit.bp'},
     FxUpackingChargeEffectScale = 1,
 
     PlayFxWeaponUnpackSequence = function( self )
@@ -99,7 +99,7 @@ MiniPhasonLaser = Class(DefaultBeamWeapon) {
     end,
 }
 
-# SPIDER BOT WEAPON!
+-- SPIDER BOT WEAPON!
 MiniHeavyMicrowaveLaserGenerator = Class(DefaultBeamWeapon) {
     BeamType = BlackOpsCollisionBeamFile.MiniMicrowaveLaserCollisionBeam01,
     FxMuzzleFlash = {},
@@ -228,7 +228,7 @@ HawkTractorClaw = Class(DefaultBeamWeapon) {
     end,
 }
 
-# SeaDragon Battleship WEAPON!
+-- SeaDragon Battleship WEAPON!
 MartyrHeavyMicrowaveLaserGenerator = Class(DefaultBeamWeapon) {
     BeamType = BlackOpsCollisionBeamFile.MartyrMicrowaveLaserCollisionBeam01,
     FxMuzzleFlash = {},
@@ -236,7 +236,7 @@ MartyrHeavyMicrowaveLaserGenerator = Class(DefaultBeamWeapon) {
     FxUpackingChargeEffects = EffectTemplate.CMicrowaveLaserCharge01,
     FxUpackingChargeEffectScale = 1,
 }
-# ShadowCat WEAPON!
+-- ShadowCat WEAPON!
 RailLaserGenerator = Class(DefaultBeamWeapon) {
     BeamType = BlackOpsCollisionBeamFile.RailLaserCollisionBeam01,
     FxMuzzleFlash = {},
@@ -244,13 +244,13 @@ RailLaserGenerator = Class(DefaultBeamWeapon) {
     FxUpackingChargeEffects = EffectTemplate.CMicrowaveLaserCharge01,
     FxUpackingChargeEffectScale = 1,
 }
-#UEF heavy tank railgun and laser
+--UEF heavy tank railgun and laser
 RailGunWeapon01 = Class(DefaultProjectileWeapon) {
     FxChargeMuzzleFlash = {
-		'/effects/emitters/x_cannon_charge_test_01_emit.bp',--#lightning
+		'/effects/emitters/x_cannon_charge_test_01_emit.bp',----lightning
     },
     FxMuzzleFlash = {
-		'/effects/emitters/xcannon_cannon_muzzle_01_emit.bp',--#large redish flash
+		'/effects/emitters/xcannon_cannon_muzzle_01_emit.bp',----large redish flash
 		'/effects/emitters/x_cannon_fire_test_01_emit.bp',--barrel lightning effect
 		'/effects/emitters/jugg_rail_cannon_muzzle_07_emit.bp',-- small redish flash, double quick
 		'/effects/emitters/jugg_rail_cannon_muzzle_08_emit.bp',-- small redish double flash
@@ -260,10 +260,10 @@ RailGunWeapon01 = Class(DefaultProjectileWeapon) {
 }
 RailGunWeapon02 = Class(DefaultProjectileWeapon) {
     FxChargeMuzzleFlash = {
-		'/effects/emitters/x_cannon_charge_test_01_emit.bp',--#lightning
+		'/effects/emitters/x_cannon_charge_test_01_emit.bp',----lightning
     },
     FxMuzzleFlash = {
-		'/effects/emitters/xcannon_cannon_muzzle_01_emit.bp',--#large redish flash
+		'/effects/emitters/xcannon_cannon_muzzle_01_emit.bp',----large redish flash
 		'/effects/emitters/x_cannon_fire_test_01_emit.bp',--barrel lightning effect
 		'/effects/emitters/jugg_rail_cannon_muzzle_07_emit.bp',-- small redish flash, double quick
 		'/effects/emitters/jugg_rail_cannon_muzzle_08_emit.bp',-- small redish double flash
@@ -275,7 +275,7 @@ RailGunWeapon02 = Class(DefaultProjectileWeapon) {
 JuggLaserweapon = Class(DefaultBeamWeapon) {
     BeamType = JuggLaserCollisionBeam,
 
-    FxUpackingChargeEffects = {},#'/effects/emitters/quantum_generator_charge_01_emit.bp'},
+    FxUpackingChargeEffects = {},--'/effects/emitters/quantum_generator_charge_01_emit.bp'},
     FxUpackingChargeEffectScale = 0.2,
 
     PlayFxWeaponUnpackSequence = function( self )
@@ -289,25 +289,25 @@ JuggLaserweapon = Class(DefaultBeamWeapon) {
         DefaultBeamWeapon.PlayFxWeaponUnpackSequence(self)
     end,
 }
-#SeaDragon Weapon
+--SeaDragon Weapon
 XCannonWeapon01 = Class(DefaultProjectileWeapon) {
-    #FxChargeMuzzleFlash = {
-		#'/effects/emitters/xcannon_muzzle_charge_01_emit.bp',
-		#'/effects/emitters/xcannon_muzzle_charge_02_emit.bp',#blue glow
-        #'/effects/emitters/xcannon_muzzle_charge_05_emit.bp',#purple glow
-    #},
-    #FxMuzzleFlash = {
-	#	'/effects/emitters/xcannon_cannon_muzzle_01_emit.bp',--#large redish flash
-	#	'/effects/emitters/x_cannon_fire_test_01_emit.bp',--barrel lightning effect
-	#	'/effects/emitters/xcannon_cannon_muzzle_07_emit.bp',-- small redish flash, double quick
-	#	'/effects/emitters/xcannon_cannon_muzzle_08_emit.bp',-- small redish double flash
-	#},
+    --FxChargeMuzzleFlash = {
+		--'/effects/emitters/xcannon_muzzle_charge_01_emit.bp',
+		--'/effects/emitters/xcannon_muzzle_charge_02_emit.bp',--blue glow
+        --'/effects/emitters/xcannon_muzzle_charge_05_emit.bp',--purple glow
+    --},
+    --FxMuzzleFlash = {
+	--	'/effects/emitters/xcannon_cannon_muzzle_01_emit.bp',----large redish flash
+	--	'/effects/emitters/x_cannon_fire_test_01_emit.bp',--barrel lightning effect
+	--	'/effects/emitters/xcannon_cannon_muzzle_07_emit.bp',-- small redish flash, double quick
+	--	'/effects/emitters/xcannon_cannon_muzzle_08_emit.bp',-- small redish double flash
+	--},
 	FxMuzzleFlashScale = 1.2,
 	FxChargeMuzzleFlashScale = 5,
 }
-#-----------------------------
-#   Cybran Hailfire
-#-----------------------------
+-------------------------------
+--   Cybran Hailfire
+-------------------------------
 HailfireLauncherWeapon = Class(DefaultProjectileWeapon) {
     FxMuzzleFlash = BlackOpsEffectTemplate.HailfireLauncherExhaust,
 	
@@ -324,8 +324,8 @@ ShadowCannonWeapon01 = Class(DefaultProjectileWeapon) {
     FxMuzzleFlash = {
 		'/effects/emitters/shadow_cannon_muzzle_01_emit.bp',
 		'/effects/emitters/shadow_cannon_muzzle_02_emit.bp',
-		#'/effects/emitters/shadow_cannon_muzzle_03_emit.bp',
-		#'/effects/emitters/shadow_cannon_muzzle_04_emit.bp',
+		--'/effects/emitters/shadow_cannon_muzzle_03_emit.bp',
+		--'/effects/emitters/shadow_cannon_muzzle_04_emit.bp',
 		'/effects/emitters/shadow_cannon_muzzle_05_emit.bp',
 		'/effects/emitters/shadow_cannon_muzzle_06_emit.bp',
 		'/effects/emitters/shadow_cannon_muzzle_07_emit.bp',
@@ -349,8 +349,8 @@ BassieCannonWeapon01 = Class(DefaultProjectileWeapon) {
     FxMuzzleFlash = {
 		'/effects/emitters/bassie_cannon_muzzle_01_emit.bp',
 		'/effects/emitters/bassie_cannon_muzzle_02_emit.bp',
-		#'/effects/emitters/bassie_cannon_muzzle_03_emit.bp',
-		#'/effects/emitters/bassie_cannon_muzzle_04_emit.bp',
+		--'/effects/emitters/bassie_cannon_muzzle_03_emit.bp',
+		--'/effects/emitters/bassie_cannon_muzzle_04_emit.bp',
 		'/effects/emitters/bassie_cannon_muzzle_05_emit.bp',
 		'/effects/emitters/bassie_cannon_muzzle_06_emit.bp',
 		'/effects/emitters/bassie_cannon_muzzle_07_emit.bp',
@@ -363,7 +363,7 @@ BassieCannonWeapon01 = Class(DefaultProjectileWeapon) {
 	FxMuzzleFlashScale = 0.5,
 	FxChargeMuzzleFlashScale = 1,
 }
-#T3 PD stun weapon Cybran
+--T3 PD stun weapon Cybran
 StunZapperWeapon = Class(DefaultBeamWeapon) {
     BeamType = BlackOpsCollisionBeamFile.EMCHPRFDisruptorBeam,
     FxMuzzleFlash = {'/effects/emitters/cannon_muzzle_flash_01_emit.bp',},
@@ -378,7 +378,7 @@ ZCannonWeapon = Class(DefaultProjectileWeapon) {
 YCannonWeapon = Class(DefaultProjectileWeapon) {
 	FxChargeMuzzleFlash = BlackOpsEffectTemplate.YCannonMuzzleChargeFlash,
     FxMuzzleFlash = BlackOpsEffectTemplate.YCannonMuzzleFlash,
-	FxMuzzleFlashScale = 2,#FxMuzzleFlash = EXEffectTemplate.ACUAntiMatterMuzzle,
+	FxMuzzleFlashScale = 2,--FxMuzzleFlash = EXEffectTemplate.ACUAntiMatterMuzzle,
 }
 ScorpDisintegratorWeapon = Class(DefaultProjectileWeapon) {
     FxChargeMuzzleFlash = {},
@@ -436,7 +436,7 @@ UEFNavyMineWeapon = Class(KamikazeWeapon){
         for k, v in self.FxDeath do
             CreateEmitterAtBone(self.unit,-2,army,v)
         end   
-        ####CreateLightParticle( self.unit, -1, -1, 15, 10, 'flare_lens_add_02', 'ramp_red_10' ) 
+        --------CreateLightParticle( self.unit, -1, -1, 15, 10, 'flare_lens_add_02', 'ramp_red_10' ) 
 		KamikazeWeapon.OnFire(self)
     end,
 }
@@ -458,7 +458,7 @@ UEFNavyMineDeathWeapon = Class(BareBonesWeapon) {
         for k, v in self.FxDeath do
             CreateEmitterAtBone(self.unit,-2,army,v)
         end 
-        ###CreateLightParticle( self.unit, -1, -1, 15, 10, 'flare_lens_add_02', 'ramp_red_10' )  
+        ------CreateLightParticle( self.unit, -1, -1, 15, 10, 'flare_lens_add_02', 'ramp_red_10' )  
 		local myBlueprint = self:GetBlueprint()
         DamageArea(self.unit, self.unit:GetPosition(), myBlueprint.DamageRadius, myBlueprint.Damage, myBlueprint.DamageType or 'Normal', myBlueprint.DamageFriendly or false)
     end,    
@@ -483,7 +483,7 @@ SeraNavyMineWeapon = Class(KamikazeWeapon){
         for k, v in self.FxDeath do
             CreateEmitterAtBone(self.unit,-2,army,v)
         end   
-        ####CreateLightParticle( self.unit, -1, -1, 15, 10, 'flare_lens_add_02', 'ramp_red_10' ) 
+        --------CreateLightParticle( self.unit, -1, -1, 15, 10, 'flare_lens_add_02', 'ramp_red_10' ) 
 		KamikazeWeapon.OnFire(self)
     end,
 }
@@ -505,7 +505,7 @@ SeraNavyMineDeathWeapon = Class(BareBonesWeapon) {
         for k, v in self.FxDeath do
             CreateEmitterAtBone(self.unit,-2,army,v)
         end 
-        ###CreateLightParticle( self.unit, -1, -1, 15, 10, 'flare_lens_add_02', 'ramp_red_10' )  
+        ------CreateLightParticle( self.unit, -1, -1, 15, 10, 'flare_lens_add_02', 'ramp_red_10' )  
 		local myBlueprint = self:GetBlueprint()
         DamageArea(self.unit, self.unit:GetPosition(), myBlueprint.DamageRadius, myBlueprint.Damage, myBlueprint.DamageType or 'Normal', myBlueprint.DamageFriendly or false)
     end,    
@@ -527,7 +527,7 @@ SeraMineDeathExplosion = Class(BareBonesWeapon) {
         for k, v in self.FxDeath do
             CreateEmitterAtBone(self.unit,-2,army,v)
         end 
-        ###CreateLightParticle( self.unit, -1, -1, 15, 10, 'flare_lens_add_02', 'ramp_red_10' )  
+        ------CreateLightParticle( self.unit, -1, -1, 15, 10, 'flare_lens_add_02', 'ramp_red_10' )  
 		local myBlueprint = self:GetBlueprint()
         DamageArea(self.unit, self.unit:GetPosition(), myBlueprint.DamageRadius, myBlueprint.Damage, myBlueprint.DamageType or 'Normal', myBlueprint.DamageFriendly or false)
     end,    
@@ -540,7 +540,7 @@ SeraMineExplosion = Class(KamikazeWeapon){
         for k, v in self.FxDeath do
             CreateEmitterAtBone(self.unit,-2,army,v)
         end   
-        ####CreateLightParticle( self.unit, -1, -1, 15, 10, 'flare_lens_add_02', 'ramp_red_10' ) 
+        --------CreateLightParticle( self.unit, -1, -1, 15, 10, 'flare_lens_add_02', 'ramp_red_10' ) 
 		KamikazeWeapon.OnFire(self)
     end,
 }
@@ -553,8 +553,8 @@ GoldenLaserGenerator = Class(DefaultBeamWeapon) {
     BeamType = BlackOpsCollisionBeamFile.GoldenLaserCollisionBeam01,
     FxMuzzleFlash = {},
     FxChargeMuzzleFlash = {},
-    #FxUpackingChargeEffects = EffectTemplate.CMicrowaveLaserCharge01,
-    #FxUpackingChargeEffectScale = 1,
+    --FxUpackingChargeEffects = EffectTemplate.CMicrowaveLaserCharge01,
+    --FxUpackingChargeEffectScale = 1,
 }
 
 RedHeavyTurboLaserWeapon = Class(DefaultProjectileWeapon) {
@@ -566,8 +566,8 @@ ArtemisLaserGenerator = Class(DefaultBeamWeapon) {
     FxMuzzleFlash = BlackOpsEffectTemplate.ArtemisMuzzleFlash,
 	FxMuzzleFlashEffectScale = 0.5,
     FxChargeMuzzleFlash = {},
-    #FxUpackingChargeEffects = EffectTemplate.CMicrowaveLaserCharge01,
-    #FxUpackingChargeEffectScale = 1,
+    --FxUpackingChargeEffects = EffectTemplate.CMicrowaveLaserCharge01,
+    --FxUpackingChargeEffectScale = 1,
 }
 
 BOHellstormGun = Class(DefaultProjectileWeapon) {
@@ -636,26 +636,26 @@ YenzothaExperimentalLaser02 = Class(DefaultBeamWeapon) {
 GoliathRocket02 = Class(DefaultProjectileWeapon) {
     FxMuzzleFlash = EffectTemplate.TIFCruiseMissileLaunchSmoke,
 }
-#Goliath rocket script from the Nomads mod
+--Goliath rocket script from the Nomads mod
 GoliathRocket = Class(DefaultProjectileWeapon) {
     FxMuzzleFlash = EffectTemplate.TIFCruiseMissileLaunchSmoke,
 		
 		
 		CreateProjectileForWeapon = function(self, bone)
 			--if self.unit.FocusFire ~= true then
-				#LOG('FocusFire disabled')
+				--LOG('FocusFire disabled')
 				local f_count = table.getn(self:GetBlueprint().RackBones[1].MuzzleBones)
 				if not self.FireCounter or self.FireCounter == f_count then self.FireCounter = 0 end
 				if not self.TargetTable then self.TargetTable = {} end
 				if self.FireCounter == 0 then
-					#LOG('ON WEAPON FIRE!')
+					--LOG('ON WEAPON FIRE!')
 					if self:GetCurrentTarget() then
 						local PossibleTargetTable
 						local aiBrain = self.unit:GetAIBrain()
 						
 						if self:GetCurrentTarget() then
 							PossibleTargetTable = aiBrain:GetUnitsAroundPoint( categories.LAND + (categories.STRUCTURE) , self.unit:GetPosition(), self:GetBlueprint().MaxRadius ,'ENEMY') 
-							#LOG('Getting possible Targets')
+							--LOG('Getting possible Targets')
 
 							self.TargetTable = nil
 						end
@@ -666,7 +666,7 @@ GoliathRocket = Class(DefaultProjectileWeapon) {
 						local tablecounter = 0
 						
 						if targetcount >= f_count then
-							#LOG('We have '.. f_count .. ' targets, inserting possible targets')
+							--LOG('We have '.. f_count .. ' targets, inserting possible targets')
 							local max_targets = table.getn(PossibleTargetTable)
 							local ran_values = {}
 							repeat
@@ -680,45 +680,45 @@ GoliathRocket = Class(DefaultProjectileWeapon) {
 							
 							for k, v in ran_values do
 								table.insert(self.TargetTable, PossibleTargetTable[v])
-								#LOG('inserting ' .. PossibleTargetTable[v])
-								#LOG('We used as random value ' .. v)
+								--LOG('inserting ' .. PossibleTargetTable[v])
+								--LOG('We used as random value ' .. v)
 								tablecounter = tablecounter + 1
 								if tablecounter >= f_count then 
-									#LOG('Breaking cause we reached '.. f_count ..' targets') 
+									--LOG('Breaking cause we reached '.. f_count ..' targets') 
 								break 
 								end
 							end
 							
 						else
-							#LOG('Inserting possible targets in self.TargetTable')
+							--LOG('Inserting possible targets in self.TargetTable')
 							for k, v in PossibleTargetTable do
 								table.insert(self.TargetTable, v)
 								tablecounter = tablecounter + 1
 								if tablecounter >= targetcount then 
-									#LOG('breaking because there are not '.. f_count ..' targets!')
+									--LOG('breaking because there are not '.. f_count ..' targets!')
 								break 
 								end
 							end
 						end
-						#LOG('in the table there are ' .. table.getn(self.TargetTable))
+						--LOG('in the table there are ' .. table.getn(self.TargetTable))
 					end
 				end
 
 				self.FireCounter = self.FireCounter + 1
-				#LOG('Creating Proj number ' .. self.FireCounter)
+				--LOG('Creating Proj number ' .. self.FireCounter)
 				local TableSize = table.getn(self.TargetTable)
-				#LOG('We actually have '.. TableSize .. ' Targets')
+				--LOG('We actually have '.. TableSize .. ' Targets')
 				local n = self.FireCounter
-				#LOG(' We are using ' .. n .. ' for indexing the TargetTable')
+				--LOG(' We are using ' .. n .. ' for indexing the TargetTable')
 				if self.TargetTable then
 					if TableSize >= 1 then	
 						if TableSize == f_count then	
 							local tar = self.TargetTable[n]
-							#LOG('Setting Target to ' .. self.TargetTable[n])
+							--LOG('Setting Target to ' .. self.TargetTable[n])
 							if not tar:BeenDestroyed() and not tar:IsDead() then
 								self:SetTargetEntity(tar)
 								CreateAttachedEmitter(tar, 0, tar:GetArmy(), '/effects/emitters/targeted_effect_01_emit.bp'):OffsetEmitter(0, 0.5,0) 
-								#LOG('emit')
+								--LOG('emit')
 							end
 						else 
 							local ran = Random(1, TableSize)
@@ -727,17 +727,17 @@ GoliathRocket = Class(DefaultProjectileWeapon) {
 								self:SetTargetEntity(tar)
 								if tar.Pointed ~= true then
 									CreateAttachedEmitter(tar, 0, tar:GetArmy(), '/effects/emitters/targeted_effect_01_emit.bp'):OffsetEmitter(0, 0.5,0) 
-									#LOG('emit')
+									--LOG('emit')
 									tar.Pointed = true
 									tar:ForkThread(self.PointedThread, self)
 								end
-								#LOG('Setting Target to ' .. self.TargetTable[ran])
+								--LOG('Setting Target to ' .. self.TargetTable[ran])
 							end
 						end
 					end
 				end
 			--else
-			--	#LOG('FocusFire enabled')
+			--	--LOG('FocusFire enabled')
 			--end
 			GoliathRocket02.CreateProjectileForWeapon(self, bone)
 			
@@ -769,19 +769,19 @@ BasiliskAAMissile01 = Class(DefaultProjectileWeapon) {
 		
 		CreateProjectileForWeapon = function(self, bone)
 			--if self.unit.FocusFire ~= true then
-				#LOG('FocusFire disabled')
+				--LOG('FocusFire disabled')
 				local f_count = table.getn(self:GetBlueprint().RackBones[1].MuzzleBones)
 				if not self.FireCounter or self.FireCounter == f_count then self.FireCounter = 0 end
 				if not self.TargetTable then self.TargetTable = {} end
 				if self.FireCounter == 0 then
-					#LOG('ON WEAPON FIRE!')
+					--LOG('ON WEAPON FIRE!')
 					if self:GetCurrentTarget() then
 						local PossibleTargetTable
 						local aiBrain = self.unit:GetAIBrain()
 						
 						if self:GetCurrentTarget() then
 							PossibleTargetTable = aiBrain:GetUnitsAroundPoint( categories.AIR , self.unit:GetPosition(), self:GetBlueprint().MaxRadius ,'ENEMY') 
-							#LOG('Getting possible Targets')
+							--LOG('Getting possible Targets')
 
 							self.TargetTable = nil
 						end
@@ -792,7 +792,7 @@ BasiliskAAMissile01 = Class(DefaultProjectileWeapon) {
 						local tablecounter = 0
 						
 						if targetcount >= f_count then
-							#LOG('We have '.. f_count .. ' targets, inserting possible targets')
+							--LOG('We have '.. f_count .. ' targets, inserting possible targets')
 							local max_targets = table.getn(PossibleTargetTable)
 							local ran_values = {}
 							repeat
@@ -806,45 +806,45 @@ BasiliskAAMissile01 = Class(DefaultProjectileWeapon) {
 							
 							for k, v in ran_values do
 								table.insert(self.TargetTable, PossibleTargetTable[v])
-								#LOG('inserting ' .. PossibleTargetTable[v])
-								#LOG('We used as random value ' .. v)
+								--LOG('inserting ' .. PossibleTargetTable[v])
+								--LOG('We used as random value ' .. v)
 								tablecounter = tablecounter + 1
 								if tablecounter >= f_count then 
-									#LOG('Breaking cause we reached '.. f_count ..' targets') 
+									--LOG('Breaking cause we reached '.. f_count ..' targets') 
 								break 
 								end
 							end
 							
 						else
-							#LOG('Inserting possible targets in self.TargetTable')
+							--LOG('Inserting possible targets in self.TargetTable')
 							for k, v in PossibleTargetTable do
 								table.insert(self.TargetTable, v)
 								tablecounter = tablecounter + 1
 								if tablecounter >= targetcount then 
-									#LOG('breaking because there are not '.. f_count ..' targets!')
+									--LOG('breaking because there are not '.. f_count ..' targets!')
 								break 
 								end
 							end
 						end
-						#LOG('in the table there are ' .. table.getn(self.TargetTable))
+						--LOG('in the table there are ' .. table.getn(self.TargetTable))
 					end
 				end
 
 				self.FireCounter = self.FireCounter + 1
-				#LOG('Creating Proj number ' .. self.FireCounter)
+				--LOG('Creating Proj number ' .. self.FireCounter)
 				local TableSize = table.getn(self.TargetTable)
-				#LOG('We actually have '.. TableSize .. ' Targets')
+				--LOG('We actually have '.. TableSize .. ' Targets')
 				local n = self.FireCounter
-				#LOG(' We are using ' .. n .. ' for indexing the TargetTable')
+				--LOG(' We are using ' .. n .. ' for indexing the TargetTable')
 				if self.TargetTable then
 					if TableSize >= 1 then	
 						if TableSize == f_count then	
 							local tar = self.TargetTable[n]
-							#LOG('Setting Target to ' .. self.TargetTable[n])
+							--LOG('Setting Target to ' .. self.TargetTable[n])
 							if not tar:BeenDestroyed() and not tar:IsDead() then
 								self:SetTargetEntity(tar)
 								--CreateAttachedEmitter(tar, 0, tar:GetArmy(), '/effects/emitters/targeted_effect_01_emit.bp'):OffsetEmitter(0, 0.5,0) 
-								#LOG('emit')
+								--LOG('emit')
 							end
 						else 
 							local ran = Random(1, TableSize)
@@ -853,17 +853,17 @@ BasiliskAAMissile01 = Class(DefaultProjectileWeapon) {
 								self:SetTargetEntity(tar)
 								if tar.Pointed ~= true then
 									--CreateAttachedEmitter(tar, 0, tar:GetArmy(), '/effects/emitters/targeted_effect_01_emit.bp'):OffsetEmitter(0, 0.5,0) 
-									#LOG('emit')
+									--LOG('emit')
 									tar.Pointed = true
 									tar:ForkThread(self.PointedThread, self)
 								end
-								#LOG('Setting Target to ' .. self.TargetTable[ran])
+								--LOG('Setting Target to ' .. self.TargetTable[ran])
 							end
 						end
 					end
 				end
 			--else
-			--	#LOG('FocusFire enabled')
+			--	--LOG('FocusFire enabled')
 			--end
 			BasiliskAAMissile02.CreateProjectileForWeapon(self, bone)
 			
@@ -906,19 +906,19 @@ CitadelHVMWeapon = Class(DefaultProjectileWeapon) {
 	
 	CreateProjectileForWeapon = function(self, bone)
 			--if self.unit.FocusFire ~= true then
-				#LOG('FocusFire disabled')
+				--LOG('FocusFire disabled')
 				local f_count = table.getn(self:GetBlueprint().RackBones[1].MuzzleBones)
 				if not self.FireCounter or self.FireCounter == f_count then self.FireCounter = 0 end
 				if not self.TargetTable then self.TargetTable = {} end
 				if self.FireCounter == 0 then
-					#LOG('ON WEAPON FIRE!')
+					--LOG('ON WEAPON FIRE!')
 					if self:GetCurrentTarget() then
 						local PossibleTargetTable
 						local aiBrain = self.unit:GetAIBrain()
 						
 						if self:GetCurrentTarget() then
 							PossibleTargetTable = aiBrain:GetUnitsAroundPoint( categories.AIR , self.unit:GetPosition(), self:GetBlueprint().MaxRadius ,'ENEMY') 
-							#LOG('Getting possible Targets')
+							--LOG('Getting possible Targets')
 
 							self.TargetTable = nil
 						end
@@ -929,7 +929,7 @@ CitadelHVMWeapon = Class(DefaultProjectileWeapon) {
 						local tablecounter = 0
 						
 						if targetcount >= f_count then
-							#LOG('We have '.. f_count .. ' targets, inserting possible targets')
+							--LOG('We have '.. f_count .. ' targets, inserting possible targets')
 							local max_targets = table.getn(PossibleTargetTable)
 							local ran_values = {}
 							repeat
@@ -943,45 +943,45 @@ CitadelHVMWeapon = Class(DefaultProjectileWeapon) {
 							
 							for k, v in ran_values do
 								table.insert(self.TargetTable, PossibleTargetTable[v])
-								#LOG('inserting ' .. PossibleTargetTable[v])
-								#LOG('We used as random value ' .. v)
+								--LOG('inserting ' .. PossibleTargetTable[v])
+								--LOG('We used as random value ' .. v)
 								tablecounter = tablecounter + 1
 								if tablecounter >= f_count then 
-									#LOG('Breaking cause we reached '.. f_count ..' targets') 
+									--LOG('Breaking cause we reached '.. f_count ..' targets') 
 								break 
 								end
 							end
 							
 						else
-							#LOG('Inserting possible targets in self.TargetTable')
+							--LOG('Inserting possible targets in self.TargetTable')
 							for k, v in PossibleTargetTable do
 								table.insert(self.TargetTable, v)
 								tablecounter = tablecounter + 1
 								if tablecounter >= targetcount then 
-									#LOG('breaking because there are not '.. f_count ..' targets!')
+									--LOG('breaking because there are not '.. f_count ..' targets!')
 								break 
 								end
 							end
 						end
-						#LOG('in the table there are ' .. table.getn(self.TargetTable))
+						--LOG('in the table there are ' .. table.getn(self.TargetTable))
 					end
 				end
 
 				self.FireCounter = self.FireCounter + 1
-				#LOG('Creating Proj number ' .. self.FireCounter)
+				--LOG('Creating Proj number ' .. self.FireCounter)
 				local TableSize = table.getn(self.TargetTable)
-				#LOG('We actually have '.. TableSize .. ' Targets')
+				--LOG('We actually have '.. TableSize .. ' Targets')
 				local n = self.FireCounter
-				#LOG(' We are using ' .. n .. ' for indexing the TargetTable')
+				--LOG(' We are using ' .. n .. ' for indexing the TargetTable')
 				if self.TargetTable then
 					if TableSize >= 1 then	
 						if TableSize == f_count then	
 							local tar = self.TargetTable[n]
-							#LOG('Setting Target to ' .. self.TargetTable[n])
+							--LOG('Setting Target to ' .. self.TargetTable[n])
 							if not tar:BeenDestroyed() and not tar:IsDead() then
 								self:SetTargetEntity(tar)
 								--CreateAttachedEmitter(tar, 0, tar:GetArmy(), '/effects/emitters/targeted_effect_01_emit.bp'):OffsetEmitter(0, 0.5,0) 
-								#LOG('emit')
+								--LOG('emit')
 							end
 						else 
 							local ran = Random(1, TableSize)
@@ -990,17 +990,17 @@ CitadelHVMWeapon = Class(DefaultProjectileWeapon) {
 								self:SetTargetEntity(tar)
 								if tar.Pointed ~= true then
 									--CreateAttachedEmitter(tar, 0, tar:GetArmy(), '/effects/emitters/targeted_effect_01_emit.bp'):OffsetEmitter(0, 0.5,0) 
-									#LOG('emit')
+									--LOG('emit')
 									tar.Pointed = true
 									tar:ForkThread(self.PointedThread, self)
 								end
-								#LOG('Setting Target to ' .. self.TargetTable[ran])
+								--LOG('Setting Target to ' .. self.TargetTable[ran])
 							end
 						end
 					end
 				end
 			--else
-			--	#LOG('FocusFire enabled')
+			--	--LOG('FocusFire enabled')
 			--end
 			CitadelHVMWeapon02.CreateProjectileForWeapon(self, bone)
 			
