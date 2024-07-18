@@ -100,7 +100,10 @@ UnitBlueprint {
         },
     },
     Display = {
-        Abilities = { "<LOC ability_aa>Anti-Air" },
+        Abilities = {
+            "<LOC ability_personalshield>Personal Shield",
+            "<LOC ability_aa>Anti-Air",
+        },
         LayerChangeEffects = {
             AirLand = {
                 Effects = {
@@ -163,6 +166,7 @@ UnitBlueprint {
         BuildCostEnergy = 15000000,
         BuildCostMass = 160000,
         BuildTime = 267500,
+        MaintenanceConsumptionPerSecondEnergy = 1000,
     },
     Footprint = {
         MaxSlope = 0.5,
@@ -184,6 +188,8 @@ UnitBlueprint {
             RULEUCC_Stop = true,
             RULEUCC_Transport = false,
         },
+
+        ToggleCaps = { RULEUTC_ShieldToggle = true },
         FactionName = "Seraphim",
         Icon = "air",
         UnitName = "<LOC xsa0402_name>Ahwassa",
