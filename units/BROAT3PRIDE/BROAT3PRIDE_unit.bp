@@ -2,11 +2,11 @@ UnitBlueprint {
     AI = {
         GuardScanRadius = 30,
         TargetBones = {
-        --    'target01',
-        --    'target02',
-        --    'target03',
-        --    'target04',
-			'BROAT3PRIDE',
+            --    'target01',
+            --    'target02',
+            --    'target03',
+            --    'target04',
+            'BROAT3PRIDE',
         },
     },
     VeteranMassMult = 0.5,
@@ -37,15 +37,15 @@ UnitBlueprint {
             Cue = 'UAA0203_Move_Loop',
             LodCutoff = 'UnitMove_LodCutoff',
         },
-       Destroyed = Sound {
-           Bank = 'Explosions',
-           Cue = 'UEF_Nuke_Impact',
-           LodCutoff = 'UnitMove_LodCutoff',
-       },
+        Destroyed = Sound {
+            Bank = 'Explosions',
+            Cue = 'UEF_Nuke_Impact',
+            LodCutoff = 'UnitMove_LodCutoff',
+        },
         Killed = Sound {
-           Bank = 'Explosions',
-           Cue = 'UEF_Nuke_Impact',
-           LodCutoff = 'UnitMove_LodCutoff',
+            Bank = 'Explosions',
+            Cue = 'UEF_Nuke_Impact',
+            LodCutoff = 'UnitMove_LodCutoff',
         },
         Landing = Sound {
             Bank = 'UAA',
@@ -142,7 +142,7 @@ UnitBlueprint {
     Description = '<LOC broat3pride_desc>Prototype Flying Fortress',
     Display = {
         Abilities = {
-        --    '<LOC ability_aa>Anti-Air',
+            --    '<LOC ability_aa>Anti-Air',
             '<LOC ability_radar>Radar',
             '<LOC ability_personalshield>Personal Shield',
         },
@@ -326,7 +326,7 @@ UnitBlueprint {
             BeamLifetime = 0,
             CollideFriendly = false,
             ContinuousBeam = true,
-            Damage = 300/2,
+            Damage = 300 / 2,
             DamageFriendly = false,
             DamageType = 'Normal',
             DamageRadius = 4,
@@ -341,7 +341,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleChargeDelay = 0.5,
-			PrefersPrimaryWeaponTarget = true,
+            PrefersPrimaryWeaponTarget = true,
             RackBones = {
                 {
                     MuzzleBones = {
@@ -412,7 +412,7 @@ UnitBlueprint {
             BeamLifetime = 0,
             CollideFriendly = false,
             ContinuousBeam = true,
-            Damage = 300/2,
+            Damage = 300 / 2,
             DamageFriendly = false,
             DamageType = 'Normal',
             DamageRadius = 4,
@@ -427,7 +427,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleChargeDelay = 0.5,
-			PrefersPrimaryWeaponTarget = true,
+            PrefersPrimaryWeaponTarget = true,
             RackBones = {
                 {
                     MuzzleBones = {
@@ -498,7 +498,7 @@ UnitBlueprint {
             BeamLifetime = 0,
             CollideFriendly = false,
             ContinuousBeam = true,
-            Damage = 300/2,
+            Damage = 300 / 2,
             DamageFriendly = false,
             DamageType = 'Normal',
             DamageRadius = 4,
@@ -513,7 +513,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleChargeDelay = 0.5,
-			PrefersPrimaryWeaponTarget = true,
+            PrefersPrimaryWeaponTarget = true,
             RackBones = {
                 {
                     MuzzleBones = {
@@ -584,7 +584,7 @@ UnitBlueprint {
             BeamLifetime = 0,
             CollideFriendly = false,
             ContinuousBeam = true,
-            Damage = 300/2,
+            Damage = 300 / 2,
             DamageFriendly = false,
             DamageType = 'Normal',
             DamageRadius = 4,
@@ -599,7 +599,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleChargeDelay = 0.5,
-			PrefersPrimaryWeaponTarget = true,
+            PrefersPrimaryWeaponTarget = true,
             RackBones = {
                 {
                     MuzzleBones = {
@@ -670,7 +670,7 @@ UnitBlueprint {
             BeamLifetime = 0,
             CollideFriendly = false,
             ContinuousBeam = true,
-            Damage = 300/2,
+            Damage = 300 / 2,
             DamageFriendly = false,
             DamageType = 'Normal',
             DamageRadius = 4,
@@ -685,7 +685,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleChargeDelay = 0.5,
-			PrefersPrimaryWeaponTarget = true,
+            PrefersPrimaryWeaponTarget = true,
             RackBones = {
                 {
                     MuzzleBones = {
@@ -756,7 +756,7 @@ UnitBlueprint {
             BeamLifetime = 0,
             CollideFriendly = false,
             ContinuousBeam = true,
-            Damage = 150/2,
+            Damage = 150 / 2,
             DamageFriendly = false,
             DamageType = 'Normal',
             DamageRadius = 4,
@@ -770,7 +770,7 @@ UnitBlueprint {
             MaxRadius = 40,
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
-			PrefersPrimaryWeaponTarget = true,
+            PrefersPrimaryWeaponTarget = true,
             RackBones = {
                 {
                     MuzzleBones = {
@@ -885,13 +885,13 @@ UnitBlueprint {
             TrackingRadius = 1,
             Turreted = false,
             WeaponCategory = 'Direct Fire Experimental',
-        --    WeaponRepackTimeout = 3,
-        --    WeaponUnpackAnimation = '/units/BROAT3PRIDE/BROAT3PRIDE_deploy.sca',
-        --    WeaponUnpackAnimationRate = 0.6,
+            --    WeaponRepackTimeout = 3,
+            --    WeaponUnpackAnimation = '/units/BROAT3PRIDE/BROAT3PRIDE_deploy.sca',
+            --    WeaponUnpackAnimationRate = 0.6,
             WeaponUnpackLocksMotion = false,
             WeaponUnpacks = false,
- 	    },
-		{
+        },
+        {
             AboveWaterTargetsOnly = true,
             BallisticArc = 'RULEUBA_LowArc',
             CollideFriendly = false,
@@ -912,7 +912,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleVelocity = 40,
-			PrefersPrimaryWeaponTarget = true,
+            PrefersPrimaryWeaponTarget = true,
             ProjectileId = '/projectiles/NULLWEAPON/NULLWEAPON_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1,
             ProjectilesPerOnFire = 1,
@@ -958,7 +958,7 @@ UnitBlueprint {
             AboveWaterTargetsOnly = true,
             Damage = 20000,
             DamageFriendly = true,
-            DamageRadius = 16*1.15,
+            DamageRadius = 16 * 1.15,
             DamageType = 'Normal',
             DisplayName = 'Air Crash',
             DummyWeapon = true,
