@@ -98,6 +98,7 @@ UnitBlueprint {
         'MOBILE',
         'AIR',
         'EXPERIMENTAL',
+        'EXPERIMENTAL2',
         'GROUNDATTACK',
         'VISIBLETORECON',
         'RECLAIMABLE',
@@ -261,8 +262,8 @@ UnitBlueprint {
         },
         Elevation = 25,
 
-        # FuelRechargeRate = 150,
-        # FuelUseTime = 30000,
+        -- # FuelRechargeRate = 150,
+        -- # FuelUseTime = 30000,
         MaxAcceleration = 1,
         MaxSpeed = 1,
         MaxSteerForce = 6,

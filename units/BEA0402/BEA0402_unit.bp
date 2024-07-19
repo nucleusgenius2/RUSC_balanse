@@ -201,6 +201,7 @@ UnitBlueprint {
         'MOBILE',
         'AIR',
         'EXPERIMENTAL',
+        'EXPERIMENTAL2',
         'DIRECTFIRE',
         'ANTIAIR',
         'VISIBLETORECON',

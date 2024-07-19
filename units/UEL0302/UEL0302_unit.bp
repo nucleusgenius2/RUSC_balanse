@@ -1663,7 +1663,7 @@ UnitBlueprint {
                 "ALLUNITS",
             },
             TargetRestrictDisallow = "UNTARGETABLE, ORBITAL",
-            TargetRestrictOnlyAllow = 'Galaxy1',
+            TargetRestrictOnlyAllow = 'EXPERIMENTAL2',
             TurretBoneMuzzle = "muzzle011",
             TurretBonePitch = "Object01",
             TurretBoneYaw = "Front_Turret99",
