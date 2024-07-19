@@ -288,6 +288,7 @@ UnitBlueprint {
             },
             Slot = "Back",
         },
+        --[[
         NaniteMissileSystem = {
             BuildCostEnergy = 150000,
             BuildCostMass = 10000,
@@ -310,6 +311,7 @@ UnitBlueprint {
             },
             Slot = "Back",
         },
+        ]]
         AdvancedOmniSensors = {
             BuildCostEnergy = 30000,
             BuildCostMass = 1500,
@@ -1663,7 +1665,7 @@ UnitBlueprint {
                 "ALLUNITS",
             },
             TargetRestrictDisallow = "UNTARGETABLE, ORBITAL",
-            TargetRestrictOnlyAllow = 'Galaxy1',
+            TargetRestrictOnlyAllow = 'EXPERIMENTAL2',
             TurretBoneMuzzle = "muzzle011",
             TurretBonePitch = "Object01",
             TurretBoneYaw = "Front_Turret99",

@@ -1316,7 +1316,7 @@ Unit = ClassUnit(moho.unit_methods, IntelComponent, VeterancyComponent) {
 			self:AdjustHealth(instigator, -amount*0.5)
 		elseif EntityCategoryContains(categories.LOWDAMAGE1, instigator) and bpID == 'bel0402' then
 			self:AdjustHealth(instigator, -amount*0.95)
-		elseif EntityCategoryContains(categories.Galaxy1, instigator) and EntityCategoryContains(categories.AIR - categories.STRUCTURE, self) then
+		elseif damageType == "GreenLaser" and EntityCategoryContains(categories.AIR - categories.STRUCTURE, self) then
             self:AdjustHealth(instigator, -amount*0)
 		else 
 			self:AdjustHealth(instigator, -amount)
