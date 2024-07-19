@@ -288,6 +288,7 @@ UnitBlueprint {
             },
             Slot = "Back",
         },
+        --[[
         NaniteMissileSystem = {
             BuildCostEnergy = 150000,
             BuildCostMass = 10000,
@@ -310,6 +311,7 @@ UnitBlueprint {
             },
             Slot = "Back",
         },
+        ]]
         AdvancedOmniSensors = {
             BuildCostEnergy = 30000,
             BuildCostMass = 1500,
