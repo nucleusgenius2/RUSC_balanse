@@ -224,7 +224,7 @@ UnitBlueprint {
         BuildCostEnergy = 80000,
         BuildCostMass = 6500,
         BuildTime = 2250 * 1.7,
-        BuildRate = (1050 / 2.5) * 0.9 * 0.92,
+        BuildRate = 320,
         MaintenanceConsumptionPerSecondEnergy = 500,
         BuildableCategory = { "STARGATE SERAPHIM" },
         StorageEnergy = 4000,
