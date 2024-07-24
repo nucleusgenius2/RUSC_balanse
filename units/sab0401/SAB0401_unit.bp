@@ -177,7 +177,7 @@ UnitBlueprint {
         BuildCostEnergy = 1530000,
         BuildCostMass = 65000,
         BuildRate = 120,
-        BuildTime = 24000,
+        BuildTime = 70500,
         BuildableCategory = {
             'Galaxy',
             "xaa0305a"
