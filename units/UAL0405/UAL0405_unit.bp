@@ -142,7 +142,7 @@ UnitBlueprint {
         -- множитель дальности атаки Колосса
         GCRange = 1.07,
         -- множитель урона для Эон эксп (когда 2 горшка рядом)
-        DamageBuff = 1.3,
+        DamageBuff = 1.4,
     },
     Description = '<LOC ual0405_desc>Experimental support unit',
     Display = {
