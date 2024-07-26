@@ -244,7 +244,7 @@ UnitBlueprint {
             HeadingArcCenter = 50,
             HeadingArcRange = 120,
             Label = 'SonicPulseBattery4',
-            MaxRadius = 120,
+            MaxRadius = 100,
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleVelocity = 100,
