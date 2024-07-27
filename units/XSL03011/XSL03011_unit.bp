@@ -224,7 +224,7 @@ UnitBlueprint {
         BuildCostEnergy = 80000,
         BuildCostMass = 6500,
         BuildTime = 2250 * 1.7,
-        BuildRate = 320,
+        BuildRate = 300,
         MaintenanceConsumptionPerSecondEnergy = 500,
         BuildableCategory = { "STARGATE SERAPHIM" },
         StorageEnergy = 4000,
@@ -234,8 +234,8 @@ UnitBlueprint {
     },
     Enhancements = {
         Shield = {
-            BuildCostEnergy = 100000,
-            BuildCostMass = 8000,
+            BuildCostEnergy = 60000,
+            BuildCostMass = 3000,
             BuildTime = 7200,
             Icon = "spps",
             ImpactEffects = 'SeraphimShieldHit01',
