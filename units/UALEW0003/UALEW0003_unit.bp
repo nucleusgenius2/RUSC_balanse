@@ -51,12 +51,12 @@ UnitBlueprint {
         'SELECTABLE',
         'BUILTBYTIER2COMMANDER',
         'BUILTBYTIER2COMMANDER',
-        'BUILTBYT2LANDENGINEER', 
-        'BUILTBYT3LANDENGINEER', 
-        'BUILTBYT2AIRENGINEER', 
-        'BUILTBYT3AIRENGINEER', 
-        'BUILTBYT2SEAENGINEER', 
-        'BUILTBYT3SEAENGINEER', 
+        'BUILTBYT2LANDENGINEER',
+        'BUILTBYT3LANDENGINEER',
+        'BUILTBYT2AIRENGINEER',
+        'BUILTBYT3AIRENGINEER',
+        'BUILTBYT2SEAENGINEER',
+        'BUILTBYT3SEAENGINEER',
         'AEON',
         'MOBILE',
         'LAND',
@@ -376,8 +376,8 @@ UnitBlueprint {
             DamageRadius = 1,
             DamageType = 'Normal',
             DisplayName = 'Oblivion Cannon',
-            HeadingArcCenter = 90,--110
-            HeadingArcRange = 100,--130
+            HeadingArcCenter = 90, --110
+            HeadingArcRange = 100, --130
             FireTargetLayerCapsTable = {
                 Land = 'Land|Water|Seabed',
                 Water = 'Land|Water|Seabed',
@@ -459,7 +459,7 @@ UnitBlueprint {
             WeaponRepackTimeout = 1,
             WeaponUnpacks = true,
         },
-               {
+        {
             AboveWaterTargetsOnly = true,
             Audio = {
                 Fire = Sound {
@@ -562,7 +562,7 @@ UnitBlueprint {
             WeaponUnpacks = true,
         },
 
-       {
+        {
             AboveWaterTargetsOnly = true,
             Audio = {
                 Fire = Sound {
@@ -650,9 +650,9 @@ UnitBlueprint {
             TurretYawSpeed = 60,
             Turreted = true,
             WeaponCategory = 'Direct Fire',
-        },		
+        },
 
-       {
+        {
             AboveWaterTargetsOnly = true,
             Audio = {
                 Fire = Sound {
@@ -740,7 +740,7 @@ UnitBlueprint {
             TurretYawSpeed = 60,
             Turreted = true,
             WeaponCategory = 'Direct Fire',
-        },		
+        },
         {
             AlwaysRecheckTarget = true,
             Audio = {
@@ -811,7 +811,7 @@ UnitBlueprint {
             WeaponCategory = 'Anti Air',
             WeaponRepackTimeout = 1,
             WeaponUnpacks = true,
-        },	
+        },
         {
             AlwaysRecheckTarget = true,
             Audio = {
@@ -882,7 +882,7 @@ UnitBlueprint {
             WeaponCategory = 'Anti Air',
             WeaponRepackTimeout = 1,
             WeaponUnpacks = true,
-        },				
+        },
     },
     Wreckage = {
         Blueprint = '/props/DefaultWreckage/DefaultWreckage_prop.bp',
