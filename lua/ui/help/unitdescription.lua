@@ -730,4 +730,5 @@ Description = {
   ["seb4401"] = "<LOC unit_description_seb4401>Enlarged shield dome. Reduces damage from heavy artillery by 30%. The cost of an assist is 15% lower.",
   ["uelew0003"] = "<LOC unit_description_uelew0003>Has anti-teleport, air defense, increased viewing radius.",
   ["urow1102"] = "<LOC unit_description_urow1102>Experimental gunship with a large attack radius and powerful air defense.",
+  ["ualew0003"] = "<LOC unit_description_ualew0003>Long-range platform with a good rate of fire.",
 }

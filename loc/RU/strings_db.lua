@@ -9405,3 +9405,8 @@ ChangelogDescriptionIdentifier="descriptionRU"
 	urow1102_help="Экспериментальный штурмовик"
 	urow1102_desc="Экспериментальный штурмовик"
 	unit_description_urow1102="Экспериментальный штурмовик с большим радиусом атаки и мощным ПВО."
+
+	ualew0003_name="Охотник"
+	ualew0003_help="Экспериментальный бот"
+	ualew0003_desc="Экспериментальный бот"
+	unit_description_ualew0003="Дальнобойная платформа с хорошей скорострельностью."
