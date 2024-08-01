@@ -152,10 +152,10 @@ UEL0302 = Class(CommandUnit) {
             }
         end
 
-        local expSACU = categories.SUBCOMMANDER * categories.UEFGantry
+        local uefSacu = categories.SUBCOMMANDER * categories.UEF
         while not self.Dead do
 
-            self:ApplyBuffToUnits(expSACU, buffSACUrange, auraRadius)
+            self:ApplyBuffToUnits(uefSacu, buffSACUrange, auraRadius)
             WaitTicks(51)
         end
     end,

@@ -203,6 +203,50 @@ UnitBlueprint{
         BuildCostEnergy = 480000,
         BuildCostMass = 30000,
         BuildTime = 20000,
+        BuildRate = 180,
+    },
+    Enhancements = {
+        AdvancedProtonAccelerator =
+        {
+            BuildCostEnergy = 90000,
+            BuildCostMass = 7000,
+            BuildTime = 10000,
+            Icon = "acu",
+            Name = "<LOC enhancements_0152_mega>Advanced Proton Accelerator",
+            DamageMult = 1.3,
+            Slot = "Back",
+        },
+        AdvancedProtonAcceleratorRemove =
+        {
+            BuildCostEnergy = 1,
+            BuildCostMass = 1,
+            BuildTime = 0.1,
+            Icon = "acu",
+            Name = "<LOC enhancements_0082>Remove Advanced Proton Accelerator",
+            Prerequisite = "AdvancedProtonAccelerator",
+            RemoveEnhancements = {
+                "AdvancedProtonAccelerator",
+                "AdvancedProtonAcceleratorRemove",
+            },
+            Slot = "Back",
+        },
+        Slots = {
+            Back = {
+                name = "<LOC _Back>",
+                x = 0,
+                y = -10,
+            },
+            LCH = {
+                name = "<LOC _LCH>",
+                x = 60,
+                y = 2,
+            },
+            RCH = {
+                name = "<LOC _RCH>",
+                x = -16,
+                y = 0,
+            },
+        },
     },
     Footprint = {
         MaxSlope = 0.25,
@@ -252,8 +296,8 @@ UnitBlueprint{
         },
         Elevation = 12,
 
-        # FuelRechargeRate = 150,
-        # FuelUseTime = 5000,
+        -- FuelRechargeRate = 150,
+        -- FuelUseTime = 5000,
         MaxSpeed = 0.5,
         MotionType = 'RULEUMT_Air',
         SkirtOffsetX = -1.5,

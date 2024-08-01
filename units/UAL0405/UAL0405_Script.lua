@@ -255,11 +255,11 @@ UAL0405 = Class(AStructureUnit) {
         end
 
         -- GC Range
-        local buffGCrange = 'GCRangeBuff'
-        if not Buffs[buffGCrange] then
+        local buffRange = 'GCRangeBuff'
+        if not Buffs[buffRange] then
             BuffBlueprint {
-                Name = buffGCrange,
-                DisplayName = buffGCrange,
+                Name = buffRange,
+                DisplayName = buffRange,
                 BuffType = 'AURAFORALL3',
                 Stacks = 'REPLACE',
                 Duration = 5,
@@ -370,7 +370,7 @@ UAL0405 = Class(AStructureUnit) {
             - categories.OPTICS
             - categories.NOHP
         local nonExps = mobileUnits - expUnits
-        local gcCat = categories.ual0401
+        local rangeBuffCat = categories.ual0401 + categories.ualew0003
         local inqusitorCat = categories.ual0405
 
         ---@type AIBrain
@@ -389,7 +389,7 @@ UAL0405 = Class(AStructureUnit) {
                 self:ApplyBuffToUnits(nonExps, buffHPAuraLandUnits, auraRadius)
                 self:ApplyBuffToUnits(aeonExp, buffHPAuraAeonExps, auraRadius)
                 self:ApplyBuffToUnits(nonAeonExp, buffHPAuraExps, auraRadius)
-                self:ApplyBuffToUnits(gcCat, buffGCrange, auraRadius)
+                self:ApplyBuffToUnits(rangeBuffCat, buffRange, auraRadius)
                 self:ApplyBuffToUnits(aeonExp, buffDamage, auraRadius)
 
                 local all = brain:GetUnitsAroundPoint(mobileLandUnits, self:GetPosition(), slowdownRadius, "Enemy")

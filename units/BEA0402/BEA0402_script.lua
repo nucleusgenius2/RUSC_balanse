@@ -107,8 +107,8 @@ BEA0402 = Class(TAirUnit) {
 
     ---@param self BEA0402
     SetModePrecisionMode = function(self, precision)
-        self:SetWeaponEnabledByLabel("MainTurret01", precision)
-        self:SetWeaponEnabledByLabel("MainTurret02", precision)
+        self:SetWeaponEnabledByLabel("MainTurret01", not precision)
+        self:SetWeaponEnabledByLabel("MainTurret02", not precision)
 
         if precision then
             self.TargetScatterRange = 7
