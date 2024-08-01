@@ -50,7 +50,7 @@ UnitBlueprint {
         MaxHealth = 8000,
         SubThreatLevel = 0,
         SurfaceThreatLevel = 0,
-        NoTeleDistance = 80,
+        NoTeleDistance = 72,
     },
     Description = '<LOC har0004_desc>Anti-Teleport Field Tower',
     Display = {
@@ -138,7 +138,7 @@ UnitBlueprint {
     },
     Intel = {
         ShowIntelOnSelect = true,
-        OmniRadius = 80,
+        OmniRadius = 72,
         VisionRadius = 25,
     },
     Interface = {
