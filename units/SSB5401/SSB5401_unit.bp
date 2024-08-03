@@ -71,7 +71,7 @@ UnitBlueprint {
         SurfaceThreatLevel = 0,
         TeleCheckRadius = 115
     },
-    Description = '<LOC ssb5401_desc>Experimental quantum factory',
+    Description = '<LOC ssb5401_desc>Experimental Quantum Gateway',
     Display = {
         AnimationDeath = {
             {
@@ -243,7 +243,7 @@ UnitBlueprint {
         VisionRadius = 20,
     },
     Interface = {
-        HelpText = '<LOC ssb5401_desc>Experimental quantum factory',
+        HelpText = '<LOC ssb5401_desc>Experimental Quantum Gateway',
     },
     LifeBarHeight = 0.075,
     LifeBarOffset = 1.3,

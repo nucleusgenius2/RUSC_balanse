@@ -77,7 +77,7 @@ UnitBlueprint {
         SubThreatLevel = 0,
         SurfaceThreatLevel = 0,
     },
-    Description = '<LOC led0006_desc>Experimental Quantum Gateway',
+    Description = '<LOC led0006_desc>Experimental Quantum factory',
     Display = {
         --    Abilities = { "<LOC ability_upgradable>Upgradeable" },
         BlinkingLights = {
@@ -244,7 +244,7 @@ UnitBlueprint {
         VisionRadius = 20,
     },
     Interface = {
-        HelpText = '<LOC led0006_help>Experimental Quantum Gateway',
+        HelpText = '<LOC led0006_help>Experimental Quantum factory',
     },
     LifeBarHeight = 0.075,
     LifeBarOffset = 4,
