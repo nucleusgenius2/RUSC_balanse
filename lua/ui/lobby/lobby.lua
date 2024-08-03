@@ -1184,19 +1184,17 @@ function SetSlotInfo(slotNum, playerInfo)
         Tooltip.AddControlTooltip(slot.KinderCountry, {text=LOC("<LOC lobui_0413>Country"), body=LOC(CountryTooltips[playerInfo.Country])})
     end
 
-    if playerInfo.Icons then
-        for i, icon in {slot.icon1, slot.icon2} do
-            local icon_name = playerInfo.Icons[i]
-            if icon_name then
-                if exists(UIUtil.UIFile("/lobby/icons/"..tostring(icon_name)..".png")) then
-                    icon:SetTexture(UIUtil.UIFile("/lobby/icons/"..tostring(icon_name)..".png"), 0)
-                else
-                    icon:SetTexture(UIUtil.UIFile("/lobby/icons/"..tostring(icon_name)..".dds"), 0)
-                end
-                icon:Show()
+    for i, icon in {slot.icon1, slot.icon2} do
+        local icon_name = playerInfo.Icons[i]
+        if icon_name then
+            if exists(UIUtil.UIFile("/lobby/icons/"..tostring(icon_name)..".png")) then
+                icon:SetTexture(UIUtil.UIFile("/lobby/icons/"..tostring(icon_name)..".png"), 0)
             else
-                icon:Hide()
+                icon:SetTexture(UIUtil.UIFile("/lobby/icons/"..tostring(icon_name)..".dds"), 0)
             end
+            icon:Show()
+        else
+            icon:Hide()
         end
     end
 
