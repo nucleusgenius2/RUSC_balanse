@@ -314,7 +314,7 @@ UnitBlueprint {
         },
         FactionName = 'Seraphim',
         Icon = 'amph',
-        UnitName = '<LOC brpt3shbm_name>Thaez-Atha',
+        UnitName = '<LOC brpt3shbm_name>Ushulta',
         TechLevel = 'RULEUTL_Experimental',
         UnitWeight = 1,
     },

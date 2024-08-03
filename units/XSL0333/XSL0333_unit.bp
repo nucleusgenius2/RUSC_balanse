@@ -93,7 +93,7 @@ UnitBlueprint {
         MaxTeleRange = 111,
         TelDelay = 33,
     },
-    Description = '<LOC xsl0333_desc>Advanced AA Battle Bot',
+    Description = '<LOC xsl0333_desc>ACU with teleportation module',
     Display = {
         Abilities = {
             "<LOC ability_amphibious>Amphibious",
@@ -280,7 +280,7 @@ UnitBlueprint {
         ConstructionBar = true,
         FactionName = 'Seraphim',
         Icon = 'amph',
-        UnitName = '<LOC xsl0333_name>Tha-Yath',
+        UnitName = '<LOC xsl0333_name>Rapid',
         OrderOverrides = {
             RULEUTC_ShieldToggle = {
                 bitmapId = "shield-personal",

@@ -85,7 +85,7 @@ UnitBlueprint {
         -- коэф снижения урона по щиту от т3-т4 арты
         HeavyArtilleryDamageReduction = 0.2,
     },
-    Description = '<LOC ualew0002_desc>Amphibious Shield',
+    Description = '<LOC ualew0002_desc>Mobile shield',
     Display = {
         Abilities = {
             '<LOC ability_amphibious>Amphibious',

@@ -208,7 +208,7 @@ UnitBlueprint {
         ToggleCaps = { RULEUTC_ShieldToggle = true },
         FactionName = "Seraphim",
         Icon = "air",
-        UnitName = "<LOC xsa0402_name>Ahwassa",
+        UnitName = "<LOC xsa0402_name>Ahwassa Two",
     },
     Intel = { VisionRadius = 70, RadarRadius = 110, },
     LifeBarHeight = 0.075,

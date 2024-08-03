@@ -98,7 +98,7 @@ UnitBlueprint {
             ShieldVerticalOffset = 0,
         },
     },
-    Description = '<LOC xsl033311_desc>Giant Killer',
+    Description = '<LOC xsl033311_desc>SACU with teleportation module',
     Display = {
         Abilities = {
             "<LOC ability_amphibious>Amphibious",

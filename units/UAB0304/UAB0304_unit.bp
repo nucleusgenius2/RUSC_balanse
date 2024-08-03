@@ -1,5 +1,5 @@
 UnitBlueprint{
-    Description = "<LOC uab0304_desc>Quantum Gateway",
+    Description = "<LOC uab0304_desc>Quantum Factory",
     AI = {
         TargetBones = {
             "Target_Left_01",
