@@ -237,7 +237,7 @@ UnitBlueprint {
         ToggleCaps = {
             RULEUTC_ShieldToggle = true,
         },
-        UnitName = '<LOC broat3pride_name>Illuminate Pride',
+        UnitName = '<LOC broat3pride_name>Retribution of the gods',
         UnitWeight = 1,
     },
     Intel = {

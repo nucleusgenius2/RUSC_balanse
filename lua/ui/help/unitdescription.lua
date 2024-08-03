@@ -179,7 +179,7 @@ Description = {
   ['ueb3104'] = "<LOC Unit_Description_0105> High-end intelligence system. Provides maximum radar and sonar coverage. Counters enemy intelligence systems.",
 
   -- UEF -- Armored Boss Unit/Upgrades
-  ['uel0302-hpsq'] = "<LOC Unit_Description_01002> Adds a counteraction system to the experimental Aeon bomber.",
+  ['uel0302-hpsq'] = "<LOC Unit_Description_01002> Heavy air defense system, fires only at gunships 'Meteor', 'Retribution of the Gods', 'Conqueror', 'Ahwassa 2'.",
   ['uel0302-rj'] = "<LOC Unit_Description_01003> Radar Jammer creates false radar images. Countered by Omni sensors.",
   ['uel0302-sre'] = "<LOC Unit_Description_uel0302_sre> Installs low range omni sensor suit.",
 
@@ -687,7 +687,7 @@ Description = {
   ['dalk003'] = "<LOC Unit_Description_0463> Mobile Anti-Air unit. Armed with a high-impact projectiles, excellent against enemy gunships or air-fighters.",
   ['dslk004'] = "<LOC Unit_Description_0464> Mobile Anti-Air unit. Armed with a long-range lasers, excellent against enemy gunships or air-fighters. Capable of switching weapon to anti-land attack but with smaller damage.",
 
-  ['url4032'] = "<LOC url4032_help>Designed to break through fortified defence lines and destroy other experimental units.",
+  ['url4032'] = "<LOC url4032_help>Designed to break through fortified defence lines and destroy other experimental units. Can be improved",
   ['url4032-srs'] = "<LOC url4032_srs_help>Creates magnetic field around unit preventing OC to go through.\nDecreases damage dealt by OC weapons.",
   ['url0320'] = "<LOC url0320_help>Designed for stealthy infiltration into enemy territory.",
   ['brs0402'] = "<LOC BRS0402_help>Designed for assaulting fortified coastal positions. Has +60% shield damage, good protection against tactical missiles, anti-missile defense to cover the fleet, and air defense to protect against torpedoes. There are torpedo guns for engaging underwater targets. There is also a Perimeter monitoring system on board.",
@@ -715,7 +715,7 @@ Description = {
   ['xsl03331'] = "<LOC unit_description_xsl03331>Designed for lightning strikes and retreat. It has a teleportation module.",
   ['xsl033311'] = "<LOC unit_description_xsl033311>Designed for lightning strikes and retreat. It has a teleportation module and personal shield.",
   ['led0006'] = "<LOC unit_description_led0006>Produces experimental support units Streaky. This unit has exceptional capabilities in delivering swift strikes.",
-  ['ual0405'] = "<LOC unit_description_ual0405>Creates a repair nano field around itself, for regular units the recovery is 180 units per second and for experimental units 480 units per second. This field also takes into account the maximum amount of health for t1, t2, t3 units by 70%, and by 30% for experimental units (aeons). It also works on air units. Experimental units of other factions receive a 10% health bonus. The health increase does not work on the Regenerator itself, BMK, buildings and units of other factions. The health regeneration field does not work on the Regenerator itself. Increases the shooting range of the spike by 7%. If 2 regenerators are nearby, only the health regeneration parameter is summed up. However, if there are more than 1 regenerators nearby, then their passive ability starts working, slowing down enemy units in a large area, also 2 regenerators start giving a new type of buff - increasing damage by 20% for Aeon experimental units.",
+  ['ual0405'] = "<LOC unit_description_ual0405>Creates a repair nano field around itself, for regular units the recovery is 180 units per second and for experimental units 480 HP/s. This field also takes into account the maximum amount of health for t1, t2, t3 units by 70%, and by 30% for experimental units (aeons). It also works on air units. \nExperimental units of other factions receive a 10% health bonus. The health increase does not work on the Regenerator itself, ACU, buildings and units of other factions. The health regeneration field does not work on the Regenerator itself. \nIncreases the shooting range of the spike by 7%. \nIf 2 regenerators are nearby, only the health regeneration parameter is summed up. However, if there are more than 1 regenerators nearby, then their passive ability starts working, slowing down enemy units in a large area, also 2 regenerators start giving a new type of buff - increasing damage by 20% for Aeon experimental units.",
   ['ues1501'] = "<LOC unit_description_ues1501>Opens the construction of heavy T3 units.",
   ['uas1101'] = "<LOC unit_description_uas1101>Opens the construction of heavy T3 units.",
   ['urs1501'] = "<LOC unit_description_urs1501>Opens the construction of heavy T3 units.",

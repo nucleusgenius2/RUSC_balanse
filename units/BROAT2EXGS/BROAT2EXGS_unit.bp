@@ -193,7 +193,7 @@ UnitBlueprint {
         Icon = 'air',
         ExcludeFromVeterancy = true,
         TechLevel = 'RULEUTL_Advanced',
-        UnitName = '<LOC broat2exgs_name>Galaxy',
+        UnitName = '<LOC broat2exgs_name>Meteor',
         UnitWeight = 1,
     },
     Intel = {

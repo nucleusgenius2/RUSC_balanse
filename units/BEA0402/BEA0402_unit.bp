@@ -289,7 +289,7 @@ UnitBlueprint {
             RULEUTC_WeaponToggle = true,
         },
         TechLevel = 'RULEUTL_Experimental',
-        UnitName = '<LOC bea0402_name>Citadel MKII',
+        UnitName = '<LOC bea0402_name>Conqueror',
         UnitWeight = 1,
     },
     Intel = {
@@ -298,7 +298,7 @@ UnitBlueprint {
         FreeIntel = true,
     },
     Interface = {
-        HelpText = '<LOC bea0402_help>Experimental Aerial Fortress',
+        HelpText = '<LOC bea0402_help>Aerial Fortress',
     },
     LifeBarHeight = 0.1,
     LifeBarOffset = 10,
