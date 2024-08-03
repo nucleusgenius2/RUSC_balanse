@@ -355,7 +355,7 @@ UnitBlueprint {
         FactionName = 'Aeon',
         Icon = 'amph',
         TechLevel = 'RULEUTL_Experimental',
-        UnitName = '<LOC ual0405_name>Inquisitor',
+        UnitName = '<LOC ual0405_name>Regenerator',
         UnitWeight = 1,
 
         OrderOverrides = {
