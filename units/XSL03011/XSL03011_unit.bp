@@ -119,7 +119,7 @@ UnitBlueprint {
         MaxTeleRange = 150,
         TelDelay = 33,
     },
-    Description = '<LOC led0026_desc>Experimental Gunship',
+    Description = '<LOC led0026_desc>Experimental engineer',
     Display = {
         Abilities = {
             "<LOC ability_engineeringsuite>Engineering Suite",
@@ -340,7 +340,7 @@ UnitBlueprint {
         RadarRadius = 150,
     },
     Interface = {
-        HelpText = '<LOC led0026_help>Experimental Siege Gunship',
+        HelpText = '<LOC led0026_help>Experimental engineer',
     },
     LifeBarHeight = 0.05,
     LifeBarOffset = 2,

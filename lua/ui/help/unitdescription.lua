@@ -200,8 +200,8 @@ Description = {
 
   -- CYBRAN -- Armored Boss Unit/Upgrades
   ['url4032-mlg'] = "<LOC Unit_Description_01001> Adds an anti-satellite system.",
-  ['url4032-nms'] = "<LOC Unit_Description_01002> Adds a counteraction system to the experimental Aeon bomber.",
-  ['brs0402-nms'] = "<LOC Unit_Description_01002> Adds a counteraction system to the experimental Aeon bomber.",
+  ['url4032-nms'] = "<LOC Unit_Description_01002> Heavy air defense system, fires only at Meteor gunships, experimental units Retribution of the gods, Conqueror, Ahvassa 2.",
+  ['brs0402-nms'] = "<LOC Unit_Description_01002> Heavy air defense system, fires only at Meteor gunships, experimental units Retribution of the gods, Conqueror, Ahvassa 2.",
 
   -- CYBRAN -- Support Commander Units/Upgrades
   ['url0301'] = "<LOC Unit_Description_0115> A multi-purpose construction, repair, capture and reclamation unit. Equivalent to a Tech 3 Engineer.",
@@ -556,7 +556,6 @@ Description = {
   ["xsl0302"] = '<LOC Unit_Description_044401> Designed for combat against heavily armored units, provided with larger weapon range.',
   -- SERAPHIM -- Support Unit Units/Upgrades
   ['xsl03011-spps'] = "<LOC Unit_Description_00289> Builds teleportation gates.",
-
   -- SERAPHIM -- Support Commander Presets
   ['xsl0301_AdvancedCombat'] = "<LOC xsl0301_AdvancedCombat_help> Support Armored Command Unit. Enhanced during construction with the enhanced sensor system, nano-repair system and overcharge enhancements.",
   ['xsl0301_Combat'] = "<LOC xsl0301_Combat_help> Support Armored Command Unit. Enhanced during construction with the enhanced sensor system enhancement.",
@@ -709,7 +708,7 @@ Description = {
   ['seb3404'] = "<LOC unit_description_seb3404>Invulnerable builds and controls stormtroopers. One center can have only 1 stormtrooper at a time.",
   ['broat2exgs'] = "<LOC unit_description_broat2exgs>Designed to fight air and ground targets. It has high armor and damage.",
   ['brpt1extank2'] = "<LOC unit_description_brpt1extank2>Designed to fight air targets.",
-  ['sab0401'] = "<LOC unit_description_sab0401>Produces 5 experimental t3 stormtroopers. After destroying any Stormtrooper, the factory rebuilds, it.",
+  ['sab0401'] = "<LOC unit_description_sab0401>Produces 8 experimental gunship Meteor. New gunships can only be produced after the old ones are destroyed. If the factory is destroyed, the gunships will also be destroyed. \nAlso produces Gods' Retribution and regular T3 gunships at a discount.",
   ['bss0401'] = "<LOC unit_description_bss0401>It has a teleportation module, strategic missiles and many other weapons on board. Able to dive.",
   ['xsl0333'] = "<LOC unit_description_xsl0333>Designed for lightning strikes and retreat. It has a teleportation module.",
   ['xsl03331'] = "<LOC unit_description_xsl03331>Designed for lightning strikes and retreat. It has a teleportation module.",

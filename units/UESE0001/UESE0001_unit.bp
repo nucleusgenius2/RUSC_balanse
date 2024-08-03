@@ -232,7 +232,7 @@ UnitBlueprint {
             },
         },
         TechLevel = 'RULEUTL_Experimental',
-        UnitName = '<LOC uese0001_name>Fix Cleaner',
+        UnitName = '<LOC uese0001_name>Invulnerable',
         UnitWeight = 1,
     },
     Intel = {

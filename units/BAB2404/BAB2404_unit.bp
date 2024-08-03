@@ -65,7 +65,7 @@ UnitBlueprint {
         SubThreatLevel = 0,
         SurfaceThreatLevel = 0,
     },
-    Description = '<LOC bab2404_desc>Quantum Rift Reactor',
+    Description = '<LOC bab2404_desc>Shine',
     Display = {
         Abilities = { "<LOC ability_deathaoe>Volatile" },
         AnimationDeath = {
@@ -147,7 +147,7 @@ UnitBlueprint {
         FactionName = "Aeon",
         Icon = "land",
         SelectionPriority = 5,
-        UnitName = "<LOC bab2404_name>Quantum Rift Reactor",
+        UnitName = "<LOC bab2404_name>Shine",
     },
     Intel = {
         VisionRadius = 20,

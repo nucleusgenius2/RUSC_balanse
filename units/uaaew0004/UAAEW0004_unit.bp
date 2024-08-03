@@ -161,7 +161,7 @@ UnitBlueprint {
         FactionName = 'Aeon',
         Icon = 'amph',
         TechLevel = 'RULEUTL_Advanced',
-        UnitName = '<LOC uaaew0004_name>Helios',
+        UnitName = '<LOC uaaew0004_name>Guardian of the sky',
         UnitWeight = 1,
     },
     Intel = {

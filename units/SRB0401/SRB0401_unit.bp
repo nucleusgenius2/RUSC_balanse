@@ -244,7 +244,7 @@ UnitBlueprint {
         Icon = 'land',
         SelectionPriority = 5,
         TechLevel = 'RULEUTL_Secret',
-        UnitName = '<LOC srb0401_name>Arthrolab',
+        UnitName = '<LOC srb0401_name>Entei',
         UnitWeight = 1,
     },
     Intel = {

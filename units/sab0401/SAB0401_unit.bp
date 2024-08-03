@@ -228,7 +228,7 @@ UnitBlueprint {
         Icon = 'air',
         SelectionPriority = 5,
         TechLevel = 'RULEUTL_Secret',
-        UnitName = '<LOC sab0401_name>Independence Engine',
+        UnitName = '<LOC sab0401_name>Nautilus',
         UnitWeight = 1,
     },
     Intel = {

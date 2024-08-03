@@ -283,7 +283,7 @@ UnitBlueprint {
         Icon = 'land',
         SelectionPriority = 5,
         TechLevel = 'RULEUTL_Secret',
-        UnitName = '<LOC seb0401_name>Gantry',
+        UnitName = '<LOC seb0401_name>Creation',
         UnitWeight = 1,
     },
     Intel = {
