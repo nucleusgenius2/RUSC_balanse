@@ -310,7 +310,7 @@ UnitBlueprint {
             Enhancements = {
                 "AAGun",
             },
-            HelpText = "<LOC uel03011_AAGun_help>ExpSACU (AntiAir preset)",
+            HelpText = "<LOC uel03011_AntiAir_help>ExpSACU (AntiAir preset)",
             SortCategory = "SORTOTHER",
             UnitName = "<LOC uel03011_AntiAir_name>ExpSACU (AntiAir preset)",
         },

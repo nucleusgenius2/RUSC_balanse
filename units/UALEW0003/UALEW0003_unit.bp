@@ -87,6 +87,7 @@ UnitBlueprint {
     Description = '<LOC ualew0003_help>Experimental bot',
     Display = {
         Abilities = {
+            '<LOC ability_amphibious>Amphibious',
             '<LOC ability_aa>Anti-Air',
             '<LOC ability_antiland>Anti-Land',
         },
@@ -226,7 +227,7 @@ UnitBlueprint {
         MeshExtentsX = 5.5,
         MeshExtentsY = 1.25,
         MeshExtentsZ = 6.5,
-        MotionType = 'RULEUMT_Land',
+        MotionType = 'RULEUMT_Amphibious',
         TurnRadius = 15,
         TurnRate = 45,
         WaterSpeedMultiplier = 1.25,
