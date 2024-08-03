@@ -100,7 +100,7 @@ UnitBlueprint {
         SurfaceThreatLevel = 75,
         TelDelay = 40,
     },
-    Description = '<LOC brpt3shbm_desc>Experimental Mega Bot',
+    Description = '<LOC brpt3shbm_desc>Bot with teleportation module',
     Display = {
         Abilities = {
             '<LOC ability_amphibious>Amphibious',
@@ -326,7 +326,7 @@ UnitBlueprint {
         SonarRadius = 35,
     },
     Interface = {
-        HelpText = '<LOC brpt3shbm_help>Experimental Mega Bot',
+        HelpText = '<LOC brpt3shbm_help>Bot with teleportation module',
     },
     LifeBarHeight = 0.15,
     LifeBarOffset = 2.75,

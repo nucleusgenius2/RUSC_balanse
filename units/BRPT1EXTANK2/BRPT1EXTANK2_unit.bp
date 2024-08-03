@@ -65,7 +65,7 @@ UnitBlueprint {
         MaxTeleRange = 110,
         TelDelay = 33,
     },
-    Description = '<LOC brpt1extank2_desc>Experimental AA Tank',
+    Description = '<LOC brpt1extank2_desc>AA Tank with teleportation module',
     Display = {
         Abilities = {
             '<LOC ability_amphibious>Amphibious',
@@ -189,7 +189,7 @@ UnitBlueprint {
         FactionName = 'Seraphim',
         Icon = 'amph',
         TechLevel = 'RULEUTL_Basic',
-        UnitName = '<LOC brpt1extank2_name>Yath-Us',
+        UnitName = '<LOC brpt1extank2_name>Storm',
         UnitWeight = 1,
     },
     Intel = {
@@ -197,7 +197,7 @@ UnitBlueprint {
         RadarRadius = 110,
     },
     Interface = {
-        HelpText = '<LOC brpt1extank2_help>Advanced AA Tank',
+        HelpText = '<LOC brpt1extank2_help>AA Tank with teleportation module',
     },
     LifeBarHeight = 0.075,
     LifeBarOffset = 2.0,

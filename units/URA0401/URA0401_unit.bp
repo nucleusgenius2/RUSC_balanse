@@ -210,7 +210,7 @@ UnitBlueprint{
         {
             BuildCostEnergy = 90000,
             BuildCostMass = 7000,
-            BuildTime = 8000,
+            BuildTime = 7000,
             Icon = "acu",
             Name = "<LOC enhancements_0152_mega>Advanced Proton Accelerator",
             DamageMult = 1.5,
