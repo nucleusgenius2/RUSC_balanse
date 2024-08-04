@@ -78,10 +78,14 @@ UnitBlueprint {
         StagingPlatformScanRadius = 300,
         TargetBones = {
             'BEA0402',
-            'Railgun_Turret_2',
-            'Railgun_Turret_1',
-            'Flak_Turret_4',
-            'Flak_Turret_3',
+            "Pad01",
+            "Pad02",
+            "Pad03",
+            "Pad04",
+            "Pad05",
+            "Pad06",
+            "Pad07",
+            "Pad08",
         },
     },
     Air = {

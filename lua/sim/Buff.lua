@@ -719,6 +719,17 @@ end
 
 ---@param unit Unit
 ---@param buffName string
+---@return number
+function CountBuff(unit, buffName)
+    local def = Buffs[buffName]
+    if not def then
+        return 0
+    end
+    return unit.Buffs.BuffTable[def.BuffType][buffName].Count or 0
+end
+
+---@param unit Unit
+---@param buffName string
 ---@param trsh TrashBag
 function PlayBuffEffect(unit, buffName, trsh)
     local def = Buffs[buffName]

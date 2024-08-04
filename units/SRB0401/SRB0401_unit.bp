@@ -145,11 +145,11 @@ UnitBlueprint {
         SpawnRandomRotation = false,
         Tarmacs = {
             {
-                Albedo = '/mods/brewlan/env/common/decals/Tarmacs/Tar18x_cybran_01_albedo.dds',
+                Albedo = '/env/common/decals/Tarmacs/Tar18x_cybran_01_albedo.dds',
                 DeathLifetime = 300,
                 FadeOut = 450,
                 Length = 12.8 * 2,
-                Normal = '/mods/brewlan/env/common/decals/Tarmacs/Tar18x_cybran_01_normals.dds',
+                Normal = '/env/common/decals/Tarmacs/Tar18x_cybran_01_normals.dds',
                 Orientations = {
                     0,
                     90,

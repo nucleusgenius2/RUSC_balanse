@@ -162,6 +162,7 @@ UAL0405 = Class(AStructureUnit) {
 
         local auraRadius = bpAura.AuraRadius or 52
         local slowdownRadius = bpAura.SlowDownRadius or 62.4
+        local maxDamageBuffStackLimit = bpAura.MaxDamageBuffStack or 5
 
         local RegenCeilingSCU = bpAura.RegenSCU
         local RegenCeilingT1 = bpAura.RegenT1
@@ -294,7 +295,8 @@ UAL0405 = Class(AStructureUnit) {
                 BuffType = 'AURAFORALL5',
                 Stacks = 'ALWAYS',
                 BuffCheckFunction = function(buff, unit)
-                    if Buff.HasBuff(unit, buffPreDamage) then
+                    if Buff.HasBuff(unit, buffPreDamage) and
+                        Buff.CountBuff(unit, buffDamage) < maxDamageBuffStackLimit - 1 then
                         return true
                     end
                     Buff.ApplyBuff(unit, buffPreDamage)

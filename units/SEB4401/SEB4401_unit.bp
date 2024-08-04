@@ -91,19 +91,19 @@ UnitBlueprint {
         },
         AnimationDeath = {
             {
-                Animation = '/mods/brewlan_units/brewshields/units/seb4401/seb4401_Adeath01.sca',
+                Animation = '/units/seb4401/seb4401_Adeath01.sca',
                 AnimationRateMax = 2.25,
                 AnimationRateMin = 1.75,
                 Weight = 10,
             },
             {
-                Animation = '/mods/brewlan_units/brewshields/units/seb4401/seb4401_Adeath02.sca',
+                Animation = '/units/seb4401/seb4401_Adeath02.sca',
                 AnimationRateMax = 2.25,
                 AnimationRateMin = 1.75,
                 Weight = 10,
             },
             {
-                Animation = '/mods/brewlan_units/brewshields/units/seb4401/seb4401_Adeath03.sca',
+                Animation = '/units/seb4401/seb4401_Adeath03.sca',
                 AnimationRateMax = 2.25,
                 AnimationRateMin = 1.75,
                 Weight = 10,
