@@ -263,6 +263,7 @@ Description = {
   ['ura0303'] = "<LOC Unit_Description_0146> High-end air fighter. Designed to engage air units of any type.",
   ['ura0304'] = "<LOC Unit_Description_0147> High-end strategic bomber. Armed with a Proton bomb, stealth field generator and AA flak cannon.",
   ['ura0401'] = "<LOC Unit_Description_0148> Experimental gunship. Delivers extreme firepower via rocket racks, electron bolters and missile system.",
+  ['ura0401-acu'] = "<LOC Unit_Description_0466> Increases main weapons' damage by 30%.",
   ['xra0105'] = "<LOC Unit_Description_0320> Light gunship. Primary role is base defense. Effective against low-level ground units.",
   ['xra0305'] = "<LOC Unit_Description_0321> Heavy gunship armed with Nanite missiles, Disintegration Pulse lasers and a radar jamming suite. Offers direct fire support.",
 
