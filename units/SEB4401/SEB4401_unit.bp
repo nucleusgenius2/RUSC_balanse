@@ -148,7 +148,7 @@ UnitBlueprint {
     },
     Economy = {
         BuildCostEnergy = 50000,
-        BuildCostMass = 15000,
+        BuildCostMass = 10000,
         BuildTime = 9375,
         MaintenanceConsumptionPerSecondEnergy = 1000,
         RebuildBonusIds = {
@@ -190,7 +190,7 @@ UnitBlueprint {
         ToggleCaps = {
             RULEUTC_ShieldToggle = true,
         },
-        UnitName = '<LOC seb4401_name>BFS - Nullifier',
+        UnitName = '<LOC seb4401_name>Defender',
         UnitWeight = 1,
     },
     Intel = {
