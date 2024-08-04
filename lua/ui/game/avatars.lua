@@ -844,7 +844,7 @@ function AvatarUpdate()
         end
     end
 
-    if not controls.jumpUnits then
+    if not controls.jumpUnits and currentFaction == 4 then
         controls.jumpUnits = CreateButton()
     end
 
