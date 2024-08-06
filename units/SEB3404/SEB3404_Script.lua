@@ -134,7 +134,7 @@ SEB3404 = Class(ConstructionUnit) {
             IssueClearCommands({ self })
             unitBeingBuilt:Destroy()
         else
-            self.newSatellite = unitBeingBuilt
+            self.Satellite = unitBeingBuilt
             ConstructionUnit.OnStopBuild(self, unitBeingBuilt)
             ChangeState(self, self.OpenState)
 
@@ -173,7 +173,7 @@ SEB3404 = Class(ConstructionUnit) {
 
     OnDestroy = function(self)
         if self.Satellite and not self.Satellite.Dead and not self.Satellite.IsDying then
-            self.Satellite:Destroy()
+            self.Satellite:Kill()
         end
 
         ConstructionUnit.OnDestroy(self)
@@ -207,8 +207,10 @@ SEB3404 = Class(ConstructionUnit) {
             local base = ChangeUnitArmy(self, captorArmyIndex)
             if self.Satellite and not self.Satellite.Dead then
                 local sat = ChangeUnitArmy(self.Satellite, captorArmyIndex)
-                sat.Parent = base
-                base.Satellite = sat
+                if sat then
+                    sat.Parent = base
+                    base.Satellite = sat
+                end
             end
 
             -- Reapply unit cap checks
