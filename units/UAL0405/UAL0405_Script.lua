@@ -330,7 +330,7 @@ UAL0405 = Class(AStructureUnit) {
             BuffBlueprint {
                 Name = buffPostStun,
                 DisplayName = buffPostStun,
-                BuffType = 'STUNEFFECT',
+                BuffType = 'POSTSTUNEFFECT',
                 Stacks = 'IGNORE',
                 Duration = bpAura.SlowDownBreak,
                 Affects = {}
