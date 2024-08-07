@@ -28,59 +28,6 @@ UALEW0003 = Class(AWalkingLandUnit) {
         HeavyGun03 = Class(TDFPlasmaCannonWeapon) {},
         LightGun01 = Class(ADFLaserHighIntensityWeapon) {},
         LightGun02 = Class(ADFLaserHighIntensityWeapon) {},
-        AntiAirMissiles01 = Class(AAAZealotMissileWeapon) {
-
-            PlayFxWeaponPackSequence = function(self)
-                if self.SpinManip then
-                    self.SpinManip:SetTargetSpeed(0)
-                end
-                AAAZealotMissileWeapon.PlayFxWeaponPackSequence(self)
-            end,
-            PlayFxRackSalvoChargeSequence = function(self)
-                if not self.SpinManip then
-                    self.SpinManip = CreateRotator(self.unit, 'RotatorAntiAir01', 'x', nil, 110, 110, 60)
-                    self.unit.Trash:Add(self.SpinManip)
-                end
-
-                if self.SpinManip then
-                    self.SpinManip:SetTargetSpeed(180)
-                end
-                AAAZealotMissileWeapon.PlayFxRackSalvoChargeSequence(self)
-            end,
-            PlayFxRackSalvoReloadSequence = function(self)
-                if self.SpinManip then
-                    self.SpinManip:SetTargetSpeed(180)
-                end
-            end,
-        },
-        AntiAirMissiles02 = Class(AAAZealotMissileWeapon) {
-
-            PlayFxWeaponPackSequence = function(self)
-                if self.SpinManip02 then
-                    self.SpinManip02:SetTargetSpeed(0)
-                end
-                AAAZealotMissileWeapon.PlayFxWeaponPackSequence(self)
-            end,
-            PlayFxRackSalvoChargeSequence = function(self)
-                if not self.SpinManip02 then
-                    self.SpinManip02 = CreateRotator(self.unit, 'RotatorAntiAir02', 'x', nil, 110, 110, 60)
-                    self.unit.Trash:Add(self.SpinManip02)
-                end
-
-                if self.SpinManip then
-                    self.SpinManip02:SetTargetSpeed(180)
-                end
-                AAAZealotMissileWeapon.PlayFxRackSalvoChargeSequence(self)
-            end,
-            PlayFxRackSalvoReloadSequence = function(self)
-                if self.SpinManip02 then
-                    self.SpinManip02:SetTargetSpeed(180)
-                end
-                if self.SpinManip02 then
-                    self.SpinManip02:SetTargetSpeed(180)
-                end
-            end,
-        },
     },
 
     OnMotionHorzEventChange = function(self, new, old)
