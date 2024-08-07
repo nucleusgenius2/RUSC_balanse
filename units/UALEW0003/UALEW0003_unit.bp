@@ -60,10 +60,7 @@ UnitBlueprint {
         'VISIBLETORECON',
         'RECLAIMABLE',
         'SHOWQUEUE',
-        'OVERLAYANTIAIR',
-        'OVERLAYANTINAVY',
         'OVERLAYRADAR',
-        'OVERLAYSONAR',
         'OVERLAYMISC',
         'OVERLAYDIRECTFIRE',
     },
@@ -82,7 +79,6 @@ UnitBlueprint {
     Display = {
         Abilities = {
             '<LOC ability_amphibious>Amphibious',
-            '<LOC ability_aa>Anti-Air',
             '<LOC ability_antiland>Anti-Land',
         },
         --AnimationWalk = '/Mods/ExpWars_v2_8/units/ualew0003/ualew0003_awalk01.sca',
