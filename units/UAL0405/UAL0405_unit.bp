@@ -142,8 +142,8 @@ UnitBlueprint {
         -- множитель дальности атаки Колосса
         GCRange = 1.07,
         -- множитель урона для Эон эксп (когда 2 горшка рядом)
-        DamageBuff = 1.4,
-        -- максимальное число бафов уроона, которое может стакаться на юните
+        DamageBuff = 1.45,
+        -- максимальное число бафов урона, которое может стакаться на юните
         MaxDamageBuffStack = 5,
     },
     Description = '<LOC ual0405_desc>Experimental support unit',
@@ -245,7 +245,7 @@ UnitBlueprint {
     },
     Economy = {
         BuildCostEnergy = 200000,
-        BuildCostMass = 20000,
+        BuildCostMass = 19000,
         BuildTime = 21600,
         BuildRate = 56,
         InitialRemoteViewingEnergyDrain = 5000,
