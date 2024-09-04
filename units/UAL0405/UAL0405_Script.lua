@@ -18,6 +18,22 @@ local SAMElectrumMissileDefense = import("/lua/seraphimweapons.lua").SAMElectrum
 local EffectTemplate = import("/lua/effecttemplates.lua")
 local WeakKeyMeta = { __mode = 'k' }
 
+
+local mobileLandUnits = categories.MOBILE * categories.LAND
+local expUnits = categories.EXPERIMENTAL * categories.MOBILE - categories.NOHP
+local aeonExp = categories.AEON * expUnits
+local nonAeonExp = expUnits - aeonExp
+local mobileUnits = categories.BUILTBYTIER3FACTORY + categories.BUILTBYQUANTUMGATE + categories.NEEDMOBILEBUILD +
+    categories.BUILTBYTEXPFACTORY
+    - categories.COMMAND
+    - categories.OPTICS
+    - categories.NOHP
+local nonExps = mobileUnits - expUnits
+local rangeBuffCat = categories.ual0401 + categories.ualew0003
+local inqusitorCat = categories.ual0405
+
+local buffsInit = false
+
 AStructureUnit = RemoteViewing(SWalkingLandUnit)
 
 ---@class UAL0405 : AStructureUnit
@@ -156,12 +172,13 @@ UAL0405 = Class(AStructureUnit) {
         return not table.empty(units)
     end,
 
-    ---@param self UAL0405
-    Enhancement = function(self)
-        local bpAura = self.Blueprint.Aura
+    InitBuffs = function(bpAura)
+        if buffsInit then
+            return
+        end
 
-        local auraRadius = bpAura.AuraRadius or 52
-        local slowdownRadius = bpAura.SlowDownRadius or 62.4
+        buffsInit = true
+
         local maxDamageBuffStackLimit = bpAura.MaxDamageBuffStack or 5
 
         local RegenCeilingSCU = bpAura.RegenSCU
@@ -173,11 +190,10 @@ UAL0405 = Class(AStructureUnit) {
         local RegenPerSecond = 0.2
 
         -- Regenerative Aura
-        local buff = 'RegAura'
-        if not Buffs[buff] then
+        if not Buffs['RegAura'] then
             BuffBlueprint {
-                Name = buff,
-                DisplayName = buff,
+                Name = 'RegAura',
+                DisplayName = 'RegAura',
                 BuffType = 'AURAFORALL',
                 Duration = 5,
                 Effects = { '/effects/emitters/seraphim_regenerative_aura_02_emit.bp' },
@@ -199,11 +215,10 @@ UAL0405 = Class(AStructureUnit) {
         end
 
         -- HP Aura
-        local buffHPAuraLandUnits = 'HPAuraLandUnits'
-        if not Buffs[buffHPAuraLandUnits] then
+        if not Buffs['HPAuraLandUnits'] then
             BuffBlueprint {
-                Name = buffHPAuraLandUnits,
-                DisplayName = buffHPAuraLandUnits,
+                Name = 'HPAuraLandUnits',
+                DisplayName = 'HPAuraLandUnits',
                 BuffType = 'AURAFORALL1',
                 Stacks = 'REPLACE',
                 Duration = 5,
@@ -218,11 +233,11 @@ UAL0405 = Class(AStructureUnit) {
         end
 
         -- HP Aura
-        local buffHPAuraAeonExps = 'HPAuraAeonExps'
-        if not Buffs[buffHPAuraAeonExps] then
+
+        if not Buffs['HPAuraAeonExps'] then
             BuffBlueprint {
-                Name = buffHPAuraAeonExps,
-                DisplayName = buffHPAuraAeonExps,
+                Name = 'HPAuraAeonExps',
+                DisplayName = 'HPAuraAeonExps',
                 BuffType = 'AURAFORALL2',
                 Stacks = 'REPLACE',
                 Duration = 5,
@@ -237,11 +252,10 @@ UAL0405 = Class(AStructureUnit) {
         end
 
         -- HP Aura
-        local buffHPAuraExps = 'HPAuraNonAeonExps'
-        if not Buffs[buffHPAuraExps] then
+        if not Buffs['HPAuraNonAeonExps'] then
             BuffBlueprint {
-                Name = buffHPAuraExps,
-                DisplayName = buffHPAuraExps,
+                Name = 'HPAuraNonAeonExps',
+                DisplayName = 'HPAuraNonAeonExps',
                 BuffType = 'AURAFORALL2',
                 Stacks = 'REPLACE',
                 Duration = 5,
@@ -256,11 +270,10 @@ UAL0405 = Class(AStructureUnit) {
         end
 
         -- GC Range
-        local buffRange = 'GCRangeBuff'
-        if not Buffs[buffRange] then
+        if not Buffs['GCRangeBuff'] then
             BuffBlueprint {
-                Name = buffRange,
-                DisplayName = buffRange,
+                Name = 'GCRangeBuff',
+                DisplayName = 'GCRangeBuff',
                 BuffType = 'AURAFORALL3',
                 Stacks = 'REPLACE',
                 Duration = 5,
@@ -287,16 +300,15 @@ UAL0405 = Class(AStructureUnit) {
             }
         end
 
-        local buffDamage = 'AeonExpDamage'
-        if not Buffs[buffDamage] then
+        if not Buffs['AeonExpDamage'] then
             BuffBlueprint {
-                Name = buffDamage,
-                DisplayName = buffDamage,
+                Name = 'AeonExpDamage',
+                DisplayName = 'AeonExpDamage',
                 BuffType = 'AURAFORALL5',
                 Stacks = 'ALWAYS',
                 BuffCheckFunction = function(buff, unit)
                     if Buff.HasBuff(unit, buffPreDamage) and
-                        Buff.CountBuff(unit, buffDamage) < maxDamageBuffStackLimit - 1 then
+                        Buff.CountBuff(unit, 'AeonExpDamage') < maxDamageBuffStackLimit - 1 then
                         return true
                     end
                     Buff.ApplyBuff(unit, buffPreDamage)
@@ -313,11 +325,10 @@ UAL0405 = Class(AStructureUnit) {
             }
         end
 
-        local buffPreStun = 'PreStunEffect'
-        if not Buffs[buffPreStun] then
+        if not Buffs['PreStunEffect'] then
             BuffBlueprint {
-                Name = buffPreStun,
-                DisplayName = buffPreStun,
+                Name = 'PreStunEffect',
+                DisplayName = 'PreStunEffect',
                 BuffType = 'PRESTUNEFFECT',
                 Stacks = 'IGNORE',
                 Duration = 4.9,
@@ -325,11 +336,10 @@ UAL0405 = Class(AStructureUnit) {
             }
         end
 
-        local buffPostStun = 'PostStunEffect'
-        if not Buffs[buffPostStun] then
+        if not Buffs['PostStunEffect'] then
             BuffBlueprint {
-                Name = buffPostStun,
-                DisplayName = buffPostStun,
+                Name = 'PostStunEffect',
+                DisplayName = 'PostStunEffect',
                 BuffType = 'POSTSTUNEFFECT',
                 Stacks = 'IGNORE',
                 Duration = bpAura.SlowDownBreak,
@@ -337,19 +347,18 @@ UAL0405 = Class(AStructureUnit) {
             }
         end
 
-        local buffStun = 'StunEffect'
-        if not Buffs[buffStun] then
+        if not Buffs['StunEffect'] then
             BuffBlueprint {
-                Name = buffStun,
-                DisplayName = buffStun,
+                Name = 'StunEffect',
+                DisplayName = 'StunEffect',
                 BuffType = 'STUNEFFECT',
                 Stacks = 'IGNORE',
                 Duration = bpAura.SlowDownDuration,
                 BuffCheckFunction = function(buff, unit)
-                    return not Buff.HasBuff(unit, buffPostStun)
+                    return not Buff.HasBuff(unit, 'PostStunEffect')
                 end,
                 OnBuffRemove = function(buff, unit)
-                    Buff.ApplyBuff(unit, buffPostStun)
+                    Buff.ApplyBuff(unit, 'PostStunEffect')
                 end,
                 Effects = EffectTemplate.Aeon_HeavyDisruptorCannonMuzzleCharge,
                 Affects = {
@@ -357,23 +366,19 @@ UAL0405 = Class(AStructureUnit) {
                 }
             }
         end
+    end,
 
+    ---@param self UAL0405
+    Enhancement = function(self)
+        local bpAura = self.Blueprint.Aura
+
+        self.InitBuffs(bpAura)
+
+        local auraRadius = bpAura.AuraRadius or 52
+        local slowdownRadius = bpAura.SlowDownRadius or 62.4
 
         table.insert(self.ShieldEffectsBag,
             CreateAttachedEmitter(self, 'BAL0401', self.Army, '/effects/emitters/seraphim_regenerative_aura_01_emit.bp'))
-
-        local mobileLandUnits = categories.MOBILE * categories.LAND
-        local expUnits = categories.EXPERIMENTAL * categories.MOBILE - categories.NOHP
-        local aeonExp = categories.AEON * expUnits
-        local nonAeonExp = expUnits - aeonExp
-        local mobileUnits = categories.BUILTBYTIER3FACTORY + categories.BUILTBYQUANTUMGATE + categories.NEEDMOBILEBUILD +
-            categories.BUILTBYTEXPFACTORY
-            - categories.COMMAND
-            - categories.OPTICS
-            - categories.NOHP
-        local nonExps = mobileUnits - expUnits
-        local rangeBuffCat = categories.ual0401 + categories.ualew0003
-        local inqusitorCat = categories.ual0405
 
         ---@type AIBrain
         local brain = self.Brain
@@ -387,12 +392,12 @@ UAL0405 = Class(AStructureUnit) {
             local layer = self:GetCurrentLayer()
 
             if layer == 'Land' then
-                self:ApplyBuffToUnits(mobileUnits, buff, auraRadius)
-                self:ApplyBuffToUnits(nonExps, buffHPAuraLandUnits, auraRadius)
-                self:ApplyBuffToUnits(aeonExp, buffHPAuraAeonExps, auraRadius)
-                self:ApplyBuffToUnits(nonAeonExp, buffHPAuraExps, auraRadius)
-                self:ApplyBuffToUnits(rangeBuffCat, buffRange, auraRadius)
-                self:ApplyBuffToUnits(aeonExp, buffDamage, auraRadius)
+                self:ApplyBuffToUnits(mobileUnits, 'RegAura', auraRadius)
+                self:ApplyBuffToUnits(nonExps, 'HPAuraLandUnits', auraRadius)
+                self:ApplyBuffToUnits(aeonExp, 'HPAuraAeonExps', auraRadius)
+                self:ApplyBuffToUnits(nonAeonExp, 'HPAuraNonAeonExps', auraRadius)
+                self:ApplyBuffToUnits(rangeBuffCat, 'GCRangeBuff', auraRadius)
+                self:ApplyBuffToUnits(aeonExp, 'AeonExpDamage', auraRadius)
 
                 local all = brain:GetUnitsAroundPoint(mobileLandUnits, self:GetPosition(), slowdownRadius, "Enemy")
                 local units = {}
@@ -402,15 +407,17 @@ UAL0405 = Class(AStructureUnit) {
                     end
                 end
 
+                local wasApplied = false
                 for _, unit in units do
-                    if Buff.HasBuff(unit, buffPreStun) then
-                        Buff.ApplyBuff(unit, buffStun)
+                    if Buff.HasBuff(unit, 'PreStunEffect') then
+                        Buff.ApplyBuff(unit, 'StunEffect')
+                        wasApplied = true
                     else
-                        Buff.ApplyBuff(unit, buffPreStun)
+                        Buff.ApplyBuff(unit, 'PreStunEffect')
                     end
                 end
 
-                if not table.empty(units) then
+                if wasApplied then
                     for _, effect in self.FxMuzzleFlash do
                         CreateAttachedEmitter(self, "Body", self:GetArmy(), effect):ScaleEmitter(0.9)
                     end
