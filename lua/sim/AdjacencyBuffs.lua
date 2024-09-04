@@ -386,22 +386,22 @@ local customAdj = {
     },
     ["uab1303"] = {
         T3PowerGenerator = {
-            EnergyMaintenance = -0.0325,
+            MassProduction = 0.083334,
         },
     },
     ["ueb1303"] = {
         T3PowerGenerator = {
-            EnergyMaintenance = -0.0325,
+            MassProduction = 0.083334,
         },
     },
     ["xsb1303"] = {
         T3PowerGenerator = {
-            EnergyMaintenance = -0.0325,
+            MassProduction = 0.083334,
         },
     },
     ["urb1303"] = {
         T3PowerGenerator = {
-            EnergyMaintenance = -0.0325,
+            MassProduction = 0.083334,
         },
     },
 }

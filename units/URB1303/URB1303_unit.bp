@@ -77,7 +77,7 @@ UnitBlueprint{
         BuildCostMass = 4000,
         BuildTime = 5000,
         MaintenanceConsumptionPerSecondEnergy = 1500,
-        ProductionPerSecondMass = 16,
+        ProductionPerSecondMass = 12,
         RebuildBonusIds = { "urb1303" },
     },
     Footprint = {
