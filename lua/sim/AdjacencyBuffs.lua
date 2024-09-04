@@ -383,7 +383,27 @@ local customAdj = {
         T3MassFabricator = {
             MassActive = -0.02,
         },
-    }
+    },
+    ["uab1303"] = {
+        T3PowerGenerator = {
+            EnergyMaintenance = -0.01,
+        },
+    },
+    ["ueb1303"] = {
+        T3PowerGenerator = {
+            EnergyMaintenance = -0.01,
+        },
+    },
+    ["xsb1303"] = {
+        T3PowerGenerator = {
+            EnergyMaintenance = -0.01,
+        },
+    },
+    ["urb1303"] = {
+        T3PowerGenerator = {
+            EnergyMaintenance = -0.01,
+        },
+    },
 }
 
 adj.Hydrocarbon = adj.T2PowerGenerator
@@ -424,7 +444,7 @@ for unitID, unitBuffs in customAdj do
         for t, value in buffs do
             local display_name = a .. t
             local name = display_name .. unitID
-            local category = unitID .. " CUSTOMADJ"
+            local category = unitID
             BuffBlueprint {
                 Name = name,
                 DisplayName = display_name,
