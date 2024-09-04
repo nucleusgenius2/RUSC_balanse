@@ -407,7 +407,6 @@ UAL0405 = Class(AStructureUnit) {
                     end
                 end
 
-                local wasApplied = false
                 for _, unit in units do
                     if Buff.HasBuff(unit, 'PreStunEffect') then
                         Buff.ApplyBuff(unit, 'StunEffect')
@@ -417,7 +416,8 @@ UAL0405 = Class(AStructureUnit) {
                     end
                 end
 
-                if wasApplied then
+                local inq = brain:GetUnitsAroundPoint(inqusitorCat, self:GetPosition(), slowdownRadius, "Ally")
+                if table.getn(inq) > 1 and not table.empty(units) then
                     for _, effect in self.FxMuzzleFlash do
                         CreateAttachedEmitter(self, "Body", self:GetArmy(), effect):ScaleEmitter(0.9)
                     end
