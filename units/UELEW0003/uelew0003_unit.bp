@@ -108,6 +108,9 @@ UnitBlueprint {
         "CQUEMOV",
         "DEFENSE",
         "OVERLAYDEFENSE",
+        "ANTITELEPORT",
+        "RADAR",
+        "OVERLAYRADAR",
     },
     CollisionOffsetZ = 0,
     Defense = {
@@ -243,6 +246,7 @@ UnitBlueprint {
     Intel = {
         VisionRadius = 68,
         WaterVisionRadius = 32,
+        RadarRadius = 53,
     },
     Interface = {
         HelpText = '<LOC uelew0003_help>Supporting platform',
