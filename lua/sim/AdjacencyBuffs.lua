@@ -356,6 +356,7 @@ local adj = {
             [9] = 0, },
     },
 }
+adj.Hydrocarbon = adj.T2PowerGenerator
 
 local customAdj = {
     ["seb3404"] = {
@@ -384,29 +385,8 @@ local customAdj = {
             MassActive = -0.02,
         },
     },
-    ["uab1303"] = {
-        T3PowerGenerator = {
-            MassProduction = 0.083334,
-        },
-    },
-    ["ueb1303"] = {
-        T3PowerGenerator = {
-            MassProduction = 0.083334,
-        },
-    },
-    ["xsb1303"] = {
-        T3PowerGenerator = {
-            MassProduction = 0.083334,
-        },
-    },
-    ["urb1303"] = {
-        T3PowerGenerator = {
-            MassProduction = 0.083334,
-        },
-    },
 }
 
-adj.Hydrocarbon = adj.T2PowerGenerator
 
 for a, buffs in adj do
     _G[a .. 'AdjacencyBuffs'] = {}
@@ -450,6 +430,53 @@ for unitID, unitBuffs in customAdj do
                 DisplayName = display_name,
                 BuffType = string.upper(t) .. 'BONUS',
                 Stacks = 'ALWAYS',
+                Duration = -1,
+                EntityCategory = category,
+                BuffCheckFunction = AdjBuffFuncs[t .. 'BuffCheck'],
+                OnBuffAffect = AdjBuffFuncs.DefaultBuffAffect,
+                OnBuffRemove = AdjBuffFuncs.DefaultBuffRemove,
+                Affects = { [t] = { Add = value } },
+            }
+
+            table.insert(_G[a .. 'AdjacencyBuffs'], name)
+        end
+    end
+end
+
+local mfAdjBuffs = {
+    ["uab1303"] = {
+        T3PowerGenerator = {
+            MassProduction = 0.083334,
+        },
+    },
+    ["ueb1303"] = {
+        T3PowerGenerator = {
+            MassProduction = 0.083334,
+        },
+    },
+    ["xsb1303"] = {
+        T3PowerGenerator = {
+            MassProduction = 0.083334,
+        },
+    },
+    ["urb1303"] = {
+        T3PowerGenerator = {
+            MassProduction = 0.083334,
+        },
+    },
+}
+
+for unitID, unitBuffs in mfAdjBuffs do
+    for a, buffs in unitBuffs do
+        for t, value in buffs do
+            local display_name = a .. t
+            local name = display_name .. unitID
+            local category = unitID
+            BuffBlueprint {
+                Name = name,
+                DisplayName = display_name,
+                BuffType = string.upper(t) .. 'BONUSONCE',
+                Stacks = 'IGNORE',
                 Duration = -1,
                 EntityCategory = category,
                 BuffCheckFunction = AdjBuffFuncs[t .. 'BuffCheck'],
