@@ -446,22 +446,22 @@ end
 local mfAdjBuffs = {
     ["uab1303"] = {
         T3PowerGenerator = {
-            MassProduction = 0.083334,
+            MassProduction = 0.15,
         },
     },
     ["ueb1303"] = {
         T3PowerGenerator = {
-            MassProduction = 0.083334,
+            MassProduction = 0.15,
         },
     },
     ["xsb1303"] = {
         T3PowerGenerator = {
-            MassProduction = 0.083334,
+            MassProduction = 0.15,
         },
     },
     ["urb1303"] = {
         T3PowerGenerator = {
-            MassProduction = 0.083334,
+            MassProduction = 0.15,
         },
     },
 }
