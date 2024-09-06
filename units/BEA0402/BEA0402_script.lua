@@ -112,15 +112,17 @@ BEA0402 = Class(TAirUnit) {
 
         if precision then
             self.TargetScatterRange = 7
+            self.PrecisionMode = true
             self:ApplyToMissleWeapons(function(weapon)
                 weapon:ChangeMaxRadius(weapon.Blueprint.PrecisionModeMaxRadius or 135)
                 weapon:ChangeRateOfFire(weapon.Blueprint.PrecisionModeRateOfFire or 0.25)
             end)
-
+            
             local tacMissile = self:GetWeaponByLabel "TacNukeMissile"
             tacMissile:ChangeMaxRadius(tacMissile.Blueprint.PrecisionModeMaxRadius or 135)
         else
             self.TargetScatterRange = 10
+            self.PrecisionMode = false
             self:ApplyToMissleWeapons(function(weapon)
                 weapon:ChangeMaxRadius(weapon.Blueprint.MaxRadius or 48)
                 weapon:ChangeRateOfFire(weapon.Blueprint.RateOfFire or 1)

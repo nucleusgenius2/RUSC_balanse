@@ -239,7 +239,7 @@ UnitBlueprint {
             Icon = "acu",
             Name = "<LOC enhancements_0152_mega>Advanced Proton Accelerator",
             NewProjectileId = '/projectiles/CDFProtonCannon06/CDFProtonCannon06_proj.bp',
-            DamageMod = 500,
+            DamageMod = 1750,
             Slot = "Back",
         },
         AdvancedProtonAcceleratorRemove =

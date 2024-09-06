@@ -342,13 +342,17 @@ XRL0403 = ClassUnit(CWalkingLandUnit) {
             wepl:ChangeProjectileBlueprint(bp.NewProjectileId)
             wepr:AddDamageMod(bp.DamageMod)
             wepl:AddDamageMod(bp.DamageMod)
+            wepr:ChangeRateOfFire(wepr.Blueprint.RateOfFire * 0.5)
+            wepl:ChangeRateOfFire(wepl.Blueprint.RateOfFire * 0.5)
         elseif enh == "AdvancedProtonAcceleratorRemove" then
             local wepr = self:GetWeaponByLabel('ParticleGunRight')
             local wepl = self:GetWeaponByLabel('ParticleGunLeft')
-            wepr:ChangeProjectileBlueprint('/projectiles/CDFProtonCannon05/CDFProtonCannon05_proj.bp')
-            wepl:ChangeProjectileBlueprint('/projectiles/CDFProtonCannon05/CDFProtonCannon05_proj.bp')
+            wepr:ChangeProjectileBlueprint(wepr.Blueprint.ProjectileId)
+            wepl:ChangeProjectileBlueprint(wepl.Blueprint.ProjectileId)
             wepr:AddDamageMod(-bp.DamageMod)
             wepl:AddDamageMod(-bp.DamageMod)
+            wepr:ChangeRateOfFire(wepr.Blueprint.RateOfFire)
+            wepl:ChangeRateOfFire(wepl.Blueprint.RateOfFire)
         end
 
 
