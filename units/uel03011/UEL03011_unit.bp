@@ -329,7 +329,7 @@ UnitBlueprint {
         RadarJammer = {
             BuildCostEnergy = 31250,
             BuildCostMass = 1000,
-            BuildTime = 1,
+            BuildTime = 7500,
             Icon = 'rj',
             MaintenanceConsumptionPerSecondEnergy = 100,
             Name = '<LOC enhancements_0067>Radar Jammer',
@@ -364,7 +364,7 @@ UnitBlueprint {
         DamageStablization = {
             BuildCostEnergy = 15000,
             BuildCostMass = 1500,
-            BuildTime = 1,
+            BuildTime = 1800,
             Icon = 'dsu',
             Name = '<LOC enhancements_0039>Nano-Repair System',
             NewHealth = 19000,
@@ -399,7 +399,7 @@ UnitBlueprint {
         Missile = {
             BuildCostEnergy = 20000,
             BuildCostMass = 1000,
-            BuildTime = 1,
+            BuildTime = 4200,
             Icon = 'tm',
             Name = "<LOC enhancements_0145>Tactical Missile Launcher",
             ShowBones = {
@@ -432,7 +432,7 @@ UnitBlueprint {
         AAGun = {
             BuildCostEnergy = 20000,
             BuildCostMass = 1000,
-            BuildTime = 1,
+            BuildTime = 3600,
             Icon = 'hpsq',
             Name = "<LOC enhancements_01451>AAGun",
             ShowBones = {
@@ -471,7 +471,7 @@ UnitBlueprint {
         HighExplosiveOrdnance = {
             BuildCostEnergy = 60000,
             BuildCostMass = 1000,
-            BuildTime = 1,
+            BuildTime = 1800,
             Icon = 'hamc',
             Name = '<LOC enhancements_0063>Heavy Plasma Refractor',
             NewDamageRadius = 2.5,
@@ -507,7 +507,7 @@ UnitBlueprint {
         Pod = {
             BuildCostEnergy = 2400,
             BuildCostMass = 120,
-            BuildTime = 1,
+            BuildTime = 2400,
             Icon = 'ed',
             Name = '<LOC enhancements_0065>C-D2 Engineering Drone',
             Slot = 'RCH',
@@ -534,7 +534,7 @@ UnitBlueprint {
         NaniteTorpedoTube = {
             BuildCostEnergy = 37500,
             BuildCostMass = 2000,
-            BuildTime = 1,
+            BuildTime = 3600,
             Icon = "atl",
             Name = "<LOC enhancements_0085>Nanite Torpedo Launcher",
             NewSonarRadius = 60,
@@ -561,7 +561,7 @@ UnitBlueprint {
         SensorRangeEnhancer = {
             BuildCostEnergy = 20000,
             BuildCostMass = 600,
-            BuildTime = 1,
+            BuildTime = 3000,
             Icon = "sre",
             Name = "<LOC enhancements_0071>Enhanced Sensor System",
             NewOmniRadius = 35,
@@ -588,7 +588,7 @@ UnitBlueprint {
         ShieldGeneratorField = {
             BuildCostEnergy = 30000,
             BuildCostMass = 2500,
-            BuildTime = 1,
+            BuildTime = 3600,
             HideBones = { "Jetpack" },
             Icon = "sgf",
             ImpactEffects = "UEFShieldHit01",
