@@ -233,7 +233,7 @@ UnitBlueprint {
     Economy = {
         BuildCostEnergy = 300000,
         BuildCostMass = 36000,
-        BuildRate = 120,
+        BuildRate = 330,
         BuildTime = 23000,
         BuildableCategory = {
             'UEFGantry',

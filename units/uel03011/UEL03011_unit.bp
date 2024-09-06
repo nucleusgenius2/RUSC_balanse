@@ -272,7 +272,7 @@ UnitBlueprint {
         BuildCostEnergy = 50000,
         BuildCostMass = 8500,
         BuildRate = 40,
-        BuildTime = 14400,
+        BuildTime = 20000,
         BuildableCategory = {
             'BUILTBYTIER3ENGINEER UEF',
         },
