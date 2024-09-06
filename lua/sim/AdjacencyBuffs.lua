@@ -385,6 +385,11 @@ local customAdj = {
             MassActive = -0.02,
         },
     },
+    ["seb0401"] = {
+        T3MassFabricator = {
+            MassActive = -0.065,
+        },
+    }
 }
 
 
