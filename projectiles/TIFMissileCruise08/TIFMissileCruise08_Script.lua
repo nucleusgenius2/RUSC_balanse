@@ -39,11 +39,18 @@ TIFMissileCruise08 = Class(TMissileCruiseProjectile) {
 
     ---@param self Projectile
     OnTrackTargetGround = function(self)
+        local isPrecisionMode = self.Launcher.PrecisionMode
+        local target = self.OriginalTarget or self:GetTrackingTarget() or self.Launcher:GetTargetEntity()
+
+        if isPrecisionMode and target and target.IsUnit then
+            self:SetNewTarget(target)
+            return
+        end
+
         local scatter = self.Launcher.TargetScatterRange or self.Blueprint.Physics.TargetScatterRange or 10
         local targetOffsetX = RandomRange(scatter)
         local targetOffsetZ = RandomRange(scatter)
         local pos
-        local target = self.OriginalTarget or self:GetTrackingTarget() or self.Launcher:GetTargetEntity()
         if target and target.IsUnit then
             local unitBlueprint = target.Blueprint
             local cy = unitBlueprint.CollisionOffsetY or 0
