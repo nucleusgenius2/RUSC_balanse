@@ -364,7 +364,7 @@ UnitBlueprint {
         DamageStablization = {
             BuildCostEnergy = 15000,
             BuildCostMass = 1500,
-            BuildTime = 5900,
+            BuildTime = 1800,
             Icon = 'dsu',
             Name = '<LOC enhancements_0039>Nano-Repair System',
             NewHealth = 19000,
@@ -432,7 +432,7 @@ UnitBlueprint {
         AAGun = {
             BuildCostEnergy = 20000,
             BuildCostMass = 1000,
-            BuildTime = 1160,
+            BuildTime = 3600,
             Icon = 'hpsq',
             Name = "<LOC enhancements_01451>AAGun",
             ShowBones = {
@@ -471,7 +471,7 @@ UnitBlueprint {
         HighExplosiveOrdnance = {
             BuildCostEnergy = 60000,
             BuildCostMass = 1000,
-            BuildTime = 6000,
+            BuildTime = 1800,
             Icon = 'hamc',
             Name = '<LOC enhancements_0063>Heavy Plasma Refractor',
             NewDamageRadius = 2.5,
@@ -534,7 +534,7 @@ UnitBlueprint {
         NaniteTorpedoTube = {
             BuildCostEnergy = 37500,
             BuildCostMass = 2000,
-            BuildTime = 1500,
+            BuildTime = 3600,
             Icon = "atl",
             Name = "<LOC enhancements_0085>Nanite Torpedo Launcher",
             NewSonarRadius = 60,
@@ -548,7 +548,7 @@ UnitBlueprint {
         NaniteTorpedoTubeRemove = {
             BuildCostEnergy = 1,
             BuildCostMass = 1,
-            BuildTime = 10,
+            BuildTime = 0.1,
             Icon = "atl",
             Name = "<LOC enhancements_0086>Remove Nanite Torpedo Launcher",
             Prerequisite = "NaniteTorpedoTube",
@@ -588,7 +588,7 @@ UnitBlueprint {
         ShieldGeneratorField = {
             BuildCostEnergy = 30000,
             BuildCostMass = 2500,
-            BuildTime = 10800,
+            BuildTime = 3600,
             HideBones = { "Jetpack" },
             Icon = "sgf",
             ImpactEffects = "UEFShieldHit01",
