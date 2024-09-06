@@ -107,7 +107,7 @@ UnitBlueprint {
     },
     Economy = {
         BuildCostEnergy = 600000,
-        BuildCostMass = 50000,
+        BuildCostMass = 55000,
         BuildTime = 40450,
         TeleportEnergyMod = 1,
         TeleportMassMod = 0,
@@ -779,7 +779,7 @@ UnitBlueprint {
             CollideFriendly = false,
             Damage = 1800,
             DamageFriendly = false,
-            DamageRadius = 0,
+            DamageRadius = 1,
             DamageType = 'Normal',
             DisplayName = 'Proton Cannon',
             FireTargetLayerCapsTable = {
@@ -921,7 +921,7 @@ UnitBlueprint {
             CollideFriendly = false,
             Damage = 1800,
             DamageFriendly = false,
-            DamageRadius = 0,
+            DamageRadius = 1,
             DamageType = 'Normal',
             DisplayName = 'Proton Cannon',
             FireTargetLayerCapsTable = {
@@ -1061,9 +1061,9 @@ UnitBlueprint {
             BallisticArc = 'RULEUBA_None',
             CannotAttackGround = true,
             CollideFriendly = false,
-            Damage = 1500,
+            Damage = 1800,
             DamageFriendly = false,
-            DamageRadius = 0,
+            DamageRadius = 1,
             DamageType = 'Normal',
             DisplayName = 'Proton Cannon',
             FireTargetLayerCapsTable = {
