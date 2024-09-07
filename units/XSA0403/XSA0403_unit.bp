@@ -177,7 +177,7 @@ UnitBlueprint {
         UniformScale = 0.05,
     },
     Economy = {
-        BuildCostEnergy = 15000000,
+        BuildCostEnergy = 1500000,
         BuildCostMass = 130000,
         BuildTime = 207500,
         MaintenanceConsumptionPerSecondEnergy = 1000,
