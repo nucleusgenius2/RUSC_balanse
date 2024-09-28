@@ -296,8 +296,8 @@ UnitBlueprint {
         UnitWeight = 1,
     },
     Intel = {
-        VisionRadius = 35,
-        RadarRadius = 100,
+        VisionRadius = 90,
+        RadarRadius = 160,
         FreeIntel = true,
     },
     Interface = {
@@ -380,7 +380,7 @@ UnitBlueprint {
             BeamCollisionDelay = 0,
             BeamLifetime = 1,
             CollideFriendly = false,
-            Damage = 305,
+            Damage = 600,
             DamageRadius = 1,
             DamageType = "Normal",
             DisplayName = "Hiro Plasma Cannon",
@@ -454,7 +454,7 @@ UnitBlueprint {
             BeamCollisionDelay = 0,
             BeamLifetime = 1,
             CollideFriendly = false,
-            Damage = 105,
+            Damage = 600,
             DamageRadius = 1,
             DamageType = "Normal",
             DisplayName = "Hiro Plasma Cannon",
