@@ -316,7 +316,8 @@ UnitBlueprint {
             BallisticArc = "RULEUBA_None",
             CannotAttackGround = true,
             CollideFriendly = false,
-            Damage = 450,
+            Damage = 900,
+            DamageRadius = 1,
             DamageType = "Normal",
             DisplayName = "Losaare AA Autocannon",
             FireTargetLayerCapsTable = {
@@ -378,7 +379,8 @@ UnitBlueprint {
             BallisticArc = "RULEUBA_None",
             CannotAttackGround = true,
             CollideFriendly = false,
-            Damage = 450,
+            Damage = 900,
+            DamageRadius = 1,
             DamageType = "Normal",
             DisplayName = "Losaare AA Autocannon",
             FireTargetLayerCapsTable = {
@@ -441,7 +443,8 @@ UnitBlueprint {
             BallisticArc = "RULEUBA_None",
             CannotAttackGround = true,
             CollideFriendly = false,
-            Damage = 450,
+            Damage = 900,
+            DamageRadius = 1,
             DamageType = "Normal",
             DisplayName = "Losaare AA Autocannon",
             FireTargetLayerCapsTable = {
@@ -504,7 +507,8 @@ UnitBlueprint {
             BallisticArc = "RULEUBA_None",
             CannotAttackGround = true,
             CollideFriendly = false,
-            Damage = 450,
+            Damage = 900,
+            DamageRadius = 1,
             DamageType = "Normal",
             DisplayName = "Losaare AA Autocannon",
             FireTargetLayerCapsTable = {
