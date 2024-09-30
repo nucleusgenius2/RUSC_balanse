@@ -61,8 +61,6 @@ UnitBlueprint {
         'TANK',
         'OVERLAYDIRECTFIRE',
         'OVERLAYDEFENSE',
-        'OVERLAYOMNI',
-        'OVERLAYANTIAIR',
         'COUNTERINTELLIGENCE',
         'NEEDMOBILEBUILD',
         'DRAGBUILD',
@@ -312,28 +310,6 @@ UnitBlueprint {
             Slot = "Back",
         },
         ]]
-        AdvancedOmniSensors = {
-            BuildCostEnergy = 30000,
-            BuildCostMass = 1500,
-            BuildTime = 3000,
-            NewOmniRadius = 56.4,
-            Icon = "sre",
-            Name = "<LOC enhancements_0071>Enhanced Sensor System",
-            Slot = "Back",
-        },
-        AdvancedOmniSensorsRemove = {
-            BuildCostEnergy = 1,
-            BuildCostMass = 1,
-            BuildTime = 0.1,
-            Icon = "sre",
-            Name = "<LOC enhancements_0072>Remove Enhanced Sensor System",
-            Prerequisite = "AdvancedOmniSensors",
-            RemoveEnhancements = {
-                "AdvancedOmniSensors",
-                "AdvancedOmniSensorsRemove",
-            },
-            Slot = "Back",
-        },
         Slots = {
             Back = {
                 name = "<LOC _Back>",
@@ -388,7 +364,6 @@ UnitBlueprint {
             Min = 70,
         },
         JammerBlips = 15,
-        OmniRadius = 1,
         VisionRadius = 50,
         WaterVisionRadius = 50,
     },
