@@ -27,35 +27,6 @@ local Buff = import("/lua/sim/buff.lua")
 
 UEL0302 = Class(CommandUnit) {
     Weapons = {
-        MissileRack = Class(CAMEMPMissileWeapon) {
-            IdleState = State(CAMEMPMissileWeapon.IdleState) {
-                OnGotTarget = function(self)
-                    local bp = self:GetBlueprint()
-                    --only say we've fired if the parent fire conditions are met
-                    if (
-                        bp.WeaponUnpackLockMotion ~= true or
-                            (bp.WeaponUnpackLocksMotion == true and not self.unit:IsUnitState('Moving'))) then
-                        if (bp.CountedProjectile == false) or self:CanFire() then
-                            nukeFiredOnGotTarget = true
-                        end
-                    end
-                    CAMEMPMissileWeapon.IdleState.OnGotTarget(self)
-                end,
-                -- uses OnGotTarget, so we shouldn't do this.
-                OnFire = function(self)
-                    if not nukeFiredOnGotTarget then
-                        CAMEMPMissileWeapon.IdleState.OnFire(self)
-                    end
-                    nukeFiredOnGotTarget = false
-
-                    self:ForkThread(function()
-                        self.unit:SetBusy(true)
-                        WaitSeconds(1 / self.unit:GetBlueprint().Weapon[1].RateOfFire + .2)
-                        self.unit:SetBusy(false)
-                    end)
-                end,
-            },
-        },
         AntiNuke2 = Class(CAMEMPMissileWeapon) {},
         rocket = Class(TIFCruiseMissileLauncher) {
             FxMuzzleFlash = EffectTemplate.TIFCruiseMissileLaunchBuilding,
@@ -90,8 +61,6 @@ UEL0302 = Class(CommandUnit) {
         },
         autoattack = Class(TDFGaussCannonWeapon) {
         },
-        AAGun = ClassWeapon(CAABurstCloudFlakArtilleryWeapon) {},
-        AAGun1 = ClassWeapon(CAABurstCloudFlakArtilleryWeapon) {},
         Turret01 = Class(TAMPhalanxWeapon) {
             PlayFxWeaponUnpackSequence = function(self)
                 TAMPhalanxWeapon.PlayFxWeaponUnpackSequence(self)
@@ -124,9 +93,6 @@ UEL0302 = Class(CommandUnit) {
         self:HideBone('Object20', true)
         self:HideBone('Front_Turret99', true)
         self:HideBone('AntiSatellite', true)
-        self:SetWeaponEnabledByLabel('AAGun', false)
-        self:SetWeaponEnabledByLabel('AAGun', false)
-        self:SetWeaponEnabledByLabel('MissileRack01', false)
         self:ForkThread(self.AuraThread)
     end,
 
@@ -222,22 +188,6 @@ UEL0302 = Class(CommandUnit) {
             self:DisableUnitIntel('Enhancement', 'Jammer')
             self.RadarJammerEnh = false
             self:RemoveToggleCap('RULEUTC_JammingToggle')
-        elseif enh == 'NaniteMissileSystem' then
-            self:ShowBone('Object01', true)
-            self:ShowBone('Object23', true)
-            self:ShowBone('Object20', true)
-            self:ShowBone('Front_Turret99', true)
-            self:ShowBone('AntiSatellite', true)
-            self:SetWeaponEnabledByLabel('AAGun', true)
-            self:SetWeaponEnabledByLabel('AAGun1', true)
-        elseif enh == 'NaniteMissileSystemRemove' then
-            self:HideBone('Object01', true)
-            self:HideBone('Object23', true)
-            self:HideBone('Object20', true)
-            self:HideBone('Front_Turret99', true)
-            self:HideBone('AntiSatellite', true)
-            self:SetWeaponEnabledByLabel('AAGun', false)
-            self:SetWeaponEnabledByLabel('AAGun1', false)
         elseif enh == 'AdvancedOmniSensors' then
             self:SetIntelRadius('Omni', bp.NewOmniRadius or 57)
         elseif enh == 'AdvancedOmniSensorsRemove' then
