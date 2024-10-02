@@ -230,51 +230,6 @@ UnitBlueprint {
         TeleportEnergyCost = 200000,
         TeleportTimeMod = 0.001,
     },
-    Enhancements = {
-        EnhancedSensors = {
-            BuildCostEnergy = 34000,
-            BuildCostMass = 800,
-            BuildTime = 3100,
-            Icon = "sre",
-            Name = "<LOC enhancements_0141>Enhanced Sensor System",
-            NewOmniRadius = 60,
-            NewVisionRadius = 36,
-            Slot = "Back",
-            UpgradeEffectBones = { "Back_Upgrade" },
-            UpgradeUnitAmbientBones = { "Torso" },
-        },
-        EnhancedSensorsRemove = {
-            BuildCostEnergy = 1,
-            BuildCostMass = 1,
-            BuildTime = 0.1,
-            HideBones = { "Back_Upgrade" },
-            Icon = "sre",
-            Name = "<LOC enhancements_0142>Remove Enhanced Sensor System",
-            Prerequisite = "EnhancedSensors",
-            RemoveEnhancements = {
-                "EnhancedSensors",
-                "EnhancedSensorsRemove",
-            },
-            Slot = "Back",
-        },
-        Slots = {
-            Back = {
-                name = "<LOC _Back>",
-                x = -13,
-                y = -8,
-            },
-            LCH = {
-                name = "<LOC _LCH>",
-                x = 60,
-                y = 50,
-            },
-            RCH = {
-                name = "<LOC _RCH>",
-                x = -16,
-                y = 50,
-            },
-        },
-    },
     General = {
         BuildBones = {
             AimBone = "Left_Arm_Muzzle",
@@ -295,7 +250,6 @@ UnitBlueprint {
             RULEUCC_Repair = true,
             RULEUCC_RetaliateToggle = true,
             RULEUCC_Stop = true,
-            RULEUCC_Transport = true,
         },
         ConstructionBar = true,
         FactionName = "Seraphim",
