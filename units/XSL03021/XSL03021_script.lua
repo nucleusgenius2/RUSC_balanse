@@ -30,6 +30,7 @@ XSL03021 = ClassUnit(CommandUnit) {
         CommandUnit.OnCreate(self)
         self:SetCapturable(false)
         self:SetupBuildBones()
+        self:AddCommandCap('RULEUCC_Teleport')
     end,
 
     StartBeingBuiltEffects = function(self, builder, layer)

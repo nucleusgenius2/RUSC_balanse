@@ -72,7 +72,8 @@ UnitBlueprint {
         "EXPERIMENTAL",
         "VERIFYMISSILEUI",
         "VISIBLETORECON",
-        "SNIPEMODE"
+        "SNIPEMODE",
+        "JUMPTELEPORT",
     },
     Defense = {
         AirThreatLevel = 0,
@@ -83,6 +84,8 @@ UnitBlueprint {
         RegenRate = 35,
         SubThreatLevel = 0,
         SurfaceThreatLevel = 527,
+        MaxTeleRange = 111,
+        TelDelay = 33,
     },
     Display = {
         Abilities = {
@@ -223,9 +226,9 @@ UnitBlueprint {
         ProductionPerSecondMass = 2,
         StorageEnergy = 500,
         StorageMass = 275,
-        TeleportEnergyMod = 5.42,
-        TeleportMassMod = 0,
         TeleportTimeMod = 0.0001,
+        TeleportEnergyCost = 200000,
+        TeleportTimeMod = 0.001,
     },
     Enhancements = {
         EnhancedSensors = {
@@ -292,7 +295,7 @@ UnitBlueprint {
             RULEUCC_Repair = true,
             RULEUCC_RetaliateToggle = true,
             RULEUCC_Stop = true,
-            RULEUCC_Transport = false,
+            RULEUCC_Transport = true,
         },
         ConstructionBar = true,
         FactionName = "Seraphim",
@@ -315,6 +318,7 @@ UnitBlueprint {
         OmniRadius = 16,
         VisionRadius = 26,
         WaterVisionRadius = 26,
+        RadarRadius = 110,
     },
     LifeBarHeight = 0.075,
     LifeBarOffset = 0.4,
