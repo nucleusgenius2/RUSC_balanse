@@ -375,7 +375,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleVelocity = 90,
-            ProjectileId = '/projectiles/TAARailgun01/TAARailgun01_proj.bp',
+            ProjectileId = '/projectiles/TAARailgun04/TAARailgun04_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.25,
             ProjectilesPerOnFire = 1,
             RackBones = {
@@ -456,7 +456,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleVelocity = 90,
-            ProjectileId = '/projectiles/TAARailgun01/TAARailgun01_proj.bp',
+            ProjectileId = '/projectiles/TAARailgun04/TAARailgun04_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.25,
             ProjectilesPerOnFire = 1,
             RackBones = {
@@ -537,7 +537,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleVelocity = 90,
-            ProjectileId = '/projectiles/TAARailgun01/TAARailgun01_proj.bp',
+            ProjectileId = '/projectiles/TAARailgun04/TAARailgun04_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.25,
             ProjectilesPerOnFire = 1,
             RackBones = {
@@ -618,7 +618,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleVelocity = 90,
-            ProjectileId = '/projectiles/TAARailgun01/TAARailgun01_proj.bp',
+            ProjectileId = '/projectiles/TAARailgun04/TAARailgun04_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.25,
             ProjectilesPerOnFire = 1,
             RackBones = {
