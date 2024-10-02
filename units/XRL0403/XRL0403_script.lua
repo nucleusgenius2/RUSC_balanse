@@ -349,8 +349,8 @@ XRL0403 = ClassUnit(CWalkingLandUnit) {
             local wepl = self:GetWeaponByLabel('ParticleGunLeft')
             wepr:ChangeProjectileBlueprint(wepr.Blueprint.ProjectileId)
             wepl:ChangeProjectileBlueprint(wepl.Blueprint.ProjectileId)
-            wepr:AddDamageMod(-bp.DamageMod)
-            wepl:AddDamageMod(-bp.DamageMod)
+            wepr:SetDamageMod(0)
+            wepl:SetDamageMod(0)
             wepr:ChangeRateOfFire(wepr.Blueprint.RateOfFire)
             wepl:ChangeRateOfFire(wepl.Blueprint.RateOfFire)
         elseif enh == "ProtonFocus" then
