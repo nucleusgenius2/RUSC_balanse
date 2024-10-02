@@ -7,8 +7,8 @@ local SDFLightChronotronCannonWeapon = SWeapons.SDFLightChronotronCannonWeapon
 local SDFOverChargeWeapon = SWeapons.SDFLightChronotronCannonOverchargeWeapon
 local SIFLaanseTacticalMissileLauncher = SWeapons.SIFLaanseTacticalMissileLauncher
 
----@class XSL0302 : CommandUnit
-XSL0302 = ClassUnit(CommandUnit) {
+---@class XSL03021 : CommandUnit
+XSL03021 = ClassUnit(CommandUnit) {
     Weapons = {
         LightChronatronCannon = ClassWeapon(SDFLightChronotronCannonWeapon) {
             OnCreate = function(self)
@@ -30,6 +30,7 @@ XSL0302 = ClassUnit(CommandUnit) {
         CommandUnit.OnCreate(self)
         self:SetCapturable(false)
         self:SetupBuildBones()
+        self:AddCommandCap('RULEUCC_Teleport')
     end,
 
     StartBeingBuiltEffects = function(self, builder, layer)
@@ -127,4 +128,4 @@ XSL0302 = ClassUnit(CommandUnit) {
     end,
 }
 
-TypeClass = XSL0302
+TypeClass = XSL03021

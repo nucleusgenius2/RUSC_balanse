@@ -353,9 +353,17 @@ XRL0403 = ClassUnit(CWalkingLandUnit) {
             wepl:AddDamageMod(-bp.DamageMod)
             wepr:ChangeRateOfFire(wepr.Blueprint.RateOfFire)
             wepl:ChangeRateOfFire(wepl.Blueprint.RateOfFire)
+        elseif enh == "ProtonFocus" then
+            local wepr = self:GetWeaponByLabel('ParticleGunRight')
+            local wepl = self:GetWeaponByLabel('ParticleGunLeft')
+            wepr:ChangeMaxRadius((bp.RangeMod or 30) + wepr.Blueprint.MaxRadius)
+            wepl:ChangeMaxRadius((bp.RangeMod or 30) + wepl.Blueprint.MaxRadius)
+        elseif enh == "ProtonFocusRemove" then
+            local wepr = self:GetWeaponByLabel('ParticleGunRight')
+            local wepl = self:GetWeaponByLabel('ParticleGunLeft')
+            wepr:ChangeMaxRadius(wepr.Blueprint.MaxRadius)
+            wepl:ChangeMaxRadius(wepl.Blueprint.MaxRadius)
         end
-
-
     end
 }
 

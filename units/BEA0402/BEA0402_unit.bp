@@ -69,13 +69,11 @@ end
 
 UnitBlueprint {
     AI = {
-        GuardScanRadius = 300,
         RefuelingMultiplier = 10,
         RefuelingRepairAmount = 600,
         RepairConsumeEnergy = 5,
         RepairConsumeMass = 0.5,
         ShowAssistRangeOnSelect = false,
-        StagingPlatformScanRadius = 300,
         TargetBones = {
             'BEA0402',
             "Pad01",
@@ -209,7 +207,6 @@ UnitBlueprint {
         'ANTIAIR',
         'VISIBLETORECON',
         'STRATEGIC',
-        'AIRSTAGINGPLATFORM',
         'REPAIR',
         'RECLAIMABLE',
         'DRAGBUILD',
@@ -217,7 +214,6 @@ UnitBlueprint {
         'OVERLAYDEFENSE',
         'OVERLAYDIRECTFIRE',
         'OVERLAYINDIRECTFIRE',
-        'OVERLAYMISC',
         'OVERLAYRADAR',
         "SILO",
     },

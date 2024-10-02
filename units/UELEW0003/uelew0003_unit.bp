@@ -111,6 +111,7 @@ UnitBlueprint {
         "ANTITELEPORT",
         "RADAR",
         "OVERLAYRADAR",
+        "OVERLAYOMNI",
     },
     CollisionOffsetZ = 0,
     Defense = {
@@ -213,7 +214,39 @@ UnitBlueprint {
     Economy = {
         BuildCostEnergy = 75000,
         BuildCostMass = 18000,
+        BuildRate = 2160,
         BuildTime = 4450,
+    },
+    Enhancements = {
+        AdvancedOmniSensors = {
+            BuildCostEnergy = 30000,
+            BuildCostMass = 1500,
+            BuildTime = 3000,
+            NewOmniRadius = 56.4,
+            Icon = "sre",
+            Name = "<LOC enhancements_0071>Enhanced Sensor System",
+            Slot = "Back",
+        },
+        AdvancedOmniSensorsRemove = {
+            BuildCostEnergy = 1,
+            BuildCostMass = 1,
+            BuildTime = 0.1,
+            Icon = "sre",
+            Name = "<LOC enhancements_0072>Remove Enhanced Sensor System",
+            Prerequisite = "AdvancedOmniSensors",
+            RemoveEnhancements = {
+                "AdvancedOmniSensors",
+                "AdvancedOmniSensorsRemove",
+            },
+            Slot = "Back",
+        },
+        Slots = {
+            Back = {
+                name = "<LOC _Back>",
+                x = 5,
+                y = -10,
+            },
+        },
     },
     General = {
         Category = 'Experimental',
@@ -247,6 +280,7 @@ UnitBlueprint {
         VisionRadius = 85,
         WaterVisionRadius = 32,
         RadarRadius = 53,
+        OmniRadius = 1,
     },
     Interface = {
         HelpText = '<LOC uelew0003_help>Supporting platform',
@@ -341,7 +375,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleVelocity = 90,
-            ProjectileId = '/projectiles/TAARailgun01/TAARailgun01_proj.bp',
+            ProjectileId = '/projectiles/TAARailgun04/TAARailgun04_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.25,
             ProjectilesPerOnFire = 1,
             RackBones = {
@@ -422,7 +456,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleVelocity = 90,
-            ProjectileId = '/projectiles/TAARailgun01/TAARailgun01_proj.bp',
+            ProjectileId = '/projectiles/TAARailgun04/TAARailgun04_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.25,
             ProjectilesPerOnFire = 1,
             RackBones = {
@@ -503,7 +537,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleVelocity = 90,
-            ProjectileId = '/projectiles/TAARailgun01/TAARailgun01_proj.bp',
+            ProjectileId = '/projectiles/TAARailgun04/TAARailgun04_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.25,
             ProjectilesPerOnFire = 1,
             RackBones = {
@@ -584,7 +618,7 @@ UnitBlueprint {
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
             MuzzleVelocity = 90,
-            ProjectileId = '/projectiles/TAARailgun01/TAARailgun01_proj.bp',
+            ProjectileId = '/projectiles/TAARailgun04/TAARailgun04_proj.bp',
             ProjectileLifetimeUsesMultiplier = 1.25,
             ProjectilesPerOnFire = 1,
             RackBones = {

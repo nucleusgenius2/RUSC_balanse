@@ -242,7 +242,8 @@ Description = {
   ['xrl0305'] = "<LOC Unit_Description_0318> Amphibious assault bot. Capable of attacking land and naval units.",
 
   ['xrl0403'] = "<LOC Unit_Description_0319> Massive experimental bot. Equipped with Dual-Proton cannons, AA defenses, torpedo launchers and anti-torpedo flares. Drops 'eggs' that can be transformed into a single unit.",
-  ['xrl0403-acu'] = "<LOC Unit_Description_0465> Increases proton canons' alpha damage.",
+  ['xrl0403-fc'] = "<LOC Unit_Description_0465> Increases proton canons' alpha damage.",
+  ['xrl0403-acu'] = "<LOC Unit_Description_0467> Increases proton canons' max radius.",
 
   ['url03011-spsg'] = "<LOC Unit_Description_01371> Adds a personal shield to the transport. energy is consumed for maintenance.",
   -- CYBRAN -- Crab Egg Units
@@ -554,7 +555,8 @@ Description = {
   ['xsl033311-efm'] = "<LOC Unit_Description_0437> Speeds up all engineering-related functions.",
   ['xsl033311-oc'] = "<LOC Unit_Description_04401> Single shot destroys most units. Consumes large amount of Energy.",
 
-  ["xsl0302"] = '<LOC Unit_Description_044401> Designed for combat against heavily armored units, provided with larger weapon range.',
+  ["xsl0302"] = '<LOC unit_description_xsl0302> Designed for combat against heavily armored units, provided with larger weapon range.',
+  ["xsl03021"] = '<LOC unit_description_xsl03021> Designed for combat against heavily armored units, provided with larger weapon range and jump teleport device.',
   -- SERAPHIM -- Support Unit Units/Upgrades
   ['xsl03011-spps'] = "<LOC Unit_Description_00289> Builds teleportation gates.",
   -- SERAPHIM -- Support Commander Presets

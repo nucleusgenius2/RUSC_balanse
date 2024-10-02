@@ -79,6 +79,18 @@ UELEW0003 = Class(TLandUnit) {
         end
     end,
 
+    CreateEnhancement = function(self, enh)
+        TLandUnit.CreateEnhancement(self, enh)
+        local bp = self:GetBlueprint().Enhancements[enh]
+        if not bp then return end
+        if enh == 'AdvancedOmniSensors' then
+            self:SetIntelRadius('Omni', bp.NewOmniRadius or 57)
+        elseif enh == 'AdvancedOmniSensorsRemove' then
+            local bpIntel = self:GetBlueprint().Intel
+            self:SetIntelRadius('Omni', bpIntel.OmniRadius or 47)
+        end
+    end,
+
 
     OnScriptBitSet = function(self, bit)
         TLandUnit.OnScriptBitSet(self, bit)

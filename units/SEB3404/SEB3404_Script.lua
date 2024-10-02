@@ -6,6 +6,9 @@ local VizMarker = import('/lua/sim/VizMarker.lua').VizMarker
 local AIUtils = import('/lua/ai/aiutilities.lua')
 local AnimationThread = import('/lua/effectutilities.lua').IntelDishAnimationThread
 
+
+---@class SEB3404
+---@field Satellite Unit?
 SEB3404 = Class(ConstructionUnit) {
 
     OnStartBeingBuilt = function(self, unitBeingBuilt, order)
@@ -159,10 +162,17 @@ SEB3404 = Class(ConstructionUnit) {
         end
     end,
 
-    OnKilled = function(self, instigator, type, overkillRatio)
+    ---@param self SEB3404
+    KillSatellite = function(self)
         if self.Satellite and not self.Satellite.Dead and not self.Satellite.IsDying then
-            self.Satellite:Kill()
+            if self.Satellite.Blueprint.BlueprintId != "bea0402" then
+                self.Satellite:Kill()
+            end
         end
+    end,
+
+    OnKilled = function(self, instigator, type, overkillRatio)
+        self:KillSatellite()
 
         self:SetActiveConsumptionInactive()
         ChangeState(self, self.IdleState)
@@ -172,9 +182,7 @@ SEB3404 = Class(ConstructionUnit) {
     end,
 
     OnDestroy = function(self)
-        if self.Satellite and not self.Satellite.Dead and not self.Satellite.IsDying then
-            self.Satellite:Kill()
-        end
+        self:KillSatellite()
 
         ConstructionUnit.OnDestroy(self)
 
