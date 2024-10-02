@@ -306,7 +306,7 @@ UnitBlueprint {
                 helpText = "toggle_shield_personal",
             },
         },
-        UnitName = '<LOC xsl03021_name>Archer 2',
+        UnitName = '<LOC xsl03021_name>Swift archer',
         SelectionPriority = 3,
         TeleportDelay = 10,
     },
