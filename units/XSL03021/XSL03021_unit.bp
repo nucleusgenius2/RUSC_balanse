@@ -228,7 +228,7 @@ UnitBlueprint {
         StorageEnergy = 500,
         StorageMass = 275,
         TeleportEnergyCost = 200000,
-        TeleportTime = 30,
+        TeleportTime = 3,
     },
     General = {
         BuildBones = {
@@ -261,8 +261,6 @@ UnitBlueprint {
             },
         },
         UnitName = '<LOC xsl03021_name>Swift archer',
-        SelectionPriority = 3,
-        TeleportDelay = 10,
     },
     Interface = {
         HelpText = '<LOC xsl03021_help>Advanced SACU',
