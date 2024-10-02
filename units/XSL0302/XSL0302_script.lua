@@ -11,14 +11,14 @@ local SIFLaanseTacticalMissileLauncher = SWeapons.SIFLaanseTacticalMissileLaunch
 XSL0302 = ClassUnit(CommandUnit) {
     Weapons = {
         LightChronatronCannon = ClassWeapon(SDFLightChronotronCannonWeapon) {
-        	OnCreate = function(self)
-              SDFLightChronotronCannonWeapon.OnCreate(self)
-            	if not self.SpinManip then 
-					self.SpinManip = CreateRotator(self.unit, 'Electrobolter', 'x', nil, 100, 100, 100)
-					self.unit.Trash:Add(self.SpinManip)
-            	end
+            OnCreate = function(self)
+                SDFLightChronotronCannonWeapon.OnCreate(self)
+                if not self.SpinManip then
+                    self.SpinManip = CreateRotator(self.unit, 'Electrobolter', 'x', nil, 100, 100, 100)
+                    self.unit.Trash:Add(self.SpinManip)
+                end
             end,
-		},
+        },
         DeathWeapon = ClassWeapon(SCUDeathWeapon) {},
     },
 
@@ -51,7 +51,7 @@ XSL0302 = ClassUnit(CommandUnit) {
             self:AddCommandCap('RULEUCC_Teleport')
         elseif enh == 'TeleporterRemove' then
             self:RemoveCommandCap('RULEUCC_Teleport')
-        -- Advanced Teleporter
+            -- Advanced Teleporter
         elseif enh == 'AdvancedTeleporterRemove' then
             self:RemoveCommandCap('RULEUCC_Teleport')
             -- Shields
