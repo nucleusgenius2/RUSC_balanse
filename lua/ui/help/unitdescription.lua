@@ -242,7 +242,8 @@ Description = {
   ['xrl0305'] = "<LOC Unit_Description_0318> Amphibious assault bot. Capable of attacking land and naval units.",
 
   ['xrl0403'] = "<LOC Unit_Description_0319> Massive experimental bot. Equipped with Dual-Proton cannons, AA defenses, torpedo launchers and anti-torpedo flares. Drops 'eggs' that can be transformed into a single unit.",
-  ['xrl0403-acu'] = "<LOC Unit_Description_0465> Increases proton canons' alpha damage.",
+  ['xrl0403-fc'] = "<LOC Unit_Description_0465> Increases proton canons' alpha damage.",
+  ['xrl0403-acu'] = "<LOC Unit_Description_0467> Increases proton canons' max radius.",
 
   ['url03011-spsg'] = "<LOC Unit_Description_01371> Adds a personal shield to the transport. energy is consumed for maintenance.",
   -- CYBRAN -- Crab Egg Units

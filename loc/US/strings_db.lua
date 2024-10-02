@@ -2037,6 +2037,7 @@ Unit_Description_0398="Constructs Tech 3 Naval units. Allows you to upgrade othe
 Unit_Description_0399="Allows you to construct Support Command Units, either in their basic forms, or in a number of pre-enhanced versions."
 
 Unit_Description_0465="Increases proton canons' alpha damage."
+Unit_Description_0467="Increases proton canons' max radius."
 
 -- SERAPHIM -- Support Factories
 zsb9501_desc="Land Factory"
@@ -3960,6 +3961,7 @@ enhancements_0149_faf="Remove Quantum Disruptor Enhancements"
 enhancements_0150_faf="Nano-Repair System"
 enhancements_0151_faf="Remove Nano-Repair System"
 enhancements_0152_mega = "Advanced Proton Accelerator"
+enhancements_0153_mega = "Proton Focuser"
 faction_0000="UEF"
 faction_0001="Aeon"
 faction_0002="Cybran"

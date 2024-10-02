@@ -236,7 +236,7 @@ UnitBlueprint {
             BuildCostEnergy = 90000,
             BuildCostMass = 7000,
             BuildTime = 10000,
-            Icon = "acu",
+            Icon = "fc",
             Name = "<LOC enhancements_0152_mega>Advanced Proton Accelerator",
             NewProjectileId = '/projectiles/CDFProtonCannon06/CDFProtonCannon06_proj.bp',
             DamageMod = 1750,
@@ -247,12 +247,37 @@ UnitBlueprint {
             BuildCostEnergy = 1,
             BuildCostMass = 1,
             BuildTime = 0.1,
-            Icon = "acu",
+            Icon = "fc",
             Name = "<LOC enhancements_0082>Remove Advanced Proton Accelerator",
             Prerequisite = "AdvancedProtonAccelerator",
             RemoveEnhancements = {
                 "AdvancedProtonAccelerator",
                 "AdvancedProtonAcceleratorRemove",
+            },
+            Slot = "Back",
+        },
+        ProtonFocus =
+        {
+            BuildCostEnergy = 90000,
+            BuildCostMass = 7000,
+            BuildTime = 10000,
+            Icon = "acu",
+            Name = "<LOC enhancements_0153_mega>Proton Focuser",
+            -- additional range
+            RangeMod = 30,
+            Slot = "Back",
+        },
+        ProtonFocusRemove =
+        {
+            BuildCostEnergy = 1,
+            BuildCostMass = 1,
+            BuildTime = 0.1,
+            Icon = "acu",
+            Name = "<LOC enhancements_0082>Remove Proton Focuser",
+            Prerequisite = "ProtonFocus",
+            RemoveEnhancements = {
+                "ProtonFocus",
+                "ProtonFocusRemove",
             },
             Slot = "Back",
         },
@@ -397,7 +422,7 @@ UnitBlueprint {
             MuzzleSalvoSize = 1,
             MuzzleVelocity = 65,
             ProjectileId = '/projectiles/CDFProtonCannon05/CDFProtonCannon05_proj.bp',
-            ProjectileLifetime = 0.9, --# fix for Megalith huge range bug [126]
+            ProjectileLifetime = 3,
             RackBones = {
                 {
                     MuzzleBones = {
@@ -487,7 +512,7 @@ UnitBlueprint {
             MuzzleVelocity = 65,
             PrefersPrimaryWeaponTarget = true,
             ProjectileId = '/projectiles/CDFProtonCannon05/CDFProtonCannon05_proj.bp',
-            ProjectileLifetime = 0.9, --# fix for Megalith huge range bug [126]
+            ProjectileLifetime = 3,
             RackBones = {
                 {
                     MuzzleBones = {
