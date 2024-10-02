@@ -555,7 +555,8 @@ Description = {
   ['xsl033311-efm'] = "<LOC Unit_Description_0437> Speeds up all engineering-related functions.",
   ['xsl033311-oc'] = "<LOC Unit_Description_04401> Single shot destroys most units. Consumes large amount of Energy.",
 
-  ["xsl0302"] = '<LOC Unit_Description_044401> Designed for combat against heavily armored units, provided with larger weapon range.',
+  ["xsl0302"] = '<LOC unit_description_xsl0302> Designed for combat against heavily armored units, provided with larger weapon range.',
+  ["xsl03021"] = '<LOC unit_description_xsl03021> Designed for combat against heavily armored units, provided with larger weapon range and jump teleport device.',
   -- SERAPHIM -- Support Unit Units/Upgrades
   ['xsl03011-spps'] = "<LOC Unit_Description_00289> Builds teleportation gates.",
   -- SERAPHIM -- Support Commander Presets
