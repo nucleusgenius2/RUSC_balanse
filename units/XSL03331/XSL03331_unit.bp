@@ -213,6 +213,7 @@ UnitBlueprint {
         MaxBuildDistance = 10,
         TeleportEnergyCost = 200000,
         TeleportTimeMod = 0.001,
+        TeleportTime = 3,
     },
     -- EnhancementPresets = {
     --     Rambo = {

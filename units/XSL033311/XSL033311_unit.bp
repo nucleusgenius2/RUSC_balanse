@@ -219,6 +219,7 @@ UnitBlueprint {
 		TeleportEnergyCost = 200000,
         TeleportTimeMod = 0.001,
         MaintenanceConsumptionPerSecondEnergy = 500,
+        TeleportTime = 3,
     },
     Enhancements = {
         EnhancedSensors = {
