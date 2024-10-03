@@ -263,8 +263,8 @@ UnitBlueprint {
             BuildTime = 10000,
             Icon = "acu",
             Name = "<LOC enhancements_0153_mega>Proton Focuser",
-            -- additional range
-            RangeMod = 30,
+            -- добавление ренжа при улучшении
+            RangeMod = 21,
             Slot = "Back",
         },
         ProtonFocusRemove =
