@@ -90,7 +90,7 @@ UnitBlueprint{
         BuildRate = 70,
         BuildTime = 1171,
         DifferentialUpgradeCostCalculation = true,
-        MaxBuildDistance = 25,
+        MaxBuildDistance = 30,
         RebuildBonusIds = { "xrb0104" },
     },
     Footprint = {
