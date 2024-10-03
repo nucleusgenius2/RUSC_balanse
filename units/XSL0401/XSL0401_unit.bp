@@ -298,7 +298,7 @@ UnitBlueprint{
             AutoInitiateAttackCommand = false,
             BallisticArc = 'RULEUBA_None',
             CollideFriendly = false,
-            Damage = 8000,
+            Damage = 7000,
             DamageRadius = 4,
             DamageType = 'Normal',
             DisplayName = 'Experimental Phason Beam Generator',
@@ -377,7 +377,7 @@ UnitBlueprint{
             AutoInitiateAttackCommand = false,
             BallisticArc = 'RULEUBA_None',
             CollideFriendly = false,
-            Damage = 550,
+            Damage = 630,
             DamageType = 'Normal',
             DisplayName = 'Gatling Plasma Cannon',
             FireTargetLayerCapsTable = {
