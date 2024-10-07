@@ -29,7 +29,7 @@ local mobileUnits = categories.BUILTBYTIER3FACTORY + categories.BUILTBYQUANTUMGA
     - categories.OPTICS
     - categories.NOHP
 local nonExps = mobileUnits - expUnits
-local rangeBuffCat = categories.ual0401 + categories.ualew0003
+local rangeBuffCat = mobileLandUnits * categories.AEON
 local inqusitorCat = categories.ual0405
 
 local buffsInit = false
