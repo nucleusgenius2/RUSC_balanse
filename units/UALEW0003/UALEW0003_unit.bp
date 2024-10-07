@@ -61,7 +61,6 @@ UnitBlueprint {
         'RECLAIMABLE',
         'SHOWQUEUE',
         'OVERLAYRADAR',
-        'OVERLAYMISC',
         'OVERLAYDIRECTFIRE',
     },
     CollisionOffsetY = 0.5,
