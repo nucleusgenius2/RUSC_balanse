@@ -191,6 +191,11 @@ UnitBlueprint {
                     Energy = -0.15,
                 },
                 {
+                    Category = "EXPERIMENTAL CYBRAN MOBILE AIR",
+                    Mass = -0.15,
+                    Energy = -0.15,
+                },
+                {
                     Category = "BUILTBYTIER3FACTORY CYBRAN MOBILE LAND TECH3",
                     Mass = -0.80,
                     Energy = -0.80,
