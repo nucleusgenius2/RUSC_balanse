@@ -420,7 +420,7 @@ BuffEffects = {
             local wep = unit:GetWeapon(i)
             local bp = wep:GetBlueprint()
             -- Set new rate of fire based on blueprint rate of fire
-            wep:ChangeRateOfFire(bp.RateOfFire / val)
+            wep:ChangeRateOfFire(bp.RateOfFire * val)
             wep.AdjRoFMod = val
         end
     end,
