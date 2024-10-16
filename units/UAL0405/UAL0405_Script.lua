@@ -31,6 +31,7 @@ local mobileUnits = categories.BUILTBYTIER3FACTORY + categories.BUILTBYQUANTUMGA
 local nonExps = mobileUnits - expUnits
 local rangeBuffCat = mobileLandUnits * categories.AEON
 local inqusitorCat = categories.ual0405
+local hunterCat = categories.ualew0003
 
 local buffsInit = false
 
@@ -287,6 +288,28 @@ UAL0405 = Class(AStructureUnit) {
             }
         end
 
+        -- Hunter Range + Rof
+        if not Buffs['HunterBuff'] then
+            BuffBlueprint {
+                Name = 'HunterBuff',
+                DisplayName = 'HunterBuff',
+                BuffType = 'AURAFORALL7',
+                Stacks = 'REPLACE',
+                Duration = 5,
+                Effects = { '/effects/emitters/seraphim_regenerative_aura_02_emit.bp' },
+                Affects = {
+                    MaxRadius = {
+                        Add = 0,
+                        Mult = bpAura.HunterRange,
+                    },
+                    RateOfFire = {
+                        Add = 0,
+                        Mult = bpAura.HunterRoF,
+                    }
+                }
+            }
+        end
+
         local buffPreDamage = 'AeonExpPreDamage'
         if not Buffs[buffPreDamage] then
             BuffBlueprint {
@@ -396,7 +419,8 @@ UAL0405 = Class(AStructureUnit) {
                 self:ApplyBuffToUnits(nonExps, 'HPAuraLandUnits', auraRadius)
                 self:ApplyBuffToUnits(aeonExp, 'HPAuraAeonExps', auraRadius)
                 self:ApplyBuffToUnits(nonAeonExp, 'HPAuraNonAeonExps', auraRadius)
-                self:ApplyBuffToUnits(rangeBuffCat, 'GCRangeBuff', auraRadius)
+                self:ApplyBuffToUnits(rangeBuffCat - hunterCat, 'GCRangeBuff', auraRadius)
+                self:ApplyBuffToUnits(hunterCat, 'HunterBuff', auraRadius)
                 self:ApplyBuffToUnits(aeonExp, 'AeonExpDamage', auraRadius)
 
                 local all = brain:GetUnitsAroundPoint(mobileLandUnits, self:GetPosition(), slowdownRadius, "Enemy")
