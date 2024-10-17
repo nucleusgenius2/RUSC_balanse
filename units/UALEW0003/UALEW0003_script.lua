@@ -26,8 +26,8 @@ UALEW0003 = Class(AWalkingLandUnit) {
         HeavyGun01 = Class(TDFPlasmaCannonWeapon) {},
         HeavyGun02 = Class(TDFPlasmaCannonWeapon) {},
         HeavyGun03 = Class(TDFPlasmaCannonWeapon) {},
-        LightGun01 = Class(ADFLaserHighIntensityWeapon) {},
-        LightGun02 = Class(ADFLaserHighIntensityWeapon) {},
+        -- LightGun01 = Class(ADFLaserHighIntensityWeapon) {},
+        -- LightGun02 = Class(ADFLaserHighIntensityWeapon) {},
     },
 
     OnMotionHorzEventChange = function(self, new, old)
