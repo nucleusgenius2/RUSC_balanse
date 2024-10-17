@@ -867,6 +867,11 @@ UnitBlueprint {
             Label = 'MegalithDeath',
             WeaponCategory = 'Death',
         },
+        {
+            -- backup distance
+            MaxRadius = 24,
+            RangeCategory = 'UWRC_Countermeasure',
+        }
     },
     Wreckage = {
         Blueprint = '/props/DefaultWreckage/DefaultWreckage_prop.bp',
