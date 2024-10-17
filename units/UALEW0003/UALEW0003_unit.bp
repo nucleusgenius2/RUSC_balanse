@@ -239,6 +239,7 @@ UnitBlueprint {
     Weapon = {
         {
             AboveWaterTargetsOnly = true,
+            CannotAttackGround = false,
             Audio = {
                 Fire = Sound {
                     Bank = 'UALWeapon',
@@ -258,7 +259,7 @@ UnitBlueprint {
             DamageRadius = 1,
             DamageType = 'Normal',
             DisplayName = 'Oblivion Cannon',
-            HeadingArcCenter = -90,
+            HeadingArcCenter = 0,
             HeadingArcRange = 100,
             FireTargetLayerCapsTable = {
                 Land = 'Land|Water|Seabed',
@@ -343,6 +344,7 @@ UnitBlueprint {
         },
         {
             AboveWaterTargetsOnly = true,
+            CannotAttackGround = false,
             Audio = {
                 Fire = Sound {
                     Bank = 'UALWeapon',
@@ -362,7 +364,7 @@ UnitBlueprint {
             DamageRadius = 1,
             DamageType = 'Normal',
             DisplayName = 'Oblivion Cannon',
-            HeadingArcCenter = 90, --110
+            HeadingArcCenter = 0, --110
             HeadingArcRange = 100, --130
             FireTargetLayerCapsTable = {
                 Land = 'Land|Water|Seabed',
@@ -447,6 +449,7 @@ UnitBlueprint {
         },
         {
             AboveWaterTargetsOnly = true,
+            CannotAttackGround = false,
             Audio = {
                 Fire = Sound {
                     Bank = 'UALWeapon',
@@ -566,7 +569,7 @@ UnitBlueprint {
                 Water = 'Land|Water|Seabed',
             },
             FiringTolerance = 2,
-            HeadingArcCenter = -90,
+            HeadingArcCenter = 0,
             HeadingArcRange = 100,
             Label = 'LightGun01',
             MaxRadius = 28,
@@ -655,7 +658,7 @@ UnitBlueprint {
                 Water = 'Land|Water|Seabed',
             },
             FiringTolerance = 2,
-            HeadingArcCenter = 90,
+            HeadingArcCenter = 0,
             HeadingArcRange = 100,
             Label = 'LightGun02',
             MaxRadius = 28,
