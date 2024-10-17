@@ -62,6 +62,7 @@ UnitBlueprint {
         'SHOWQUEUE',
         'OVERLAYRADAR',
         'OVERLAYDIRECTFIRE',
+        "OVERLAYDEFENSE"
     },
     CollisionOffsetY = 0.5,
     Defense = {
@@ -198,6 +199,7 @@ UnitBlueprint {
     LifeBarOffset = 1.55,
     LifeBarSize = 3.5,
     Physics = {
+        BackUpDistance = 15,
         BankingSlope = 0,
         BuildOnLayerCaps = {
             LAYER_Air = false,
@@ -728,6 +730,11 @@ UnitBlueprint {
             Turreted = true,
             WeaponCategory = 'Direct Fire',
         },
+        {
+            -- backup distance
+            MaxRadius = 15,
+            RangeCategory = 'UWRC_Countermeasure',
+        }
     },
     Wreckage = {
         Blueprint = '/props/DefaultWreckage/DefaultWreckage_prop.bp',
