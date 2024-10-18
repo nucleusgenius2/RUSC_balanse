@@ -216,8 +216,8 @@ UnitBlueprint {
         },
     },
     Economy = {
-        BuildCostEnergy = 80000,
-        BuildCostMass = 10000,
+        BuildCostEnergy = 120000,
+        BuildCostMass = 20000,
         BuildRate = 56,
         BuildTime = 14400,
         BuildableCategory = { "BUILTBYTIER3ENGINEER SERAPHIM" },
