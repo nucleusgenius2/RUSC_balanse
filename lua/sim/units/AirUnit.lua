@@ -233,6 +233,11 @@ AirUnit = ClassUnit(MobileUnit) {
         end
 
         -- disallow ASF to intercept certain projectiles
+        if otherBlueprintCategoriesHashed["NOAIRCOLLISION"] then
+            return false
+        end
+
+        -- disallow ASF to intercept certain projectiles
         if otherBlueprintCategoriesHashed["IGNOREASFONCOLLISION"] and selfBlueprintCategoriesHashed["ASF"] then
             return false
         end
