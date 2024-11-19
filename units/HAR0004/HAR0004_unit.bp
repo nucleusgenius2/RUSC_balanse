@@ -92,7 +92,7 @@ UnitBlueprint {
         BuildCostEnergy = 105000,
         BuildCostMass = 5400,
         BuildTime = 3041,
-        MaintenanceConsumptionPerSecondEnergy = 2000,
+        MaintenanceConsumptionPerSecondEnergy = 1000,
         RebuildBonusIds = {
             'HAR0004',
         },
