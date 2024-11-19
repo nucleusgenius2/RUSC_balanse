@@ -460,6 +460,10 @@ Shield = ClassShield(moho.shield_methods, Entity) {
             return 
         end
 
+        if EntityCategoryContains(categories.SHIELD * categories.STRUCTURE*categories.TECH2, self.Owner) and EntityCategoryContains(categories.MOBILE * categories.ARTILLERY*categories.TECH3, instigator) then
+            amount=amount*1.5
+        end
+
         -- Only called when a shield is directly impacted, so not for Personal Shields
         -- This means personal shields never have ApplyDamage called with doOverspill as true
         self:ApplyDamage(instigator, amount, vector, damageType, true)
