@@ -335,7 +335,7 @@ UnitBlueprint {
     SelectionSizeZ = 17,
     SelectionThickness = 0.15,
     SizeX = 14,
-    SizeY = 4.5,
+    SizeY = 6,
     SizeZ = 26,
     StrategicIconName = 'icon_experimental_generic',
     StrategicIconSortPriority = 45,

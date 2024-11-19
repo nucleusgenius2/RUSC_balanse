@@ -42,37 +42,37 @@
 
 armordefinition = {
 
-    {   -- Armor Type Name
+    { -- Armor Type Name
         'Default',
 
         -- Armor Definition
         'Normal 1.0',
     },
-    {   -- Armor Type Name
+    { -- Armor Type Name
         'Normal',
 
         -- Armor Definition
         'Normal 1.0',
     },
-    {   -- Armor Type Name
+    { -- Armor Type Name
         'Light',
 
         -- Armor Definition
         'Normal 1.0',
     },
-    {   # Armor Type Name
+    { -- Armor Type Name
         'Commander',
 
-        # Armor Definition
-		'Mercy 0.5',
+        -- Armor Definition
+        'Mercy 0.5',
         'Normal 1.0',
         'Overcharge 0.033333',
         'Deathnuke 1.0',
     },
-    {   # Armor Type Name
+    { -- Armor Type Name
         'Structure',
 
-        # Armor Definition
+        -- Armor Definition
         'Normal 1.0',
         'Overcharge 0.066666',
         'Deathnuke 0.032',
@@ -112,11 +112,11 @@ armordefinition = {
         'TacticalMissile 0.55',
     },
     {
-        # Armor Type name
+        -- Armor Type name
         'FireBeetle',
-        
-        # Armor Definition
-        'Normal 1.0',        
-		'FireBeetleExplosion 0.0',        
+
+        -- Armor Definition
+        'Normal 1.0',
+        'FireBeetleExplosion 0.0',
     },
 }

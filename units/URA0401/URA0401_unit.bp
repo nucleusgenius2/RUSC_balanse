@@ -200,53 +200,10 @@ UnitBlueprint{
         UniformScale = 0.2,
     },
     Economy = {
-        BuildCostEnergy = 480000,
-        BuildCostMass = 30000,
-        BuildTime = 20000,
+        BuildCostEnergy = 480000+90000,
+        BuildCostMass = 30000+7000,
+        BuildTime = 20000+7000,
         BuildRate = 180,
-    },
-    Enhancements = {
-        AdvancedProtonAccelerator =
-        {
-            BuildCostEnergy = 90000,
-            BuildCostMass = 7000,
-            BuildTime = 7000,
-            Icon = "acu",
-            Name = "<LOC enhancements_0152_mega>Advanced Proton Accelerator",
-            DamageMult = 1.5,
-            Slot = "Back",
-        },
-        AdvancedProtonAcceleratorRemove =
-        {
-            BuildCostEnergy = 1,
-            BuildCostMass = 1,
-            BuildTime = 0.1,
-            Icon = "acu",
-            Name = "<LOC enhancements_0082>Remove Advanced Proton Accelerator",
-            Prerequisite = "AdvancedProtonAccelerator",
-            RemoveEnhancements = {
-                "AdvancedProtonAccelerator",
-                "AdvancedProtonAcceleratorRemove",
-            },
-            Slot = "Back",
-        },
-        Slots = {
-            Back = {
-                name = "<LOC _Back>",
-                x = 0,
-                y = -10,
-            },
-            LCH = {
-                name = "<LOC _LCH>",
-                x = 60,
-                y = 2,
-            },
-            RCH = {
-                name = "<LOC _RCH>",
-                x = -16,
-                y = 0,
-            },
-        },
     },
     Footprint = {
         MaxSlope = 0.25,
@@ -631,8 +588,8 @@ UnitBlueprint{
             },
             BallisticArc = 'RULEUBA_None',
             CollideFriendly = false,
-            Damage = 375,
-            DamageToShields = 488,
+            Damage = 375*1.5,
+            DamageToShields = 488*1.5,
             DamageRadius = 3,
             DamageType = 'Normal',
             DisplayName = 'Heavy Electron Bolter',
@@ -704,8 +661,8 @@ UnitBlueprint{
             },
             BallisticArc = 'RULEUBA_None',
             CollideFriendly = false,
-            Damage = 375,
-            DamageToShields = 488,
+            Damage = 375*1.5,
+            DamageToShields = 488*1.5,
             DamageRadius = 3,
             DamageType = 'Normal',
             DisplayName = 'Heavy Electron Bolter',

@@ -22,7 +22,8 @@ ProjectileBlueprint {
         'INDIRECTFIRE',
         'TACTICAL',
         'MISSILE',
-        'NOSPLASHDAMAGE'
+        'NOSPLASHDAMAGE',
+        "NOAIRCOLLISION",
     },
     Defense = {
         Health = 3,

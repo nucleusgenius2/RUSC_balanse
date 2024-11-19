@@ -9,6 +9,7 @@
 local CreateWreckage = import("/lua/wreckage.lua").CreateWreckage
 
 local transferUnbuiltCategory = categories.EXPERIMENTAL + categories.TECH3 * categories.STRUCTURE * categories.ARTILLERY
+    - categories.SUBCOMMANDER
 local transferUnitsCategory = categories.ALLUNITS - categories.INSIGNIFICANTUNIT
 local buildersCategory = categories.ALLUNITS - categories.CONSTRUCTION - categories.ENGINEER
 
