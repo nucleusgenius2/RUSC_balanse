@@ -599,7 +599,9 @@ function PostProcessUnitWithExternalFactory(allBlueprints, unit)
 
         -- remove properties of the seed unit
         unit.Categories = table.unhash(unit.CategoriesHash)
-        unit.Economy.BuildRate = 0
+        if unit.Economy then
+            unit.Economy.BuildRate = 0
+        end
     end
 end
 
