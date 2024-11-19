@@ -481,8 +481,8 @@ UnitBlueprint{
             Slot = "RCH",
         },
         Overcharge2 = {
-            BuildCostEnergy = 24000*3*0.6,
-            BuildCostMass = 800*3,
+            BuildCostEnergy = 24000,
+            BuildCostMass = 900,
             BuildTime = 800,
             Icon = "soch2",
             NewDamage = 5000,
